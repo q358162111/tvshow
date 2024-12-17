@@ -5,7 +5,7 @@
     {
       "name": "live",
       "type": 0,
-      "url": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/tvlist.txt",
+      "url": "./tvlist.txt",
       "epg": "https://e.erw.cc/all.xml ",
       "logo": "https://live.fanmingming.com/tv/{name}.png"
       
@@ -71,7 +71,7 @@
       "quickSearch": 1,
       "filterable": 0,
       "ext": "https://pan.shangui.cc/f/p5RUL/tk.php",
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/lib/xry.jar"
+      "jar": "./lib/xry.jar"
     },
     {
       "key": "索尼",
@@ -232,7 +232,7 @@
       "ext": {
         "danmu": true
       },
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/lib/danmu.jar"
+      "jar": "./lib/danmu.jar"
     },
     {
       "key": "厂长弹幕",
@@ -245,7 +245,7 @@
       "ext": {
         "danmu": true
       },
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/lib/danmu.jar"
+      "jar": "./lib/danmu.jar"
     },
     {
       "key": "机器人弹幕",
@@ -258,7 +258,7 @@
       "ext": {
         "danmu": true
       },
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/lib/danmu.jar"
+      "jar": "./lib/danmu.jar"
     },
     {
       "key": "荐片弹幕",
@@ -272,7 +272,7 @@
       "ext": {
         "danmu": true
       },
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/lib/danmu.jar"
+      "jar": "./lib/danmu.jar"
     },
     {
       "key": "我的阿里",
@@ -288,7 +288,7 @@
       "style": {
         "type": "list"
       },
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/lib/danmu.jar"
+      "jar": "./lib/danmu.jar"
     },
     {
       "key": "阿里合集",
@@ -305,7 +305,7 @@
       "style": {
         "type": "list"
       },
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/lib/danmu.jar"
+      "jar": "./lib/danmu.jar"
     },
     {
       "key": "玩偶哥哥",
@@ -486,7 +486,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/PandaQ241023.jar"
+      "jar": "./PandaQ241023.jar"
     },
     {
       "key": "nangua",
@@ -496,8 +496,8 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "api": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/lib/ng_open.js",
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/PandaQ241023.jar"
+      "api": "./lib/ng_open.js",
+      "jar": "./PandaQ241023.jar"
     },
     {
       "key": "csp_Gz360",
@@ -508,7 +508,7 @@
       "quickSearch": 1,
       "filterable": 1,
       "playerType": 2,
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/PandaQ241023.jar"
+      "jar": "./PandaQ241023.jar"
     },
     {
       "key": "csp_LiteApple",
@@ -518,7 +518,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/PandaQ241023.jar"
+      "jar": "./PandaQ241023.jar"
     },
     {
       "key": "csp_Netfixtv",
@@ -529,7 +529,7 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": "http://mpanso.com",
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/PandaQ241023.jar"
+      "jar": "./PandaQ241023.jar"
     },
     {
       "key": "比特",
@@ -539,7 +539,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/PandaQ241023.jar"
+      "jar": "./PandaQ241023.jar"
     },
     {
       "key": "荐片",
@@ -548,7 +548,7 @@
       "type": 3,
       "playerType": "2",
       "ext": "http://api2.rinhome.com",
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/PandaQ241023.jar"
+      "jar": "./PandaQ241023.jar"
     },
     {
       "key": "厂长",
@@ -560,7 +560,7 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": "https://cz01.vip/",
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/PandaQ241023.jar"
+      "jar": "./PandaQ241023.jar"
     },
     {
       "key": "可可",
@@ -572,7 +572,7 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": "https://www.kkys02.com",
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/PandaQ241023.jar"
+      "jar": "./PandaQ241023.jar"
     },
     {
       "key": "csp_Xb6v",
@@ -583,7 +583,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/PandaQ241023.jar"
+      "jar": "./PandaQ241023.jar"
     },
     {
       "key": "低端",
@@ -593,9 +593,9 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "api": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/lib/drpy2.min.js",
-      "ext": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/lib/ddys.js",
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/PandaQ241023.jar"
+      "api": "./lib/drpy2.min.js",
+      "ext": "./lib/ddys.js",
+      "jar": "./PandaQ241023.jar"
     },
     {
       "key": "csp_xifan",
@@ -605,7 +605,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://raw.gitcode.com/cai_hj/tvshow/raw/main/PandaQ241023.jar"
+      "jar": "./PandaQ241023.jar"
     },
     {
       "key": "csp_appysv2_天天视频",
