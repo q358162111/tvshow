@@ -485,6 +485,10 @@
       "type": 3,
       "api": "csp_Qiyou",
        "ext": "http://www.dyxz2.com/",
+      "playerType": 2,
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 1,
       "jar": "https://img2.gelonghui.com/library/b97a0-b33fe897-498a-4dc9-9f5a-46fef469dd89.txt;md5;b97a0b4c9bc92e86c3f1c0b15e6ba290"
     },
     {
