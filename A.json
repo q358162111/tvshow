@@ -482,10 +482,8 @@
       "name": "🥝┃奇优┃影视",
       "type": 3,
       "api": "csp_Qiyou",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "jar": "./PandaQ241023.jar"
+      "ext": "http://www.dyxz2.com/",
+      "jar": "https://img2.gelonghui.com/library/b97a0-b33fe897-498a-4dc9-9f5a-46fef469dd89.txt;md5;b97a0b4c9bc92e86c3f1c0b15e6ba290"
     },
     {
       "key": "nangua",
@@ -507,7 +505,7 @@
       "quickSearch": 1,
       "filterable": 1,
       "playerType": 2,
-      "jar": "./PandaQ241023.jar"
+      "jar": "https://img2.gelonghui.com/library/b97a0-b33fe897-498a-4dc9-9f5a-46fef469dd89.txt;md5;b97a0b4c9bc92e86c3f1c0b15e6ba290"
     },
     {
       "key": "csp_LiteApple",
@@ -517,7 +515,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "./PandaQ241023.jar"
+      "jar": "https://img2.gelonghui.com/library/b97a0-b33fe897-498a-4dc9-9f5a-46fef469dd89.txt;md5;b97a0b4c9bc92e86c3f1c0b15e6ba290"
     },
     {
       "key": "csp_Netfixtv",
@@ -547,7 +545,7 @@
       "type": 3,
       "playerType": "2",
       "ext": "http://api2.rinhome.com",
-      "jar": "./PandaQ241023.jar"
+      "jar": "https://img2.gelonghui.com/library/b97a0-b33fe897-498a-4dc9-9f5a-46fef469dd89.txt;md5;b97a0b4c9bc92e86c3f1c0b15e6ba290"
     },
     {
       "key": "厂长",
@@ -571,7 +569,7 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": "https://www.kkys02.com",
-      "jar": "./PandaQ241023.jar"
+      "jar": "https://img2.gelonghui.com/library/b97a0-b33fe897-498a-4dc9-9f5a-46fef469dd89.txt;md5;b97a0b4c9bc92e86c3f1c0b15e6ba290"
     },
     {
       "key": "csp_Xb6v",
