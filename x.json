@@ -6,8 +6,8 @@
       "name": "live",
       "type": 0,
       "url": "./tvlist.txt",
-      "epg": "https://e.erw.cc/all.xml ",
-      "logo": "https://live.fanmingming.com/tv/{name}.png"
+      "epg": "https://epg.zbds.top",
+      "logo": "https://gcore.jsdelivr.net/gh/taksssss/tv/icon/{name}.png"
       
     }
     
