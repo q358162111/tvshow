@@ -328,18 +328,20 @@ CGTN俄语,rtsp://111.48.34.138:1554/170000004112/991800010000000500000000000005
 农林卫视,http://39.134.136.161:6610/000000001000/1000000005000266003/index.m3u8?livemode=1&stbId=10&channel-id=ystenlive&Contentid=1000000005000266003
 
 🌊港·澳·台,#genre#
+凤凰中文,http://aktv.top/AKTV/live/aktv/null-3/AKTV.m3u8
 凤凰中文,http://php.jdshipin.com/TVOD/iptv.php?id=fhzw#
 凤凰中文,http://114.105.187.147:9901/tsfile/live/1063_1.m3u8#
 凤凰中文,http://202.168.187.208:9089/tsfile/live/1009_1.m3u8#
 凤凰中文,http://cdn5.1678520.xyz:80/live/live2.1.php?id=fhzw#
-凤凰中文,http://aktv.top/AKTV/live/aktv/null-3/AKTV.m3u8
+凤凰资讯,http://aktv.top/AKTV/live/aktv/null-4/AKTV.m3u8#
 凤凰资讯,http://cdn5.1678520.xyz:80/live/live2.1.php?id=fhzx#
 凤凰资讯,http://114.105.187.147:9901/tsfile/live/1064_1.m3u8#
 凤凰资讯,http://114.105.187.147:9901/tsfile/live/1071_1.m3u8#
-凤凰资讯,http://aktv.top/AKTV/live/aktv/null-4/AKTV.m3u8#
+
 凤凰资讯,http://php.jdshipin.com:8880/TVOD/iptv.php?id=fhzx
-凤凰香港,http://50.7.234.10:8278/hkphoenix_twn/playlist.m3u8?tid=MACA2858291128582911&ct=19225&tsum=0f01288bbaa6c0403d07e96b0a5db4ed#
 凤凰香港,http://aktv.top/AKTV/live/aktv/null-5/AKTV.m3u8
+凤凰香港,http://50.7.234.10:8278/hkphoenix_twn/playlist.m3u8?tid=MACA2858291128582911&ct=19225&tsum=0f01288bbaa6c0403d07e96b0a5db4ed#
+
 香港卫视,http://anren.live/HK/BSJDUFpB.m3u8#
 香港卫视,http://zhibo.hkstv.tv/livestream/mutfysrq/playlist.m3u8
 香港RTHK33,https://rthktv33-live.akamaized.net/hls/live/2101641/RTHKTV33/stream03/streamPlaylist.m3u8
@@ -360,8 +362,9 @@ CHANNEL [V],http://171.213.198.58:8888/udp/239.93.0.157:2194
 环球电视,http://zb.xzxwhcb.com:9999/hls/world.m3u8
 东森财经新闻,http://50.7.234.10:8278/ettvcaijing_twn/playlist.m3u8?tid=mc42afe745533&ct=11448811&tsum=31baa4e2ca87271b454e5acc0e7d0e6c#
 东森财经新闻,http://50.7.234.10:8278/ettvcaijing_twn/playlist.m3u8?tid=MB8B2069463920694639&ct=19249&tsum=05ff51a1b274ce7d31d05bbf11df18ad
-东森新闻,http://litv.zapi.us.kg/?id=4gtv-4gtv152#
 东森新闻,http://aktv.top/AKTV/live/aktv2/null/AKTV.m3u8#
+东森新闻,http://litv.zapi.us.kg/?id=4gtv-4gtv152#
+
 东森新闻,https://stream1.freetv.fun/27238a4dfef13f9989c8ed00588f93f244e815902d6d5c42241767e1714c0bb1.ctv#
 东森新闻,https://stream1.freetv.fun/705903f439eb92dcb28125ac7b60cdffc749803bb57b6a6f6a5ccc663f2f7ec0.ctv#
 东森新闻,https://stream1.freetv.fun/4e8297ed0610c91e855ddb69d24344baa6b732dd2d1b24ac2e0a71a3d39ca41c.ctv#
@@ -386,8 +389,10 @@ CHANNEL [V],http://171.213.198.58:8888/udp/239.93.0.157:2194
 中天亚洲台,http://litv.zapi.us.kg/?id=4gtv-4gtv109
 中天综合台,http://50.7.234.10:8278/ctizhonghe/playlist.m3u8?tid=MBBB1520797915207979&ct=19193&tsum=3a6f7f0c591c2ec6678d51b741f290b2
 中天娱乐台,http://61.221.215.25:8800/hls/47/index.m3u8
-中视,http://litv.zapi.us.kg/?id=4gtv-4gtv040#
+
 中视,http://aktv.top/AKTV/live/aktv/null-10/AKTV.m3u8#
+中视,http://litv.zapi.us.kg/?id=4gtv-4gtv040#
+
 中视,http://50.7.234.10:8278/zhongshihd_twn/playlist.m3u8?tid=MBDB6720263767202637&ct=19249&tsum=edd778f298b53c39b3b9706700032605#
 中视,rtmp://f13h.mine.nu/sat/tv091
 中视新闻,http://aktv.top/AKTV/live/aktv/null-10/AKTV.m3u8
@@ -398,14 +403,16 @@ CHANNEL [V],http://171.213.198.58:8888/udp/239.93.0.157:2194
 
 中视菁采台,http://litv.zapi.us.kg/?id=4gtv-4gtv064
 非凡新闻台,http://50.7.234.10:8278/feifannews_twn/playlist.m3u8?tid=m050e7aad65f614336734&ct=17874&tsum=4ea1b829d195ac69a6c2ca51b21ae378
+华视新闻,http://aktv.top/AKTV/live/aktv/null-11/AKTV.m3u8
 华视新闻,http://litv.zapi.us.kg/?id=4gtv-4gtv041#
 华视新闻,http://50.7.234.10:8278/ctshd_twn/playlist.m3u8?tid=m760743cf1f5e&ct=18335&tsum=9b0d2efb292253075aa4ec25cc439b81#
-华视新闻,http://aktv.top/AKTV/live/aktv/null-11/AKTV.m3u8
+
 寰宇新闻,http://aktv.top/AKTV/live/aktv/null-9/AKTV.m3u8
+无线新闻,http://aktv.top/AKTV/live/aktv/null-1/AKTV.m3u8
 无线新闻,http://aktv.top/AKTV/live/aktv2/null-1/AKTV.m3u8#
 无线新闻,http://kkk.jjjj.jiduo.me/api.php?n=tttt&id=5799&tk=2aca1ad9a849#
 无线新闻,http://50.7.234.10:8278/inews_twn/playlist.m3u8?tid=MD8D9734527497345274&ct=19249&tsum=88c5d57f9fdce89810d61e1001910a80#
-无线新闻,http://aktv.top/AKTV/live/aktv/null-1/AKTV.m3u8
+
 无线星河,http://cdn9.1689.us.kg/smt1.1.php?id=Xinhe#
 无线星河,http://v2h.jdshipin.com/xinghe_1/xinghe_1.stream/chunklist_w106.m3u8#
 无线星河,http://php.jdshipin.com/smt.php?id=Xinhe#
@@ -413,9 +420,10 @@ CHANNEL [V],http://171.213.198.58:8888/udp/239.93.0.157:2194
 无线星河,https://www.mytvsuper.xyz/tvb/xinghe/stream.m3u8
 明珠台,http://aktv.top/AKTV/live/aktv/null-2/AKTV.m3u8#
 明珠台,http://aktv.top/AKTV/live/aktv/null-2/AKTV.m3u8
+翡翠台,http://aktv.top/AKTV/live/aktv/null/AKTV.m3u8
 翡翠台,http://php.jdshipin.com/smt.php?id=jade_twn#
 翡翠台,http://50.7.234.10:8278/WarnerTV/playlist.m3u8?tid=mc42afe745533&ct=11448811&tsum=9a6977885e3b656963da17bd8654ea51#
-翡翠台,http://aktv.top/AKTV/live/aktv/null/AKTV.m3u8
+
 翡翠综合台,http://aktv.top/AKTV/live/aktv/null-17/AKTV.m3u8
 TVB Plus,http://aktv.top/AKTV/live/aktv/tvbplus/AKTV.m3u8
 纬来精彩,http://61.221.215.25:8800/hls/48/index.m3u8
@@ -423,10 +431,12 @@ TVB Plus,http://aktv.top/AKTV/live/aktv/tvbplus/AKTV.m3u8
 
 TVBShttp://aktv.top/AKTV/live/aktv/tvbs/AKTV.m3u8
 TVBS,http://litv.zapi.us.kg/?id=4gtv-4gtv073#
-TVBS新闻台,http://61.221.215.25:8800/hls/9/index.m3u8#
-TVBS新闻台,http://litv.zapi.us.kg/?id=4gtv-4gtv072#
 TVBS新闻台,http://aktv.top/AKTV/live/aktv3/null-2/AKTV.m3u8#
 TVBS新闻台,http://aktv.top/AKTV/live/aktv/tvbs-1/AKTV.m3u8#
+
+TVBS新闻台,http://61.221.215.25:8800/hls/9/index.m3u8#
+TVBS新闻台,http://litv.zapi.us.kg/?id=4gtv-4gtv072#
+
 TVBS欢乐台,http://litv.zapi.us.kg/?id=4gtv-4gtv068
 TVBS精采台,http://litv.zapi.us.kg/?id=4gtv-4gtv067
 三立财经新闻,http://aktv.top/AKTV/live/aktv/null-14/AKTV.m3u8
