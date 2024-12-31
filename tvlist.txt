@@ -329,17 +329,20 @@ CGTN俄语,rtsp://111.48.34.138:1554/170000004112/991800010000000500000000000005
 
 🌊港·澳·台,#genre#
 凤凰中文,http://aktv.top/AKTV/live/aktv/null-3/AKTV.m3u8
+凤凰中文,https://ali.hlspull.yximgs.com/live/diyp_fh2.flv
 凤凰中文,http://php.jdshipin.com/TVOD/iptv.php?id=fhzw#
 凤凰中文,http://114.105.187.147:9901/tsfile/live/1063_1.m3u8#
 凤凰中文,http://202.168.187.208:9089/tsfile/live/1009_1.m3u8#
 凤凰中文,http://cdn5.1678520.xyz:80/live/live2.1.php?id=fhzw#
 凤凰资讯,http://aktv.top/AKTV/live/aktv/null-4/AKTV.m3u8#
+凤凰资讯,https://ali.hlspull.yximgs.com/live/diyp_fh1.flv
 凤凰资讯,http://cdn5.1678520.xyz:80/live/live2.1.php?id=fhzx#
 凤凰资讯,http://114.105.187.147:9901/tsfile/live/1064_1.m3u8#
 凤凰资讯,http://114.105.187.147:9901/tsfile/live/1071_1.m3u8#
 
 凤凰资讯,http://php.jdshipin.com:8880/TVOD/iptv.php?id=fhzx
 凤凰香港,http://aktv.top/AKTV/live/aktv/null-5/AKTV.m3u8
+凤凰香港,https://ali.hlspull.yximgs.com/live/diyp_fh3.flv
 凤凰香港,http://50.7.234.10:8278/hkphoenix_twn/playlist.m3u8?tid=MACA2858291128582911&ct=19225&tsum=0f01288bbaa6c0403d07e96b0a5db4ed#
 
 香港卫视,http://anren.live/HK/BSJDUFpB.m3u8#
