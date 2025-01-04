@@ -488,6 +488,8 @@ MyTVSuper,http://aktv.top/AKTV/live/aktv/null-7/AKTV.m3u8
 DMAX,http://50.7.234.10:8278/natgeohd_twn/playlist.m3u8?tid=ma1f0b9808d5014467661&ct=17874&tsum=73dfb91284f5b1358251546e6f03da3d#
 DMAX,http://50.7.234.10:8278/ba86fcd935/playlist.m3u8?tid=m1b458a366fcb&ct=18335&tsum=6ee1498a5e37d8bd1e3f62954629ed4f#
 DMAX,http://50.7.234.10:8278/natgeohd_twn/playlist.m3u8?tid=MB5B4841803948418039&ct=18393&tsum=a2343b2c061fc9de3fa7857e832d9625
+Discovery,http://61.221.215.25:8800/hls/1/index.m3u8
+Discovery Asia,http://61.221.215.25:8800/hls/50/index.m3u8
 面包台,https://video.bread-tv.com:8091/hls-live24/online/index.m3u8
 tvN,http://aktv.top/AKTV/live/aktv/tvn/AKTV.m3u8
 
@@ -827,6 +829,7 @@ NewTV魅力潇湘,http://gslbservzqhsw.itv.cmvideo.cn/1000000001000006197/1.m3u8
 安徽综艺体育,http://112.30.194.221:20080/live/c41f112b83f644ddb082669501c8ecd3/hls.m3u8?zanhd#
 安徽综艺体育,hhttp://112.30.194.221:20080/live/c41f112b83f644ddb082669501c8ecd3.flv
 安徽公共,http://114.105.187.147:9901/tsfile/live/1014_1.m3u8
+安徽公共,http://223.241.247.214:9901/tsfile/live/1003_1.m3u8?key=txiptv&playlive=1&authid=0
 安徽农业科教,http://114.105.187.147:9901/tsfile/live/1017_1.m3u8
 
 🏠️山东  ,#genre#
@@ -1048,11 +1051,13 @@ NewTV魅力潇湘,http://gslbservzqhsw.itv.cmvideo.cn/1000000001000006197/1.m3u8
 辽宁影视剧,http://120.76.248.139/live/bfgd/4200000070.m3u8
 辽宁北方,http://120.76.248.139/live/bfgd/4200000071.m3u8
 辽宁都市,http://120.76.248.139/live/bfgd/4200000610.m3u8
+辽宁都市,http://120.76.248.139/live/bfgd/4200000068.m3u8
 辽宁生活,http://120.76.248.139/live/bfgd/4200000073.m3u8
 辽宁经济,http://120.76.248.139/live/bfgd/4200000480.m3u8#
-辽宁经济,http://120.76.248.139/live/bfgd/4200000480.m3u8
+辽宁经济,http://120.76.248.139/live/bfgd/4200000076.m3u8
 辽宁公共,http://120.76.248.139/live/bfgd/4200000481.m3u8#
 辽宁公共,http://120.76.248.139/live/bfgd/4200000077.m3u8
+辽宁教育青少,http://120.76.248.139/live/bfgd/4200000075.m3u8
 丹东新闻综合,http://120.76.248.139/live/bfgd/4200000276.m3u8
 沈阳新闻综合,http://120.76.248.139/live/bfgd/4200000059.m3u8
 大连新闻综合,http://120.76.248.139/live/bfgd/4200000273.m3u8
@@ -1079,16 +1084,33 @@ NewTV魅力潇湘,http://gslbservzqhsw.itv.cmvideo.cn/1000000001000006197/1.m3u8
 广州法治,https://tencentplay.gztv.com/live/fazhi.m3u8?txSecret=4400d75d2114b2db07d86eda8f8218ee&txTime=191b60ce0f6
 广东珠江,http://39.134.136.161:6610/000000001000/2000000003000000033/index.m3u8?livemode=1&stbId=10&channel-id=hnbblive&Contentid=2000000003000000033#
 广东珠江,http://39.134.136.161:6610/000000001000/1000000004000011655/index.m3u8?livemode=1&stbId=10&channel-id=ystenlive&Contentid=1000000004000011655
+广东体育,http://219.159.194.244:8181/tsfile/live/1001_1.m3u8
 广东体育,http://120.238.94.10:9901/tsfile/live/1012_1.m3u8#
 广东体育,http://163.177.122.19:9901/tsfile/live/1004_1.m3u8#
 广东体育,http://27.41.245.2:9003//hls/43/index.m3u8
+广东新闻,http://219.159.194.244:8181/tsfile/live/1007_1.m3u8
 广东新闻,http://222.218.158.25:8181/tsfile/live/1007_1.m3u8#
 广东新闻,http://219.159.194.213:8181/tsfile/live/1007_1.m3u8#
 广东新闻,http://120.238.94.10:9901/tsfile/live/1010_1.m3u8
+广东民生,http://219.159.194.244:8181/tsfile/live/1002_1.m3u8
 广东民生,http://mom.coms.hk:9901/tsfile/live/1003_1.m3u8
 广东民生,http://222.217.230.195:8181/tsfile/live/1020_1.m3u8#
 广东民生,http://222.217.230.192:8181/tsfile/live/1020_1.m3u8
+广东影视,http://219.159.194.244:8181/tsfile/live/1004_1.m3u8
 广东影视,http://mom.coms.hk:9901/tsfile/live/1002_1.m3u8
+广东少儿,http://219.159.194.244:8181/tsfile/live/1005_1.m3u8
+广东经济教科,http://219.159.194.244:8181/tsfile/live/1003_1.m3u8
+岭南戏剧,http://219.159.194.244:8181/tsfile/live/1006_1.m3u8
+
+🏠️广西  ,#genre#
+广西影视,http://219.159.194.244:8181/tsfile/live/1009_1.m3u8
+广西综艺旅游,http://219.159.194.244:8181/tsfile/live/1010_1.m3u8
+广西都市,http://219.159.194.244:8181/tsfile/live/1011_1.m3u8
+广西新闻,http://219.159.194.244:8181/tsfile/live/1012_1.m3u8
+南宁影视娱乐,http://219.159.194.244:8181/tsfile/live/1013_1.m3u8
+南宁公共,http://219.159.194.244:8181/tsfile/live/1014_1.m3u8
+
+
 
 🏠️陕西  ,#genre#
 陕西影视,http://gxlive.snrtv.com/sx4-SD.m3u8
@@ -1106,3 +1128,4 @@ NewTV魅力潇湘,http://gslbservzqhsw.itv.cmvideo.cn/1000000001000006197/1.m3u8
 
 🏠️四川  ,#genre#
 四川科教,http://182.150.115.21:8030/pcgacg/pcgacg_0.m3u8
+四川影视文艺,http://wouu.net:9977/udp/239.93.0.166:5140
