@@ -364,7 +364,7 @@ CGTN俄语,rtsp://111.48.34.138:1554/170000004112/991800010000000500000000000005
 星空卫视,http://wouu.net:9977/rtp/239.93.1.10:2193#
 星空卫视,http://wouu.net:9977/udp/239.93.1.10:2193#
 星空卫视,https://stream1.freetv.fun/d669fabd35daeaf67952480c48acf16e6eef6fa2a12919e2ca169894e33a93d7.ctv
-星光综合,http://ali.hlspull.yximgs.com/live/zxcvbnm9852.flv
+星光影视,http://ali.hlspull.yximgs.com/live/zxcvbnm9852.flv
 CHANNEL [V],http://171.213.198.58:8888/udp/239.93.0.157:2194
 环球电视,http://zb.xzxwhcb.com:9999/hls/world.m3u8
 无线新闻,http://aktv.top/AKTV/live/aktv/null-1/AKTV.m3u8
@@ -404,8 +404,8 @@ TVB Plus,http://aktv.top/AKTV/live/aktv/tvbplus/AKTV.m3u8
 东森超视,https://stream1.freetv.fun/705903f439eb92dcb28125ac7b60cdffc749803bb57b6a6f6a5ccc663f2f7ec0.ctv
 亚洲旅游台,http://50.7.234.10:8278/asiatravel_twn/playlist.m3u8?tid=MB9B9461769094617690&ct=18393&tsum=57c12e5ba95cca684613ec5e14714ff8
 
-公视戏剧,http://litv.zapi.us.kg/?id=4gtv-4gtv041
-台视,http://litv.zapi.us.kg/?id=4gtv-4gtv066
+公视戏剧,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv041
+台视,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv066
 台视新闻,https://stream1.freetv.fun/3494a155d6e7afad40f588196589dc0504ac51f3ba233b6338181e20b7e5428b.m3u8#
 台视新闻,http://50.7.234.10:8278/ttvnews_twn/playlist.m3u8?tid=MBBB6637589866375898&ct=19234&tsum=d2c641a325bf02e0b68c4f245e0165b0#
 台视新闻,http://50.7.234.10:8278/ttvnews_twn/playlist.m3u8?tid=MD9D1039476110394761&ct=19193&tsum=9f33349842788bfb7b0e90e93f7bf02c
@@ -413,31 +413,31 @@ TVB Plus,http://aktv.top/AKTV/live/aktv/tvbplus/AKTV.m3u8
 民视,http://50.7.234.10:8278/ftvtaiwan_twn/playlist.m3u8?tid=MEFE5254515252545152&ct=19249&tsum=c17f872b1772df8f76032030cc40bdbd
 民视,http://50.7.234.10:8278/ftvtaiwan_twn/playlist.m3u8?tid=MDFD6045594360455943&ct=19193&tsum=0de4f998b15ba8f2ecdaa107d866212a
 民视,http://50.7.234.10:8278/ftvhd_taiwan/playlist.m3u8?tid=MC8C5908644059086440&ct=19249&tsum=c96d2cd48b11d40ca9e97fb3addb1384
-民视台湾台,http://litv.zapi.us.kg/?id=4gtv-4gtv001
-民视第一台,http://litv.zapi.us.kg/?id=4gtv-4gtv003
-民视综艺,http://litv.zapi.us.kg/?id=4gtv-4gtv004
+民视台湾台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv001
+民视第一台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv003
+民视综艺,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv004
 中天新闻,http://aktv.top/AKTV/live/aktv/null-8/AKTV.m3u8#
 中天新闻,http://50.7.234.10:8278/ctinews/playlist.m3u8?tid=MC3C3915550439155504&ct=19193&tsum=a8168b7967dda9bfebdd5b1403dc19b0#
 中天亚洲台,http://aktv.top/AKTV/live/aktv/null-12/AKTV.m3u8
-中天亚洲台,http://litv.zapi.us.kg/?id=4gtv-4gtv109
+中天亚洲台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv109
 中天综合台,http://50.7.234.10:8278/ctizhonghe/playlist.m3u8?tid=MBBB1520797915207979&ct=19193&tsum=3a6f7f0c591c2ec6678d51b741f290b2
 中天娱乐台,http://61.221.215.25:8800/hls/47/index.m3u8
 年代新闻,http://50.7.234.10:8278/niandainews_twn/playlist.m3u8?tid=MA6A4647720946477209&ct=19226&tsum=48a66838dbcf633b2fb41307b29ef50a
 中视,http://aktv.top/AKTV/live/aktv/null-10/AKTV.m3u8#
-中视,http://litv.zapi.us.kg/?id=4gtv-4gtv040#
+中视,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv040#
 
 中视,http://50.7.234.10:8278/zhongshihd_twn/playlist.m3u8?tid=MBDB6720263767202637&ct=19249&tsum=edd778f298b53c39b3b9706700032605#
 中视,rtmp://f13h.mine.nu/sat/tv091
 中视新闻,http://aktv.top/AKTV/live/aktv/null-10/AKTV.m3u8
-中视新闻,http://litv.zapi.us.kg/?id=4gtv-4gtv074#
+中视新闻,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv074#
 中视新闻,https://stream1.freetv.fun/2bb5129a50be3ad71f8a0a2c8c223b39028ed965069084d1255c969599451c61.m3u8#
 中视新闻,https://stream1.freetv.fun/f6aee5253b06d566e65c077898aa5039e4797ba8aeb3f91d9e36cec46537f708.ctv#
 中视新闻,http://50.7.234.10:8278/zhongshinews_twn/playlist.m3u8?tid=MAAA4459856044598560&ct=19193&tsum=1b7bdea69c00cd48e31f13442c75c376#
 
-中视菁采台,http://litv.zapi.us.kg/?id=4gtv-4gtv064
+中视菁采台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv064
 非凡新闻台,http://50.7.234.10:8278/feifannews_twn/playlist.m3u8?tid=m050e7aad65f614336734&ct=17874&tsum=4ea1b829d195ac69a6c2ca51b21ae378
 华视新闻,http://aktv.top/AKTV/live/aktv/null-11/AKTV.m3u8
-华视新闻,http://litv.zapi.us.kg/?id=4gtv-4gtv041#
+华视新闻,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv041#
 华视新闻,http://50.7.234.10:8278/ctshd_twn/playlist.m3u8?tid=m760743cf1f5e&ct=18335&tsum=9b0d2efb292253075aa4ec25cc439b81#
 
 寰宇新闻,http://aktv.top/AKTV/live/aktv/null-9/AKTV.m3u8
@@ -452,16 +452,16 @@ TVBS新闻台,http://aktv.top/AKTV/live/aktv3/null-2/AKTV.m3u8#
 TVBS新闻台,http://aktv.top/AKTV/live/aktv/tvbs-1/AKTV.m3u8#
 TVBS新闻台,http://50.7.234.10:8278/tvbs_n/playlist.m3u8?tid=MEFE5283322452833224&ct=19226&tsum=5f4e9bb0782ab3aae36328763cba2ffd
 TVBS新闻台,http://61.221.215.25:8800/hls/9/index.m3u8#
-TVBS新闻台,http://litv.zapi.us.kg/?id=4gtv-4gtv072#
+TVBS新闻台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv072#
 
-TVBS欢乐台,http://litv.zapi.us.kg/?id=4gtv-4gtv068
-TVBS精采台,http://litv.zapi.us.kg/?id=4gtv-4gtv067
+TVBS欢乐台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv068
+TVBS精采台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv067
 三立财经新闻,http://aktv.top/AKTV/live/aktv/null-14/AKTV.m3u8
 三立综合台,http://50.7.234.10:8278/sanlizhonghe/playlist.m3u8?tid=m3362167a08a014596868&ct=17874&tsum=4472a7c943b67bf52fe5e836ca9f3b6b#
 三立综合台,http://aktv.top/AKTV/live/aktv/null-13/AKTV.m3u8
 三立戏剧台,http://61.221.215.25:8800/hls/41/index.m3u8
 三立都会台,http://50.7.234.10:8278/sanlidouhui_twn/playlist.m3u8?tid=md028b33ea0f7&ct=19361&tsum=1930e4b2cfbbd2f9f821af1c41e8d18d
-八大综合,http://litv.zapi.us.kg/?id=4gtv-4gtv039#
+八大综合,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv039#
 八大综合,http://50.7.234.10:8278/badazhonghe/playlist.m3u8?tid=MCFC9951205299512052&ct=19249&tsum=dc4ca0de5e57c9f4caee0bb4e80c098a
 八大第一台,http://61.221.215.25:8800/hls/55/index.m3u8#
 八大第一台,http://50.7.234.10:8278/badafirst/playlist.m3u8?tid=MBDB5904995459049954&ct=19193&tsum=ab627e00a84b423b5747a65289eec076
@@ -471,19 +471,20 @@ TVBS精采台,http://litv.zapi.us.kg/?id=4gtv-4gtv067
 龙华日韩台,http://aktv.top/AKTV/live/aktv/null-22/AKTV.m3u8
 龙华电影台,http://37.27.111.214:8080/live/19/hls.m3u8
 爱尔达影剧台,http://50.7.234.10:8278/eltayingju_twn/playlist.m3u8?tid=MFFF8590726285907262&ct=19249&tsum=ae4cb19fed11696df934d6e2489e2978
-爱尔达娱乐台,http://litv.zapi.us.kg/?id=4gtv-4gtv070
+爱尔达娱乐台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv070
 MyTVSuper,http://aktv.top/AKTV/live/aktv/null-7/AKTV.m3u8
-靖洋戏剧台,http://litv.zapi.us.kg/?id=4gtv-4gtv045
-靖洋卡通,http://litv.zapi.us.kg/?id=4gtv-4gtv057
-采昌,http://litv.zapi.us.kg/?id=4gtv-4gtv049
-靖天欢乐,http://litv.zapi.us.kg/?id=4gtv-4gtv054
-靖天映画,http://litv.zapi.us.kg/?id=4gtv-4gtv055
-靖天戏剧,http://litv.zapi.us.kg/?id=4gtv-4gtv058
-靖天综合,http://litv.zapi.us.kg/?id=4gtv-4gtv046
-靖天资讯,http://litv.zapi.us.kg/?id=4gtv-4gtv065
-靖天卡通,http://litv.zapi.us.kg/?id=4gtv-4gtv044
-靖天育乐,http://litv.zapi.us.kg/?id=4gtv-4gtv062
-靖天国际,http://litv.zapi.us.kg/?id=4gtv-4gtv063#
+靖洋戏剧台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv045
+靖洋卡通,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv057
+采昌,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv049
+靖天欢乐,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv054
+靖天映画,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv055
+靖天戏剧,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv058
+靖天综合,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv046
+靖天资讯,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv065
+靖天卡通,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv044
+靖天卡通,http://50.7.234.10:8278/jingtiancartoon_twn/playlist.m3u8?tid=m1465dab025b5&ct=18335&tsum=ba935e583d90bfbe1d1d9662e9ac600c
+靖天育乐,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv062
+靖天国际,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv063#
 靖天国际,http://50.7.234.10:8278/jingtianintl_twn/playlist.m3u8?tid=MC7C4153806141538061&ct=19254&tsum=79854f3ccdc23693ea39da52af54d35b
 DMAX,http://50.7.234.10:8278/natgeohd_twn/playlist.m3u8?tid=ma1f0b9808d5014467661&ct=17874&tsum=73dfb91284f5b1358251546e6f03da3d#
 DMAX,http://50.7.234.10:8278/ba86fcd935/playlist.m3u8?tid=m1b458a366fcb&ct=18335&tsum=6ee1498a5e37d8bd1e3f62954629ed4f#
@@ -523,16 +524,16 @@ HBO family,http://50.7.234.10:8278/fyi_twn/playlist.m3u8?tid=m99b80124e3b4&ct=18
 好莱坞电影台,http://50.7.234.10:8278/hollywoodmovies_twn/playlist.m3u8?tid=MECE5611281156112811&ct=19225&tsum=ad8884ee16b04f885f24bae98fc5fb9f
 1905电影网,http://php.jdshipin.com:8880/1905.php?id=1905dy
 Popc,http://aktv.top/AKTV/live/aktv/popc/AKTV.m3u8
-CATCHPLAY电影台,http://litv.zapi.us.kg/?id=4gtv-4gtv076
+CATCHPLAY电影台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv076
 东森电影,http://50.7.234.10:8278/ettvmovie/playlist.m3u8?tid=MEDE1688528216885282&ct=19193&tsum=843fbd698e260c1fcda128dce85ead3b
-靖天电影台,http://litv.zapi.us.kg/?id=4gtv-4gtv061#
+靖天电影台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv061#
 靖天电影台,http://aktv.top/AKTV/live/aktv/null-6/AKTV.m3u8
-AMC电影台,http://litv.zapi.us.kg/?id=4gtv-4gtv017#
+AMC电影台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv017#
 AMC电影台,http://61.221.215.25:8800/hls/43/index.m3u8#
 AMC电影台,https://stream1.freetv.fun/364e21133ea43460bcc895be1f7ea000065de402ecc572f985178bd5a9bf51f7.m3u8
 龙华电影台,http://37.27.111.214:8080/live/19/hls.m3u8#
 龙华电影台,http://aktv.top/AKTV/live/aktv/null-23/AKTV.m3u8#
-龙华电影台,http://litv.zapi.us.kg/?id=litv-longturn03
+龙华电影台,https://iptv.vip-tptv.xyz/litv.php?id=litv-longturn03
 龙华洋片,http://50.7.234.10:8278/lunghuawestern_twn/playlist.m3u8?tid=MC1C3944472239444722&ct=19226&tsum=99c0c7c82e2fc48b16605865c3eaeb82
 龙华经典,https://stream1.freetv.fun/1f908dbbd6fd9efc3e2566d7ffd803a37b09090ad15ab254d4da81f7230159fa.ctv
 LS Time龙祥時代电影台,http://50.7.234.10:8278/lungxiangtime_twn/playlist.m3u8?tid=MADA6805114368051143&ct=18392&tsum=d6a1f02ca9abd5368d2a365e40247ae8
@@ -609,6 +610,7 @@ Animax-HK,http://aktv.top/AKTV/live/aktv3/animaxhk/AKTV.m3u8
 🌎️国际频道,#genre#
 BBC World News,http://50.7.234.10:8278/bbcnews_twn/playlist.m3u8?tid=ME2E9411781394117813&ct=19225&tsum=ffaa2caa60183eec89d730ed80b336d1
 BBC World News,https://cdn4.skygo.mn/live/disk1/BBC_News/HLSv3-FTA/BBC_News.m3u8
+CNN,https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8
 日本NHK World,http://61.221.215.25:8800/hls/51/index.m3u8#
 日本NHK World,https://nhkwlive-ojp.akamaized.net/hls/live/2003459/nhkwlive-ojp-en/index.m3u8
 韩国Arirang,http://50.7.234.10:8278/arirang_twn/playlist.m3u8?tid=MF5F3988861839888618&ct=19249&tsum=781d490a6abe9f48f5b93e211cbe0307#
