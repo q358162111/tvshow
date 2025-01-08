@@ -606,7 +606,7 @@ BesTV青春动漫,http://wouu.net:9977/udp/239.93.0.146:5140
 广东嘉佳卡通,http://61.138.167.36:9901/tsfile/live/1046_1.m3u8#
 广东嘉佳卡通,http://39.134.136.161:6610/000000001000/1000000002000025964/index.m3u8?livemode=1&stbId=10&channel-id=ystenlive&Contentid=1000000002000025964
 Animax-HK,http://aktv.top/AKTV/live/aktv3/animaxhk/AKTV.m3u8	
-
+七龙珠,http://223.85.105.11/test-txdwk.flv.huya.com/src/1524418081-1524418081-6547325803326078976-3048959618-10057-A-0-1.m3u8
 
 
 🌎️国际频道,#genre#
