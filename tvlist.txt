@@ -372,7 +372,7 @@ CHANNEL [V],http://171.213.198.58:8888/udp/239.93.0.157:2194
 无线新闻,http://aktv.top/AKTV/live/aktv2/null-1/AKTV.m3u8#
 无线新闻,http://kkk.jjjj.jiduo.me/api.php?n=tttt&id=5799&tk=2aca1ad9a849#
 无线新闻,http://50.7.234.10:8278/inews_twn/playlist.m3u8?tid=MD8D9734527497345274&ct=19249&tsum=88c5d57f9fdce89810d61e1001910a80#
-
+无线娱乐新闻,https://ali.hlspull.yximgs.com/live/moa77.flv
 无线星河,http://cdn9.1689.us.kg/smt1.1.php?id=Xinhe#
 无线星河,http://v2h.jdshipin.com/xinghe_1/xinghe_1.stream/chunklist_w106.m3u8#
 无线星河,http://php.jdshipin.com/smt.php?id=Xinhe#
@@ -386,15 +386,18 @@ CHANNEL [V],http://171.213.198.58:8888/udp/239.93.0.157:2194
 
 翡翠综合台,http://aktv.top/AKTV/live/aktv/null-17/AKTV.m3u8
 TVB Plus,http://aktv.top/AKTV/live/aktv/tvbplus/AKTV.m3u8
-
+千禧经典,https://ali.hlspull.yximgs.com/live/moa78.flv
 
 东森财经新闻,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv153
 东森财经新闻,http://50.7.234.10:8278/ettvcaijing_twn/playlist.m3u8?tid=mc42afe745533&ct=11448811&tsum=31baa4e2ca87271b454e5acc0e7d0e6c#
 东森财经新闻,http://50.7.234.10:8278/ettvcaijing_twn/playlist.m3u8?tid=MB8B2069463920694639&ct=19249&tsum=05ff51a1b274ce7d31d05bbf11df18ad
 东森财经新闻,http://50.7.234.10:8278/ettvcaijing_twn/playlist.m3u8?tid=MD5D9010164090101640&ct=19225&tsum=cc229773020f89af853b23d81e0e6371
+东森洋片,https://ali.hlspull.yximgs.com/live/moa75.flv
 东森洋片,http://50.7.234.10:8278/ettvwestern/playlist.m3u8?tid=MC2C7134276471342764&ct=19225&tsum=4889d0c08d077336bd5066b912891aee
 东森洋片,http://50.7.234.10:8278/ettvwestern/playlist.m3u8?tid=mfdfc048e6c2416337202&ct=17874&tsum=cad39b26202d525ea820bee1d69e545f
+东森戏剧,https://ali.hlspull.yximgs.com/live/moa72.flv
 东森戏剧,http://50.7.234.10:8278/ettvdrama/playlist.m3u8?tid=MA2A9945921599459215&ct=19249&tsum=c9097ecdf4a17c0922196dbf04b0c6e7
+东森新闻,https://ali.hlspull.yximgs.com/live/moa35.flv
 东森新闻,http://aktv.top/AKTV/live/aktv2/null/AKTV.m3u8
 东森新闻,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv049
 东森新闻,http://50.7.234.10:8278/ettvnews/playlist.m3u8?tid=m208c21bf386611408694&ct=17874&tsum=d1b4de373c886cd8015974fa8c5d6d12
@@ -402,16 +405,22 @@ TVB Plus,http://aktv.top/AKTV/live/aktv/tvbplus/AKTV.m3u8
 东森新闻,https://stream1.freetv.fun/705903f439eb92dcb28125ac7b60cdffc749803bb57b6a6f6a5ccc663f2f7ec0.ctv#
 东森新闻,https://stream1.freetv.fun/4e8297ed0610c91e855ddb69d24344baa6b732dd2d1b24ac2e0a71a3d39ca41c.ctv#
 东森新闻,http://50.7.234.10:8278/ettvnews/playlist.m3u8?tid=MD8D8672451386724513&ct=19234&tsum=d08fdb1dd5078503ffd859a065bc9290
+东森综合,https://ali.hlspull.yximgs.com/live/moa71.flv
 东森综合,http://50.7.234.10:8278/ettvzhonghe/playlist.m3u8?tid=MC4C1214674912146749&ct=19254&tsum=9b96a50ba99dca1a02a27b05a6fb4b0d
 东森超视,https://stream1.freetv.fun/705903f439eb92dcb28125ac7b60cdffc749803bb57b6a6f6a5ccc663f2f7ec0.ctv
 亚洲旅游台,http://50.7.234.10:8278/asiatravel_twn/playlist.m3u8?tid=MB9B9461769094617690&ct=18393&tsum=57c12e5ba95cca684613ec5e14714ff8
+公视,https://ali.hlspull.yximgs.com/live/moa117.flv
 公视,http://50.7.234.10:8278/ctv_taiwan/playlist.m3u8?ct=17990&tid=13765524&tsum=03eb77c1c186944b97737f14e95076c0
 公视,http://50.7.234.10:8278/ctv_taiwan/playlist.m3u8?tid=MDCD6096520560965205&ct=19249&tsum=64237c7ffa0c00b62657a938247bcab0
 公视戏剧,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv042
+台视,https://ali.hlspull.yximgs.com/live/moa19.flv
 台视,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv066
 台视新闻,https://stream1.freetv.fun/3494a155d6e7afad40f588196589dc0504ac51f3ba233b6338181e20b7e5428b.m3u8#
 台视新闻,http://50.7.234.10:8278/ttvnews_twn/playlist.m3u8?tid=MBBB6637589866375898&ct=19234&tsum=d2c641a325bf02e0b68c4f245e0165b0#
 台视新闻,http://50.7.234.10:8278/ttvnews_twn/playlist.m3u8?tid=MD9D1039476110394761&ct=19193&tsum=9f33349842788bfb7b0e90e93f7bf02c
+台视综合,https://ali.hlspull.yximgs.com/live/moa26.flv
+民视,https://ali.hlspull.yximgs.com/live/moa33.flv
+民视,https://ali.hlspull.yximgs.com/live/moa17.flv
 民视,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv002
 民视,http://50.7.234.10:8278/ftvtaiwan_twn/playlist.m3u8?tid=MEFE5254515252545152&ct=19249&tsum=c17f872b1772df8f76032030cc40bdbd
 民视,http://50.7.234.10:8278/ftvtaiwan_twn/playlist.m3u8?tid=MDFD6045594360455943&ct=19193&tsum=0de4f998b15ba8f2ecdaa107d866212a
@@ -419,19 +428,28 @@ TVB Plus,http://aktv.top/AKTV/live/aktv/tvbplus/AKTV.m3u8
 民视台湾台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv001
 民视第一台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv003
 民视综艺,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv004
+民视新闻,https://ali.hlspull.yximgs.com/live/moa31.flv
+
+中天新闻,https://ali.hlspull.yximgs.com/live/moa28.flv
+中天新闻,https://ali.hlspull.yximgs.com/live/moa116.flv
 中天新闻,http://aktv.top/AKTV/live/aktv/null-8/AKTV.m3u8#
 中天新闻,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv009
 中天新闻,http://50.7.234.10:8278/ctinews/playlist.m3u8?tid=MC3C3915550439155504&ct=19193&tsum=a8168b7967dda9bfebdd5b1403dc19b0#
+中天亚洲台,https://ali.hlspull.yximgs.com/live/moa116.flv
 中天亚洲台,http://aktv.top/AKTV/live/aktv/null-12/AKTV.m3u8
 中天亚洲台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv109
+中天综合台,https://ali.hlspull.yximgs.com/live/moa114.flv
 中天综合台,http://50.7.234.10:8278/ctizhonghe/playlist.m3u8?tid=MBBB1520797915207979&ct=19193&tsum=3a6f7f0c591c2ec6678d51b741f290b2
+中天娱乐台,https://ali.hlspull.yximgs.com/live/moa115.flv
 中天娱乐台,http://61.221.215.25:8800/hls/47/index.m3u8
+年代新闻,https://ali.hlspull.yximgs.com/live/moa93.flv
 年代新闻,http://50.7.234.10:8278/niandainews_twn/playlist.m3u8?tid=MA6A4647720946477209&ct=19226&tsum=48a66838dbcf633b2fb41307b29ef50a
+中视,https://ali.hlspull.yximgs.com/live/moa20.flv
 中视,http://aktv.top/AKTV/live/aktv/null-10/AKTV.m3u8#
 中视,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv040#
-
 中视,http://50.7.234.10:8278/zhongshihd_twn/playlist.m3u8?tid=MBDB6720263767202637&ct=19249&tsum=edd778f298b53c39b3b9706700032605#
 中视,rtmp://f13h.mine.nu/sat/tv091
+中视新闻,https://ali.hlspull.yximgs.com/live/moa34.flv
 中视新闻,http://aktv.top/AKTV/live/aktv/null-10/AKTV.m3u8
 中视新闻,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv074#
 中视新闻,https://stream1.freetv.fun/2bb5129a50be3ad71f8a0a2c8c223b39028ed965069084d1255c969599451c61.m3u8#
@@ -440,41 +458,60 @@ TVB Plus,http://aktv.top/AKTV/live/aktv/tvbplus/AKTV.m3u8
 
 中视菁采台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv064
 非凡新闻台,http://50.7.234.10:8278/feifannews_twn/playlist.m3u8?tid=m050e7aad65f614336734&ct=17874&tsum=4ea1b829d195ac69a6c2ca51b21ae378
+华视新闻,https://ali.hlspull.yximgs.com/live/moa18.flv
 华视新闻,http://aktv.top/AKTV/live/aktv/null-11/AKTV.m3u8
 华视新闻,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv041#
 华视新闻,http://50.7.234.10:8278/ctshd_twn/playlist.m3u8?tid=m760743cf1f5e&ct=18335&tsum=9b0d2efb292253075aa4ec25cc439b81#
-
+华艺,https://ali.hlspull.yximgs.com/live/moa21.flv
+寰宇新闻,https://ali.hlspull.yximgs.com/live/moa25.flv
 寰宇新闻,http://aktv.top/AKTV/live/aktv/null-9/AKTV.m3u8
 
+astro欢喜台,https://ali.hlspull.yximgs.com/live/moa79.flv
+astro QJ,https://ali.hlspull.yximgs.com/live/moa82.flv
+astro Boo,https://ali.hlspull.yximgs.com/live/moa83.flv
+信吉,https://ali.hlspull.yximgs.com/live/moa119.flv
+韩国娱乐台KMTV,https://ali.hlspull.yximgs.com/live/moa122.flv
 纬来精采,http://61.221.215.25:8800/hls/48/index.m3u8
+纬来日本,https://ali.hlspull.yximgs.com/live/moa70.flv
+纬来戏剧,https://ali.hlspull.yximgs.com/live/moa63.flv
 动物星球,http://61.221.215.25:8800/hls/57/index.m3u8
 动物星球,http://50.7.234.10:8278/animalplanet_twn/playlist.m3u8?tid=m4da2c053371613331372&ct=17874&tsum=4481f502bb91c2c67964feecfbc4b702
-
+TVBS,https://ali.hlspull.yximgs.com/live/moa29.flv
 TVBS,http://aktv.top/AKTV/live/aktv/tvbs/AKTV.m3u8
 TVBS,http://litv.zapi.us.kg/?id=4gtv-4gtv073
+TVBS新闻台,https://ali.hlspull.yximgs.com/live/moa30.flv
 TVBS新闻台,http://aktv.top/AKTV/live/aktv3/null-2/AKTV.m3u8#
 TVBS新闻台,http://aktv.top/AKTV/live/aktv/tvbs-1/AKTV.m3u8#
 TVBS新闻台,http://50.7.234.10:8278/tvbs_n/playlist.m3u8?tid=MEFE5283322452833224&ct=19226&tsum=5f4e9bb0782ab3aae36328763cba2ffd
 TVBS新闻台,http://61.221.215.25:8800/hls/9/index.m3u8#
 TVBS新闻台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv072#
-
+TVBS欢乐台,https://ali.hlspull.yximgs.com/live/moa113.flv
 TVBS欢乐台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv068
 TVBS精采台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv067
 三立财经新闻,http://aktv.top/AKTV/live/aktv/null-14/AKTV.m3u8
+三立综合台,https://ali.hlspull.yximgs.com/live/moa49.flv
 三立综合台,http://50.7.234.10:8278/sanlizhonghe/playlist.m3u8?tid=m3362167a08a014596868&ct=17874&tsum=4472a7c943b67bf52fe5e836ca9f3b6b#
 三立综合台,http://aktv.top/AKTV/live/aktv/null-13/AKTV.m3u8
+三立戏剧台,https://ali.hlspull.yximgs.com/live/moa52.flv
 三立戏剧台,http://61.221.215.25:8800/hls/41/index.m3u8
+三立台湾台,https://ali.hlspull.yximgs.com/live/moa52.flv
 三立都会台,http://50.7.234.10:8278/sanlidouhui_twn/playlist.m3u8?tid=md028b33ea0f7&ct=19361&tsum=1930e4b2cfbbd2f9f821af1c41e8d18d
+八大综合,https://ali.hlspull.yximgs.com/live/moa55.flv
 八大综合,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv039#
 八大综合,http://50.7.234.10:8278/badazhonghe/playlist.m3u8?tid=MCFC9951205299512052&ct=19249&tsum=dc4ca0de5e57c9f4caee0bb4e80c098a
 八大第一台,http://61.221.215.25:8800/hls/55/index.m3u8#
 八大第一台,http://50.7.234.10:8278/badafirst/playlist.m3u8?tid=MBDB5904995459049954&ct=19193&tsum=ab627e00a84b423b5747a65289eec076
+八大戏剧,https://ali.hlspull.yximgs.com/live/moa56.flv
 八大戏剧,http://61.221.215.25:8800/hls/39/index.m3u8#
 八大戏剧,https://stream1.freetv.fun/c7f872f6da5871c2bf37d3829e4aed2fc681e8f29d9b0f5bda748557979171c0.m3u8
 八大精彩,https://stream1.freetv.fun/f1998f7433bb8b7f0966903c2774f3d880768d5bfb81afa524ac0917eb4d17b7.ctv
 龙华日韩台,http://aktv.top/AKTV/live/aktv/null-22/AKTV.m3u8
+龙华电影台,https://ali.hlspull.yximgs.com/live/moa47.flv
 龙华电影台,http://37.27.111.214:8080/live/19/hls.m3u8
+龙华戏剧台,https://ali.hlspull.yximgs.com/live/moa112.flv
+龙华偶像台,https://ali.hlspull.yximgs.com/live/moa111.flv
 爱尔达影剧台,http://50.7.234.10:8278/eltayingju_twn/playlist.m3u8?tid=MFFF8590726285907262&ct=19249&tsum=ae4cb19fed11696df934d6e2489e2978
+爱尔达影剧台,https://ali.hlspull.yximgs.com/live/moa23.flv
 爱尔达娱乐台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv070
 MyTVSuper,http://aktv.top/AKTV/live/aktv/null-7/AKTV.m3u8
 靖洋戏剧台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv045
@@ -497,6 +534,8 @@ Discovery,http://61.221.215.25:8800/hls/1/index.m3u8
 Discovery Asia,http://61.221.215.25:8800/hls/50/index.m3u8
 面包台,https://video.bread-tv.com:8091/hls-live24/online/index.m3u8
 tvN,http://aktv.top/AKTV/live/aktv/tvn/AKTV.m3u8
+Thrill,https://ali.hlspull.yximgs.com/live/moa61.flv
+
 
 🎬电影频道,#genre#
 CHC动作电影,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000523#
@@ -513,9 +552,10 @@ HBO,http://41.205.93.154/HBO/index.m3u8
 HBO原创巨献,http://50.7.234.10:8278/hbosignature_twn/playlist.m3u8?tid=MC5C5754321157543211&ct=19225&tsum=2b86077147813534b4cae6dd85bb3c4a#
 HBO原创巨献,http://50.7.234.10:8278/hbosignature_twn/playlist.m3u8?tid=MD6D5767423357674233&ct=18392&tsum=995709f1100cf1b07964790160bfb4ee#
 
-
+HBO强档巨献,https://ali.hlspull.yximgs.com/live/moa45.flv
 HBO强档巨献,http://50.7.234.10:8278/hbohead_twn/playlist.m3u8?tid=MCDC6663932966639329&ct=19193&tsum=6999a99699b097f3af2ef550e5c81f93#
 HBO强档巨献,http://50.7.234.10:8278/hbohead_twn/playlist.m3u8?tid=MCDC6663932966639329&ct=19193&tsum=6999a99699b097f3af2ef550e5c81f93
+HBO HD,https://ali.hlspull.yximgs.com/live/moa86.flv
 HBO HD,http://50.7.234.10:8278/hbohd_twn/playlist.m3u8?tid=MBBB7425808074258080&ct=19193&tsum=a0bdd395bfc4cf07d9414d5372f59ad2#
 HBO HD,http://50.7.234.10:8278/hbohd_twn/playlist.m3u8?tid=m8d785f4e022616401837&ct=17877&tsum=56e767abfc65234db52b017576b00403#
 HBO HD,http://50.7.234.10:8278/hbohd_twn/playlist.m3u8?tid=MBBB7425808074258080&ct=19193&tsum=a0bdd395bfc4cf07d9414d5372f59ad2
@@ -523,24 +563,30 @@ HBO family,http://50.7.234.10:8278/fyi_twn/playlist.m3u8?tid=18186902&ct=17988&&
 HBO family,http://50.7.234.10:8278/fyi_twn/playlist.m3u8?tid=m99b80124e3b4&ct=18337&tsum=73f6f540497de9a5615b9bd55bec8853#
 HBO family,http://50.7.234.10:8278/fyi_twn/playlist.m3u8?tid=18186902&ct=17988&&tsum=7a21abab0a5912afb0ebc01db111e59f#
 HBO family,http://50.7.234.10:8278/fyi_twn/playlist.m3u8?tid=m99b80124e3b4&ct=18337&tsum=73f6f540497de9a5615b9bd55bec8853
+好莱坞电影台,https://ali.hlspull.yximgs.com/live/moa69.flv
 好莱坞电影台,http://50.7.234.10:8278/hollywoodmovies_twn/playlist.m3u8?tid=MF6F7143280071432800&ct=19211&tsum=c0bc00f05a03eb1bef16741e9fd9737e#
 好莱坞电影台,http://50.7.234.10:8278/hollywoodmovies_twn/playlist.m3u8?tid=MA8A4005638840056388&ct=18392&tsum=a1f1517d4ea64fd01267905f21d83859
 好莱坞电影台,http://50.7.234.10:8278/hollywoodmovies_twn/playlist.m3u8?tid=MECE5611281156112811&ct=19225&tsum=ad8884ee16b04f885f24bae98fc5fb9f
 1905电影网,http://php.jdshipin.com:8880/1905.php?id=1905dy
 Popc,http://aktv.top/AKTV/live/aktv/popc/AKTV.m3u8
 CATCHPLAY电影台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv076
+东森电影,https://ali.hlspull.yximgs.com/live/moa68.flv
 东森电影,http://50.7.234.10:8278/ettvmovie/playlist.m3u8?tid=MEDE1688528216885282&ct=19193&tsum=843fbd698e260c1fcda128dce85ead3b
 靖天电影台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv061#
 靖天电影台,http://aktv.top/AKTV/live/aktv/null-6/AKTV.m3u8
 AMC电影台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv017#
 AMC电影台,http://61.221.215.25:8800/hls/43/index.m3u8#
 AMC电影台,https://stream1.freetv.fun/364e21133ea43460bcc895be1f7ea000065de402ecc572f985178bd5a9bf51f7.m3u8
+龙华电影台,https://ali.hlspull.yximgs.com/live/moa47.flv
 龙华电影台,http://37.27.111.214:8080/live/19/hls.m3u8#
 龙华电影台,http://aktv.top/AKTV/live/aktv/null-23/AKTV.m3u8#
 龙华电影台,https://iptv.vip-tptv.xyz/litv.php?id=litv-longturn03
+龙华洋片,https://ali.hlspull.yximgs.com/live/moa22.flv
 龙华洋片,http://50.7.234.10:8278/lunghuawestern_twn/playlist.m3u8?tid=MC1C3944472239444722&ct=19226&tsum=99c0c7c82e2fc48b16605865c3eaeb82
 龙华经典,https://stream1.freetv.fun/1f908dbbd6fd9efc3e2566d7ffd803a37b09090ad15ab254d4da81f7230159fa.ctv
+LS Time龙祥時代电影台,https://ali.hlspull.yximgs.com/live/moa36.flv
 LS Time龙祥時代电影台,http://50.7.234.10:8278/lungxiangtime_twn/playlist.m3u8?tid=MADA6805114368051143&ct=18392&tsum=d6a1f02ca9abd5368d2a365e40247ae8
+美亚电影台(台湾),https://ali.hlspull.yximgs.com/live/moa41.flv
 美亚高清电影台(香港),http://aktv.top/AKTV/live/aktv/hk-1/AKTV.m3u8#
 美亚高清电影台(香港),http://50.7.234.10:8278/meiyamovie_twn/playlist.m3u8?tid=MFEF1001328410013284&ct=19226&tsum=9839709ca0f37641c5d1ba962c3bc739#
 美亚高清电影台(香港),https://stream1.freetv.fun/f0051ed07aec3d09fc0f497b816c5ef3fe4f067396e9ba0e34e81f553aa50fe3.m3u8#
@@ -550,9 +596,12 @@ LS Time龙祥時代电影台,http://50.7.234.10:8278/lungxiangtime_twn/playlist.
 精彩影视,http://39.134.136.161:6610/000000001000/2000000004000000063/index.m3u8?livemode=1&stbId=10&channel-id=hnbblive&Contentid=2000000004000000063
 黑莓电影,http://39.134.136.161:6610/000000001000/8785669936177902664/index.m3u8?livemode=1&stbId=10&channel-id=ystenlive&Contentid=8785669936177902664#
 黑莓电影,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225743/index.m3u8
+AXN,https://ali.hlspull.yximgs.com/live/moa60.flv
 AXN,http://aktv.top/AKTV/live/aktv2/axn/AKTV.m3u8
-
+纬来电影,https://ali.hlspull.yximgs.com/live/moa85.flv
+天映频道,https://ali.hlspull.yximgs.com/live/moa89.flv
 4K影院,http://39.134.136.161:6610/000000001000/6000000003000004748/index.m3u8?livemode=1&stbId=1213&channel-id=wasusyt&Contentid=6000000003000004748
+CINEMAX,https://ali.hlspull.yximgs.com/live/moa88.flv
 CINEMAX,http://50.7.234.10:8278/cinemax_twn/playlist.m3u8?tid=MFEF8256939882569398&ct=19225&tsum=b6faed73a920c75f873a0c8f511eeba2#
 CINEMAX,http://50.7.234.10:8278/cinemax_twn/playlist.m3u8?tid=MFEF8256939882569398&ct=19225&tsum=b6faed73a920c75f873a0c8f511eeba2
 星卫电影,http://50.7.234.10:8278/xingwei_movie/playlist.m3u8?tid=MBAB2096754620967546&ct=18392&tsum=2c800c1f0b6cc98d2404608c294dcbc2
@@ -646,6 +695,7 @@ CCTV风云足球,http://61.138.167.36:9901/tsfile/live/1033_1.m3u8
 劲爆体育,https://api.livednow.org/migu/796071336?sign=gAAAAABnJcJqM_HTVabRYY0y1XrkVaxRyUQD0kZEz3VQ3y_m5G88-puxPaYTeeM95vvfLbpAONBNY5IydUY2MsWrBWs4jK885O8HDIs7shB502xQx6f0vQ8TuKxrMXORgONQBsb4X87_7NQJpQ3S8NHmEhlYT7rsDO3yy0U0DjGwpbMiH9AXzspYRIojn1sZlwKdzaQKzsQky9fj4FcWw0muMwKADmu-sQ%3D%3D
 爱体育,http://39.134.136.161:6610/000000001000/6000000006000290630/index.m3u8?livemode=1&stbId=10&channel-id=wasusyt&Contentid=6000000006000290630#
 爱体育,http://39.134.136.161:6610/000000001000/2000000004000000060/index.m3u8?livemode=1&stbId=10&channel-id=hnbblive&Contentid=2000000004000000060
+纬来体育,https://ali.hlspull.yximgs.com/live/moa37.flv
 纬来体育,http://50.7.234.10:8278/videolandsport/playlist.m3u8?tid=MD2D5343800653438006&ct=19234&tsum=1be724fb8246abfedaf2bd088ec98f03#
 
 爱尔达体育1台,http://50.7.234.10:8278/eltasport_twn/playlist.m3u8?tid=md3567b35401611916221&ct=17874&tsum=be2a069324faa7f0737ca0d396d43745#
