@@ -131,6 +131,7 @@ CETV4,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225783/index.m3u8
 女性时尚,http://61.138.167.36:9901/tsfile/live/1031_1.m3u8
 电视指南,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000316#
 电视指南,http://61.138.167.36:9901/tsfile/live/1027_1.m3u8
+重温经典,http://php.jdshipin.com:8880/TVOD/iptv.php?id=cwjd
 重温经典,http://120.76.248.139/live/bfgd/4200000635.m3u8#
 重温经典,http://120.76.248.139/live/bfgd/4200000636.m3u8
 世界地理,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000320#
@@ -361,6 +362,7 @@ CGTN俄语,rtsp://111.48.34.138:1554/170000004112/991800010000000500000000000005
 澳视澳门,https://stream1.freetv.fun/56e911076120ba8a4639f7446c639591da9423eba3a14212acc42648d2bfb473.m3u8#
 澳视澳门,http://183.237.246.14:9931/tsfile/live/1039_1.m3u8
 莲花卫视,http://php.jdshipin.com:8880/amlh.php
+星空卫视,http://quan2018.mycloudnas.com:51888/play/a016/index.m3u8
 星空卫视,http://114.105.187.147:9901/tsfile/live/0117_1.m3u8#
 星空卫视,http://wouu.net:9977/rtp/239.93.1.10:2193#
 星空卫视,http://wouu.net:9977/udp/239.93.1.10:2193#
@@ -368,19 +370,27 @@ CGTN俄语,rtsp://111.48.34.138:1554/170000004112/991800010000000500000000000005
 星光影视,http://ali.hlspull.yximgs.com/live/zxcvbnm9852.flv
 CHANNEL [V],http://171.213.198.58:8888/udp/239.93.0.157:2194
 环球电视,http://zb.xzxwhcb.com:9999/hls/world.m3u8
+无线新闻,http://php.jdshipin.com/TVOD/iptv.php?id=wxxwt
+无线新闻,http://php.jdshipin.com:8880/smt.php?id=inews_twn
 无线新闻,http://aktv.top/AKTV/live/aktv/null-1/AKTV.m3u8
 无线新闻,http://aktv.top/AKTV/live/aktv2/null-1/AKTV.m3u8#
 无线新闻,http://kkk.jjjj.jiduo.me/api.php?n=tttt&id=5799&tk=2aca1ad9a849#
 无线新闻,http://50.7.234.10:8278/inews_twn/playlist.m3u8?tid=MD8D9734527497345274&ct=19249&tsum=88c5d57f9fdce89810d61e1001910a80#
+无线娱乐新闻,http://php.jdshipin.com/TVOD/iptv.php?id=tvbylxw
 无线娱乐新闻,https://ali.hlspull.yximgs.com/live/moa77.flv
 无线星河,http://cdn9.1689.us.kg/smt1.1.php?id=Xinhe#
+无线星河,http://php.jdshipin.com:8880/PLTV/iptv.php?id=xinghe
 无线星河,http://v2h.jdshipin.com/xinghe_1/xinghe_1.stream/chunklist_w106.m3u8#
 无线星河,http://php.jdshipin.com/smt.php?id=Xinhe#
 无线星河,http://205.185.123.236:8899/tvb/xinghe/stream.m3u8#
 无线星河,https://www.mytvsuper.xyz/tvb/xinghe/stream.m3u8
+无线华丽,http://php.jdshipin.com/smt.php?id=Tvbjade
+无线华丽,http://php.jdshipin.com:8880/TVOD/iptv.php?id=huali
 明珠台,http://aktv.top/AKTV/live/aktv/null-2/AKTV.m3u8#
 明珠台,http://aktv.top/AKTV/live/aktv/null-2/AKTV.m3u8
 翡翠台,http://aktv.top/AKTV/live/aktv/null/AKTV.m3u8
+翡翠台,http://php.jdshipin.com:8880/smt.php?id=jade_twn
+翡翠台,http://php.jdshipin.com/smt.php?id=jade_twn
 翡翠台,http://php.jdshipin.com/smt.php?id=jade_twn#
 翡翠台,http://50.7.234.10:8278/WarnerTV/playlist.m3u8?tid=mc42afe745533&ct=11448811&tsum=9a6977885e3b656963da17bd8654ea51#
 
@@ -548,6 +558,9 @@ CHC家庭影院,rtsp://111.48.34.138:1554/170000004112/9918000100000005000000000
 CHC家庭影院,http://ztecdn.hb.chinamobile.com:6060/170000001115/UmaiCHAN63807601b19dd/1.m3u8?m3u8_level=2#
 CHC家庭影院,http://61.138.167.36:9901/tsfile/live/1016_1.m3u8#
 CHC家庭影院,https://api.livednow.org/migu/644368373?sign=gAAAAABnJcJqmc1MsiQush_pxUKZ5OeC8HhfO-CPbiBOF88hW8nkCObTvAyhv11H14Bhk-bFCpsouIhtO3PlCY2ah4IhSGfy05LSMd_KFlBY9L5xbZB7SlCEDLk24QPqmM8gtv7g4796StdogDq4Om3HxXvjrZNas54BY18WZzcB4-YE56gA6xbu36O2c2niJ0WeKWqCks68bT83swV6thf54iuQVybh2w%3D%3D
+淘剧场_l,http://39.137.67.12:80/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226553/1.m3u8?accountinfo=~~V2.0~QaJ92NID2SpQlY6_VJVogg~Q8NsqL2Ii48SUgC4QMl6hh6MtnXuZ2CwNhT-dTFoMLL2G3Q2BYmATYXRv1nKmDi5C1jJAt50zoNF4cIM-01_7rCa0ZemjVk37nsYr4Zr0bk~ExtInfo9bj61dxzlMXrsixrqcFYPg%2CEND&GuardEncType=2&icpid=88888888&from=1&hms_devid=3802
+淘电影_g,http://39.137.67.12:80/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226552/1.m3u8?accountinfo=~~V2.0~XOsrWMA-UCdUl1hQSR9EKw~tP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND&GuardEncType=2&icpid=88888888&from=1&hms_devid=3802
+淘电影_s,http://39.137.67.13:80/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226552/1.m3u8?accountinfo=~~V2.0~XOsrWMA-UCdUl1hQSR9EKw~tP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND&GuardEncType=2&icpid=88888888&from=1&hms_devid=3802
 HBO,http://41.205.93.154/HBO/index.m3u8
 HBO原创巨献,http://50.7.234.10:8278/hbosignature_twn/playlist.m3u8?tid=MC5C5754321157543211&ct=19225&tsum=2b86077147813534b4cae6dd85bb3c4a#
 HBO原创巨献,http://50.7.234.10:8278/hbosignature_twn/playlist.m3u8?tid=MD6D5767423357674233&ct=18392&tsum=995709f1100cf1b07964790160bfb4ee#
@@ -599,15 +612,14 @@ LS Time龙祥時代电影台,http://50.7.234.10:8278/lungxiangtime_twn/playlist.
 AXN,https://ali.hlspull.yximgs.com/live/moa60.flv
 AXN,http://aktv.top/AKTV/live/aktv2/axn/AKTV.m3u8
 纬来电影,https://ali.hlspull.yximgs.com/live/moa85.flv
-天映频道,https://ali.hlspull.yximgs.com/live/moa89.flv
 4K影院,http://39.134.136.161:6610/000000001000/6000000003000004748/index.m3u8?livemode=1&stbId=1213&channel-id=wasusyt&Contentid=6000000003000004748
 CINEMAX,https://ali.hlspull.yximgs.com/live/moa88.flv
 CINEMAX,http://50.7.234.10:8278/cinemax_twn/playlist.m3u8?tid=MFEF8256939882569398&ct=19225&tsum=b6faed73a920c75f873a0c8f511eeba2#
 CINEMAX,http://50.7.234.10:8278/cinemax_twn/playlist.m3u8?tid=MFEF8256939882569398&ct=19225&tsum=b6faed73a920c75f873a0c8f511eeba2
 星卫电影,http://50.7.234.10:8278/xingwei_movie/playlist.m3u8?tid=MBAB2096754620967546&ct=18392&tsum=2c800c1f0b6cc98d2404608c294dcbc2
 欧美大片,http://jiaojirentv.top/2020/dy.php?id=2793084
-贝爷影厅,http://jiaojirentv.top/2020/dy.php?id=36337
-贝爷max原,http://159.75.85.63:35455/douyu/4332
+贝爷欧美imax厅,http://zzy789.xyz/douyu1.php?id=4332
+贝爷欧美②厅,http://zzy789.xyz/douyu1.php?id=36337
 漫威电影,http://jiaojirentv.top/2020/dy.php?id=6140589
 
 🎥咪咕直播,#genre#
