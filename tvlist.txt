@@ -357,6 +357,7 @@ CGTN俄语,rtsp://111.48.34.138:1554/170000004112/991800010000000500000000000005
 香港RTHK34,https://rthktv34-live.akamaized.net/hls/live/2101642/RTHKTV34/stream04/streamPlaylist.m3u8
 香港RTHK35,https://rthktv35-live.akamaized.net/hls/live/2101643/RTHKTV35/stream02/streamPlaylist.m3u8
 亚洲卫视,https://p2hs.vzan.com/slowlive/821481626725612417/live.m3u8
+澳视卫星,https://cdn.163189.xyz/live/as/stream.m3u8
 澳视澳门,https://stream1.freetv.fun/4bcf7b55c0ceec1b9e43fe9ab38a162fb6a73df795e2a5b641b618fb6ae53e9e.m3u8#
 澳视澳门,http://183.237.246.14:9931/tsfile/live/1039_1.m3u8#
 澳视澳门,https://stream1.freetv.fun/56e911076120ba8a4639f7446c639591da9423eba3a14212acc42648d2bfb473.m3u8#
@@ -618,11 +619,12 @@ CINEMAX,https://ali.hlspull.yximgs.com/live/moa88.flv
 CINEMAX,http://50.7.234.10:8278/cinemax_twn/playlist.m3u8?tid=MFEF8256939882569398&ct=19225&tsum=b6faed73a920c75f873a0c8f511eeba2#
 CINEMAX,http://50.7.234.10:8278/cinemax_twn/playlist.m3u8?tid=MFEF8256939882569398&ct=19225&tsum=b6faed73a920c75f873a0c8f511eeba2
 星卫电影,http://50.7.234.10:8278/xingwei_movie/playlist.m3u8?tid=MBAB2096754620967546&ct=18392&tsum=2c800c1f0b6cc98d2404608c294dcbc2
+欧美大片,http://zzy789.xyz/douyu1.php?id=2793084
 欧美大片,http://jiaojirentv.top/2020/dy.php?id=2793084
 贝爷欧美imax厅,http://zzy789.xyz/douyu1.php?id=4332
 贝爷欧美②厅,http://zzy789.xyz/douyu1.php?id=36337
 漫威电影,http://jiaojirentv.top/2020/dy.php?id=6140589
-
+科幻史诗巨作,http://182.40.120.183/test-txdwk.flv.huya.com/src/1239543153989-1239543153989-11135015135096078336-2479086431434-10057-A-0-1.m3u8
 🎥咪咕直播,#genre#
 PPTV1,http://39.134.136.161:6610/000000001000/3000000001000028638/index.m3u8?livemode=1&stbId=2&channel-id=FifastbLive&Contentid=3000000001000028638
 PPTV2,http://39.134.136.161:6610/000000001000/3000000001000008379/index.m3u8?livemode=1&stbId=2&channel-id=FifastbLive&Contentid=3000000001000008379
@@ -1051,20 +1053,31 @@ NewTV魅力潇湘,http://gslbservzqhsw.itv.cmvideo.cn/1000000001000006197/1.m3u8
 
 
 🏠️江苏  ,#genre#
+江苏体育,http://106.53.99.30/dl/jstv.php?id=jsty
+江苏影视,http://106.53.99.30/dl/jstv.php?id=jsys
 江苏影视,http://gxctcc-livod.ks-cdn.gitv.tv/gitv_live/G_JSYS/G_JSYS.m3u8
+江苏教育,http://106.53.99.30/dl/jstv.php?id=jsjy
 江苏教育,http://gxctcc-livod.ks-cdn.gitv.tv/gitv_live/G_JSJY/G_JSJY.m3u8
+江苏新闻,http://106.53.99.30/dl/jstv.php?id=jsxw
 江苏新闻,http://gxctcc-livod.ks-cdn.gitv.tv/gitv_live/G_JSGG/G_JSGG.m3u8
+江苏城市,http://106.53.99.30/dl/jstv.php?id=jscs
 江苏城市,http://litchi-play-encrypted-site.jstv.com/live/jscs_live.m3u8?txSecret=e0aaeba4cdb70773f5835ceb03874ea3&txTime=968075ef#
 江苏城市,https://stream1.freetv.fun/675206b8446ce719bfb293b5a5296db3aa26521c9810de7c996838247cc56964.ctv
+江苏综艺,http://106.53.99.30/dl/jstv.php?id=jszy
 江苏综艺,http://gxctcc-livod.ks-cdn.gitv.tv/gitv_live/G_JSZY/G_JSZY.m3u8#
 江苏综艺,https://stream1.freetv.fun/f8ef469943662bed2abc6609d9ef1720b9e93a8a0bd6f5789133461e36763f37.m3u8
+江苏国际,http://106.53.99.30/dl/jstv.php?id=jsgj
 江苏国际,http://114.105.187.147:9901/tsfile/live/1018_1.m3u8
 江苏财富天下,rtsp://111.48.34.138:1554/170000004112/00000001000000060000000000000163#
 江苏财富天下,http://39.134.136.161:6610/000000001000/5000000011000031208/index.m3u8?livemode=1&stbId=10&channel-id=bestzb&Contentid=5000000011000031208
 南京少儿,http://live.nbs.cn/channels/njtv/sepd/nbs23.m3u8$订阅源-1280x720
+南京新闻综合,http://live.nbs.cn/channels/njtv/xwzh/nbs06.m3u8
 南京教科,http://live.nbs.cn/channels/njtv/jkpd/nbs06.m3u8$订阅源-1280x720
-
-
+苏州新闻综合,https://live-auth.51kandianshi.com/szgd/csztv1.m3u8
+苏州社会经济,https://live-auth.51kandianshi.com/szgd/csztv2.m3u8
+苏州文化生活,https://live-auth.51kandianshi.com/szgd/csztv3.m3u8
+苏州电影娱乐信息,https://live-auth.51kandianshi.com/szgd/csztv4.m3u8
+苏州生活资讯,https://live-auth.51kandianshi.com/szgd/csztv5.m3u8
 
 🏠️内蒙古 ,#genre#
 内蒙古文体娱乐,https://livestream-bt.nmtv.cn/nmtv/2319general.m3u8?txSecret=c7b5c515d2bb6df442492d54955329a3&txTime=771E8800
@@ -1188,9 +1201,11 @@ NewTV魅力潇湘,http://gslbservzqhsw.itv.cmvideo.cn/1000000001000006197/1.m3u8
 广西都市,http://222.218.158.141:8181/tsfile/live/1011_1.m3u8
 广西新闻,http://222.218.158.141:8181/tsfile/live/1012_1.m3u8
 广西新闻,http://219.159.194.244:8181/tsfile/live/1012_1.m3u8
+南宁新闻综合,http://hls.nntv.cn/nnlive/XWZH_24.m3u8
 南宁影视娱乐,http://219.159.194.244:8181/tsfile/live/1013_1.m3u8
 南宁影视娱乐,http://222.218.158.141:8181/tsfile/live/1013_1.m3u8
 南宁影视娱乐,http://hls.nntv.cn/nnlive/YSYL_244.m3u8
+南宁公共,https://hls.nntv.cn/nnlive/GGPD_24.m3u8
 南宁公共,http://219.159.194.244:8181/tsfile/live/1014_1.m3u8
 南宁公共,http://222.218.158.141:8181/tsfile/live/1014_1.m3u8
 南宁文旅生活,http://hls.nntv.cn/nnlive/WLSH_24.m3u8
