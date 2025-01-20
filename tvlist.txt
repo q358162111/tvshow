@@ -1206,7 +1206,7 @@ NewTV魅力潇湘,http://gslbservzqhsw.itv.cmvideo.cn/1000000001000006197/1.m3u8
 之江纪录,https://ali-m-l.cztv.com/channels/lantian/channel012/1080p.m3u8
 
 
-🏠️·江苏·,#genre#
+🏠️··江苏··,#genre#
 江苏体育,http://106.53.99.30/dl/jstv.php?id=jsty
 江苏影视,http://106.53.99.30/dl/jstv.php?id=jsys
 江苏影视,http://gxctcc-livod.ks-cdn.gitv.tv/gitv_live/G_JSYS/G_JSYS.m3u8
