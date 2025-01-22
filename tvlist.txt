@@ -221,6 +221,9 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 东南卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226341/index.m3u8#
 东方卫视,rtsp://111.48.34.138:1554/170000004112/99180001000000060000000000000198#
 东方卫视,http://39.134.67.108/PLTV/88888888/224/3221225942/1.m3u8$移动高清|回看
+东方卫视,http://39.134.65.179/PLTV/88888888/224/3221225672/1.m3u8
+东方卫视,http://39.134.65.173/PLTV/88888888/224/3221225672/1.m3u8
+东方卫视,http://39.134.65.175/PLTV/88888888/224/3221225672/1.m3u8
 东方卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226898/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7E0uh4lyjjBCCN7TCq21vSIQ%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
 东方卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226237/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EuOKqNaOUqqiJjXIfPoRPMQ%7E_eNUbgU9sJGUcVVduOMKhafLvQUgE_zlz_7pvDimJNNeqgYr1eA9ESriCOsl_DTz%2CEND
 东方卫视,http://39.134.136.161:6610/000000001000/1000000001000005866/index.m3u8?livemode=1&stbId=10&channel-id=ystenlive&Contentid=1000000001000005866#
@@ -229,6 +232,8 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 东方卫视,https://api.livednow.org/migu/651632648?sign=gAAAAABnJcJqfu_kycy2Gb7eSdGQsamAhYXBlu-AYscNkoPGIfbg7gL756Lncv79Ps4ODzMedp1aFAj7uzaOHkAyBq06sQxNlk9g1nD1262R71fcdc7jvGxJemrvJ0Oak_Z16R_xYQdxRXo1hlbrCfTZO_RJIH10M7lQqOJHy6t68nakZVZ6sWXP2FPgP2hXaVKd9wu8yeDjxau2iqKexh5WBPlQ6hhAFA%3D%3D#
 北京卫视,rtsp://111.48.34.138:1554/170000004112/00000001000000060000000000000173#
 北京卫视,http://39.134.67.108/PLTV/88888888/224/3221225931/1.m3u8$移动高清|回看
+北京卫视,http://39.134.65.179/PLTV/88888888/224/3221225678/1.m3u8
+北京卫视,http://39.134.65.173/PLTV/88888888/224/3221225678/1.m3u8
 北京卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226900/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EcYPi33WFyhvd6SjmqUKhJg%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
 北京卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226436/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7ElMQ3ov45VmhzipweN5VstQ%7E_eNUbgU9sJGUcVVduOMKhafLvQUgE_zlz_7pvDimJNPg_yZ8DZHTaSU92MIl_o3b%2CEND
 北京卫视,http://39.134.136.161:6610/000000001000/5000000004000031556/index.m3u8?livemode=1&stbId=10&channel-id=bestzb&Contentid=5000000004000031556#
@@ -237,6 +242,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 吉林卫视,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000528#
 吉林卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221227015/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EW5-3AVdwD5KlUpuA4mz7Cg%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
 吉林卫视,http://39.134.67.108/PLTV/88888888/224/3221226013/1.m3u8$移动|回看
+
 吉林卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226533/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EicY_6znuOTlmMeE15TFEig%7E_eNUbgU9sJGUcVVduOMKhafLvQUgE_zlz_7pvDimJNNNUZpDp9cPVsM_M_ftJRVM%2CEND
 吉林卫视,http://39.134.136.161:6610/000000001000/5000000011000031117/index.m3u8?livemode=1&stbId=10&channel-id=bestzb&Contentid=5000000011000031117#
 吉林卫视,http://61.138.167.36:9901/tsfile/live/0116_1.m3u8#
@@ -264,6 +270,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 安徽卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226391/index.m3u8
 山东卫视,rtsp://111.48.34.138:1554/170000004112/99180001000000060000000000000324#
 山东卫视,http://39.134.67.108/PLTV/88888888/224/3221225952/1.m3u8$移动高清|回看
+山东卫视,http://39.134.65.141/PLTV/88888888/224/3221225952/1.m3u8
 山东卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226957/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EjW26v5VaHGy1jQuIA-4EbA%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
 山东卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226244/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EycMz-PML_dQW8iLcNBkw7g%7E_eNUbgU9sJGUcVVduOMKhafLvQUgE_zlz_7pvDimJNMYCYLC04QAM6EBli1wTuET%2CEND
 山东卫视,http://39.134.136.161:6610/000000001000/5000000004000020424/index.m3u8?livemode=1&stbId=10&channel-id=bestzb&Contentid=5000000004000020424#
@@ -278,6 +285,10 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 广东卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226248/index.m3u8#
 江苏卫视,rtsp://111.48.34.138:1554/170000004112/00000001000000060000000000000177#
 江苏卫视,http://39.134.67.108/PLTV/88888888/224/3221225938/1.m3u8$移动高清|回看
+江苏卫视,http://39.134.65.175/PLTV/88888888/224/3221225503/1.m3u8
+江苏卫视,http://39.134.65.181/PLTV/88888888/224/3221225503/1.m3u8
+江苏卫视,http://39.134.65.183/PLTV/88888888/224/3221225503/1.m3u8
+江苏卫视,http://39.134.65.173/PLTV/88888888/224/3221225503/1.m3u8
 江苏卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226897/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7E0BmO6uHF7WFoTed__Xr3NQ%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
 江苏卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226242/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EJT6eqtJpcKnNhyUS90EOgw%7E_eNUbgU9sJGUcVVduOMKhafLvQUgE_zlz_7pvDimJNN1SxXwCt0S69Lq27ZMJpfR%2CEND
 江苏卫视,http://39.134.136.161:6610/000000001000/5000000004000019351/index.m3u8?livemode=1&stbId=10&channel-id=bestzb&Contentid=5000000004000019351#
@@ -305,6 +316,10 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 河南卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226480/index.m3u8
 浙江卫视,rtsp://111.48.34.138:1554/170000004112/99180001000000060000000000000195#
 浙江卫视,http://39.134.67.108/PLTV/88888888/224/3221225959/1.m3u8$移动高清|回看
+浙江卫视,http://39.134.65.162/PLTV/88888888/224/3221225514/1.m3u8
+浙江卫视,http://39.134.65.175/PLTV/88888888/224/3221225514/1.m3u8
+浙江卫视,http://39.134.65.179/PLTV/88888888/224/3221225514/1.m3u8
+浙江卫视,http://39.134.65.173/PLTV/88888888/224/3221225514/1.m3u8
 浙江卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226899/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7ETYfTgTra_pUx2cPrgZ_BDw%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
 浙江卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226247/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7Eo6BokfP3WkB3SIXSrgvRBA%7E_eNUbgU9sJGUcVVduOMKhafLvQUgE_zlz_7pvDimJNP3w4GkbU9L7iRQ8H2vgzhF%2CEND
 浙江卫视,http://39.134.136.161:6610/000000001000/5000000004000007275/index.m3u8?livemode=1&stbId=10&channel-id=bestzb&Contentid=5000000004000007275#
@@ -313,6 +328,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 海南卫视,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000442#
 海南卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221227029/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EEuBMjt2kLMD8fAO7QYER7Q%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
 海南卫视,http://39.134.67.108/PLTV/88888888/224/3221226026/1.m3u8$移动|回看
+海南卫视,http://39.134.67.108/PLTV/88888888/224/3221226026/1.m3u8
 海南卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226574/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EZOP0PLu1-XG8_Ae0lTe9HQ%7E_eNUbgU9sJGUcVVduOMKhafLvQUgE_zlz_7pvDimJNODcjESMU4f6yMuMuOuQbie%2CEND
 海南卫视,http://39.134.136.161:6610/000000001000/5000000004000006211/index.m3u8?livemode=1&stbId=10&channel-id=bestzb&Contentid=5000000004000006211#
 海南卫视,http://61.138.167.36:9901/tsfile/live/0114_1.m3u8#
@@ -326,6 +342,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 深圳卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226313/index.m3u8
 湖北卫视,rtsp://111.48.34.138:1554/170000004112/99180001000000060000000000000194#
 湖北卫视,http://39.134.67.108/PLTV/88888888/224/3221225975/1.m3u8$移动高清|回看
+湖北卫视,http://39.134.65.162/PLTV/88888888/224/3221225569/1.m3u8
 湖北卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226952/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EREB40lnZnCEwjRy7LZuhIQ%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
 湖北卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226240/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7ExfU_RR0RQok0w_xd7h22CQ%7E_eNUbgU9sJGUcVVduOMKhafLvQUgE_zlz_7pvDimJNPVnDV2fEBphgm3TP7hAHBx%2CEND
 湖北卫视,http://39.134.136.161:6610/000000001000/5000000004000014954/index.m3u8?livemode=1&stbId=10&channel-id=bestzb&Contentid=5000000004000014954#
@@ -333,7 +350,10 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 湖北卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226477/index.m3u8#
 湖北卫视,https://api.livednow.org/migu/738906825?sign=gAAAAABnJcJqKQRd7CS3pk7T0oe-jdNPxgJMyiZoPVRnbmv_IbK9koQZf32EgjFFCiEXqL4IXCnWyIaEuCmqxVNsBOQTIfaHM11IVchAHo4fZfQDVy5O7WNEHwMhK7DKJ5KlnIetRjJM7Emho9soMEYdRhTfzufHG-iUjz7CegJ_e5AKCaTCCYDJttiaZciJOCbCaWjAIMfx_PmomLPvKyNinANdp0vlxg%3D%3D#http://gslbservzqhsw.itv.cmvideo.cn/1000000001000024621/1.m3u8?channel-id=ystenlive&Contentid=1000000001000024621&livemode=1&stbId=3
 湖南卫视,rtsp://111.48.34.138:1554/170000004112/00000001000000060000000000000174#
-湖南卫视,http://39.134.67.108/PLTV/88888888/224/3221226000/1.m3u8$移动|回看
+湖南卫视,http://39.134.65.181/PLTV/88888888/224/3221225506/1.m3u8$移动高清|回看
+湖南卫视,http://39.134.65.173/PLTV/88888888/224/3221225506/1.m3u8
+湖南卫视,http://39.134.65.183/PLTV/88888888/224/3221225506/1.m3u8
+湖南卫视,http://39.134.65.175/PLTV/88888888/224/3221225506/1.m3u8
 湖南卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226493/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EZZewXKQnnKZ2h4P_GwVSsw%7E_eNUbgU9sJGUcVVduOMKhafLvQUgE_zlz_7pvDimJNMYCoAEKye18sB9_6jeKL3Z%2CEND
 湖南卫视,http://39.134.136.161:6610/000000001000/1000000001000032695/index.m3u8?livemode=1&stbId=10&channel-id=ystenlive&Contentid=1000000001000032695#
 湖南卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226307/index.m3u8
@@ -378,6 +398,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 广西卫视,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000515#
 广西卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221227010/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EkAhb-89sxdm9fz6-heXCuw%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
 广西卫视,http://39.134.67.108/PLTV/88888888/224/3221226024/1.m3u8$移动|回看
+广西卫视,http://39.134.67.108/PLTV/88888888/224/3221226024/1.m3u8
 广西卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226534/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EpjsBggKPaCw3f-xlBWZWaQ%7E_eNUbgU9sJGUcVVduOMKhafLvQUgE_zlz_7pvDimJNMJYhPE64lykNkIsypBRZqO%2CEND
 广西卫视,http://39.134.136.161:6610/000000001000/5000000011000031118/index.m3u8?livemode=1&stbId=10&channel-id=bestzb&Contentid=5000000011000031118#
 广西卫视,http://61.138.167.36:9901/tsfile/live/0119_1.m3u8#
