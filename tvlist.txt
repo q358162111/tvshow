@@ -477,7 +477,9 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 山东教育卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221227022/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EMkWp5fwJWRSC2qPwffoOzQ%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
 山东教育卫视,http://39.134.136.161:6610/000000001000/1000000002000004097/index.m3u8?livemode=1&stbId=10&channel-id=ystenlive&Contentid=1000000002000004097#
 山东教育卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225655/index.m3u8
+安多卫视,http://stream.qhbtv.com/adws/sd/live.m3u8
 安多卫视,http://39.134.136.161:6610/000000001000/1000000005000266001/index.m3u8?livemode=1&stbId=10&channel-id=ystenlive&Contentid=1000000005000266001#
+
 安多卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225659/index.m3u8
 厦门卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226542/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7E0HuqirkTe1cAUljwazjNGw%7E_eNUbgU9sJGUcVVduOMKhafLvQUgE_zlz_7pvDimJNMvSOYesmmWPPy5i3xS4Rsb%2CEND
 厦门卫视,http://39.134.136.161:6610/000000001000/1000000005000266006/index.m3u8?livemode=1&stbId=10&channel-id=ystenlive&Contentid=1000000005000266006
@@ -733,7 +735,7 @@ CHC家庭影院,http://61.138.167.36:9901/tsfile/live/1016_1.m3u8#
 CHC家庭影院,https://api.livednow.org/migu/644368373?sign=gAAAAABnJcJqmc1MsiQush_pxUKZ5OeC8HhfO-CPbiBOF88hW8nkCObTvAyhv11H14Bhk-bFCpsouIhtO3PlCY2ah4IhSGfy05LSMd_KFlBY9L5xbZB7SlCEDLk24QPqmM8gtv7g4796StdogDq4Om3HxXvjrZNas54BY18WZzcB4-YE56gA6xbu36O2c2niJ0WeKWqCks68bT83swV6thf54iuQVybh2w%3D%3D
 
 
-
+凤凰电影,http://home.js001.com:7777/stream/channelid/884059847?profile=pass
 HBO,http://41.205.93.154/HBO/index.m3u8
 HBO原创巨献,http://50.7.234.10:8278/hbosignature_twn/playlist.m3u8?tid=MC5C5754321157543211&ct=19225&tsum=2b86077147813534b4cae6dd85bb3c4a#
 HBO原创巨献,http://50.7.234.10:8278/hbosignature_twn/playlist.m3u8?tid=MD6D5767423357674233&ct=18392&tsum=995709f1100cf1b07964790160bfb4ee#
@@ -805,15 +807,7 @@ CINEMAX,http://50.7.234.10:8278/cinemax_twn/playlist.m3u8?tid=MFEF82569398825693
 
 
 🎥咪咕直播,#genre#
-PPTV1,http://39.134.136.161:6610/000000001000/3000000001000028638/index.m3u8?livemode=1&stbId=2&channel-id=FifastbLive&Contentid=3000000001000028638
-PPTV2,http://39.134.136.161:6610/000000001000/3000000001000008379/index.m3u8?livemode=1&stbId=2&channel-id=FifastbLive&Contentid=3000000001000008379
-PPTV3,http://39.134.136.161:6610/000000001000/3000000001000008001/index.m3u8?livemode=1&stbId=2&channel-id=FifastbLive&Contentid=3000000001000008001
-PPTV4,http://39.134.136.161:6610/000000001000/3000000001000031494/index.m3u8?livemode=1&stbId=2&channel-id=FifastbLive&Contentid=3000000001000031494
-PPTV5,http://39.134.136.161:6610/000000001000/3000000001000008176/index.m3u8?livemode=1&stbId=2&channel-id=FifastbLive&Contentid=3000000001000008176
-PPTV6,http://39.134.136.161:6610/000000001000/3000000001000010129/index.m3u8?livemode=1&stbId=2&channel-id=FifastbLive&Contentid=3000000001000010129
-PPTV7,http://39.134.136.161:6610/000000001000/3000000001000010948/index.m3u8?livemode=1&stbId=2&channel-id=FifastbLive&Contentid=3000000001000010948
-PPTV8,http://39.134.136.161:6610/000000001000/3000000001000007218/index.m3u8?livemode=1&stbId=2&channel-id=FifastbLive&Contentid=3000000001000007218
-PPTV9,http://39.134.136.161:6610/000000001000/3000000001000005308/index.m3u8?livemode=1&stbId=2&channel-id=FifastbLive&Contentid=3000000001000005308
+
 咪咕视频,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226398/index.m3u8
 
 
@@ -1253,36 +1247,54 @@ http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226514/1.m3u8?GuardEncType
 
 河南新闻,http://www.cdnstv.com:6398/hls/1114/index.m3u8
 河南新闻,http://8.138.7.223/tv/hntv.php?id=hnxw
+河南新闻,http://tvcdn.stream3.hndt.com/tv/65bb6966017e100059b75a8500000000_transios/playlist.m3u8?wsSecret=4d0d47f13e64d8ed772e0b3ef7171a5b&wsTime=1737552326
+河南公共,http://tvcdn.stream3.hndt.com/tv/65b93894017e10000ae6b07d00000000_transios/playlist.m3u8?wsSecret=9e948f7563b42f36d546db7acee856dc&wsTime=1737552326
+
 河南公共,http://8.138.7.223/tv/hntv.php?id=hngg
 河南乡村,http://8.138.7.223/tv/hntv.php?id=hnxc
 河南乡村,http://www.cdnstv.com:6398/hls/1116/index.m3u8
+河南乡村,http://tvcdn.stream3.hndt.com/tv/65b8302b017e100019dc540f00000000_transios/playlist.m3u8?wsSecret=a88437cfa24892bc471c10fa1dd9f63e&wsTime=1737552326
 
+河南法治,http://tvcdn.stream3.hndt.com/tv/65be54a9017e1000af59fb4800000000_transios/playlist.m3u8?wsSecret=87a8e07aff6d2e99136c3e467c9125d5&wsTime=1737552326
 
 河南法治,http://www.cdnstv.com:6398/hls/1112/index.m3u8
 河南电视剧,http://www.cdnstv.com:6398/hls/1113/index.m3u8
+河南电视剧,http://tvcdn.stream3.hndt.com/tv/65bd329b017e1000648cd2ed00000000_transios/playlist.m3u8?wsSecret=8b003059054fec46e09fb59cf0e98993&wsTime=1737552326
 
 河南电视剧,http://8.138.7.223/tv/hntv.php?id=hndsj
 河南戏曲,http://www.cdnstv.com:6398/hls/1119/index.m3u8
+睛彩中原,http://tvcdn.stream3.hndt.com/tv/65b27d4c017e100039bd55c200000000_transios/playlist.m3u8?wsSecret=a50e6d47f6eb96da99de18fa0065ae81&wsTime=1737552326
 
 睛彩中原,http://8.138.7.223/tv/hntv.php?id=jczy
 象视界,http://8.138.7.223/tv/hntv.php?id=xsj
+象视界,http://tvcdn.stream3.hndt.com/tv/d34d1a2b0178100022de972e00000000_transios/playlist.m3u8?wsSecret=fb8f6ff69f16ce7ab51cf48d9a23b40e&wsTime=1737552326
+
 河南都市,http://8.138.7.223/tv/hntv.php?id=hnds
 河南都市,http://www.cdnstv.com:6398/hls/1110/index.m3u8
 河南都市,http://1.199.235.116:9901/tsfile/live/1000_1.m3u8
 河南都市,http://115.48.63.106:9901/tsfile/live/1007_1.m3u8
+河南都市,http://tvcdn.stream3.hndt.com/tv/65c3fbc5017e1000fde13faa00000000_transios/playlist.m3u8?wsSecret=0ab64f5dedb1f0255e76e4c3a74e2db1&wsTime=1737552326
+
+移动戏曲频道,https://tvcdn.stream3.hndt.com/tv/160ea8971f8b41f0905f88c7afe3effe_transios/playlist.m3u8?wsSecret=15754cc14d9f1d1057f38c4c13457a94&wsTime=1737552326
 
 河南民生,http://www.cdnstv.com:6398/hls/1111/index.m3u8
+河南民生,http://tvcdn.stream3.hndt.com/tv/65bef28a017e10009c49d5f900000000_transios/playlist.m3u8?wsSecret=1dde0a3a66bcb9292d7ab398075c9c37&wsTime=1737552326
 河南民生,http://1.198.10.32:9901/tsfile/live/1003_1.m3u8#
 河南民生,http://115.48.63.106:9901/tsfile/live/1008_1.m3u8
 梨园,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000301#
 梨园,http://8.138.7.223/tv/hntv.php?id=hnly
+梨园,http://tvcdn.stream3.hndt.com/tv/65b67b15017e1000258a2b2400000000_transios/playlist.m3u8?wsSecret=6d59397e9b1c357ad7da6d784f47ab5d&wsTime=1737552326
+
 梨园,http://120.0.52.241:8086/tsfile/live/1010_1.m3u8
 武术世界,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000291
 武术世界,http://8.138.7.223/tv/hntv.php?id=wspd
 武术世界,http://php.jdshipin.com:8880/hntv.php?id=wspd
+武术频道,http://tvcdn.stream3.hndt.com/tv/65b4b750017e1000dbb9306200000000_transios/playlist.m3u8?wsSecret=ccd2569d51c905a4327f38257705721b&wsTime=1737552326
+
 文物宝库,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000293
 文物宝库,http://8.138.7.223/tv/hntv.php?id=wwbk
 文物宝库,http://php.jdshipin.com:8880/hntv.php?id=wwbk
+文物宝库,http://tvcdn.stream3.hndt.com/tv/65b5a69d017e1000aa645bea00000000_transios/playlist.m3u8?wsSecret=107390a13517f816dab0edc93fc70937&wsTime=1737552326
 
 🏠️··河北··,#genre#
 河北都市,http://120.0.52.241:8086/tsfile/live/1001_1.m3u8
