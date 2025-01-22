@@ -1,6 +1,6 @@
 {
   "spider": "./spider.txt",
-    "wallpaper": "http://www.kf666888.cn/api/tvbox/img",
+    "wallpaper": "https://api.likepoems.com/img/bing",
   "lives": [
     {
       "name": "live",
