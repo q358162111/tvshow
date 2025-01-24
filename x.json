@@ -6,35 +6,16 @@
       "name": "live",
       "type": 0,
       "url": "./tvlist.txt",
-      "epg": "https://epg.zbds.top",
-      "logo": "https://gcore.jsdelivr.net/gh/taksssss/tv/icon/{name}.png"
+       "epg": "https://epg.zbds.top",
+       "ua": "okhttp/3.12.13",
+      "logo": "https://live.fanmingming.com/tv/{name}.png"
       
     }
     
   ],
   "sites": [
-    {
-      "key": "小马影视",
-      "name": "私人影视",
-      "type": 3,
-      "api": "csp_AppYsV2",
-      "playerType": 2,
-      "searchable": 1,
-      "quickSearch": 1,
-      "changeable": 1,
-      "ext": "https://mas.szyyds.cn/api.php/app/"
-    },
-    {
-      "key": "自营666",
-      "name": "✨蓝光┃4K",
-      "playerType": 1,
-      "type": 3,
-      "api": "csp_AppYsV2",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "ext": " http://122.228.85.203:1000/api.php/app/"
-    },
+    
+    
     {
       "key": "豆瓣",
       "name": "豆瓣",
@@ -462,7 +443,7 @@
     },
     {
       "key": "drpy_js_豆瓣",
-      "name": "🐼┃红杰影视",
+      "name": "🐼┃豆瓣影视",
       "type": 3,
       "api": "csp_Douban",
       "playerType": 2,
