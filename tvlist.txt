@@ -590,7 +590,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 星空卫视,http://wouu.net:9977/udp/239.93.1.10:2193#
 星空卫视,https://stream1.freetv.fun/d669fabd35daeaf67952480c48acf16e6eef6fa2a12919e2ca169894e33a93d7.ctv
 
-星光影视,http://ali.hlspull.yximgs.com/live/zxcvbnm9852.flv
+星光综合台,http://ali.hlspull.yximgs.com/live/zxcvbnm9852.flv
 
 环球电视,http://zb.xzxwhcb.com:9999/hls/world.m3u8
 
