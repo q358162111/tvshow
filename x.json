@@ -1,6 +1,6 @@
 {
   "spider": "./spider.txt",
-  "wallpaper": "https://api.likepoems.com/img/bing",
+  "wallpaper": "https://api.suyanw.cn/api/scenery.php",
   "lives": [
     {
       "name": "live",
