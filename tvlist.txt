@@ -1677,7 +1677,7 @@ NewTV魅力潇湘,http://39.134.136.161:6610/000000001000/1000000001000006197/in
 双鸭山综合,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226529/index.m3u8
 大兴安岭新闻综合,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226499/index.m3u8
 大庆新闻综合,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226484/index.m3u8
-鸡西公共,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226481/index.m3u8
+鸡西安全生活,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226481/index.m3u8
 鸡西新闻综合,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226410/index.m3u8
 齐齐哈尔新闻综合,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226413/index.m3u8
 齐齐哈尔经济法治,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226493/index.m3u8
