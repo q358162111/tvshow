@@ -506,8 +506,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 西藏卫视,http://stream.nxtv.com.cn/wspd/sd/live.m3u8?_upt=d6571fc41731273418#
 西藏卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225638/index.m3u8
 
-厦门卫视,https://live1b.kxm.xmtv.cn/xmtvbf/playlist.m3u8 
-厦门卫视,https://live1b.kxm.xmtv.cn/xmtvbf/tvzb/live.m3u8 
+厦门卫视,https://live1b.kxm.xmtv.cn/xmtvbf/tvzb/live.m3u8
 厦门卫视,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226542/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7E0HuqirkTe1cAUljwazjNGw%7E_eNUbgU9sJGUcVVduOMKhafLvQUgE_zlz_7pvDimJNMvSOYesmmWPPy5i3xS4Rsb%2CEND
 厦门卫视,http://39.134.136.161:6610/000000001000/1000000005000266006/index.m3u8?livemode=1&stbId=10&channel-id=ystenlive&Contentid=1000000005000266006
 
@@ -716,8 +715,8 @@ HOY77,https://cdn3.163189.xyz/live/hoy/stream.m3u8
 
 民视新闻,https://ali.hlspull.yximgs.com/live/moa31.flv
 
-中天新闻,https://ali.hlspull.yximgs.com/live/moa28.flv
-中天新闻,https://ali.hlspull.yximgs.com/live/moa116.flv
+中天新闻,http://125.229.9.67:8540/http/220.130.87.218:8081/hls/78/80/ch063max.m3u8
+中天新闻,http://211.75.171.121:8534/http/61.67.128.137:8081/hls/78/80/ch063max.m3u8
 中天新闻,http://aktv.top/AKTV/live/aktv/null-8/AKTV.m3u8#
 中天新闻,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv009
 中天新闻,http://50.7.234.10:8278/ctinews/playlist.m3u8?tid=MC3C3915550439155504&ct=19193&tsum=a8168b7967dda9bfebdd5b1403dc19b0#
