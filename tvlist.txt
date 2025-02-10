@@ -1734,7 +1734,7 @@ NewTV魅力潇湘,http://39.134.136.161:6610/000000001000/1000000001000006197/in
 湖北经视,https://stream1.freetv.fun/hu-bei-jing-shi-9.ctv#
 湖北经视,http://www.furymax.top:85/udp/239.69.1.41:9886#
 湖北经视,https://stream1.freetv.fun/hu-bei-jing-shi-5.ctv
-荆门新闻,http://stream.jmtv.com.cn/xwzh/sd/live.m3u8
+荆门新闻综合,http://stream.jmtv.com.cn/xwzh/sd/live.m3u8
 十堰经济旅游,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000399
 十堰新闻,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000400
 孝昌新闻综合,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000437
