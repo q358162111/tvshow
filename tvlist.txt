@@ -1150,7 +1150,7 @@ BesTV青春动漫,http://wouu.net:9977/udp/239.93.0.146:5140
 少儿动漫,http://39.134.136.161:6610/000000001000/2000000004000000003/index.m3u8?livemode=1&stbId=10&channel-id=hnbblive&Contentid=2000000004000000003
 浙江少儿,https://ali-m-l.cztv.com/channels/lantian/channel008/1080p.m3u8#
 浙江少儿,https://ct-m-l.cztv.com/channels/lantian/channel008/1080p.m3u8
-河北少儿,http://120.0.52.241:8086/tsfile/live/1003_1.m3u8#
+河北少儿,https://tv.pull.hebtv.com/jishi/shaoerkejiao.m3u8?t=1739356376&k=26458879ce33400e498508971950882f
 河北少儿,http://tv.pull.hebtv.com/jishi/shaoerkejiao.m3u8?t=2510710360&k=4ff4446adf3cce3de40dd013255b38b2
 甘肃少儿,https://hls.gstv.com.cn/49048r/922k96.m3u8
 黑龙江少儿,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226304/index.m3u8
@@ -1635,11 +1635,11 @@ NewTV魅力潇湘,http://39.134.136.161:6610/000000001000/1000000001000006197/in
 文物宝库,http://tvcdn.stream3.hndt.com/tv/65b5a69d017e1000aa645bea00000000_transios/playlist.m3u8?wsSecret=107390a13517f816dab0edc93fc70937&wsTime=1737552326
 
 🏠️··河北··,#genre#
-河北都市,http://120.0.52.241:8086/tsfile/live/1001_1.m3u8
-河北影视剧,http://120.0.52.241:8086/tsfile/live/1002_1.m3u8
-河北文旅公共,http://120.0.52.241:8086/tsfile/live/1004_1.m3u8
-河北农民,http://120.0.52.241:8086/tsfile/live/1005_1.m3u8
-河北经济生活,http://120.0.52.241:8086/tsfile/live/1000_1.m3u8
+河北都市,https://tv.pull.hebtv.com/jishi/dushipindao.m3u8?t=1739356498&k=c70a8fae0809ab8c93d3f8f526e94f36
+河北影视剧,https://tv.pull.hebtv.com/zhibo/yingshijupindao.m3u8?t=1739356521&k=71e55d58959a716b63c3414392740a87
+河北文旅公共,https://tv.pull.hebtv.com/jishi/gonggongpindao.m3u8?t=1739356548&k=2f8dc36acc4b79f636bbd1c1d7e7da74
+河北农民,https://tv.pull.hebtv.com/jishi/nongminpindao.m3u8?t=1739356468&k=dcfad6945c86838f94e46cd554d61059
+河北经济生活,https://tv.pull.hebtv.com/jishi/jingjishenghuo.m3u8?t=1739356444&k=5fc4939d7b82de567fe6146df660029f
 石家庄新闻综合,http://120.0.52.241:8086/tsfile/live/1006_1.m3u8
 石家庄文化娱乐,http://120.0.52.241:8086/tsfile/live/1007_1.m3u8
 石家庄城市服务,http://120.0.52.241:8086/tsfile/live/1008_1.m3u8
