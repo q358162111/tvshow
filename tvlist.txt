@@ -144,9 +144,11 @@ CETV4,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225783/index.m3u8
 央视文化精品,http://171.213.198.58:8888/udp/239.93.42.47:5140
 
 怀旧剧场,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000318#
+怀旧剧场,http://171.117.183.51:9003//hls/58/index.m3u8
 怀旧剧场,http://61.138.167.36:9901/tsfile/live/1026_1.m3u8
 
 第一剧场,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000305#
+第一剧场,http://171.117.183.51:9003//hls/60/index.m3u8
 第一剧场,http://61.138.167.36:9901/tsfile/live/1025_1.m3u8
 风云剧场,http://61.138.167.36:9901/tsfile/live/1034_1.m3u8
 
@@ -173,6 +175,7 @@ CETV4,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225783/index.m3u8
 重温经典,http://120.76.248.139/live/bfgd/4200000636.m3u8
 
 世界地理,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000320#
+世界地理,http://171.117.183.51:9003//hls/59/index.m3u8
 世界地理,http://61.138.167.36:9901/tsfile/live/1029_1.m3u8
 
 书画,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000424
@@ -1012,7 +1015,7 @@ TVBS精采台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv067
 八大戏剧,https://stream1.freetv.fun/c7f872f6da5871c2bf37d3829e4aed2fc681e8f29d9b0f5bda748557979171c0.m3u8
 
 八大精彩,https://stream1.freetv.fun/f1998f7433bb8b7f0966903c2774f3d880768d5bfb81afa524ac0917eb4d17b7.ctv
-好消息,http://122.117.71.103:8509/http/220.130.87.218:8081/hls/87/80/index.m3u8
+GoodTV,http://122.117.71.103:8509/http/220.130.87.218:8081/hls/87/80/index.m3u8
 龙华日韩台,http://aktv.top/AKTV/live/aktv/null-22/AKTV.m3u8
 
 龙华电影台,http://122.117.71.103:8555/http/220.130.87.218:8081/hls/87/80/index.m3u8
@@ -1055,7 +1058,7 @@ MyTVSuper,http://aktv.top/AKTV/live/aktv/null-7/AKTV.m3u8
 
 靖天国际,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv063#
 靖天国际,http://50.7.234.10:8278/jingtianintl_twn/playlist.m3u8?tid=MC7C4153806141538061&ct=19254&tsum=79854f3ccdc23693ea39da52af54d35b
-momo亲子台,http://122.117.71.103:8535/http/220.130.87.218:8081/hls/87/80/index.m3u8
+MOMO亲子,http://122.117.71.103:8535/http/220.130.87.218:8081/hls/87/80/index.m3u8
 DMAX,http://50.7.234.10:8278/natgeohd_twn/playlist.m3u8?tid=ma1f0b9808d5014467661&ct=17874&tsum=73dfb91284f5b1358251546e6f03da3d#
 DMAX,http://50.7.234.10:8278/ba86fcd935/playlist.m3u8?tid=m1b458a366fcb&ct=18335&tsum=6ee1498a5e37d8bd1e3f62954629ed4f#
 DMAX,http://50.7.234.10:8278/natgeohd_twn/playlist.m3u8?tid=MB5B4841803948418039&ct=18393&tsum=a2343b2c061fc9de3fa7857e832d9625
@@ -2172,10 +2175,10 @@ NewTV魅力潇湘,http://111.29.9.33:6610/000000001000/1000000001000006197/index
 陕西西部电影,http://gxlive.snrtv.com/sx8-SD.m3u8
 
 🏠️··山西··,#genre#
-黄河卫视,https://livehhhttps.sxrtv.com/lsdream/lce1mC4/800/gth7g1m.m3u8
+黄河卫视,http://171.117.183.51:9003//hls/55/index.m3u8
 山西影视,http://171.117.183.51:9003//hls/51/index.m3u8
 山西经济与科技,http://171.117.183.51:9003//hls/52/index.m3u8
-山西社会与法治,https://livehhhttps.sxrtv.com/lsdream/p4y5do9/500/01di4g5.m3u8
+山西社会与法治,http://171.117.183.51:9003//hls/53/index.m3u8
 山西文体生活,http://171.117.183.51:9003//hls/54/index.m3u8
 
 🏠️··重庆··,#genre#
