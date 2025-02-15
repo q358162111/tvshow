@@ -847,13 +847,14 @@ HOY77,https://cdn3.163189.xyz/live/hoy/stream.m3u8
 东森财经新闻,http://50.7.234.10:8278/ettvcaijing_twn/playlist.m3u8?tid=MB8B2069463920694639&ct=19249&tsum=05ff51a1b274ce7d31d05bbf11df18ad
 东森财经新闻,http://50.7.234.10:8278/ettvcaijing_twn/playlist.m3u8?tid=MD5D9010164090101640&ct=19225&tsum=cc229773020f89af853b23d81e0e6371
 
-东森洋片,https://ali.hlspull.yximgs.com/live/moa75.flv
+东森洋片,http://ali.hlspull.yximgs.com/live/huanqiuhktvqmqptjqqxfqwetqvbqstqqqsutyhjqhflqqfhfhyqwqsyp.flv
 东森洋片,http://50.7.234.10:8278/ettvwestern/playlist.m3u8?tid=MC2C7134276471342764&ct=19225&tsum=4889d0c08d077336bd5066b912891aee
 东森洋片,http://50.7.234.10:8278/ettvwestern/playlist.m3u8?tid=mfdfc048e6c2416337202&ct=17874&tsum=cad39b26202d525ea820bee1d69e545f
 
+东森戏剧,http://ali.hlspull.yximgs.com/live/huanqiuhktvyvqoqmfjycvbqcxlqjqfxjcvnqvjwspqcophqfvqtycxqpqqmenjsxj.flv
 东森戏剧,http://122.117.71.103:8529/http/220.130.87.218:8081/hls/64/806/ch013.m3u8
 东森戏剧,http://122.117.71.103:8531/http/220.130.87.218:8081/hls/65/807/ch017.m3u8
-东森戏剧,http://50.7.234.10:8278/ettvdrama/playlist.m3u8?tid=MA2A9945921599459215&ct=19249&tsum=c9097ecdf4a17c0922196dbf04b0c6e7
+
 
 东森新闻,http://122.117.71.103:8541/http/220.130.87.218:8081/hls/85/80/FtvNews4max.m3u8
 东森新闻,http://aktv.top/AKTV/live/aktv2/null/AKTV.m3u8
@@ -876,9 +877,9 @@ HOY77,https://cdn3.163189.xyz/live/hoy/stream.m3u8
 公视,http://50.7.234.10:8278/ctv_taiwan/playlist.m3u8?tid=MDCD6096520560965205&ct=19249&tsum=64237c7ffa0c00b62657a938247bcab0
 
 公视戏剧,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv042
-
+台视,http://ali.hlspull.yximgs.com/live/huanqiuhktvpteqfsxlvcqjewqqqpsqfvvxcqqqpfossvbxcfqqtqvxqhlts.flv
 台视,http://122.117.71.103:8502/http/220.130.87.218:8081/hls/88/80/Ctv4max.m3u8
-台视,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv066
+
 
 台视新闻,https://live.wcetv.com/hls/master-ttvnews.m3u8
 台视新闻,https://stream1.freetv.fun/3494a155d6e7afad40f588196589dc0504ac51f3ba233b6338181e20b7e5428b.m3u8#
@@ -924,8 +925,9 @@ HOY77,https://cdn3.163189.xyz/live/hoy/stream.m3u8
 年代新闻,http://50.7.234.10:8278/niandainews_twn/playlist.m3u8?tid=MA6A4647720946477209&ct=19226&tsum=48a66838dbcf633b2fb41307b29ef50a
 
 中视,http://122.117.71.103:8503/http/220.130.87.218:8081/hls/89/80/Cts4max.m3u8
+
+中视,http://ali.hlspull.yximgs.com/live/huanqiuhktvqphfwnmfjcqfxcvhqqwqfbfqjyuqqnmfcbsfqeqtyhsjqs.flv
 中视,http://aktv.top/AKTV/live/aktv/null-10/AKTV.m3u8#
-中视,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv040#
 中视,http://50.7.234.10:8278/zhongshihd_twn/playlist.m3u8?tid=MBDB6720263767202637&ct=19249&tsum=edd778f298b53c39b3b9706700032605#
 中视,rtmp://f13h.mine.nu/sat/tv091
 
@@ -941,8 +943,8 @@ HOY77,https://cdn3.163189.xyz/live/hoy/stream.m3u8
 非凡新闻台,http://50.7.234.10:8278/feifannews_twn/playlist.m3u8?tid=m050e7aad65f614336734&ct=17874&tsum=4ea1b829d195ac69a6c2ca51b21ae378
 
 华视新闻,http://122.117.71.103:8504/http/220.130.87.218:8081/hls/85/80/Ftv4max.m3u8
+华视新闻,http://ali.hlspull.yximgs.com/live/huanqiuhktvpjymvcqnqqqcvbcvbqtyqqqffcfqvqftoqqbvcqfejnhs.flv
 华视新闻,http://aktv.top/AKTV/live/aktv/null-11/AKTV.m3u8
-华视新闻,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv041#
 华视新闻,http://50.7.234.10:8278/ctshd_twn/playlist.m3u8?tid=m760743cf1f5e&ct=18335&tsum=9b0d2efb292253075aa4ec25cc439b81#
 
 华艺,https://ali.hlspull.yximgs.com/live/moa21.flv
@@ -1023,13 +1025,14 @@ GoodTV,http://122.117.71.103:8509/http/220.130.87.218:8081/hls/87/80/index.m3u8
 
 龙华卡通台,http://122.117.71.103:8505/http/220.130.87.218:8081/hls/87/80/Pts4max.m3u8
 龙华卡通台,http://122.117.71.103:8516/http/220.130.87.218:8081/hls/87/80/index.m3u8
-
+龙华戏剧台,http://ali.hlspull.yximgs.com/live/huanqiuhktvqeqcxlvofbqbvnqqsfqvbhslcfvxcvqsqbcvqfjvqsfcbqbnqtyqj.flv
 龙华戏剧台,http://122.117.71.103:8533/http/220.130.87.218:8081/hls/87/80/index.m3u8
 
 龙华偶像台,https://ali.hlspull.yximgs.com/live/moa111.flv
 人间卫视,http://122.117.71.103:8507/http/220.130.87.218:8081/hls/87/80/index.m3u8
+爱尔达影剧台,http://ali.hlspull.yximgs.com/live/huanqiuhktvsfbxcvqsfqjhnfcvbsxqjnqsvmvbsqqqfjhyuqmqbvnqslhxj.flv
 爱尔达影剧台,http://50.7.234.10:8278/eltayingju_twn/playlist.m3u8?tid=MFFF8590726285907262&ct=19249&tsum=ae4cb19fed11696df934d6e2489e2978
-爱尔达影剧台,https://ali.hlspull.yximgs.com/live/moa23.flv
+
 
 爱尔达娱乐台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv070
 
@@ -1092,11 +1095,11 @@ HBO,http://122.117.71.103:8556/http/220.130.87.218:8081/hls/71/813/ch041.m3u8
 HBO原创巨献,http://50.7.234.10:8278/hbosignature_twn/playlist.m3u8?tid=MC5C5754321157543211&ct=19225&tsum=2b86077147813534b4cae6dd85bb3c4a#
 HBO原创巨献,http://50.7.234.10:8278/hbosignature_twn/playlist.m3u8?tid=MD6D5767423357674233&ct=18392&tsum=995709f1100cf1b07964790160bfb4ee#
 
-HBO强档巨献,https://ali.hlspull.yximgs.com/live/moa45.flv
+HBO强档巨献,http://ali.hlspull.yximgs.com/live/huanqiuhktvtqcvsqgcqyhpvobqxclmvhqogjqbojbsqhlelevenjhbosignature.flv
 HBO强档巨献,http://50.7.234.10:8278/hbohead_twn/playlist.m3u8?tid=MCDC6663932966639329&ct=19193&tsum=6999a99699b097f3af2ef550e5c81f93#
 HBO强档巨献,http://50.7.234.10:8278/hbohead_twn/playlist.m3u8?tid=MCDC6663932966639329&ct=19193&tsum=6999a99699b097f3af2ef550e5c81f93
 
-HBO HD,https://ali.hlspull.yximgs.com/live/moa86.flv
+HBO HD,http://ali.hlspull.yximgs.com/live/huanqiuhktvmqqlqpwqjctjfhjvqjqjuqlvcbeyweqweefshqfhhqsqqcxhbo.flv
 HBO HD,http://50.7.234.10:8278/hbohd_twn/playlist.m3u8?tid=MBBB7425808074258080&ct=19193&tsum=a0bdd395bfc4cf07d9414d5372f59ad2#
 HBO HD,http://50.7.234.10:8278/hbohd_twn/playlist.m3u8?tid=m8d785f4e022616401837&ct=17877&tsum=56e767abfc65234db52b017576b00403#
 HBO HD,http://50.7.234.10:8278/hbohd_twn/playlist.m3u8?tid=MBBB7425808074258080&ct=19193&tsum=a0bdd395bfc4cf07d9414d5372f59ad2
@@ -1120,7 +1123,7 @@ Popc,http://aktv.top/AKTV/live/aktv/popc/AKTV.m3u8
 
 CATCHPLAY电影台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv076
 
-东森电影,https://ali.hlspull.yximgs.com/live/moa68.flv
+东森电影,http://ali.hlspull.yximgs.com/live/huanqiuhktvqowjxnqltjqhecvxcqqeqqeqyhqjyjuoquomjfqhqqqjqsqy.flv
 东森电影,http://50.7.234.10:8278/ettvmovie/playlist.m3u8?tid=MEDE1688528216885282&ct=19193&tsum=843fbd698e260c1fcda128dce85ead3b
 
 靖天电影台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv061#
@@ -1140,8 +1143,8 @@ AMC电影台,https://stream1.freetv.fun/364e21133ea43460bcc895be1f7ea000065de402
 
 龙华经典,https://stream1.freetv.fun/1f908dbbd6fd9efc3e2566d7ffd803a37b09090ad15ab254d4da81f7230159fa.ctv
 
-龙祥時代,http://ali.hlspull.yximgs.com:80/live/huanqiuhktvmqloehqbqqqpvboyjetqewsqhthqyuqfqwetyqqqhflxsq.flv
-龙祥時代,http://50.7.234.10:8278/lungxiangtime_twn/playlist.m3u8?tid=MADA6805114368051143&ct=18392&tsum=d6a1f02ca9abd5368d2a365e40247ae8
+LS龙祥時代,http://ali.hlspull.yximgs.com:80/live/huanqiuhktvmqloehqbqqqpvboyjetqewsqhthqyuqfqwetyqqqhflxsq.flv
+LS龙祥時代,http://50.7.234.10:8278/lungxiangtime_twn/playlist.m3u8?tid=MADA6805114368051143&ct=18392&tsum=d6a1f02ca9abd5368d2a365e40247ae8
 
 美亚电影台(台湾),https://ali.hlspull.yximgs.com/live/moa41.flv
 
@@ -1161,7 +1164,7 @@ AMC电影台,https://stream1.freetv.fun/364e21133ea43460bcc895be1f7ea000065de402
 黑莓电影,http://otttv.bj.chinamobile.com/PLTV/88888888/224/3221226939/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EkBVQL3MtyiM0GGQzuPjqAQ%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
 黑莓电影,http://111.29.9.33:6610/000000001000/8785669936177902664/index.m3u8?livemode=1&stbId=10&channel-id=ystenlive&Contentid=8785669936177902664#
 黑莓电影,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225743/index.m3u8
-
+AXN,http://ali.hlspull.yximgs.com/live/huanqiuhktvqeqcxlvofbqbvbqqqfqvqhslcfybqssxsqbcqcfjvsfcbqbnqtyqxn.flv
 AXN,http://122.117.71.103:8557/http/220.130.87.218:8081/hls/71/813/ch043.m3u8
 AXN,http://aktv.top/AKTV/live/aktv2/axn/AKTV.m3u8
 
@@ -1865,6 +1868,14 @@ NewTV魅力潇湘,http://111.29.9.33:6610/000000001000/1000000001000006197/index
 随州农村,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000219
 仙桃综合,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000225
 天门综合,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000236
+🏠️··江西··,#genre#
+江西都市,http://php.jdshipin.com:8880/iptv.php?id=jxds
+江西经济生活,http://php.jdshipin.com:8880/iptv.php?id=jxjjsh
+江西影视旅游,http://php.jdshipin.com:8880/iptv.php?id=jxysly
+江西公共农业,http://php.jdshipin.com:8880/iptv.php?id=jxggny
+江西少儿,http://php.jdshipin.com:8880/iptv.php?id=jxse
+江西新闻,http://php.jdshipin.com:8880/iptv.php?id=jxxw
+江西教育,http://php.jdshipin.com:8880/iptv.php?id=jxjy
 
 🏠️··浙江··,#genre#
 浙江新闻,https://ali-m-l.cztv.com/channels/lantian/channel007/1080p.m3u8
