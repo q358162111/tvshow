@@ -6,7 +6,7 @@
       "name": "live",
       "type": 0,
       "url": "./tvlist.txt",
-      "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}",
+      "epg": "https://live.fanmingming.cn/e.xml",
       "logo": "https://gitee.com/hong-j/logo/raw/master/{name}.png"
     }
   ],
