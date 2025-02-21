@@ -1516,11 +1516,7 @@ NewTV魅力潇湘,http://111.29.9.33:6610/000000001000/1000000001000006197/index
 
 
 🏠️··上海··,#genre#
-上海纪实人文,http://111.29.9.33:6610/000000001000/1000000001000010606/index.m3u8?livemode=1&stbId=10&channel-id=ystenlive&Contentid=1000000001000010606#
-上海纪实人文,http://61.138.167.36:9901/tsfile/live/1040_1.m3u8#
-上海纪实人文,http://111.29.9.33:6610/000000001000/1000000001000010606/index.m3u8?livemode=1&stbId=10&channel-id=ystenlive&Contentid=1000000001000010606#
-上海纪实人文,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225738/index.m3u8
-上海ICS,http://111.29.9.33:6610/000000001000/5000000010000030951/index.m3u8?livemode=1&stbId=10&channel-id=bestzb&Contentid=5000000010000030951#
+
 上海教育,http://php.jdshipin.com:8880/itv6.php?cid=hnbblive&id=2000000002000000107
 第一财经,http://php.jdshipin.com:8880/itv6.php?cid=bestzb&id=5000000010000027146
 第一财经,http://111.29.9.33:6610/000000001000/5000000010000027146/index.m3u8?livemode=1&stbId=10&channel-id=bestzb&Contentid=5000000010000027146#
@@ -1533,8 +1529,7 @@ NewTV魅力潇湘,http://111.29.9.33:6610/000000001000/1000000001000006197/index
 上海新闻综合,http://php.jdshipin.com:8880/itv6.php?cid=bestzb&id=5000000011000031110
 上海新闻综合,http://111.29.9.33:6610/000000001000/2000000002000000005/index.m3u8?livemode=1&stbId=10&channel-id=hnbblive&Contentid=2000000002000000005#
 
-七彩戏剧,http://php.jdshipin.com:8880/itv6.php?cid=bestzb&id=5000000011000031116
-七彩戏剧,http://111.29.9.33:6610/000000001000/2000000002000000010/index.m3u8?livemode=1&stbId=10&channel-id=hnbblive&Contentid=2000000002000000010#
+
 生活时尚,http://www.cdnstv.com:6398/hls/1186/index.m3u8
 生活时尚,http://php.jdshipin.com:8880/itv6.php?cid=bestzb&id=5000000002000019634
 生活时尚,http://111.29.9.33:6610/000000001000/2000000002000000006/index.m3u8?livemode=1&stbId=10&channel-id=hnbblive&Contentid=2000000002000000006#
