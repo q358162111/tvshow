@@ -1581,6 +1581,7 @@ NewTV魅力潇湘,http://111.119.250.248:50001/TVOD/1000000001000006197/ystenliv
 中华功夫,http://www.cdnstv.com:6398/hls/1120/index.m3u8
 🏠️··河北··,#genre#
 河北都市,https://tv.pull.hebtv.com/jishi/dushipindao.m3u8?t=1739356498&k=c70a8fae0809ab8c93d3f8f526e94f36
+河北都市,https://www.hebtv.com/19/19js/st/xdszb/index.shtml?index=3
 河北影视剧,https://tv.pull.hebtv.com/zhibo/yingshijupindao.m3u8?t=1739356521&k=71e55d58959a716b63c3414392740a87
 河北文旅公共,https://tv.pull.hebtv.com/jishi/gonggongpindao.m3u8?t=1739356548&k=2f8dc36acc4b79f636bbd1c1d7e7da74
 河北农民,https://tv.pull.hebtv.com/jishi/nongminpindao.m3u8?t=1739356468&k=dcfad6945c86838f94e46cd554d61059
