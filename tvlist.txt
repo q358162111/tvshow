@@ -697,7 +697,7 @@ CHC影迷电影,rtsp://111.48.34.138:1554/170000004112/9918000100000005000000000
 香港RTHK35,https://rthktv35-live.akamaized.net/hls/live/2101643/RTHKTV35/stream02/streamPlaylist.m3u8
 
 澳视卫星,https://cdn.163189.xyz/live/as/stream.m3u8
-
+澳视卫星,http://php.jdshipin.com/TVOD/iptv.php?id=as
 澳视澳门,https://stream1.freetv.fun/4bcf7b55c0ceec1b9e43fe9ab38a162fb6a73df795e2a5b641b618fb6ae53e9e.m3u8#
 澳视澳门,http://183.237.246.14:9931/tsfile/live/1039_1.m3u8#
 澳视澳门,https://stream1.freetv.fun/56e911076120ba8a4639f7446c639591da9423eba3a14212acc42648d2bfb473.m3u8#
@@ -792,6 +792,8 @@ HOY77,https://cdn3.163189.xyz/live/hoy/stream.m3u8
 东森综合,http://122.117.71.103:8525/http/220.130.87.218:8081/hls/67/809/ch025.m3u8
 东森综合,http://50.7.234.10:8278/ettvzhonghe/playlist.m3u8?tid=MC4C1214674912146749&ct=19254&tsum=9b96a50ba99dca1a02a27b05a6fb4b0d
 东森幼幼,http://122.117.71.103:8515/http/220.130.87.218:8081/hls/63/805/ch009.m3u8
+东森超视,rtmp://116.93.98.236/sat/tv331
+东森超视,rtmp://f13h.mine.nu/sat/tv331
 东森超视,http://122.117.71.103:8524/http/220.130.87.218:8081/hls/64/806/ch014.m3u8
 亚洲旅游台,http://50.7.234.10:8278/asiatravel_twn/playlist.m3u8?tid=ma9ec30da9ef3&ct=18335&tsum=ff0bd9207f2c72a8c9bf38464433dc7d
 亚洲旅游台,http://50.7.234.10:8278/asiatravel_twn/playlist.m3u8?tid=MB9B9461769094617690&ct=18393&tsum=57c12e5ba95cca684613ec5e14714ff8
@@ -801,7 +803,8 @@ HOY77,https://cdn3.163189.xyz/live/hoy/stream.m3u8
 公视,http://50.7.234.10:8278/ctv_taiwan/playlist.m3u8?tid=MDCD6096520560965205&ct=19249&tsum=64237c7ffa0c00b62657a938247bcab0
 
 公视戏剧,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv042
-
+台视,rtmp://116.93.98.236/sat/tv071
+台视,rtmp://f13h.mine.nu/sat/tv071
 台视,http://50.7.234.10:8278/ttv_taiwan/playlist.m3u8?tid=MDCD7498841774988417&ct=19226&tsum=205fa69ca9e6c04cfa0ed0b301647d1e
 台视新闻,http://50.7.234.10:8278/ttvnews_twn/playlist.m3u8?tid=MBBB6637589866375898&ct=19234&tsum=d2c641a325bf02e0b68c4f245e0165b0#
 台视新闻,http://50.7.234.10:8278/ttvnews_twn/playlist.m3u8?tid=MD9D1039476110394761&ct=19193&tsum=9f33349842788bfb7b0e90e93f7bf02c
@@ -811,7 +814,8 @@ HOY77,https://cdn3.163189.xyz/live/hoy/stream.m3u8
 
 台视综合,http://extraott.com:80/live/6772191932/1654508883/473543.m3u8
 
-
+民视,rtmp://116.93.98.236/sat/tv051
+民视,rtmp://f13h.mine.nu/sat/tv051
 民视,http://50.7.234.10:8278/ftvtaiwan_twn/playlist.m3u8?tid=MEFE5254515252545152&ct=19249&tsum=c17f872b1772df8f76032030cc40bdbd
 民视,http://50.7.234.10:8278/ftvtaiwan_twn/playlist.m3u8?tid=MDFD6045594360455943&ct=19193&tsum=0de4f998b15ba8f2ecdaa107d866212a
 民视,http://50.7.234.10:8278/ftvhd_taiwan/playlist.m3u8?tid=MC8C5908644059086440&ct=19249&tsum=c96d2cd48b11d40ca9e97fb3addb1384
@@ -844,7 +848,7 @@ HOY77,https://cdn3.163189.xyz/live/hoy/stream.m3u8
 年代新闻,http://50.7.234.10:8278/niandainews_twn/playlist.m3u8?tid=MBCB9184423891844238&ct=19249&tsum=ac0331d98099429b19c53fe6d20972ec
 中视,http://122.117.71.103:8503/http/220.130.87.218:8081/hls/89/80/Cts4max.m3u8
 
-中视,http://ali.hlspull.yximgs.com/live/huanqiuhktvqphfwnmfjcqfxcvhqqwqfbfqjyuqqnmfcbsfqeqtyhsjqs.flv
+中视,rtmp://116.93.98.236/sat/tv091
 中视,http://aktv.top/AKTV/live/aktv/null-10/AKTV.m3u8#
 中视,http://50.7.234.10:8278/zhongshihd_twn/playlist.m3u8?tid=MBDB6720263767202637&ct=19249&tsum=edd778f298b53c39b3b9706700032605#
 中视,rtmp://f13h.mine.nu/sat/tv091
@@ -861,7 +865,8 @@ HOY77,https://cdn3.163189.xyz/live/hoy/stream.m3u8
 非凡新闻台,http://50.7.234.10:8278/feifannews_twn/playlist.m3u8?tid=ME3E6962233269622332&ct=19225&tsum=eea4d84db71e12ba91bfcf328f4dec9d
 非凡新闻台,http://50.7.234.10:8278/feifannews_twn/playlist.m3u8?tid=m050e7aad65f614336734&ct=17874&tsum=4ea1b829d195ac69a6c2ca51b21ae378
 
-
+华视新闻,rtmp://116.93.98.236/sat/tv111
+华视新闻,rtmp://f13h.mine.nu/sat/tv111
 华视新闻,http://50.7.234.10:8278/ctshd_twn/playlist.m3u8?tid=MC3C3582911835829118&ct=19249&tsum=f2c0c86801d43be647206c4ddb8e9ce6
 华视新闻,http://ali.hlspull.yximgs.com/live/huanqiuhktvpjymvcqnqqqcvbcvbqtyqqqffcfqvqftoqqbvcqfejnhs.flv
 华视新闻,http://aktv.top/AKTV/live/aktv/null-11/AKTV.m3u8
