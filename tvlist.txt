@@ -738,7 +738,7 @@ CHANNEL [V],https://tv.bfsu.edu.cn/hls/channelv.m3u8
 
 无线华丽,http://php.jdshipin.com/smt.php?id=Tvbjade
 无线华丽,http://php.jdshipin.com:8880/TVOD/iptv.php?id=huali
-
+明珠台,http://120.198.101.106:9901/tsfile/live/1008_1.m3u8?key=txiptv
 明珠台,http://aktv.top/AKTV/live/aktv/null-2/AKTV.m3u8#
 明珠台,http://aktv.top/AKTV/live/aktv/null-2/AKTV.m3u8
 
@@ -2086,7 +2086,12 @@ NewTV魅力潇湘,http://111.119.250.248:50001/TVOD/1000000001000006197/ystenliv
 甘肃公共应急,https://hls.gstv.com.cn/9hvng2/t16sp1.m3u8
 甘肃公共应急,https://www.shqsy.com/tv/zb/gansu.php?id=ggyj
 甘肃科教,rtsp://180.95.143.19/PLTV/88888910/224/3221225492/10000100000000060000000000102577_0.smil
+甘肃科教,rtsp://60.13.23.179/PLTV/88888910/224/3221225492/10000100000000060000000000102577_0.smil
+甘肃科教,rtsp://221.7.61.147/PLTV/88888910/224/3221225492/10000100000000060000000000102577_0.smil
 甘肃科教,https://hls.gstv.com.cn/9hvng2/xcl739.m3u8
+嘉峪关综合,rtsp://60.13.39.19/PLTV/88888910/224/3221225607/10000100000000060000000000789667_0.smil
+嘉峪关综合,rtsp://60.13.23.179/PLTV/88888910/224/3221225607/10000100000000060000000000789667_0.smil
+嘉峪关综合,rtsp://221.7.61.147/PLTV/88888910/224/3221225607/10000100000000060000000000789667_0.smil
 🏠️··陕西··,#genre#
 陕西影视,http://gxlive.snrtv.com/sx4-SD.m3u8
 陕西体育休闲,http://gxlive.snrtv.com/sx7-SD.m3u8
