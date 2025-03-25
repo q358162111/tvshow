@@ -1,6 +1,6 @@
 {
   "wallpaper": "https://api.suyanw.cn/api/scenery.php",
-  "spider": "./b97a0-b33fe897-498a-4dc9-9f5a-46fef469dd89.jar",
+  "spider": "./jar.php",
   "lives": [
     {
       "name": "live",
