@@ -1,11 +1,11 @@
 {
   "wallpaper": "https://api.suyanw.cn/api/scenery.php",
-  "spider": "./jar.php",
+  "spider": "./jar.php;MD5;5bb2fe55cf3aa63d0d1c44619f884213",
   "lives": [
     {
       "name": "live",
       "type": 0,
-      "url": "https://raw.gitcode.com/cai_hj/sw/raw/main/list.txt",
+      "url": "./tvlist.txt",
       "epg": "https://iptv.crestekk.cn/epgphp/index.php/api/diyp/?ch={name}&date={date}",
       "logo": "https://gitee.com/hong-j/logo/raw/master/{name}.png"
     }
