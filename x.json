@@ -5,7 +5,7 @@
     {
       "name": "live",
       "type": 0,
-      "url": "https://raw.gitmirror.com/q358162111/new/refs/heads/main/tvlist.txt",
+      "url": "./tvlist.txt",
       "epg": "https://iptv.crestekk.cn/epgphp/index.php/api/diyp/?ch={name}&date={date}",
       "logo": "https://gitee.com/hong-j/logo/raw/master/{name}.png"
     }
