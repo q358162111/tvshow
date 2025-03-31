@@ -660,7 +660,7 @@ CHANNEL [V],https://tv.bfsu.edu.cn/hls/channelv.m3u8
 翡翠台,http://50.7.234.10:8278/WarnerTV/playlist.m3u8?tid=mc42afe745533&ct=11448811&tsum=9a6977885e3b656963da17bd8654ea51#
 
 
-翡翠综合台,http://aktv.top/AKTV/live/aktv/null-17/AKTV.m3u8
+翡翠综合台,http://aktv-stream.m16tv.cfd/stream/aktv/null-17/AKTV.m3u8
 TVB Plus,http://198.16.100.186:8278/j2_twn/playlist.m3u8?tid=ME0E4382171043821710&ct=19237&tsum=6f10351124a4eb90780b2f84b2c4d349
 TVB Plus,http://198.16.100.186:8278/j2_twn/playlist.m3u8?tid=m22905da1d346&ct=18336&tsum=3b4998c4f5367bb820165f66b0caab0e
 TVB Plus,http://50.7.234.10:8278/j2_twn/playlist.m3u8?tid=m22905da1d346&ct=18336&tsum=3b4998c4f5367bb820165f66b0caab0e
@@ -755,6 +755,7 @@ HOY77,https://cdn3.163189.xyz/live/hoy/stream.m3u8
 
 
 CTI+,http://ali.hlspull.yximgs.com/live/_duan_ju_bao_bao_bao_xiao_shi_hou_zuo_guo_ya___CTI_2_HD.flv
+中天新闻,http://aktv-stream.m16tv.cfd/stream/aktv/null-6/AKTV.m3u8
 中天新闻,http://ali.hlspull.yximgs.com/live/_duan_ju_bao_bao_bao_xiao_shi_hou_zuo_guo_ya___CTI__HD.flv
 中天新闻,http://198.16.100.186:8278/ctinews/playlist.m3u8?tid=MC3C3915550439155504&ct=19193&tsum=a8168b7967dda9bfebdd5b1403dc19b0#
 中天新闻,http://198.16.100.186:8278/ctinews/playlist.m3u8?tid=mc42afe745533&ct=11448811&tsum=5da22ad10e374c427fc90aed16f07478
