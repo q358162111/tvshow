@@ -622,25 +622,25 @@ CHC影迷电影,rtsp://111.48.34.138:1554/170000004112/9918000100000005000000000
 
 
 🌊港·澳·台,#genre#
+凤凰中文,http://43.129.81.169/qctv.fengshows.cn/live/0701pcc72.flv
 凤凰中文,http://198.16.100.186:8278/phoenixtv_hd/playlist.m3u8?tid=MF6F2163882521638825&ct=19249&tsum=2375037c2689c4190d14c8a52bc35c83
 凤凰中文,http://50.7.234.10:8278/phoenixtv_hd/playlist.m3u8?tid=MF6F2163882521638825&ct=19249&tsum=2375037c2689c4190d14c8a52bc35c83
-凤凰中文,http://122.117.71.103:8574/http/220.130.87.218:8081/hls/87/80/index.m3u8
-凤凰中文,http://php.jdshipin.com:8880/TVOD/iptv.php?id=fhzw
-凤凰中文,http://php.jdshipin.com/TVOD/iptv.php?id=fhzw#
 
 
+
+
+凤凰资讯,http://php.jdshipin.com:8880/TVOD/iptv.php?id=fhzx
+凤凰资讯,http://43.129.81.169/qctv.fengshows.cn/live/0701pin72.flv
 凤凰资讯,http://198.16.100.186:8278/phoenixinfo_hd/playlist.m3u8?tid=m7f4a830029be&ct=18336&tsum=74f57bddc0725f74838380086dce3e44
 凤凰资讯,http://50.7.234.10:8278/phoenixinfo_hd/playlist.m3u8?tid=m7f4a830029be&ct=18336&tsum=74f57bddc0725f74838380086dce3e44
-凤凰资讯,http://122.117.71.103:8573/http/220.130.87.218:8081/hls/87/80/index.m3u8
-凤凰资讯,http://php.jdshipin.com:8880/TVOD/iptv.php?id=fhzx
 凤凰资讯,https://cdn3.163189.xyz/live/fhzx/stream.m3u8
-凤凰资讯,http://php.jdshipin.com:8880/TVOD/iptv.php?id=fhzx
+
+凤凰香港,http://php.jdshipin.com:8880/TVOD/iptv.php?id=fhhk
+凤凰香港,http://43.129.81.169/qctv.fengshows.cn/live/0701phk72.flv
 凤凰香港,http://198.16.100.186:8278/hkphoenix_twn/playlist.m3u8?tid=MACA2858291128582911&ct=19225&tsum=0f01288bbaa6c0403d07e96b0a5db4ed
 凤凰香港,http://198.16.100.186:8278/hkphoenix_twn/playlist.m3u8?tid=MD0D2495250724952507&ct=19249&tsum=b1c0a577a7f4aaa9af143d124ba24a40
 凤凰香港,http://50.7.234.10:8278/hkphoenix_twn/playlist.m3u8?tid=MACA2858291128582911&ct=19225&tsum=0f01288bbaa6c0403d07e96b0a5db4ed
 凤凰香港,http://50.7.234.10:8278/hkphoenix_twn/playlist.m3u8?tid=MD0D2495250724952507&ct=19249&tsum=b1c0a577a7f4aaa9af143d124ba24a40
-凤凰香港,http://php.jdshipin.com:8880/TVOD/iptv.php?id=fhhk
-凤凰香港,https://ali.hlspull.yximgs.com/live/diyp_fh3.flv
 凤凰香港,http://50.7.234.10:8278/hkphoenix_twn/playlist.m3u8?tid=MA5A4571836345718363&ct=19234&tsum=9d461ede3a5ecfa182b75574f86ae56a
 凤凰香港,http://50.7.234.10:8278/hkphoenix_twn/playlist.m3u8?tid=MACA2858291128582911&ct=19225&tsum=0f01288bbaa6c0403d07e96b0a5db4ed#
 
@@ -1232,7 +1232,7 @@ Taiwan Plus,http://122.117.71.103:8539/http/220.130.87.218:8081/hls/63/805/ch010
 SCM,http://198.16.100.186:8278/Weishimovie/playlist.m3u8?tid=MEEE4802495448024954&ct=19249&tsum=1731f56127d23a79a645f2d7d958dec7
 SCM,http://50.7.234.10:8278/Weishimovie/playlist.m3u8?tid=MEEE4802495448024954&ct=19249&tsum=1731f56127d23a79a645f2d7d958dec7
 🏀体育频道,#genre#
-
+上海五星体育,https://ali.hlspull.yximgs.com/live/diyp_wuxing.flv
 上海五星体育,http://129.150.58.101:50001/TVOD/5000000010000017540/bestzb/index.m3u8
 
 上海五星体育,https://stream1.freetv.fun/4881181ce7c229726cc597354dcd8ac833357167c1f7af8b48b2d08267400041.ctv#
@@ -1458,20 +1458,32 @@ NewTV精品纪录,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225672/
 🏠️··北京··,#genre#
 
 北京纪实科教,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225729/index.m3u8
+北京财经,https://hsplay-360.v.btime.com/live_btime/btv_sn_20170706_s5/index.m3u8?time=1743584419&sign=39c7aae27c86a4347a7d4ee42ec8c771
+北京新闻,https://hsplay-360.v.btime.com/live_btime/btv_sn_20170706_s9/index.m3u8?time=1743584420&sign=a42460fa83de13535e7fe8de90e47b47
+北京生活,https://hsplay-360.v.btime.com/live_btime/btv_sn_20170706_s7/index.m3u8?time=1743584419&sign=665b493b5d019a0b10d5cdbcb2a232ff
 
 
 
 🏠️··安徽··,#genre#
+安徽国际,http://43.129.81.169/live.ahsx.ahtv.cn/live/gjtv.m3u8
 安徽国际,https://live5.ahtv.cn/ahgj1/playlist.m3u8?_upt=78817e1f1741441901
+
+安徽影视,http://43.129.81.169/live.ahsx.ahtv.cn/live/ystv.m3u8
 安徽影视,http://112.30.194.221:20080/live/d18ff95cb1fb4bbcb56215e189fc12be/hls.m3u8#
 安徽影视,http://112.30.194.221:20080/live/d18ff95cb1fb4bbcb56215e189fc12be.flv
+
+安徽经济生活,http://43.129.81.169/live.ahsx.ahtv.cn/live/jjshtv.m3u8
 安徽经济生活,http://112.30.194.221:20080/live/eac499adad7b49ff9cfa79ba84693959/hls.m3u8#
 安徽经济生活,http://112.30.194.221:20080/live/eac499adad7b49ff9cfa79ba84693959/hls.m3u8?zanhd
+
+安徽综艺体育,http://43.129.81.169/live.ahsx.ahtv.cn/live/zytytv.m3u8
 安徽综艺体育,http://112.30.194.221:20080/live/c41f112b83f644ddb082669501c8ecd3/hls.m3u8?zanhd#
 安徽综艺体育,hhttp://112.30.194.221:20080/live/c41f112b83f644ddb082669501c8ecd3.flv
+
+安徽公共,http://43.129.81.169/live.ahsx.ahtv.cn/live/ggtv.m3u8
 安徽公共,http://114.105.187.147:9901/tsfile/live/1014_1.m3u8
 安徽公共,http://223.241.247.214:9901/tsfile/live/1003_1.m3u8?key=txiptv&playlive=1&authid=0
-安徽农业科教,http://114.105.187.147:9901/tsfile/live/1017_1.m3u8
+
 
 🏠️··山东··,#genre#
 山东农科,https://1graunmtw8yzdrct3faauyptpqp48r3mbpisg17ufgcadrmujqfwsa7e.wslivehls.com/streamlive302.iqilu.com/21/9a8d90f532634034896e1e1c84cb47d8/playlist.m3u8?n=5271535f4eb3dafe97e55c4b18ad5a6a&m=1739356549&wsSession=6b1951577d3501115e742d28-173935654952990&wsIPSercert=e4147bc10f343a998e2d6a2602a4da25&wsiphost=local&wsBindIP=1
@@ -1748,22 +1760,35 @@ NewTV精品纪录,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225672/
 
 
 🏠️··江苏··,#genre#
-江苏体育,http://58.221.214.82:9901/tsfile/live/0006_2.m3u8
+江苏体育休闲,http://live.nctv.top/KLJHDS/jstv5.php?id=jsty
+江苏体育休闲,http://58.221.214.82:9901/tsfile/live/0006_2.m3u8
+
+江苏影视,http://live.nctv.top/KLJHDS/jstv5.php?id=jsys
 江苏影视,http://106.53.99.30/dl/jstv.php?id=jsys
 江苏影视,https://www.freetv.top/migu/626064697.m3u8?migutoken=fd72223e9156c997328e36da6d6ac3a68fb45563e2c52b881e7d1fd5f358a8ba39c001b4f8229e6005ee241be74cb0ca3829dd5c56953dd532de21aa678febae3e287fd4fab490c98d98313c26
 江苏影视,http://gxctcc-livod.ks-cdn.gitv.tv/gitv_live/G_JSYS/G_JSYS.m3u8
+
+江苏教育,http://live.nctv.top/KLJHDS/jstv5.php?id=jsjy
 江苏教育,https://www.shqsy.com/tv/zb/mg.php?id=%E6%B1%9F%E8%8B%8F%E6%95%99%E8%82%B2
 江苏教育,https://www.freetv.top/migu/628008321.m3u8?migutoken=01b6cb7faa65a84996b1f29241d859dd16da93318b852ed451cb94df37ea0b3691597bdc93e69da568c420148483713713de443a21c8249165a7eb2c9373471218b4931d54eff2b8f051b12a91
 江苏教育,http://gxctcc-livod.ks-cdn.gitv.tv/gitv_live/G_JSJY/G_JSJY.m3u8
+
+江苏新闻,http://live.nctv.top/KLJHDS/jstv5.php?id=jsxw
 江苏新闻,https://www.shqsy.com/tv/zb/mg.php?id=%E5%85%AC%E5%85%B1%E6%96%B0%E9%97%BB%E9%A2%91%E9%81%93
 江苏新闻,http://gxctcc-livod.ks-cdn.gitv.tv/gitv_live/G_JSGG/G_JSGG.m3u8
+
+江苏城市,http://live.nctv.top/KLJHDS/jstv5.php?id=jscs
 江苏城市,https://www.shqsy.com/tv/zb/mg.php?id=%E6%B1%9F%E8%8B%8F%E5%9F%8E%E5%B8%82%E9%A2%91%E9%81%93
 江苏城市,http://58.213.65.146:352/tsfile/live/0120_3.m3u8?key=txiptv
 江苏城市,https://stream1.freetv.fun/675206b8446ce719bfb293b5a5296db3aa26521c9810de7c996838247cc56964.ctv
+
+江苏综艺,http://live.nctv.top/KLJHDS/jstv5.php?id=jszy
 江苏综艺,http://106.53.99.30/dl/jstv.php?id=jszy
 江苏综艺,https://www.freetv.top/migu/626065193.m3u8?migutoken=0b5452a61f1951368ffa817be8872473446146131e7bab42413b0d5bb6fc8706c533372456a4f005fcd4e542c61f5b1cdd23b91e64295185d9a670b379f683057d527624b0bef4f06c1cc9d8aa
 江苏综艺,http://gxctcc-livod.ks-cdn.gitv.tv/gitv_live/G_JSZY/G_JSZY.m3u8#
 江苏综艺,https://stream1.freetv.fun/f8ef469943662bed2abc6609d9ef1720b9e93a8a0bd6f5789133461e36763f37.m3u8
+
+江苏国际,http://live.nctv.top/KLJHDS/jstv5.php?id=jsgj
 江苏国际,https://www.shqsy.com/tv/zb/mg.php?id=%E6%B1%9F%E8%8B%8F%E5%9B%BD%E9%99%85
 江苏国际,https://www.freetv.top/migu/626064674.m3u8?migutoken=cca86549c9b272deeee7bbc8d3d2332a378aa5bd47ecdcb854911651e3dc520cd1abd8aed7325f2d62b32a2a8bb69d89f204f18284a2e28c598d000fa1cbc3462ef62c1df1a46074a5c5ab6a94
 江苏国际,http://114.105.187.147:9901/tsfile/live/1018_1.m3u8
@@ -1899,27 +1924,33 @@ NewTV精品纪录,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225672/
 连山综合,http://120.76.248.139/live/bfgd/4200000491.m3u8
 
 🏠️··福建··,#genre#
-
+福建少儿,http://live.nctv.top/KLJHDS/fjtv.php?id=2
 福建少儿,https://live2-fuyun.fjtv.net/child/hd/live.m3u8?_upt=61e0836a1739364203
 福建少儿,http://8.138.7.223/tv/fjtv.php?id=2$官方源
 
+福建综合,http://live.nctv.top/KLJHDS/fjtv.php?id=4
 福建综合,https://live2-fuyun.fjtv.net/zhpd/hd/live.m3u8?_upt=8db844451739364072
 福建综合,http://8.138.7.223/tv/fjtv.php?id=4$官方源
 
+福建公共,http://live.nctv.top/KLJHDS/fjtv.php?id=6
 福建公共,https://live2-fuyun.fjtv.net/ggxcpd/hd/live.m3u8?_upt=569a89d91739363971
 福建公共,http://8.138.7.223/tv/fjtv.php?id=6
 
+福建电视剧,http://live.nctv.top/KLJHDS/fjtv.php?id=7
 福建电视剧,https://live2-fuyun.fjtv.net/dsjpd/hd/live.m3u8?_upt=2f3b45a31739364098
 福建电视剧,http://8.138.7.223/tv/fjtv.php?id=7$官方源
 
+福建旅游,http://live.nctv.top/KLJHDS/fjtv.php?id=8
 福建旅游,https://live1-fuyun.fjtv.net/dspd/hd/live.m3u8?_upt=efd05f021739364123
 福建旅游,http://8.138.7.223/tv/fjtv.php?id=8$官方源
 
+福建经济,http://live.nctv.top/KLJHDS/fjtv.php?id=9
 福建经济,https://live2-fuyun.fjtv.net/jjpd/hd/live.m3u8?_upt=298b925d1739364155
 福建经济,http://8.138.7.223/tv/fjtv.php?id=9$官方源
 
 福建文体,https://live1-fuyun.fjtv.net/typd/hd/live.m3u8?_upt=9ec0dfbf1739364177
 福建文体,http://8.138.7.223/tv/fjtv.php?id=10$官方源
+福建新闻,http://live.nctv.top/KLJHDS/fjtv.php?id=13
 福建新闻,https://live1-fuyun.fjtv.net/xwpd/hd/live.m3u8?_upt=aee656ef1739364030
 福建新闻,http://8.138.7.223/tv/fjtv.php?id=13
 福州新闻,http://live.zohi.tv/video/s10001-fztv-1/index.m3u8$官方源
