@@ -192,12 +192,17 @@ CEC文化,http://play.cec-tv.com.cn/channel/cec-tv1.m3u8$官方源
 CEC旅游,http://play.cec-tv.com.cn/channel/cec-tv2.m3u8$官方源
 CEC教育,http://play.cec-tv.com.cn/channel/cec-tv3.m3u8$官方源
 CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
+
+求索科学,http://39.134.65.106/PLTV/88888888/224/3221225728/1.m3u8?
 求索科学,http://www.zhch682022.cn:35455/itv/6000000002000032344.m3u8?cdn=wasusyt
 
+求索动物,http://39.134.65.106/PLTV/88888888/224/3221225730/1.m3u8?
 求索动物,http://www.zhch682022.cn:35455/itv/6000000002000010046.m3u8?cdn=wasusyt
 
+求索生活,http://39.134.65.106/PLTV/88888888/224/3221225715/1.m3u8?
 求索生活,http://www.zhch682022.cn:35455/itv/6000000002000003382.m3u8?cdn=wasusyt
 
+求索纪录,http://39.134.65.106/PLTV/88888888/224/3221225713/1.m3u8?
 求索纪录,http://www.zhch682022.cn:35455/itv/6000000002000032052.m3u8?cdn=wasusyt
 
 
@@ -1082,6 +1087,7 @@ CATCHPLAY电影台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv076
 靖天电影台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv061#
 靖天电影台,http://aktv.top/AKTV/live/aktv/null-6/AKTV.m3u8
 
+AMC电影台,http://122.117.71.103:8559/http/61.222.53.250:8092/upload/115/AMC_TS-1111_1.m3u8
 AMC电影台,http://aktv_stream1.m16tv.cfd/stream/taiwan/amc/AKTV.m3u8
 AMC电影台,http://61.221.215.25:8800/hls/43/index.m3u8#
 AMC电影台,https://stream1.freetv.fun/364e21133ea43460bcc895be1f7ea000065de402ecc572f985178bd5a9bf51f7.m3u8
@@ -1134,7 +1140,7 @@ CINEMAX,http://50.7.234.10:8278/cinemax_twn/playlist.m3u8?tid=MCEC16145198161451
 
 
 
-欧美大片,http://zzy789.xyz/douyu1.php?id=2793084
+强森电影,http://www.douzhicloud.site:35455/huya/21059581
 
 
 
@@ -1191,7 +1197,7 @@ BesTV青春动漫,http://wouu.net:9977/udp/239.93.0.146:5140
 Animax-HK,http://198.16.100.186:8278/Animax/playlist.m3u8?tid=mc42afe745533&ct=11448811&tsum=8040109662eda684ec7648c719e790ce
 Animax-HK,http://50.7.234.10:8278/Animax/playlist.m3u8?tid=mc42afe745533&ct=11448811&tsum=8040109662eda684ec7648c719e790ce
 
-
+猫和老鼠,http://dns.yiandrive.com:15907/huya/11352879
 
 🌎️国际频道,#genre#
 BBC World News,http://198.16.100.186:8278/bbcnews_twn/playlist.m3u8?tid=ME2E9411781394117813&ct=19225&tsum=ffaa2caa60183eec89d730ed80b336d1
@@ -1461,7 +1467,7 @@ NewTV精品纪录,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225672/
 北京财经,https://hsplay-360.v.btime.com/live_btime/btv_sn_20170706_s5/index.m3u8?time=1743584419&sign=39c7aae27c86a4347a7d4ee42ec8c771
 北京新闻,https://hsplay-360.v.btime.com/live_btime/btv_sn_20170706_s9/index.m3u8?time=1743584420&sign=a42460fa83de13535e7fe8de90e47b47
 北京生活,https://hsplay-360.v.btime.com/live_btime/btv_sn_20170706_s7/index.m3u8?time=1743584419&sign=665b493b5d019a0b10d5cdbcb2a232ff
-
+淘电影,http://yc.myds.me:35455/bptv/10000100000000050000000003887498.m3u8
 
 
 🏠️··安徽··,#genre#
