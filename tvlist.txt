@@ -105,7 +105,7 @@ CCTV4K,rtsp://111.48.34.138:1554/170000004112/HBGD8884193178146078726126298415
 
 CETV1,rtsp://111.48.34.138:1554/170000004112/99180001000000060000000000000342#
 CETV1,http://39.134.67.108/PLTV/88888888/224/3221225563/1.m3u8$移动|回看
-CETV1,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225652/index.m3u8#http://61.138.167.36:9901/tsfile/live/1039_1.m3u8
+CETV1,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225652/index.m3u8
 
 CETV2,http://php.jdshipin.com:8880/itv6.php?cid=hnbblive&id=2000000003000000047
 CETV2,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226425/index.m3u8
@@ -194,7 +194,7 @@ CEC教育,http://play.cec-tv.com.cn/channel/cec-tv3.m3u8$官方源
 CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 
 求索科学,http://39.134.65.106/PLTV/88888888/224/3221225728/1.m3u8?
-求索科学,http://www.zhch682022.cn:35455/itv/6000000002000032344.m3u8?cdn=wasusyt
+
 
 求索动物,http://39.134.65.106/PLTV/88888888/224/3221225730/1.m3u8?
 求索动物,http://www.zhch682022.cn:35455/itv/6000000002000010046.m3u8?cdn=wasusyt
@@ -448,6 +448,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 新疆卫视,rtsp://115.85.205.19/PLTV/88888910/224/3221225562/10000100000000060000000000107342_0.smil
 新疆卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225635/index.m3u8
 
+亚洲卫视,https://p2hs.vzan.com/slowlive/821481626725612419/live.m3u8
 
 延边卫视,http://live.ybtvyun.com/video/s10006-44f040627ca1/index.m3u8#
 延边卫视,http://php.jdshipin.com:8880/itv6.php?cid=hnbblive&id=2000000003000000049
@@ -1747,7 +1748,10 @@ NewTV精品纪录,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225672/
 恩施新闻综合,https://46240.hlsplay.aodianyun.com/tv_radio_46240/tv_channel_1812.m3u8?auth_key=4857760445-0-0-48b20fcc677c9c453aade4127fb60836&extra_key=GstcZaunflMNLGu8_neZZDSebP_vdaZpjgvDNh0oFxowejqLIrS9a1EoZExxdRI2S9Y2xkAXOOpuGxK1RXBwE9Pxgs64YJr12xMoUq8C0CDA-bYdaRFKaVVL_9eb5cvcS93rOcGOJVmGyvmgI8egJounqzsBrsfAbiojm3VtXXo
 恩施文旅频道,https://46240.hlsplay.aodianyun.com/tv_radio_46240/tv_channel_1811.m3u8?auth_key=4857760464-0-0-ecabcbf26d39dc20cde584db2fa2a053&extra_key=D1dJezG95YTkYytoe8tr2Qhf-jhFFJmJpij9JNzLnfjYgxE5Q69rjZT1b2VrOxeb2zvhRo107e0Ze_h5agVjcLhNxl4RzjBShtdz-pQKUqaNbHnJMUJaS637QCoHNkKlJAb5i0lkR8MlxmIB6LIGojFm8kqvpZp_pI7SG10olDg
 🏠️··江西··,#genre#
+江西都市,http://play-live-hls.jxtvcn.com.cn/live/tv_jxtv2.flv
 江西都市,http://php.jdshipin.com:8880/iptv.php?id=jxds
+江西经济生活,http://play-live-hls.jxtvcn.com.cn/live/tv_jxtv3.m3u8
+江西经济生活,http://play-live-hls.jxtvcn.com.cn/live/tv_jxtv3.flv
 江西经济生活,http://php.jdshipin.com:8880/iptv.php?id=jxjjsh
 江西影视旅游,http://php.jdshipin.com:8880/iptv.php?id=jxysly
 江西公共农业,http://php.jdshipin.com:8880/iptv.php?id=jxggny
