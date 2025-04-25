@@ -1465,11 +1465,15 @@ NewTV精品纪录,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225672/
 🏠️··北京··,#genre#
 
 北京纪实科教,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225729/index.m3u8
+北京体育休闲,http://3501776.xyz:35455/bptv/10000100000000050000000003870779.m3u8
 北京财经,https://hsplay-360.v.btime.com/live_btime/btv_sn_20170706_s5/index.m3u8?time=1743584419&sign=39c7aae27c86a4347a7d4ee42ec8c771
-北京新闻,https://hsplay-360.v.btime.com/live_btime/btv_sn_20170706_s9/index.m3u8?time=1743584420&sign=a42460fa83de13535e7fe8de90e47b47
+北京新闻,http://3501776.xyz:35455/bptv/10000100000000050000000003870780.m3u8
 北京生活,https://hsplay-360.v.btime.com/live_btime/btv_sn_20170706_s7/index.m3u8?time=1743584419&sign=665b493b5d019a0b10d5cdbcb2a232ff
-淘电影,http://yc.myds.me:35455/bptv/10000100000000050000000003887498.m3u8
-
+淘电影,http://3501776.xyz:35455/bptv/10000100000000050000000003887498.m3u8
+萌宠TV,http://3501776.xyz:35455/bptv/10000100000000050000000003887495.m3u8
+淘BABY,http://3501776.xyz:35455/bptv/10000100000000050000000003887496.m3u8
+淘娱乐,http://3501776.xyz:35455/bptv/10000100000000050000000003887499.m3u8
+淘剧场,http://3501776.xyz:35455/bptv/10000100000000050000000003887497.m3u8
 
 🏠️··安徽··,#genre#
 安徽国际,http://43.129.81.169/live.ahsx.ahtv.cn/live/gjtv.m3u8
