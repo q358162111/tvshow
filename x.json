@@ -14,7 +14,7 @@
     {"key":"豆瓣2","name":"豆瓣","type":3,"api":"csp_Douban","searchable":0},
     {"key":"豆瓣1","name":"豆瓣1","type":3,"api":"csp_Notice","searchable":0,"changeable": 0},
     
-   {"key":"荐片","name":"💡荐片｜影视","api":"csp_Jianpian","type":3,"playerType":1,"ext":"http://api2.rinhome.com"},
+{"key":"荐片","name":"💡荐片｜影视","api":"csp_Jianpian","type":3,"playerType":1,"ext":"http://api2.rinhome.com"},
 {"key":"移动","name":"💡移动｜影视","type":3,"api":"csp_YDjisu","searchable":1,"changeable":1},
 {"key":"热播影视","name":"💡热播｜影视","type":3,"api":"csp_AppRJ","searchable":1,"quickSearch":1,"filterable":0,"ext":{"url":"http://v.rbotv.cn"}},
 {"key":"天天影视","name":"💡天天｜影视","type":3,"api":"csp_AppRJ","searchable":1,"quickSearch":1,"filterable":0,"ext":{"url":"http://tt.ysdqjs.cn"}},
@@ -117,32 +117,12 @@
 {"key":"魔都资源","name":"🤣魔都┃动漫","type":1,"api":"https://caiji.moduapi.cc/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"急救教学","name":"🤣急救｜教学","type":3,"api":"csp_FirstAid","searchable":0,"quickSearch":0,"changeable":0,"style":{"type":"rect","ratio":3.8},"gridview":"0-0-4.1"},
 
- {"key":"立播弹幕","name":"❤立播┃弹幕","type":3,"api":"csp_Libvio","searchable":1,"filterable":1,"changeable":1,"ext":{"token":"http://127.0.0.1:9978/file/TVBox/token.txt","cookie":"http://127.0.0.1:9978/file/TV/.quark","uc_cookie":"http://127.0.0.1:9978/file/TV/.uc","danmu":true}},
+ {"key":"立播弹幕","name":"❤立播┃弹幕","type":3,"api":"csp_Libvio","searchable":1,"filterable":1,"changeable":1,"ext":{"token":"http://127.0.0.1:9978/file/TVBox/token.txt","cookie":"http://127.0.0.1:9978/file/TV/.quark","uc_cookie":"http://127.0.0.1:9978/file/TV/.uc","danmu":true}}
 
 
 
-{"key":"木偶","name":"❤木偶｜4K弹幕","type":3,"api":"csp_PanWebShare","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/mogg.json?"},
-{"key":"蜡笔","name":"❤蜡笔｜4K弹幕","type":3,"api":"csp_PanWebShare","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":"https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/lb.json?"},
-{"key":"小米","name":"❤小米｜4K弹幕","type":3,"api":"csp_PanWebShare","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":"https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/xm.json?"},
-{"key":"至臻","name":"❤至臻｜4K弹幕","type":3,"api":"csp_PanWebShare","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":"https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/zz.json?"},
-{"key":"多多","name":"❤多多｜4K弹幕","type":3,"api":"csp_PanWebShare","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":"https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/yyds.json?"},
-{"key":"欧哥备","name":"❤玩偶｜4K弹幕","type":3,"api":"csp_PanWebShare","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":"https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/og.json?"},
-
-{"key":"雷鲸","name":"❤雷鲸｜4K","type":3,"api":"csp_PanWebShareCloudLJ","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"style":{"type":"list","ratio":1.433},"ext":"./lib/lj.json"},
-{"key":"趣盘","name":"❤趣盘｜4K","type":3,"api":"csp_PanWebQu","searchable":1,"quickSearch":1,"filterable":1,"style":{"type":"list","ratio":1.433},"ext":{"url":"https://www.qupanshe.com"}},
-{"key":"聚搜","name":"❤聚搜｜4K","type":3,"api":"csp_PanWebSearch","searchable":1,"quickSearch":1,"filterable":1,"style":{"type":"list","ratio":1.433},"ext":"./lib/aliyunpansearch.json"},
-{"key":"盘库","name":"❤盘库｜4K","type":3,"api":"csp_PanWebKuBa","searchable":1,"filterable":0,"changeable":0,"ext":{"url": "https://panku8.com,https://yipanso.com"}},
 
 
-{"key":"阿里云盘","name":"❤我的｜阿里","type":3,"api":"csp_PanAli","searchable":0,"filterable":0,"changeable":0,"style":{"type":"list","ratio":1.433},"ext":"./lib/aliShare.json"},
-{"key":"夸克云盘","name":"❤我的｜夸克","type":3,"api":"csp_PanQuark","searchable":0,"filterable":0,"changeable":0,"style":{"type":"list","ratio":1.433},"ext":"./lib/quarkShare.json"},
-{"key":"UC","name":"❤我的｜UC","type":3,"api":"csp_PanUc","searchable":0,"filterable":0,"changeable":0,"style":{"type":"list","ratio":1.433},"ext":"./lib/ucShare.json"},
-{"key":"百度云盘","name":"❤我的｜百度","type":3,"api":"csp_PanBaiDu","searchable":0,"filterable":0,"changeable":0,"style":{"type":"list","ratio":1.433}},
-
-{"key":"push_agent","name":"📢手机｜推送","type":3,"api":"csp_Push","searchable":0,"filterable":0,"changeable":0},
-{"key": "应用商店","name": "🛒本地包更新","type": 3,"api": "csp_Market","searchable": 0,"changeable": 0,"ext": "http://123.yy.xn--dkw.xn--6qq986b3xl/zm/sd.php"},
-{"key":"豆瓣3","name":"📢接口软件永远免费","type":3,"api":"csp_Douban","searchable":0},
-{"key":"豆瓣4","name":"📢长期维护切勿贩卖","type":3,"api":"csp_Douban","searchable":0}
 
 ],
 
