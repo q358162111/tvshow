@@ -149,7 +149,7 @@ CETV4,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225783/index.m3u8
 电视指南,http://www.lizhinas.top:1009/rtp/239.252.219.97:5140
 
 重温经典,http://php.jdshipin.com:8880/TVOD/iptv.php?id=cwjd
-重温经典,http://120.76.248.139/live/bfgd/4200000635.m3u8#
+重温经典,https://other.ottiptv.cc/cwjd.m3u8
 重温经典,http://120.76.248.139/live/bfgd/4200000636.m3u8
 
 世界地理,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000320#
@@ -254,7 +254,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 重庆卫视,http://39.134.67.108/PLTV/88888888/224/3221225963/1.m3u8$移动高清|回看
 重庆卫视,rtsp://115.85.205.19/PLTV/88888910/224/3221225542/10000100000000060000000000107322_0.smil
 重庆卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226409/index.m3u8
-大湾区卫视,http://ali.hlspull.yximgs.com/live/b027460e580a463cb7e44eebexcvhnddggdfsdg.flv
+大湾区卫视,http://222.128.55.152:9080/live/dwq.m3u8
 大湾区卫视,https://www.shqsy.com/tv/zb/mg.php?id=%E5%A4%A7%E6%B9%BE%E5%8C%BA%E5%8D%AB%E8%A7%86
 
 东方卫视,rtsp://111.48.34.138:1554/170000004112/99180001000000060000000000000198#
@@ -1069,7 +1069,7 @@ CHC影迷电影,http://ztecdn.hb.chinamobile.com:6060/170000001115/UmaiCHAN63807
 CHC家庭影院,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000522#
 CHC家庭影院,http://ztecdn.hb.chinamobile.com:6060/170000001115/UmaiCHAN63807601b19dd/1.m3u8?m3u8_level=2#
 1905电影网,http://150.138.77.132:10037/1905电影网.php?id=1905a
-凤凰电影,https://ali.hlspull.yximgs.com/live/diyp_fhdy.flv
+凤凰电影,http://iot-mqqt.111yao.cn:8080/live/diyp_fhdy.m3u8
 凤凰电影,https://tv.bfsu.edu.cn/hls/fhdy.m3u8
 
 HBO,https://smart.pendy.dpdns.org/Smart.php?id=hbohd_twn
@@ -1274,7 +1274,7 @@ SCM,http://198.16.100.186:8278/Weishimovie/playlist.m3u8?tid=MEEE480249544802495
 SCM,http://50.7.234.10:8278/Weishimovie/playlist.m3u8?tid=MEEE4802495448024954&ct=19249&tsum=1731f56127d23a79a645f2d7d958dec7
 🏀体育频道,#genre#
 广东体育,https://ali.hlspull.yximgs.com/live/diyp_gdty.flv
-上海五星体育,https://ali.hlspull.yximgs.com/live/diyp_wuxing.flv
+上海五星体育,http://bp-livetytv.bestv.cn/ch/bestvwxty.m3u8
 上海五星体育,http://129.150.58.101:50001/TVOD/5000000010000017540/bestzb/index.m3u8
 
 上海五星体育,https://stream1.freetv.fun/4881181ce7c229726cc597354dcd8ac833357167c1f7af8b48b2d08267400041.ctv#
@@ -1469,8 +1469,9 @@ NewTV精品纪录,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225672/
 
 
 🏠️··上海··,#genre#
-
-第一财经,https://stream1.freetv.fun/di-yi-cai-jing-6.m3u8
+上海新闻综合,http://bp-livetytv.bestv.cn/ch/bestvxwzh.m3u8
+上海都市,http://bp-livetytv.bestv.cn/ch/bestvdspd.m3u8
+第一财经,http://bp-livetytv.bestv.cn/ch/bestvdycj.m3u8
 欢笑剧场,http://www.cdnstv.com:6398/hls/1171/index.m3u8
 
 
@@ -1904,12 +1905,12 @@ NewTV精品纪录,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225672/
 黑龙江农业科教,http://39.134.67.108/PLTV/88888888/224/3221225994/1.m3u8
 黑龙江影视,http://39.134.67.108/PLTV/88888888/224/3221225973/1.m3u8
 黑龙江影视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226298/index.m3u8
-黑龙江文体,http://39.134.67.108/PLTV/88888888/224/3221225965/1.m3u8
+黑龙江文体,https://idclive.hljtv.com:4430/live/hljwy_hd.m3u8
 黑龙江文体,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226239/index.m3u8
 黑龙江新闻法治,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226330/index.m3u8
 黑龙江新闻法治,http://39.134.67.108/PLTV/88888888/224/3221225967/1.m3u8
 黑龙江都市,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226301/index.m3u8
-黑龙江都市,http://39.134.67.108/PLTV/88888888/224/3221225969/1.m3u8
+黑龙江都市,https://idclive.hljtv.com:4430/live/dushi_hd.m3u8
 哈尔滨新闻综合,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226434/index.m3u8
 哈尔滨影视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226552/index.m3u8
 哈尔滨生活,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226526/index.m3u8
