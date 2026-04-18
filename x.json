@@ -9,7 +9,8 @@
       "name": "live",
       "type": 0,
       "url": "./tvlist.txt",
-      "epg": "https://epg.zbds.top/",
+      //"epg": "https://epg.zbds.top/",
+  "epg":"http://epg.51zmt.top:8000/api/diyp/",
       "logo": "https://gitee.com/hong-j/logo/raw/master/{name}.png"
     }
 
