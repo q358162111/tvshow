@@ -1,24 +1,16 @@
 📺央视频道,#genre#
 
 CCTV1,rtsp://111.48.34.138:1554/170000004112/00000001000000060000000000000131#
-CCTV1,http://39.134.67.108/PLTV/88888888/224/3221225816/1.m3u8
-CCTV1,rtsp://115.85.205.19/PLTV/88888910/224/3221225567/10000100000000060000000000107347_0.smil
-CCTV1,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226016/index.m3u8#
+CCTV1,http://iptv.4666888.xyz/iptv2A.php?id=7
 
 CCTV2,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000357#
-CCTV2,http://39.134.67.108/PLTV/88888888/224/3221225599/1.m3u8
-CCTV2,rtsp://115.85.205.19/PLTV/88888910/224/3221225568/10000100000000060000000000107348_0.smil
-CCTV2,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225588/index.m3u8#
+CCTV2,http://iptv.4666888.xyz/iptv2A.php?id=8
 
 CCTV3,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000391#
-CCTV3,http://39.134.67.108/PLTV/88888888/224/3221225799/1.m3u8
-CCTV3,rtsp://115.85.205.19/PLTV/88888910/224/3221225598/10000100000000060000000000295671_0.smil
-CCTV3,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226021/index.m3u8#
+CCTV3,http://iptv.4666888.xyz/iptv2A.php?id=9
 
 CCTV4,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000409#
-CCTV4,http://39.134.67.108/PLTV/88888888/224/3221225797/1.m3u8
-CCTV4,rtsp://115.85.205.19/PLTV/88888910/224/3221225497/10000100000000060000000000107277_0.smil
-CCTV4,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226428/index.m3u8#
+CCTV4,http://iptv.4666888.xyz/iptv2A.php?id=10
 
 CCTV4欧洲,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000558
 CCTV4欧洲,https://www.shqsy.com/tv/zb/mg.php?id=CCTV4%E6%AC%A7%E6%B4%B2
@@ -28,9 +20,7 @@ CCTV4美洲,https://www.shqsy.com/tv/zb/mg.php?id=CCTV4%E7%BE%8E%E6%B4%B2
 CCTV5,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000322#
 CCTV5,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000541#
 CCTV5,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000322#
-CCTV5,http://39.134.67.108/PLTV/88888888/224/3221225818/1.m3u8
-CCTV5,rtsp://115.85.205.19/PLTV/88888910/224/3221225609/10000100000000060000000000790217_0.smil
-CCTV5,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226019/index.m3u8#
+
 
 CCTV5+,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000503#
 CCTV5+,http://39.134.67.108/PLTV/88888888/224/3221225507/1.m3u8
@@ -63,14 +53,10 @@ CCTV10,rtsp://115.85.205.19/PLTV/88888910/224/3221225577/10000100000000060000000
 CCTV10,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225730/index.m3u8#
 
 CCTV11,rtsp://111.48.34.138:1554/170000004112/00000001000000050000000000000583#
-CCTV11,http://39.134.67.108/PLTV/88888888/224/3221225517/1.m3u8
-CCTV11,rtsp://115.85.205.19/PLTV/88888910/224/3221225843/376430589.smil
-CCTV11,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225597/index.m3u8#
+CCTV11,http://iptv.4666888.xyz/iptv2A.php?id=11
 
 CCTV12,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000361#
-CCTV12,http://39.134.67.108/PLTV/88888888/224/3221225669/1.m3u8
-CCTV12,rtsp://115.85.205.19/PLTV/88888910/224/3221225578/10000100000000060000000000107358_0.smil
-CCTV12,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225731/index.m3u8#
+CCTV12,http://iptv.4666888.xyz/iptv2A.php?id=12
 
 CCTV13,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000514#
 CCTV13,http://39.134.67.108/PLTV/88888888/224/3221225812/1.m3u8
@@ -194,17 +180,7 @@ CEC旅游,http://play.cec-tv.com.cn/channel/cec-tv2.m3u8$官方源
 CEC教育,http://play.cec-tv.com.cn/channel/cec-tv3.m3u8$官方源
 CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 
-求索科学,http://39.134.65.106/PLTV/88888888/224/3221225728/1.m3u8?
 
-
-求索动物,http://39.134.65.106/PLTV/88888888/224/3221225730/1.m3u8?
-求索动物,http://www.zhch682022.cn:35455/itv/6000000002000010046.m3u8?cdn=wasusyt
-
-求索生活,http://39.134.65.106/PLTV/88888888/224/3221225715/1.m3u8?
-求索生活,http://www.zhch682022.cn:35455/itv/6000000002000003382.m3u8?cdn=wasusyt
-
-求索纪录,http://39.134.65.106/PLTV/88888888/224/3221225713/1.m3u8?
-求索纪录,http://www.zhch682022.cn:35455/itv/6000000002000032052.m3u8?cdn=wasusyt
 
 
 国学,rtsp://111.48.34.138:1554/170000004112/99180001000000060000000000000284#
@@ -218,16 +194,11 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 
 
 
-家庭理财,http://www.cdnstv.com:6398/hls/1174/index.m3u8
 
-车迷频道,http://www.cdnstv.com:6398/hls/1177/index.m3u8
-环球旅游,http://www.cdnstv.com:6398/hls/1190/index.m3u8
-中华特产,http://www.cdnstv.com:6398/hls/1191/index.m3u8
 🛰卫视频道,#genre#
 
-安多卫视,http://stream.qhbtv.com/adws/sd/live.m3u8
-安多卫视,rtsp://115.85.205.19/PLTV/88888910/224/3221225872/376957310.smil
-安多卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225659/index.m3u8
+
+
 
 安徽卫视,rtsp://111.48.34.138:1554/170000004112/99180001000000060000000000000325#
 安徽卫视,http://www.cdnstv.com:6398/hls/1127/index.m3u8
@@ -254,7 +225,8 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 重庆卫视,http://39.134.67.108/PLTV/88888888/224/3221225963/1.m3u8$移动高清|回看
 重庆卫视,rtsp://115.85.205.19/PLTV/88888910/224/3221225542/10000100000000060000000000107322_0.smil
 重庆卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226409/index.m3u8
-大湾区卫视,https://live.catvod.com/live.php?id=nanfang_twn
+大湾区卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225748/index.m3u8?servicetype=2
+大湾区卫视,https://tcdn.itouchtv.cn/live/nfws.m3u8?t_token=b0eeddbb425e9ce4bc70d166252a7e21-wdrJSFwLkASzmk8PvOeWjmgXf4InmrwGoywkIKRlgX0nBL%2BFSD3TuFqT365K0g6RVE4q1vLRHI0hZex%2B57zqQqsTDblBLe63N8n%2B%2Fgwl2IvCrmWGUwQk8KeRq8egJqmTu7hwjOiIRvXJ7Pq14Hr%2B6aFeP2ySjE7cmjyK%2B1TkYxPXYc1OVzmR0CUK8alQjTE90OzCtoUUFcYT%2BHGIWdEUGbTLDfFdZB4qNCrlxgVweIZD2XeJ55zr7cIKADclXFquf6e69msSlj%2FAqf3gVaHP84%2BD%2BwetcqieWd3%2BYQQZxoCSDaZ5hVgXzhF%2FVV%2F5vLXI7vdZFBYL%2BdtKDohXl0bA9yrN73Os0kRGjADCoPSUwAc%3D
 
 
 东方卫视,rtsp://111.48.34.138:1554/170000004112/99180001000000060000000000000198#
@@ -277,9 +249,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 甘肃卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225633/index.m3u8
 
 广东卫视,rtsp://111.48.34.138:1554/170000004112/99180001000000060000000000000197#
-广东卫视,http://www.cdnstv.com:6398/hls/1124/index.m3u8
-广东卫视,http://39.134.67.108/PLTV/88888888/224/3221225966/1.m3u8$移动高清|回看
-广东卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226248/index.m3u8#
+广东卫视,http://iptv.4666888.xyz/iptv2A.php?id=18
 
 广西卫视,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000515#
 广西卫视,http://www.cdnstv.com:6398/hls/1144/index.m3u8
@@ -301,10 +271,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 海南卫视,http://39.134.67.108/PLTV/88888888/224/3221226026/1.m3u8
 海南卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226465/index.m3u8
 
-海峡卫视,http://8.138.7.223/tv/fjtv1.php?id=hxws
-海峡卫视,https://live1-fuyun.fjtv.net/haixiapd/hd/live.m3u8?_upt=4e1048d91750315485
-海峡卫视,https://live1-fuyun.fjtv.net/haixiapd/hd/live.m3u8?_upt=07b0c2f91739364246
-海峡卫视,https://www.freetv.top/migu/849119120.m3u8?migutoken=575e4dac4e212c9e9dd5cb3bd90d48d45e719684f520ee1bd2fc218ef9bbcb4f220dbfacbd52e17de170ace2438bce74b51b78b673ac88e5f1168dc18c697b032a4c958ba4f43de038b8e8c3ca
+海峡卫视,https://live1-fuyun.fjtv.net/haixiapd/hd/live.m3u8?_upt=217f476b1777980223
 
 
 河北卫视,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000447#
@@ -326,12 +293,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 湖北卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226477/index.m3u8#
 
 湖南卫视,rtsp://111.48.34.138:1554/170000004112/00000001000000060000000000000174#
-湖南卫视,http://39.134.65.181/PLTV/88888888/224/3221225506/1.m3u8$移动高清|回看
-湖南卫视,rtsp://115.85.205.19/PLTV/88888910/224/3221225574/10000100000000060000000000107354_0.smil
-湖南卫视,http://39.134.65.173/PLTV/88888888/224/3221225506/1.m3u8
-湖南卫视,http://39.134.65.183/PLTV/88888888/224/3221225506/1.m3u8
-湖南卫视,http://39.134.65.175/PLTV/88888888/224/3221225506/1.m3u8
-湖南卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226307/index.m3u8
+湖南卫视,http://iptv.4666888.xyz/iptv2A.php?id=13
 
 黑龙江卫视,rtsp://111.48.34.138:1554/170000004112/00000001000000060000000000000175#
 黑龙江卫视,http://www.cdnstv.com:6398/hls/1125/index.m3u8
@@ -339,13 +301,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 黑龙江卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226327/index.m3u8
 
 江苏卫视,rtsp://111.48.34.138:1554/170000004112/00000001000000060000000000000177#
-江苏卫视,http://39.134.67.108/PLTV/88888888/224/3221225938/1.m3u8$移动高清|回看
-江苏卫视,rtsp://115.85.205.19/PLTV/88888910/224/3221225569/10000100000000060000000000107349_0.smil
-江苏卫视,http://39.134.65.175/PLTV/88888888/224/3221225503/1.m3u8
-江苏卫视,http://39.134.65.181/PLTV/88888888/224/3221225503/1.m3u8
-江苏卫视,http://39.134.65.183/PLTV/88888888/224/3221225503/1.m3u8
-江苏卫视,http://39.134.65.173/PLTV/88888888/224/3221225503/1.m3u8
-江苏卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226310/index.m3u8#
+江苏卫视,http://iptv.4666888.xyz/iptv2A.php?id=15
 
 江西卫视,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000396#
 江西卫视,http://www.cdnstv.com:6398/hls/1132/index.m3u8
@@ -386,10 +342,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 
 青海卫视,rtsp://111.48.34.138:1554/170000004112/00000001000000060000000000000074#
 青海卫视,http://www.cdnstv.com:6398/hls/1148/index.m3u8
-青海卫视,http://39.134.67.108/PLTV/88888888/224/3221225948/1.m3u8$移动|回看
-青海卫视,rtsp://115.85.205.19/PLTV/88888910/224/3221225559/10000100000000060000000000107339_0.smil
-青海卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226323/index.m3u8#
-青海卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225628/index.m3u8
+青海卫视,http://iptv.4666888.xyz/iptv2A.php?id=17
 
 三沙卫视,rtsp://111.48.34.138:1554/170000004112/00000001000000050000000000000589#
 
@@ -405,9 +358,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 
 山西卫视,rtsp://111.48.34.138:1554/170000004112/00000001000000060000000000000077#
 山西卫视,http://www.cdnstv.com:6398/hls/1145/index.m3u8
-山西卫视,http://39.134.67.108/PLTV/88888888/224/3221226009/1.m3u8$移动|回看
-山西卫视,rtsp://115.85.205.19/PLTV/88888910/224/3221225538/10000100000000060000000000107318_0.smil
-山西卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225624/index.m3u8
+山西卫视,http://iptv.4666888.xyz/iptv2A.php?id=16
 
 陕西卫视,rtsp://111.48.34.138:1554/170000004112/00000001000000060000000000000068#
 陕西卫视,http://www.cdnstv.com:6398/hls/1129/index.m3u8
@@ -466,13 +417,7 @@ CEC健康,http://play.cec-tv.com.cn/channel/cec-tv4.m3u8$官方源
 云南卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226444/index.m3u8
 
 浙江卫视,rtsp://111.48.34.138:1554/170000004112/99180001000000060000000000000195#
-浙江卫视,http://39.134.67.108/PLTV/88888888/224/3221225959/1.m3u8$移动高清|回看
-浙江卫视,rtsp://115.85.232.19/PLTV/88888910/224/3221225530/10000100000000060000000000107310_0.smil
-浙江卫视,http://39.134.65.162/PLTV/88888888/224/3221225514/1.m3u8
-浙江卫视,http://39.134.65.175/PLTV/88888888/224/3221225514/1.m3u8
-浙江卫视,http://39.134.65.179/PLTV/88888888/224/3221225514/1.m3u8
-浙江卫视,http://39.134.65.173/PLTV/88888888/224/3221225514/1.m3u8
-浙江卫视,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226339/index.m3u8
+浙江卫视,http://iptv.4666888.xyz/iptv2A.php?id=14
 
 🏠️湖北移动广电,#genre#
 
@@ -631,12 +576,12 @@ CHC影迷电影,rtsp://111.48.34.138:1554/170000004112/9918000100000005000000000
 秭归融媒,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000473
 
 🌊4K频道,#genre#
+浙江卫视4K,http://ali-xwl.cztv.com/live/channel4k2160p.m3u8
 东方卫视4K,https://bp-resource-dfl.bestv.cn/148/3/video.m3u8
 湖南卫视4K,http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/Y2RuZXhfaWQ9YWxfaGxzX2xkdnQmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8
 湖南卫视4K,http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/dWlwPTEyNy4wLjAuMSZ1aWQ9cWluZy1jbXMmbm5fdGltZXpvbmU9OCZjZG5leF9pZD1hbF9obHNfbGR2dCZ1dWlkPTliODY4NmU5ZTM2YzYwMmMmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8
 🌊港·澳·台,#genre#
-凤凰中文,http://php.jdshipin.com:8880/TVOD/iptv.php?id=fhzw
-凤凰中文,http://php.jdshipin.com/TVOD/iptv.php?id=fhzw
+凤凰中文,http://iptv.4666888.xyz/iptv2A.php?id=27
 
 
 
@@ -657,9 +602,7 @@ CHC影迷电影,rtsp://111.48.34.138:1554/170000004112/9918000100000005000000000
 
 香港卫视,http://anren.live/HK/BSJDUFpB.m3u8#
 香港卫视,http://zhibo.hkstv.tv/livestream/mutfysrq/playlist.m3u8
-香港RTHK31,https://live.catvod.com/iptv.php?id=rthk31
-香港RTHK31,https://live.catvod.com/live.php?id=rhk31_twn
-香港RTHK31,https://cdn5.163189.xyz/live/rthk31/stream.m3u8
+香港RTHK31,http://iptv.4666888.xyz/iptv2A.php?id=23
 香港RTHK32,https://live.catvod.com/iptv.php?id=rthk32
 香港RTHK32,https://live.catvod.com/live.php?id=rhk32_twn
 香港RTHK33,https://rthktv33-live.akamaized.net/hls/live/2101641/RTHKTV33/stream03/streamPlaylist.m3u8
@@ -668,7 +611,7 @@ CHC影迷电影,rtsp://111.48.34.138:1554/170000004112/9918000100000005000000000
 澳视卫星,http://parking.treasureislandresortsworld.com:1001/hls/4/index.m3u8
 澳视卫星,https://cdn.163189.xyz/live/as/stream.m3u8
 澳视卫星,http://php.jdshipin.com/TVOD/iptv.php?id=as
-澳视澳门,https://stream1.freetv.fun/4bcf7b55c0ceec1b9e43fe9ab38a162fb6a73df795e2a5b641b618fb6ae53e9e.m3u8#
+澳视澳门,http://iptv.4666888.xyz/iptv2A.php?id=41
 澳视澳门,http://parking.treasureislandresortsworld.com:1001/hls/1/index.m3u8
 澳视澳门,http://php.jdshipin.com/TVOD/iptv.php?id=asam
 
@@ -689,8 +632,7 @@ CHANNEL [V],https://tv.bfsu.edu.cn/hls/channelv.m3u8
 无线新闻,http://php.jdshipin.com:8880/smt.php?id=inews_twn
 无线新闻,https://live.catvod.com/iptv.php?id=tvbxw01
 
-无线娱乐新闻,https://live.catvod.com/iptv.php?id=tvbylxw
-无线娱乐新闻,http://php.jdshipin.com/TVOD/iptv.php?id=tvbylxw
+无线娱乐新闻,http://iptv.4666888.xyz/iptv2A.php?id=36
 无线星河,http://php.jdshipin.com:8880/TVOD/iptv.php?id=xinghe
 无线星河,https://live.catvod.com/live.php?id=Xinhe
 无线星河,http://50.7.234.10:8278/Xinhe/playlist.m3u8?tid=mc42afe745533&ct=11448811&tsum=2924352d2c5512857400ab6f5863079a
@@ -700,20 +642,13 @@ CHANNEL [V],https://tv.bfsu.edu.cn/hls/channelv.m3u8
 无线星河,http://php.jdshipin.com/smt.php?id=Xinhe#
 无线星河,http://205.185.123.236:8899/tvb/xinghe/stream.m3u8#
 无线星河,https://www.mytvsuper.xyz/tvb/xinghe/stream.m3u8
-明珠台,https://live.catvod.com/iptv.php?id=mztsub
-明珠台,http://cdn9.163189.xyz/smt1.1.php?id=pearl_twn
-明珠台,https://live.catvod.com/live.php?id=pearl_twn
-明珠台,https://live.catvod.com/iptv.php?id=mzt001
+明珠台,http://iptv.4666888.xyz/iptv2A.php?id=29
 
-翡翠台,https://live.catvod.com/live.php?id=Jade_xue
-翡翠台,https://live.catvod.com/iptv.php?id=fctsub
-翡翠台,https://live.catvod.com/iptv.php?id=fct003
-翡翠台,http://php.jdshipin.com/smt.php?id=jade_twn
-翡翠台,https://live.catvod.com/iptv.php?id=fct002
+翡翠台,http://iptv.4666888.xyz/iptv2A.php?id=28
 
+MyTVSUPER,http://iptv.4666888.xyz/iptv2A.php?id=24
 
-
-翡翠综合台,https://live.catvod.com/iptv.php?id=j1na001
+翡翠综合台,http://iptv.4666888.xyz/iptv2A.php?id=26
 TVB Plus,https://live.catvod.com/live.php?id=j2_twn
 TVB Plus,http://php.jdshipin.com:8880/TVOD/iptv.php?id=j2
 TVB Plus,https://live.catvod.com/iptv.php?id=tvbplus2
@@ -721,15 +656,14 @@ TVB Plus,https://live.catvod.com/iptv.php?id=tvbplus2
 TVB Plus,http://php.jdshipin.com:8880/TVOD/iptv.php?id=j2
 
 TVB Plus,http://php.jdshipin.com:8880/TVOD/iptv.php?id=tvbp
-
-
-千禧经典,https://live.catvod.com/live.php?id=Tvbclassic
-千禧经典,http://php.jdshipin.com/TVOD/iptv.php?id=tvbc
+TVB-DRAMA,http://iptv.4666888.xyz/iptv2A.php?id=33
+黄金华剧台,http://iptv.4666888.xyz/iptv2A.php?id=34
+千禧经典,http://iptv.4666888.xyz/iptv2A.php?id=22
 
 亚洲武侠,http://php.jdshipin.com/TVOD/iptv.php?id=yzwx
 亚洲武侠,https://live.catvod.com/iptv.php?id=yzwx01
 
-HOY77,https://live.catvod.com/iptv.php?id=hoytv01
+HOY77,http://iptv.4666888.xyz/iptv2A.php?id=35
 HOY78,https://live.catvod.com/iptv.php?id=hoytv02
 东森财经新闻,https://live.catvod.com/live.php?id=ettvcaijing_twn
 
@@ -767,16 +701,16 @@ HOY78,https://live.catvod.com/iptv.php?id=hoytv02
 台视新闻,https://stream1.freetv.fun/3494a155d6e7afad40f588196589dc0504ac51f3ba233b6338181e20b7e5428b.m3u8#
 台视综合,https://live.catvod.com/live.php?id=ttvzhonghe
 
-民视,https://live.catvod.com/live.php?id=ftvhd_taiwan
+民视,http://iptv.4666888.xyz/iptv2A.php?id=55
 
 民视台湾台,https://live.catvod.com/live.php?id=ftvtaiwan_twn
 
 民视第一台,http://s1.an94tv.cfd/taiwan/CH-0/AKTV.m3u8
 
-民视综艺,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv004
+民视综艺,http://iptv.4666888.xyz/iptv2A.php?id=46
 
 民视新闻,https://live.catvod.com/live.php?id=ftvnew_taiwan
-
+民视影剧台,http://iptv.4666888.xyz/iptv2A.php?id=53
 
 CTI+,http://stream-ali1.csslcloud.net/live/bfd2yczrTFqK7nEAJybacKGcrnLdslNp5YcphockmQnscq2S1p.flv
 
@@ -845,13 +779,13 @@ CTI+,http://stream-ali1.csslcloud.net/live/bfd2yczrTFqK7nEAJybacKGcrnLdslNp5Ycph
 动物星球,http://50.7.234.10:8278/animalplanet_twn/playlist.m3u8?tid=m4da2c053371613331372&ct=17874&tsum=4481f502bb91c2c67964feecfbc4b702
 TVBS,https://live.catvod.com/live.php?id=tvbs
 
-TVBS新闻台,https://live.catvod.com/live.php?id=tvbs_n
+TVBS新闻台,http://iptv.4666888.xyz/iptv2A.php?id=43
 
 TVBS欢乐台,https://live.catvod.com/live.php?id=tvbshuanle_twn
 
 
 TVBS亚洲台,https://live.catvod.com/live.php?id=Tvbasia
-TVBS精采台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv067
+TVBS精采台,http://iptv.4666888.xyz/iptv2A.php?id=47
 三立新闻,http://122.117.71.103:8542/http/220.130.87.218:8081/hls/65/807/ch018.m3u8
 三立财经新闻,http://aktv.top/AKTV/live/aktv/null-14/AKTV.m3u8
 三立综合台,https://live.catvod.com/live.php?id=sanlizhonghe
@@ -879,9 +813,9 @@ GoodTV2,http://50.7.234.10:8278/good2_twn/playlist.m3u8?tid=MB3B3734070237340702
 龙华日韩台,http://s1.an94tv.cfd/taiwan/CH-5/AKTV.m3u8
 龙华日韩台,https://cdn8.163189.xyz/live/lhrh/stream.m3u8
 
-龙华电影台,https://live.catvod.com/iptv.php?id=lhdy01
+龙华电影台,http://iptv.4666888.xyz/iptv2A.php?id=45
 
-龙华洋片,https://smart.pendy.dpdns.org/Smart.php?id=lunghuajingdian_twn
+龙华洋片,http://iptv.4666888.xyz/iptv2A.php?id=60
 龙华洋片,https://cdn8.163189.xyz/live/lhyp/stream.m3u8
 
 龙华经典,https://cdn8.163189.xyz/live/lhjd/stream.m3u8
@@ -905,7 +839,7 @@ GoodTV2,http://50.7.234.10:8278/good2_twn/playlist.m3u8?tid=MB3B3734070237340702
 
 EYETV戏剧,https://live.catvod.com/live.php?id=eyetvxiju_twn
 
-
+靖洋戏剧台,http://iptv.4666888.xyz/iptv2A.php?id=42
 
 靖天资讯,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv065
 靖天卡通,https://live.catvod.com/live.php?id=jingtiancartoon_twn
@@ -983,7 +917,7 @@ CATCHPLAY电影台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv076
 东森电影,https://live.catvod.com/live.php?id=ettvmovie
 
 
-靖天电影台,https://iptv.vip-tptv.xyz/litv.php?id=4gtv-4gtv061#
+靖天电影台,http://iptv.4666888.xyz/iptv2A.php?id=56
 靖天电影台,http://aktv.top/AKTV/live/aktv/null-6/AKTV.m3u8
 
 AMC电影台,https://live.catvod.com/live.php?id=starmoviesgold_twn
@@ -992,7 +926,7 @@ AMC电影台,https://live.catvod.com/live.php?id=starmoviesgold_twn
 
 
 
-龙华洋片,https://smart.pendy.dpdns.org/Smart.php?id=lunghuajingdian_twn
+龙华洋片,http://iptv.4666888.xyz/iptv2A.php?id=60
 龙华洋片,http://50.7.234.10:8278/lunghuawestern_twn/playlist.m3u8?tid=MC1C3944472239444722&ct=19226&tsum=99c0c7c82e2fc48b16605865c3eaeb82
 
 龙华经典,https://stream1.freetv.fun/1f908dbbd6fd9efc3e2566d7ffd803a37b09090ad15ab254d4da81f7230159fa.ctv
@@ -1000,12 +934,7 @@ AMC电影台,https://live.catvod.com/live.php?id=starmoviesgold_twn
 龙祥时代,http://198.16.100.186:8278/lungxiangtime_twn/playlist.m3u8?tid=MADA6805114368051143&ct=18392&tsum=d6a1f02ca9abd5368d2a365e40247ae8
 龙祥时代,https://ali.hlspull.yximgs.com/live/14r5t6y7u8i9o0p1q2w3e4r5t6yhn7ujm8ik9ol0p1qaz2wsx3edc4rfv5tgb6yhn7ujm8.flv
 龙祥时代,http://50.7.234.10:8278/lungxiangtime_twn/playlist.m3u8?tid=MADA6805114368051143&ct=18392&tsum=d6a1f02ca9abd5368d2a365e40247ae8
-美亚电影台(香港),http://php.jdshipin.com:8880/smt.php?id=meiyamovie_twn
-美亚电影台(台湾),http://198.16.100.186:8278/meiyamovie_twn/playlist.m3u8?tid=mcfe3e109029013892155&ct=17874&tsum=164baeda6ab6c4160f2775128cfc6f4e
-美亚电影台(台湾),http://198.16.100.186:8278/meiyamovie_twn/playlist.m3u8?tid=MFEF1001328410013284&ct=19226&tsum=9839709ca0f37641c5d1ba962c3bc739
-美亚电影台(台湾),hhttp://50.7.234.10:8278/meiyamovie_twn/playlist.m3u8?tid=MFEF1001328410013284&ct=19226&tsum=9839709ca0f37641c5d1ba962c3bc739
-美亚电影台(台湾),http://50.7.234.10:8278/meiyamovie_twn/playlist.m3u8?tid=mcfe3e109029013892155&ct=17874&tsum=164baeda6ab6c4160f2775128cfc6f4e
-美亚电影台(台湾),http://50.7.234.10:8278/meiyamovie_twn/playlist.m3u8?tid=MD3D6323299363232993&ct=18392&tsum=3f73f541d33abe71140d28ada99a071b
+美亚电影台(香港),http://iptv.4666888.xyz/iptv2A.php?id=30
 
 
 
@@ -1123,7 +1052,7 @@ Taiwan Plus,http://122.117.71.103:8539/http/220.130.87.218:8081/hls/63/805/ch010
 SCM,http://198.16.100.186:8278/Weishimovie/playlist.m3u8?tid=MEEE4802495448024954&ct=19249&tsum=1731f56127d23a79a645f2d7d958dec7
 SCM,http://50.7.234.10:8278/Weishimovie/playlist.m3u8?tid=MEEE4802495448024954&ct=19249&tsum=1731f56127d23a79a645f2d7d958dec7
 🏀体育频道,#genre#
-广东体育,https://ali.hlspull.yximgs.com/live/diyp_gdty.flv
+广东体育,http://iptv.4666888.xyz/iptv2A.php?id=20
 上海五星体育,https://live.catvod.com/iptv.php?id=wxty01
 
 
@@ -1891,11 +1820,7 @@ NewTV精品纪录,http://ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225672/
 广州法治,https://tencentplay.gztv.com/live/fazhi.m3u8?txSecret=4400d75d2114b2db07d86eda8f8218ee&txTime=191b60ce0f6
 广州法治,http://php.jdshipin.com:8880/gztv.php?id=fazhi
 
-广东珠江,https://live.catvod.com/live.php?id=zhujiang
-广东珠江,http://www.xzbn.site:35455/itv/2000000003000000033.m3u8?cdn=hnbblive
-广东珠江,http://php.jdshipin.com:8880/itv6.php?cid=hnbblive&id=2000000003000000033
-广东珠江,http://cdn2.163189.xyz/live/gdzj/stream.m3u8
-广东珠江,http://183.237.95.108:9901/tsfile/live/1030_1.m3u8?key=txiptv&playlive=0&authid=0
+广东珠江,http://iptv.4666888.xyz/iptv2A.php?id=19
 
 
 广东体育,http://183.237.95.108:9901/tsfile/live/1033_1.m3u8?key=txiptv&playlive=0&authid=0
