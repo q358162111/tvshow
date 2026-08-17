@@ -6,7 +6,6 @@
       "name": "live",
       "type": 0,
       "url": "./tvlist.txt",
-      //"epg": "https://epg.zbds.top/",
       "epg": "http://epg.51zmt.top:8000/api/diyp/",
       "logo": "https://gitee.com/hong-j/logo/raw/master/{name}.png"
     }
@@ -29,7 +28,6 @@
       "jar": "https://jar.yy.xn--dkw.xn--6qq986b3xl/m/jar.php?id=xx;md5;ed61f5e30960fa9d7c4ef6cf81a3f01b",
       "ext": "https://xn--evve-rp5imh.v.nxog.top/m/公告.php?b=ev公众号【欧歌APP】网络收集免费分享勿演示贩卖！ve"
     },
-    //jar
     {
       "key": "荐片",
       "name": "🥝荐片┃多线",
@@ -49,15 +47,7 @@
       "type": 3,
       "jar": "https://ncstatic-file.clewm.net/rsrc/2026/0406/21/5b2f258907bc956ee3538c9f5cdf4b83.jpg;md5;5af5edf697f25b99eb189fb800e1d098"
     },
-    {
-      "key": "賤賤",
-      "name": "💥荐片┃p2p💥",
-      "type": 3,
-      "api": "csp_WexJianpianGuard",
-      "searchable": 1,
-      "changeable": 1,
-      "jar":"http://oss4liview.moji.com/thd_file/2026/08/14/b2f94d159476943ed67b248b44c9deb0.jpg;md5;770bdfefe22c128a8cbf126c8e6e444d"
-    },
+    
     {
       "key": "原创",
       "name": "👒原创┃不卡",
@@ -113,39 +103,9 @@
       "ext": "uqGL1bNENExT7/hGxpSE5qU=",
       "jar": "https://zl.wpscdn.cn/2026/08/16/space_img/319d8350-dadc-4c0e-9555-15c65fd6dbdb.jpg;md5;ea8ab37f3d7bedd2bfa2b4b1e4d1eca4"
     },
-    {
-      "key": "天天影视",
-      "name": "💡天天｜影视",
-      "type": 3,
-      "api": "csp_AppRJ",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": {
-        "url": "http://tt.ysdqjs.cn"
-      }
-    },
-    {
-      "key": "浪酷影视",
-      "name": "💡浪酷｜影视",
-      "type": 3,
-      "api": "csp_AppRJ",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": {
-        "url": "http://v.lkuys.cn"
-      }
-    },
-    {
-      "key": "WexkuihuatvGuard",
-      "name": "💥葵花┃影视💥",
-      "type": 3,
-      "api": "csp_WexkuihuatvGuard",
-      "searchable": 1,
-      "changeable": 1,
-      "jar":"http://oss4liview.moji.com/thd_file/2026/08/14/b2f94d159476943ed67b248b44c9deb0.jpg;md5;770bdfefe22c128a8cbf126c8e6e444d"
-    },
+    
+    
+    
     {
       "key": "瓜子",
       "name": "💡瓜子｜影视",
@@ -215,15 +175,7 @@
       "type": 3,
       "api": "csp_SP360"
     },
-    {
-      "key": "1905",
-      "name": "💡1905｜影视",
-      "type": 3,
-      "api": "csp_Web1905",
-      "searchable": 1,
-      "quickSearch": 0,
-      "filterable": 0
-    },
+    
     {
       "key": "csp_baibai",
       "name": "💡白白｜影视",
@@ -328,7 +280,6 @@
    
     
     
-    //XBPQ-XYQ 
     {
       "key": "csp_XYQHiker_农民影视",
       "name": "🧿农民｜影视",
@@ -378,7 +329,6 @@
       "ext": "https://gitee.com/PizazzXS/another-d/raw/master/movie/json/MBYS.json"
     },
     
-    //磁力
     {
       "key": "新6V",
       "name": "🧲新6V┃磁力",
@@ -426,443 +376,11 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1
-    },
+    }
    
     
-    //杂
-    {
-      "key": "本地",
-      "name": "🌸本地｜视频",
-      "type": 3,
-      "api": "csp_LocalFile"
-    },
-    {
-      "key": "预告",
-      "name": "🌸新片｜预告",
-      "type": 3,
-      "api": "csp_DouBan",
-      "searchable": 0
-    },
-    {
-      "key": "合集",
-      "name": "💋哔哩┃合集",
-      "type": 3,
-      "api": "https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 0,
-      "filterable": 1,
-      "order_num": 142,
-      "ext": "https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/js/我的哔哩.js?type=url&params=https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/Bilibili/合集.json"
-    },
-    {
-      "key": "88看球",
-      "name": "💋88｜看球",
-      "type": 3,
-      "api": "https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/js/drpy2.min.js",
-      "style": {
-        "type": "list"
-      },
-      "ext": "https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/js/88看球.js"
-    },
-    //动漫
-    {
-      "key": "曼波动漫",
-      "name": "🤣曼波｜动漫",
-      "type": 3,
-      "quickSearch": 1,
-      "api": "csp_AppGet",
-      "ext": {
-        "url": "https://app.omofun1.top",
-        "dataKey": "66dc309cbeeca454",
-        "dataIv": "66dc309cbeeca454",
-        "deviceId": "",
-        "version": ""
-      }
-    },
-    {
-      "key": "咕咕动漫",
-      "name": "🤣咕咕｜动漫",
-      "type": 3,
-      "quickSearch": 1,
-      "api": "csp_AppGet",
-      "ext": {
-        "url": "https://www.gugu3.com",
-        "dataKey": "nKfZ8KX6JTNWRzTD",
-        "dataIv": "nKfZ8KX6JTNWRzTD",
-        "deviceId": "",
-        "version": ""
-      }
-    },
-    {
-      "key": "米饭动漫",
-      "name": "🤣米饭｜动漫",
-      "type": 3,
-      "quickSearch": 1,
-      "api": "csp_AppGet",
-      "ext": {
-        "url": "http://45.43.29.111:9527",
-        "dataKey": "GETMIFUNGEIMIFUN",
-        "dataIv": "GETMIFUNGEIMIFUN",
-        "deviceId": "",
-        "version": ""
-      }
-    },
-    {
-      "key": "魔都资源",
-      "name": "🤣魔都┃动漫",
-      "type": 1,
-      "api": "https://caiji.moduapi.cc/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
-      "key": "急救教学",
-      "name": "🤣急救｜教学",
-      "type": 3,
-      "api": "csp_FirstAid",
-      "searchable": 0,
-      "quickSearch": 0,
-      "changeable": 0,
-      "style": {
-        "type": "rect",
-        "ratio": 3.8
-      },
-      "gridview": "0-0-4.1"
-    },
-    {
-      "key": "派对动漫",
-      "name": "🤣派对｜动漫",
-      "type": 3,
-      "quickSearch": 1,
-      "api": "csp_AppGet",
-      "ext": {
-        "url": "https://qjappcms.acg.party",
-        "dataKey": "AmtMYFCJDPoTlK7z",
-        "dataIv": "AmtMYFCJDPoTlK7z",
-        "deviceId": "",
-        "version": ""
-      }
-    },
-    {
-      "key": "多多动漫",
-      "name": "🤣多多｜动漫",
-      "type": 3,
-      "quickSearch": 1,
-      "api": "csp_AppGet",
-      "ext": {
-        "url": "",
-        "site": "https://app.cf4k.xyz/1.txt",
-        "dataKey": "qqqqqqqqqqqqqqqq",
-        "dataIv": "qqqqqqqqqqqqqqqq",
-        "deviceId": "",
-        "version": ""
-      }
-    },
-    //网盘
-    {
-      "key": "木偶",
-      "name": "❤木偶｜4K弹幕",
-      "type": 3,
-      "api": "csp_PanWebShare",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "ext": "https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/mogg.json?"
-    },
-    {
-      "key": "蜡笔",
-      "name": "❤蜡笔｜4K弹幕",
-      "type": 3,
-      "api": "csp_PanWebShare",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 1,
-      "ext": "https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/lb.json?"
-    },
-    {
-      "key": "小米",
-      "name": "❤小米｜4K弹幕",
-      "type": 3,
-      "api": "csp_PanWebShare",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 1,
-      "ext": "https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/xm.json?"
-    },
-    {
-      "key": "至臻",
-      "name": "❤至臻｜4K弹幕",
-      "type": 3,
-      "api": "csp_PanWebShare",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 1,
-      "ext": "https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/zz.json?"
-    },
-    {
-      "key": "多多",
-      "name": "❤多多｜4K弹幕",
-      "type": 3,
-      "api": "csp_PanWebShare",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 1,
-      "ext": "https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/yyds.json?"
-    },
-    {
-      "key": "欧哥备",
-      "name": "❤玩偶｜4K弹幕",
-      "type": 3,
-      "api": "csp_PanWebShare",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 1,
-      "ext": "https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/og.json?"
-    },
-    {
-      "key": "雷鲸",
-      "name": "❤雷鲸｜4K",
-      "type": 3,
-      "api": "csp_PanWebShareCloudLJ",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 1,
-      "style": {
-        "type": "list",
-        "ratio": 1.433
-      },
-      "ext": "https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/lj.json"
-    },
-    {
-      "key": "趣盘",
-      "name": "❤趣盘｜4K",
-      "type": 3,
-      "api": "csp_PanWebQu",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "style": {
-        "type": "list",
-        "ratio": 1.433
-      },
-      "ext": {
-        "url": "https://www.qupanshe.com"
-      }
-    },
-    {
-      "key": "聚搜",
-      "name": "❤聚搜｜4K",
-      "type": 3,
-      "api": "csp_PanWebSearch",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "style": {
-        "type": "list",
-        "ratio": 1.433
-      },
-      "ext": "https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/aliyunpansearch.json"
-    },
-    {
-      "key": "盘库",
-      "name": "❤盘库｜4K",
-      "type": 3,
-      "api": "csp_PanWebKuBa",
-      "searchable": 1,
-      "filterable": 0,
-      "changeable": 0,
-      "ext": {
-        "url": "https://panku8.com,https://yipanso.com"
-      }
-    },
-    {
-      "key": "csp_woog",
-      "name": "🐲玩欧｜4K弹幕",
-      "type": 3,
-      "changeable": "0",
-      "api": "csp_Duopan",
-      "filterable": 1,
-      "jar": "https://jar.yy.xn--dkw.xn--6qq986b3xl/m/jar.php?id=og;md5;9bdec773016b12f54c065c038519055b ",
-      "ext": {
-        "site_urls": [
-          "https://woog.nxog.eu.org",
-          "https://woog.nxog.fun",
-          "https://woog.xn--dkw.xn--6qq986b3xl",
-          "https://ogwo.xn--dkw.xn--6qq986b3xl"
-        ],
-        "url_key": "woog",
-        "threadinfo": {
-          "chunksize": 259,
-          "threads": 16
-        }
-      }
-    },
-    {
-      "key": "config",
-      "name": "🐲配置｜中心",
-      "type": 3,
-      "jar": "https://jar.yy.xn--dkw.xn--6qq986b3xl/m/jar.php?id=cf2;md5;9bdec773016b12f54c065c038519055b ",
-      "api": "csp_Config",
-      "searchable": 0
-    },
-    {
-      "key": "csp_woogkk",
-      "name": "🐲夸快┃非会员4K",
-      "type": 3,
-      "changeable": "0",
-      "api": "csp_woog",
-      "filterable": 1,
-      "jar": "https://jar.yy.xn--dkw.xn--6qq986b3xl/m/jar.php?id=a3;md5;468e5883e1e500c3003b24ee8b6d0dcd",
-      "ext": {
-        "site_urls": [
-          "hhttps://ogkk.nxog.eu.org",
-          "https://ogkk.nxog.fun",
-          "https://ogkk.xn--dkw.xn--6qq986b3xl"
-        ],
-        "url_key": "UC",
-        "threadinfo": {
-          "chunksize": 223,
-          "threads": 60
-        }
-      }
-    },
-    {
-      "key": "csp_欧歌123",
-      "name": "🐲夸快┃配置",
-      "type": 3,
-      "api": "csp_Config",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "jar": "https://jar.yy.xn--dkw.xn--6qq986b3xl/m/jar.php?id=cf;md5;67571a165ff0861ddf17e517d9c329c0"
-    },
-    {
-      "key": "csp_woog2",
-      "name": "❤欧歌｜4K弹幕",
-      "type": 3,
-      "changeable": "0",
-      "api": "csp_Duopan",
-      "filterable": 1,
-      "jar": "https://jar.yy.xn--dkw.xn--6qq986b3xl/m/jar.php?id=og2;md5;a842e69c0159c0a51366e873365e71f9 ",
-      "ext": {
-        "site_urls": [
-          "https://ogkk.nxog.eu.org",
-          "https://ogkk.nxog.fun",
-          "https://ogkk.xn--dkw.xn--6qq986b3xl"
-        ],
-        "url_key": "woog2",
-        "threadinfo": {
-          "chunksize": 287,
-          "threads": 16
-        }
-      }
-    },
-    {
-      "key": "配置中心",
-      "name": "❤配置｜中心",
-      "type": 3,
-      "api": "csp_Config",
-      "searchable": 0,
-      "changeable": 0,
-      "style": {
-        "type": "rect",
-        "ratio": 1.597
-      }
-    },
-    {
-      "key": "阿里云盘",
-      "name": "❤我的｜阿里",
-      "type": 3,
-      "api": "csp_PanAli",
-      "searchable": 0,
-      "filterable": 0,
-      "changeable": 0,
-      "style": {
-        "type": "list",
-        "ratio": 1.433
-      },
-      "ext": "https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/aliShare.json"
-    },
-    {
-      "key": "夸克云盘",
-      "name": "❤我的｜夸克",
-      "type": 3,
-      "api": "csp_PanQuark",
-      "searchable": 0,
-      "filterable": 0,
-      "changeable": 0,
-      "style": {
-        "type": "list",
-        "ratio": 1.433
-      },
-      "ext": "https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/quarkShare.json"
-    },
-    {
-      "key": "UC",
-      "name": "❤我的｜UC",
-      "type": 3,
-      "api": "csp_PanUc",
-      "searchable": 0,
-      "filterable": 0,
-      "changeable": 0,
-      "style": {
-        "type": "list",
-        "ratio": 1.433
-      },
-      "ext": "https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/json/ucShare.json"
-    },
-    {
-      "key": "百度云盘",
-      "name": "❤我的｜百度",
-      "type": 3,
-      "api": "csp_PanBaiDu",
-      "searchable": 0,
-      "filterable": 0,
-      "changeable": 0,
-      "style": {
-        "type": "list",
-        "ratio": 1.433
-      }
-    },
-    {
-      "key": "push_agent",
-      "name": "📢手机｜推送",
-      "type": 3,
-      "api": "csp_Push",
-      "searchable": 0,
-      "filterable": 0,
-      "changeable": 0
-    },
-    {
-      "key": "应用商店",
-      "name": "🛒本地包更新",
-      "type": 3,
-      "api": "csp_Market",
-      "searchable": 0,
-      "changeable": 0,
-      "ext": "http://123.yy.xn--dkw.xn--6qq986b3xl/zm/sd.php"
-    },
-    {
-      "key": "豆瓣3",
-      "name": "📢接口软件永远免费",
-      "type": 3,
-      "api": "csp_Douban",
-      "searchable": 0
-    },
-    {
-      "key": "豆瓣4",
-      "name": "📢长期维护切勿贩卖",
-      "type": 3,
-      "api": "csp_Douban",
-      "searchable": 0
-    }
+    
+   
   ],
   "parses": [
     {
@@ -1276,9 +794,7 @@
       ]
     }
   ],
-  "ads": [
-    "mozai.4gtv.tv"
-  ],
+ 
   "proxy": [
     "raw.githubusercontent.com",
     "googlevideo.com",
@@ -1551,5 +1067,5 @@
     "cdnjs.hnfenxun.com",
     "cms.qdwght.com"
   ]
-  //**本接口免费分享给小白测试和学习使用，请勿用于违法用途，如有冒犯请联系删除，谨防上当受骗。<请勿相信视频中广告>
+
 }
