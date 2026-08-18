@@ -152,7 +152,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/yoursmile.jar",
+      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar",
       "ext": "7lj763gg0939791h1l3888jig44gi291li"
     },
     {
@@ -163,7 +163,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/yoursmile.jar"
+      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar"
     },
     {
       "key": "csp_LiteApple",
@@ -173,7 +173,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/yoursmile.jar"
+      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar"
     },
     {
       "key": "爱看机器人",
@@ -200,7 +200,7 @@
       "quickSearch": 1,
       "filterable": 1,
       "changeable": 1,
-      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/yoursmile.jar"
+      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar"
     },
     {
       "key": "三六零",
@@ -252,7 +252,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/yoursmile.jar"
+      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar"
     },
     {
       "key": "金牌",
@@ -260,7 +260,7 @@
       "type": 3,
       "quickSearch": 1,
       "api": "csp_Jpys",
-      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/yoursmile.jar"
+      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar"
     },
     {
       "key": "奇优影视",
