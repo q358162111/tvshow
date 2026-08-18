@@ -252,21 +252,28 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
+      "changeable": 1,
       "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar"
     },
     {
       "key": "金牌",
       "name": "💡金牌｜影视",
       "type": 3,
+           "api": "csp_Jpys",
+      "searchable": 1,
       "quickSearch": 1,
-      "api": "csp_Jpys",
+      "filterable": 1,
+      "changeable": 1,
       "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar"
     },
      {
       "key": "csp_Jpys",
       "name": "💡金牌｜影视",
       "type": 3,
+     "searchable": 1,
       "quickSearch": 1,
+      "filterable": 1,
+      "changeable": 1,
       "api": "csp_Jpys",
       "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar"
     },
