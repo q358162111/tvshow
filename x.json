@@ -159,7 +159,7 @@
       "key": "电影天堂",
       "name": "🧲电影天堂",
       "type": 3,
-      "api": "csp_DyGod",
+      "api": "csp_TvDy",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
