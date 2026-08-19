@@ -182,6 +182,8 @@
       "api": "csp_Ikanbot",
       "searchable": 1,
       "quickSearch": 1,
+            "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar",
+
       "filterable": 1
     },
     {
@@ -232,6 +234,8 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
+            "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar",
+
       "ext": "https://cs.hgyx.vip/api2/api.php/app/"
     },
     {
@@ -248,7 +252,7 @@
       "key": "csp_DyGod",
       "name": "🧲电影天堂",
       "type": 3,
-      "api": "csp_DyGod",
+      "api": "csp_Tvdy",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
@@ -316,7 +320,7 @@
       "type": 3,
       "api": "csp_Nmvod",
       "playerType": 2,
-      "jar": "https://ncstatic.clewm.net/rsrc/2025/0915/15/e210975c2c794cbc8bb1839b54ac213e.png;md5;939FFBC2941A28CA533F2653FA4B449E",
+      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar",
       "ext": "7lj763gg402i7942503g839jg74h8h88highi40799jh6i6k454419l0l5184k0g549h0kg2i01i838i2h42g891lgg1"
     },
     {
@@ -325,7 +329,7 @@
       "type": 3,
       "api": "csp_Qiji",
       "playerType": 2,
-      "jar": "https://ncstatic.clewm.net/rsrc/2025/0915/15/e210975c2c794cbc8bb1839b54ac213e.png;md5;939FFBC2941A28CA533F2653FA4B449E",
+      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar",
       "ext": "7lj763gg402i79425h2384j4g949j899hll9990i9kjl6l740h1342hjlg1848401g8610h9995i998j351gl38kklkj1hkhll757010k7hji6h377ih37k060g35161jhl3i5h0l2702g7299452l4297k5697g5390lk6935k2i9g48l8j2kh27l1g014k7j9475g8"
     },
     {
