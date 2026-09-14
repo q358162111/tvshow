@@ -1,7 +1,6 @@
 {
   "wallpaper": "https://imgapi.cn/bing.php?rand=true",
-  "spider": "https://zl.wpscdn.cn/2026/08/16/space_img/319d8350-dadc-4c0e-9555-15c65fd6dbdb.jpg;md5;ea8ab37f3d7bedd2bfa2b4b1e4d1eca4",
-  "lives": [
+  "spider": "https://file.icve.com.cn/file_doc/874/405/DAB654F794A271C3D7A33D18ACFBFA95.jpg;md5;dab654f794a271c3d7a33d18acfbfa95",  "lives": [
     {
       "name": "live",
       "type": 0,
@@ -91,7 +90,7 @@
       "type": 3,
       "api": "csp_AppgzGuard",
       "timeout": 15,
-      "playerType": 1,
+      "playerType": 2,
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1
