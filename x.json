@@ -172,7 +172,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar"
+      "jar": "./TvDy.jar"
     },
     {
       "key": "csp_LiteApple",
@@ -266,7 +266,7 @@
       "quickSearch": 1,
       "filterable": 1,
       "changeable": 1,
-      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar"
+      "jar": "./TvDy.jar"
     },
     {
       "key": "金牌",

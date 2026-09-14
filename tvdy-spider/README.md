@@ -2,6 +2,8 @@
 
 TVBox / 影视TV 的 **jar 类型爬虫**（catvod 规范），类名 `com.github.catvod.spider.TvDy`，对应配置里写 `"api": "csp_TvDy"`。
 
+jar 内同时包含大小写兼容别名类 `com.github.catvod.spider.Tvdy`，因此 `"api": "csp_TvDy"` 与 `"api": "csp_Tvdy"` 都可用。
+
 站点为 **苹果CMS10 + stui 模板**，本爬虫全部接口与 URL 段位均已对线上站点实测验证。
 
 ## 一、产物
@@ -15,6 +17,7 @@ TVBox / 影视TV 的 **jar 类型爬虫**（catvod 规范），类名 `com.githu
 ```
 tvdy-spider/
 ├─ src/com/github/catvod/spider/TvDy.java   爬虫主体（唯一需要改的文件）
+├─ src-alias/.../Tvdy.java                  大小写别名类（独立目录，规避 Windows 文件系统大小写不敏感）
 ├─ stubs/                                   编译期桩类，不会打进 jar
 ├─ build.ps1                                一键编译打包（javac → d8 → jar）
 ├─ dist/TvDy.jar                            构建产物
@@ -33,7 +36,7 @@ powershell -ExecutionPolicy Bypass -File tvdy-spider\build.ps1
 
 ## 四、配置用法
 
-jar 放到可访问的地址（本地文件或图床/网盘直链），站点配置：
+把 `dist/TvDy.jar` 放到 x.json 同目录（推荐相对路径），站点配置：
 
 ```json
 {
@@ -44,7 +47,7 @@ jar 放到可访问的地址（本地文件或图床/网盘直链），站点配
   "searchable": 1,
   "quickSearch": 1,
   "filterable": 1,
-  "jar": "http://你的地址/TvDy.jar"
+  "jar": "./TvDy.jar"
 }
 ```
 
