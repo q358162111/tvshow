@@ -165,12 +165,32 @@ public class Kanys8 extends Spider {
         String lang = seg(ext.get("lang"));
         String year = seg(ext.get("year"));
 
-        StringBuilder sb = new StringBuilder(host).append("/filmshow/").append(type).append("-");
-        sb.append(orDash(area)).append("-");
-        sb.append(orDash(by)).append("-");
-        sb.append(orDash(lang)).append("-");
-        sb.append(orDash(year)).append("-");
-        sb.append("-").append(page).append("---.html");
+        // 实测精确模板：type 后固定 11 个 "-" 占位 (按字符计)
+        //   area: 1 个 "-" + 编码后 area
+        //   by:   2 个 "-" + 编码后 by
+        //   lang: 4 个 "-" + 编码后 lang
+        //   year: 11 个 "-" + 编码后 year (最末追加)
+        //   剩余位补 "-" 凑够 11；page>1 时追加 "-{N}---"
+        StringBuilder sb = new StringBuilder(host).append("/filmshow/").append(type);
+        int empty = 11;
+        int[] lead = {1, 2, 4};
+        String[] fields = {area, by, lang};
+        for (int i = 0; i < fields.length; i++) {
+            String v = fields[i];
+            if (v.length() > 0) {
+                for (int k = 0; k < lead[i]; k++) sb.append("-");
+                sb.append(orDash(v));
+                empty -= lead[i];
+            }
+        }
+        if (year.length() > 0) {
+            for (int k = 0; k < 11; k++) sb.append("-");
+            sb.append(orDash(year));
+            empty = 0;
+        }
+        for (int i = 0; i < empty; i++) sb.append("-");
+        if (page > 1) sb.append("-").append(page).append("---");
+        sb.append(".html");
         String target = sb.toString();
 
         String html = get(target);
@@ -278,12 +298,14 @@ public class Kanys8 extends Spider {
 
         if (!isVideo(url) && url.startsWith("/filmplay/")) {
             String html = get(url);
-            String playUrl = first(html, "\"url\"\\s*:\\s*\"((?:[^\"\\\\]|\\\\.)+)\"");
+            // 优先从 player_xxxx 块里取 url，避免被 maccms 自身的 url 配置干扰
+            String playUrl = "";
+            Matcher m = Pattern.compile("player_\\w+\\s*=\\s*\\{[\\s\\S]*?\"url\"\\s*:\\s*\"([^\"]+)\"").matcher(html);
+            if (m.find()) playUrl = m.group(1).replace("\\/", "/");
+            // 兜底：含 m3u8/mp4 的 url 字段
             if (playUrl.length() == 0) {
-                Matcher m = Pattern.compile("player_\\w+\\s*=\\s*\\{[\\s\\S]*?\"url\"\\s*:\\s*\"([^\"]+)\"").matcher(html);
-                if (m.find()) playUrl = m.group(1).replace("\\/", "/");
-            } else {
-                playUrl = playUrl.replace("\\/", "/");
+                Matcher m2 = Pattern.compile("\"url\"\\s*:\\s*\"([^\"]+\\.(?:m3u8|mp4)[^\"]*)\"").matcher(html);
+                if (m2.find()) playUrl = m2.group(1).replace("\\/", "/");
             }
             if (playUrl.length() > 0) url = playUrl;
         }

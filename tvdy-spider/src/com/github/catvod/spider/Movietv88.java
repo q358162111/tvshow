@@ -312,13 +312,14 @@ public class Movietv88 extends Spider {
 
         if (!isVideo(url) && url.startsWith("/vod/play/id/")) {
             String html = get(url);
-            String playUrl = first(html, "\"url\"\\s*:\\s*\"((?:[^\"\\\\]|\\\\.)+)\"");
+            // 优先从 player_xxxx 块里取 url，避免被 maccms 自身的 url 配置干扰
+            String playUrl = "";
+            Matcher m = Pattern.compile("player_\\w+\\s*=\\s*\\{[\\s\\S]*?\"url\"\\s*:\\s*\"([^\"]+)\"").matcher(html);
+            if (m.find()) playUrl = m.group(1).replace("\\/", "/");
+            // 兜底：含 m3u8/mp4 的 url 字段
             if (playUrl.length() == 0) {
-                // 兜底：再尝试  player_aaaa = {...} 完整对象
-                Matcher m = Pattern.compile("player_\\w+\\s*=\\s*\\{[\\s\\S]*?\"url\"\\s*:\\s*\"([^\"]+)\"").matcher(html);
-                if (m.find()) playUrl = m.group(1).replace("\\/", "/");
-            } else {
-                playUrl = playUrl.replace("\\/", "/");
+                Matcher m2 = Pattern.compile("\"url\"\\s*:\\s*\"([^\"]+\\.(?:m3u8|mp4)[^\"]*)\"").matcher(html);
+                if (m2.find()) playUrl = m2.group(1).replace("\\/", "/");
             }
 
             if (playUrl.length() > 0) {
