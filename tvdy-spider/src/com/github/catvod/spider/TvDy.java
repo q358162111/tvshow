@@ -22,17 +22,17 @@ import java.util.regex.Pattern;
 
 /**
  * TV电影天堂  https://www.tvdy.xyz
- * 站点架构：苹果CMS10 + stui 模板（接口与 URL 段位均经实测验证）
+ * 站点架构：苹果CMS10 + stui 模板（已对 2025-09 线上站点实测）
  * <p>
- * 分类: /vodshow/{id}-{area}-{by}-{class}-{lang}----{page}---{year}.html
- * 分类页: /vodtype/{id}.html       详情: /voddetail/{id}.html
+ * 导航: /                  →  ul.stui-header__menu  →  /vodtype/{slug}.html
+ * 分类: /vodtype/{slug}-{page}.html   +  ?area=&class=&year=&by=&lang=
  * 搜索: /vodsearch/{wd}----------{page}---.html
- * 播放: /vodplay/{id}-{sid}-{nid}.html  → var player_aaaa={...}，encrypt=2 时 url=base64(urlencode(直链))
+ * 详情: /voddetail/{id}.html
+ * 播放: /vodplay/{id}-{sid}-{nid}.html  →  var player_xxxx={ encrypt, url (base64+urlencode), ... }
  * <p>
  * 配置示例：
- * {"key":"电影天堂","name":"电影天堂","type":3,"api":"csp_TvDy",
- * "searchable":1,"quickSearch":1,"filterable":1,"jar":"xx.jar",
- * "ext":{"host":"https://www.tvdy.xyz"}}
+ * {"key":"tvdy","name":"tvdy","type":3,"api":"csp_TvDy",
+ * "searchable":1,"quickSearch":1,"filterable":1,"jar":"TvDy.jar"}
  */
 public class TvDy extends Spider {
 
@@ -41,7 +41,7 @@ public class TvDy extends Spider {
 
     private String host = DEFAULT_HOST;
 
-    /** 默认分类（站点导航解析失败时兜底） */
+    /** 默认分类（slug 形式，与站点导航一致） */
     private static final String[][] DEFAULT_CLASSES = {
             {"dianying", "电影"}, {"dianshiju", "电视剧"},
             {"zongyi", "综艺"}, {"dongman", "动漫"}, {"tiyu", "体育"}};
@@ -144,30 +144,28 @@ public class TvDy extends Spider {
     }
 
     // ==================== 分类 ====================
+    // 站点分类 URL：/vodtype/{slug}-{page}.html
+    // 过滤器通过 query string 传入：area / class / lang / year / by
 
     @Override
     public String categoryContent(String tid, String pg, boolean filter, HashMap<String, String> extend) throws Exception {
         int page = parseInt(pg, 1);
         Map<String, String> ext = extend == null ? new HashMap<String, String>() : extend;
-        String[] parts = {tid, seg(ext.get("area")), seg(ext.get("by")), seg(ext.get("class")),
-                seg(ext.get("lang")), "", "", "", String.valueOf(page), "", "", seg(ext.get("year"))};
-        StringBuilder sb = new StringBuilder(host).append("/vodshow/");
-        for (int i = 0; i < parts.length; i++) {
-            if (i > 0) sb.append('-');
-            sb.append(enc(parts[i]));
+
+        StringBuilder sb = new StringBuilder(host).append("/vodtype/").append(tid).append("-").append(page).append(".html");
+        List<String> q = new ArrayList<String>();
+        for (String k : new String[]{"area", "by", "class", "lang", "year"}) {
+            String v = seg(ext.get(k));
+            if (v.length() > 0) q.add(k + "=" + enc(v));
         }
-        sb.append(".html");
+        if (!q.isEmpty()) sb.append('?').append(join(q, "&", ""));
+
         String html = get(sb.toString());
         JSONArray list = parseList(html);
-        if (list.length() == 0) {
-            // 兜底：普通分类页
-            html = get("/vodtype/" + tid + (page > 1 ? "-" + page : "") + ".html");
-            list = parseList(html);
-        }
         return new JSONObject()
                 .put("list", list)
                 .put("page", page)
-                .put("pagecount", list.length() == 0 ? page : parsePageCount(html))
+                .put("pagecount", parsePageCount(html))
                 .put("limit", 90)
                 .put("total", 999999)
                 .toString();
@@ -187,7 +185,7 @@ public class TvDy extends Spider {
         JSONArray list = parseList(html);
         return new JSONObject().put("list", list)
                 .put("page", page)
-                .put("pagecount", list.length() == 0 ? page : parsePageCount(html))
+                .put("pagecount", parsePageCount(html))
                 .put("limit", 90)
                 .put("total", 999999)
                 .toString();
@@ -202,8 +200,11 @@ public class TvDy extends Spider {
 
         String name = first(html, "<h1 class=\"title\">([^<]+)");
         if (name.length() == 0) name = id;
+        // 年份：先取 <font color=...>（YYYY）</font>，再退化到 <h1 class="title">...（YYYY）...
         String year = first(html, "<font color=\"#[0-9a-fA-F]+\">（(\\d{4})）</font>");
-        String pic = first(html, "class=\"stui-content__thumb[^\"]*\"[^>]*>[\\s\\S]*?data-original=\"([^\"]+)\"");
+        if (year.length() == 0) year = first(html, "<h1[^>]*class=\"title\"[^>]*>[^（(]*[（(](\\d{4})[）)]");
+
+        String pic = firstIgnoreCase(html, "class=\"stui-content__thumb[^\"]*\"[^>]*>[\\s\\S]*?data-original=\"([^\"]+)\"");
         if (pic.length() == 0) pic = firstIgnoreCase(html, "data-original=\"([^\"]+\\.(?:jpg|jpeg|png|webp))\"");
 
         Map<String, String> data = new HashMap<String, String>();
@@ -316,6 +317,7 @@ public class TvDy extends Spider {
             if (id.length() == 0 || !seen.add(id)) continue;
             String name = first(tag, "title=\"([^\"]*)\"").trim();
             if (name.length() == 0) continue;
+            // data-original 在开标签里；pic-text / score 在 </a> 之后
             String pic = first(tag, "(?:data-original|src)=\"([^\"]*)\"");
             String tail = html.substring(m.end(), Math.min(html.length(), m.end() + 400));
             String remarks = first(tail, "<span[^>]*class=\"[^\"]*pic-text[^\"]*\"[^>]*>([^<]+)<");
@@ -332,14 +334,19 @@ public class TvDy extends Spider {
     private int parsePageCount(String html) {
         if (html == null || html.length() == 0) return 9999;
         int idx = html.indexOf("stui-page");
-        String seg = idx >= 0 ? html.substring(idx) : "";
-        String total = first(seg, ">(\\d+)\\s*/\\s*(\\d+)<");
-        if (total.length() == 0) total = first(html, ">(\\d+)\\s*/\\s*(\\d+)<");
-        int pages = parseInt(total, 0);
-        if (pages > 0) return pages;
-        Matcher m = Pattern.compile(">(\\d+)<").matcher(seg);
+        String seg = idx >= 0 ? html.substring(idx) : html;
+        // 取 stui-page 段内 "X/Y" 中最大的 Y 才是真实总页数（避免被首页轮播之类的 X/3 干扰）
+        int best = 0;
+        Matcher m = Pattern.compile(">(\\d+)\\s*/\\s*(\\d+)<").matcher(seg);
+        while (m.find()) {
+            int y = parseInt(m.group(2), 0);
+            if (y > best) best = y;
+        }
+        if (best > 0) return best;
+        // 兜底：段内最大数字
         int max = 0;
-        while (m.find()) max = Math.max(max, parseInt(m.group(1), 0));
+        Matcher m2 = Pattern.compile(">(\\d+)<").matcher(seg);
+        while (m2.find()) max = Math.max(max, parseInt(m2.group(1), 0));
         return max > 0 ? max : 9999;
     }
 
@@ -392,7 +399,6 @@ public class TvDy extends Spider {
         return url;
     }
 
-    /** 苹果CMS 12 段 URL 用：空值 => 空串 */
     private String seg(String v) {
         return v == null ? "" : v.trim();
     }
