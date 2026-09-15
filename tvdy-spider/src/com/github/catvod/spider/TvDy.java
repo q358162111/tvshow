@@ -4,11 +4,15 @@ import android.content.Context;
 import android.util.Base64;
 
 import com.github.catvod.crawler.Spider;
-import com.github.catvod.net.OkHttp;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.lang.reflect.Method;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -50,8 +54,6 @@ public class TvDy extends Spider {
             "犯罪", "同性", "音乐", "歌舞", "传记", "历史", "战争", "西部", "奇幻", "冒险", "灾难", "武侠", "短剧"};
     private static final String[] FILTER_AREA = {"大陆", "香港", "台湾", "美国", "法国", "英国", "日本", "韩国",
             "泰国", "德国", "丹麦", "印度", "意大利", "西班牙", "菲律宾", "加拿大", "其它"};
-    private static final String[] FILTER_LANG = {"国语", "粤语", "英语", "韩语", "日语", "法语", "德语", "俄语",
-            "泰语", "闽南语", "意大利语", "西班牙语", "葡萄牙语", "菲律宾语", "泰米尔语", "其它"};
     private static final String[] FILTER_YEAR = {"2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019",
             "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "更早"};
     private static final String[][] FILTER_BY = {{"全部", ""}, {"最新", "time"}, {"人气", "hits"},
@@ -122,11 +124,11 @@ public class TvDy extends Spider {
         return list;
     }
 
+    /** 与站点 /vodshow/ 路由上真实的筛选组保持一致（站点没有“语言”筛选） */
     private JSONArray buildFilters() throws Exception {
         JSONArray filters = new JSONArray();
         filters.put(group("class", "剧情", FILTER_CLASS));
         filters.put(group("area", "地区", FILTER_AREA));
-        filters.put(group("lang", "语言", FILTER_LANG));
         filters.put(group("year", "年份", FILTER_YEAR));
         filters.put(group("by", "排序", null));
         return filters;
@@ -144,23 +146,38 @@ public class TvDy extends Spider {
     }
 
     // ==================== 分类 ====================
-    // 站点分类 URL：/vodtype/{slug}-{page}.html
-    // 过滤器通过 query string 传入：area / class / lang / year / by
+    // 无筛选：/vodtype/{slug}-{page}.html
+    // 有筛选：站点筛选用 /vodshow/ 路由（?query 站点不认）：
+    //   /vodshow/{slug}-{area}-{by}-{class}-{4}-{5}-{6}-{7}-{page}-{9}-{10}-{year}.html
+    //   字段位置由线上链接实测确定：area=1, by=2, class=3, page=8, year=11
 
     @Override
     public String categoryContent(String tid, String pg, boolean filter, HashMap<String, String> extend) throws Exception {
         int page = parseInt(pg, 1);
         Map<String, String> ext = extend == null ? new HashMap<String, String>() : extend;
 
-        StringBuilder sb = new StringBuilder(host).append("/vodtype/").append(tid).append("-").append(page).append(".html");
-        List<String> q = new ArrayList<String>();
-        for (String k : new String[]{"area", "by", "class", "lang", "year"}) {
-            String v = seg(ext.get(k));
-            if (v.length() > 0) q.add(k + "=" + enc(v));
-        }
-        if (!q.isEmpty()) sb.append('?').append(join(q, "&", ""));
+        String area = seg(ext.get("area"));
+        String by = seg(ext.get("by"));
+        String cls = seg(ext.get("class"));
+        String year = seg(ext.get("year"));
 
-        String html = get(sb.toString());
+        String target;
+        if (area.length() == 0 && by.length() == 0 && cls.length() == 0 && year.length() == 0) {
+            target = host + "/vodtype/" + tid + "-" + page + ".html";
+        } else {
+            String[] f = {"", "", "", "", "", "", "", "", "", "", "", ""};
+            f[0] = tid;
+            f[1] = area;
+            f[2] = by;
+            f[3] = cls;
+            f[8] = page > 1 ? String.valueOf(page) : "";
+            f[11] = year;
+            StringBuilder sb = new StringBuilder(host).append("/vodshow/").append(f[0]);
+            for (int i = 1; i < f.length; i++) sb.append('-').append(enc(f[i]));
+            target = sb.append(".html").toString();
+        }
+
+        String html = get(target);
         JSONArray list = parseList(html);
         return new JSONObject()
                 .put("list", list)
@@ -359,14 +376,94 @@ public class TvDy extends Spider {
         return h;
     }
 
+    /**
+     * 宿主 OkHttp 的签名各家 fork 不一致（takagen99/Box 只有 string(String)，
+     * 没有 string(String, Map)），所以这里一律用反射探测，找不到就退回纯 JDK 实现，
+     * 避免 NoSuchMethodError 被吞掉后全部返回空字符串。
+     */
+    private static boolean sOkProbed;
+    private static Method sOkWithHeader;   // OkHttp.string(String, Map)
+    private static Method sOkPlain;        // OkHttp.string(String)
+
+    private static void probeHostOkHttp() {
+        if (sOkProbed) return;
+        sOkProbed = true;
+        Class<?> cls;
+        try {
+            cls = Class.forName("com.github.catvod.net.OkHttp");
+        } catch (Throwable ignored) {
+            return;
+        }
+        try {
+            sOkWithHeader = cls.getMethod("string", String.class, Map.class);
+        } catch (Throwable ignored) {
+        }
+        try {
+            sOkPlain = cls.getMethod("string", String.class);
+        } catch (Throwable ignored) {
+        }
+    }
+
     private String get(String url) {
         if (url == null || url.length() == 0) return "";
         if (!url.startsWith("http")) url = host + (url.startsWith("/") ? url : "/" + url);
+        Map<String, String> h = header();
+        probeHostOkHttp();
+
+        if (sOkWithHeader != null) {
+            try {
+                Object o = sOkWithHeader.invoke(null, url, h);
+                if (o instanceof String && ((String) o).length() > 0) return (String) o;
+            } catch (Throwable ignored) {
+            }
+        }
+
+        String text = httpGet(url, h);
+        if (text.length() > 0) return text;
+
+        if (sOkPlain != null) {
+            try {
+                Object o = sOkPlain.invoke(null, url);
+                if (o instanceof String) return (String) o;
+            } catch (Throwable ignored) {
+            }
+        }
+        return text;
+    }
+
+    /**
+     * 纯 JDK 实现，不依赖宿主的 OkHttp（各家 fork 签名不一）。
+     * 宿主在后台线程调用 spider（见 JarLoader.loadClassLoader 里的 initThread.join()），
+     * 因此这里不额外开线程，避免触发 d8 的接口 desugaring。
+     */
+    private String httpGet(String url, Map<String, String> headers) {
+        HttpURLConnection conn = null;
         try {
-            String text = OkHttp.string(url, header());
-            return text == null ? "" : text;
-        } catch (Throwable e) {
+            conn = (HttpURLConnection) new URL(url).openConnection();
+            conn.setRequestMethod("GET");
+            conn.setConnectTimeout(15000);
+            conn.setReadTimeout(20000);
+            conn.setInstanceFollowRedirects(true);
+            conn.setRequestProperty("Accept", "text/html,application/xhtml+xml,*/*;q=0.8");
+            conn.setRequestProperty("Accept-Encoding", "identity");
+            if (headers != null) {
+                for (Map.Entry<String, String> e : headers.entrySet()) {
+                    conn.setRequestProperty(e.getKey(), e.getValue());
+                }
+            }
+            int code = conn.getResponseCode();
+            InputStream is = (code >= 200 && code < 400) ? conn.getInputStream() : conn.getErrorStream();
+            if (is == null) return "";
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            byte[] buf = new byte[8192];
+            int n;
+            while ((n = is.read(buf)) > 0) bos.write(buf, 0, n);
+            is.close();
+            return new String(bos.toByteArray(), "UTF-8");
+        } catch (Throwable ignored) {
             return "";
+        } finally {
+            if (conn != null) conn.disconnect();
         }
     }
 
