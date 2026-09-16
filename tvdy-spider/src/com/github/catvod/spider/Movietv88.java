@@ -262,13 +262,23 @@ public class Movietv88 extends Spider {
         if (content.length() == 0) content = clean(first(html, "<div class=\"detail\"[^>]*>([\\s\\S]*?)</div>"));
 
         // 播放源 & 分集列表（多 sid 对应多线路，每条下挂 nid=分集号）
+        // 实测结构: <h3 class="title">源名</h3> ...若干 div... <ul class="stui-content__playlist ...">...</ul>
+        // 源名不紧邻 ul，故先定位 ul，再向前回溯最近的 h3/h4 文本
         List<String> froms = new ArrayList<String>();
         List<String> urls = new ArrayList<String>();
-        Matcher lm = Pattern.compile("<h4[^>]*>([\\s\\S]*?)</h4>\\s*<ul class=\"stui-content__playlist[^\"]*\"[^>]*>([\\s\\S]*?)</ul>").matcher(html);
+        Matcher lm = Pattern.compile("<ul[^>]*class=\"stui-content__playlist[^\"]*\"[^>]*>([\\s\\S]*?)</ul>").matcher(html);
+        int autoSrc = 0;
         while (lm.find()) {
-            String src = clean(lm.group(1));
-            if (src.length() == 0) continue;
-            Matcher em = Pattern.compile("<a[^>]+href=\"(/vod/play/id/\\d+/sid/(\\d+)/nid/(\\d+)/?)\"[^>]*>([^<]*)</a>").matcher(lm.group(2));
+            String src = "";
+            String before = html.substring(Math.max(0, lm.start() - 800), lm.start());
+            Matcher hm = Pattern.compile("<h3[^>]*>\\s*([^<]{1,40}?)\\s*</h3>").matcher(before);
+            while (hm.find()) src = hm.group(1).trim();
+            if (src.length() == 0) {
+                Matcher h4m = Pattern.compile("<h4[^>]*>\\s*([^<]{1,40}?)\\s*</h4>").matcher(before);
+                while (h4m.find()) src = h4m.group(1).trim();
+            }
+            if (src.length() == 0) src = "线路" + (++autoSrc);
+            Matcher em = Pattern.compile("<a[^>]+href=\"(/vod/play/id/\\d+/sid/(\\d+)/nid/(\\d+)/?)\"[^>]*>([^<]*)</a>").matcher(lm.group(1));
             StringBuilder eps = new StringBuilder();
             int n = 0;
             while (em.find()) {
