@@ -16,12 +16,19 @@ jar 内同时包含大小写兼容别名类 `com.github.catvod.spider.Tvdy`，�
 
 ```
 tvdy-spider/
-├─ src/com/github/catvod/spider/TvDy.java   爬虫主体（唯一需要改的文件）
-├─ src-alias/.../Tvdy.java                  大小写别名类（独立目录，规避 Windows 文件系统大小写不敏感）
-├─ stubs/                                   编译期桩类，不会打进 jar
-├─ build.ps1                                一键编译打包（javac → d8 → jar）
-├─ dist/TvDy.jar                            构建产物
-└─ build/                                   中间产物（已 gitignore）
+├─ src/com/github/catvod/spider/TvDy.java       电影天堂 www.tvdy.xyz（stui 模板）
+├─ src/com/github/catvod/spider/Movietv88.java  88影视（stui 模板）
+├─ src/com/github/catvod/spider/Kanys8.java     看影视（苹果CMS，模拟 App 接口）
+├─ src/com/github/catvod/spider/NetflixGc.java  奈飞工厂 netflixgc.org（dsn2 模板）
+├─ src/com/github/catvod/spider/Vv3.java        vv3nwjk.com（Next.js flight 数据 + 接口签名）
+├─ src/com/github/catvod/spider/Kky.java        可可影视 www.kkys04.com（含 JS 反爬破解）
+├─ src/com/github/catvod/spider/Init.java       空 init，仅为通过宿主 JarLoader 校验
+├─ src-alias/.../Tvdy.java                      大小写别名类（独立目录，规避 Windows 文件系统大小写不敏感）
+├─ stubs/                                       编译期桩类，不会打进 jar
+├─ test/TestSpider.java                         本地联调测试台（不参与打包）
+├─ build.ps1                                    一键编译打包（javac → d8 → jar）
+├─ dist/TvDy.jar                                构建产物
+└─ build/                                       中间产物（已 gitignore）
 ```
 
 ## 三、重新构建
@@ -79,6 +86,20 @@ powershell -ExecutionPolicy Bypass -File tvdy-spider\build.ps1
 播放 73205-1-1  https://v.lzcdn28.com/20250923/2454_10e7242e/index.m3u8
 ```
 
-## 七、免责声明
+## 七、jar 内其他站点
+
+同一个 `TvDy.jar` 里可放多个爬虫，配置里用 `"api": "csp_<类名>"` 区分（`jar` 字段都指向同一个文件）。
+
+| 站点 | 类名 / api | 首页 | 分类 | 搜索 | 播放 |
+| --- | --- | --- | --- | --- | --- |
+| 奈飞工厂 `netflixgc.org` | `csp_NetflixGc` | dsn2 模板静态解析 | `POST /index.php/ds_api/vod`（JSON） | `/vodsearch/…?wd=` | `/vodplay/{id}-{sid}-{nid}.html` → `player_aaaa.url`（base64→urlencode） |
+| vv3nwjk `vv3nwjk.com` | `csp_Vv3` | Next.js flight 数据 | `/vod/show/id/{tid}[/page/{n}]` | `/vod/search/{kw}`（仅一页） | 接口 `/mw-movie/anonymous/v2/video/episode/url`，需 `t` + `sign=sha1(md5(params&key&t))` |
+| 可可影视 `www.kkys04.com` | `csp_Kky` | JS 反爬 cookie | `/show/{tid}-{class}-{area}-{lang}-{year}-{order}-{page}.html` | `/search?k={kw}&page={n}&t={token}`（token 取自 `/search`） | `/play/{id}-{sid}-{nid}.html` → `const playSource = {src:"…m3u8"}` |
+
+`Vv3` 与 `Kky` 都支持 `"ext": {"host": "https://域名"}` 覆盖域名。
+
+**Kky 的反爬说明**：首次访问返回 HTTP 850 + 一段混淆脚本，爬虫会在本地复刻该脚本（数组右旋 → 取 `cc` 与前缀 → 暴力求解最小 `i` 使 `sha1(cc+i)` 的两个字节匹配），算出 `cdndefend_js_cookie` 后带 cookie 重试。若站点更换脚本结构，`solveChallenge()` 里的正则需要同步调整。
+
+## 八、免责声明
 
 本项目仅供技术学习与个人使用，数据来源于目标站点公开页面，请勿用于商业用途或高频抓取。
