@@ -23,6 +23,7 @@ tvdy-spider/
 ├─ src/com/github/catvod/spider/Vv3.java        vv3nwjk.com（Next.js flight 数据 + 接口签名）
 ├─ src/com/github/catvod/spider/Kky.java        可可影视 www.kkys04.com（含 JS 反爬破解）
 ├─ src/com/github/catvod/spider/YongLe.java      永乐视频 www.cw2.net（苹果CMS mxtheme 模板，页面伪装"瓜子影视"）
+├─ src/com/github/catvod/spider/GuaZi.java       瓜子影视 api.bp7kprw.com（App 封闭签名接口：RSA+AES+MD5 签名 + Walle 渠道头）
 ├─ src/com/github/catvod/spider/Init.java       空 init，仅为通过宿主 JarLoader 校验
 ├─ src-alias/.../Tvdy.java                      大小写别名类（独立目录，规避 Windows 文件系统大小写不敏感）
 ├─ stubs/                                       编译期桩类，不会打进 jar
@@ -87,6 +88,16 @@ powershell -ExecutionPolicy Bypass -File tvdy-spider\build.ps1
 播放 73205-1-1  https://v.lzcdn28.com/20250923/2454_10e7242e/index.m3u8
 ```
 
+瓜子影视（`csp_GuaZi`，2026-09-17 实测）：
+
+```
+分类      11 个（电影/连续剧/综艺/动漫/短剧/AI漫剧…），每类带 类型+地区+年份+排序 四组筛选
+列表      电影 tid=1  total=42840；筛选 日本+2024+最热 正常返回 30 条/页
+详情      勿言推理 电影版 → 官方线路1，HD$vod_d_id=12&vurl_id=507104&domain_type=8&resolution=720&type=board
+播放      1280_720 直链 m3u8（vd.wmvbo.com，HTTP 200 可直接播放）
+搜索      凡人修仙传 → 6 条（含剧版/重制版/燕家堡之战）
+```
+
 ## 七、jar 内其他站点
 
 同一个 `TvDy.jar` 里可放多个爬虫，配置里用 `"api": "csp_<类名>"` 区分（`jar` 字段都指向同一个文件）。
@@ -97,12 +108,42 @@ powershell -ExecutionPolicy Bypass -File tvdy-spider\build.ps1
 | vv3nwjk `vv3nwjk.com` | `csp_Vv3` | Next.js flight 数据 | `/vod/show/id/{tid}[/page/{n}]` | `/vod/search/{kw}`（仅一页） | 接口 `/mw-movie/anonymous/v2/video/episode/url`，需 `t` + `sign=sha1(md5(params&key&t))` |
 | 可可影视 `www.kkys04.com` | `csp_Kky` | JS 反爬 cookie | `/show/{tid}-{class}-{area}-{lang}-{year}-{order}-{page}.html` | `/search?k={kw}&page={n}&t={token}`（token 取自 `/search`） | `/play/{id}-{sid}-{nid}.html` → `const playSource = {src:"…m3u8"}` |
 | 永乐视频 `www.cw2.net`（页面伪装"瓜子影视"，代码为 ylsp 永乐系） | `csp_YongLe` | mxtheme 模板静态解析（Cloudflare CDN） | `/vodshow/{id}-{area}-{by}-{class}-{lang}-{letter}-..-{page}-..-{year}/`（12 段） | `/vodsearch/{kw}----------{page}---/` | `/watch/{id}-{sid}-{nid}/` → `player_aaaa.url`（encrypt=0 直链） |
+| 瓜子影视 `api.bp7kprw.com` | `csp_GuaZi` | `/App/Resource/VodType/show` + `/App/IndexList/index` | `POST /App/IndexList/indexList`（`tid/page/pageSize/sub/sort/area/year`） | `POST /App/Index/findMoreVod` | `/App/Resource/VurlDetail/showOne` → 直链 m3u8 |
 
 **镜像选择**：经实测 `cw2.net` 是唯一拥有完整片库与播放的入口；同模板的 `ylys.tv / ylsp.pro / ylsp.one / ylys.cc` 均为推广首页（详情/播放 404）。`ext` 接受 `{"host":"https://www.cw2.net"}` 或裸 `https://...` 临时切换调试。
 
 `Vv3` 与 `Kky` 都支持 `"ext": {"host": "https://域名"}` 覆盖域名。
 
 **Kky 的反爬说明**：首次访问返回 HTTP 850 + 一段混淆脚本，爬虫会在本地复刻该脚本（数组右旋 → 取 `cc` 与前缀 → 暴力求解最小 `i` 使 `sha1(cc+i)` 的两个字节匹配），算出 `cdndefend_js_cookie` 后带 cookie 重试。若站点更换脚本结构，`solveChallenge()` 里的正则需要同步调整。
+
+### 7.1 瓜子影视（GuaZi）封闭签名接口
+
+接口来自 App（瓜子影视 v3.0.5.2）反编译 + 抓包，**没有网页版**，全部请求为 POST，参数走表单体：
+
+```
+request_key = HEX( AES/CBC/PKCS5( JSON(params), key, iv ) )        key/iv 每次 16 位随机
+keys        = BASE64( RSA/ECB/PKCS1( {"key":..,"iv":..} ) )       服务端用它的公钥加密
+signature   = UPPER(MD5( "token_id=,token=,phone_type=1,request_key=..,app_id=1,time=..,keys=.."
+                          + "*" + "&zvdvdvddbfikkkumtmdwqppp?|4Y!s!2br" ))
+```
+
+- **签名密钥**取自 `RetrofitHelper.f7381e`；`time` 为秒级时间戳；`request_key`/`keys` 必须与签名串里出现的**完全一致**。
+- **必需请求头 `code`**：Walle 打包渠道号，直接从 APK Signing Block 读取（block id `0x71777777`，内容 `{"channel":"GZ0001"}`）。**缺失该头时所有业务接口一律返回 401「非官方渠道安装，无法访问」**，这是接入时最容易卡住的一步。
+- **响应解密**：`data.keys` 用内置 RSA 私钥解出本次会话 `{key,iv}`，再用它 AES 解密 `data.response_key`（HEX 密文）得到业务 JSON。
+- **token**：匿名设备注册 `/App/Authentication/Device/signUp`（`old_key`/`new_key`/`phone_type`/`code`），返回的 `token` 全站复用；爬虫在 token 失效时会自动重注册一次。
+- **详情只有线路**：`/App/Resource/Vod/showOne?d_id=` 只返回 `vurl_clouds`（线路）与会员标签，**不带片名/海报/演员**（App 自身也是从列表页带过去的）。因此爬虫内建 600 条列表缓存，`detailContent` 时回捞；收藏夹等冷启动场景会退化为仅显示线路。
+- **域名池**：官方下发 16+ 个同构域名（`api.08zbidl.com` / `api.46d5umpk.com` / `api.anctjd.com` / …）。爬虫默认写死 `api.bp7kprw.com`，可用 `"ext": {"host":"https://其它域名"}` 覆盖。
+
+| 功能 | 接口 |
+| --- | --- |
+| 分类树 | `/App/Resource/VodType/show` → 电影1 / AI漫剧74 / 连续剧2 / 综艺3 / 动漫4 / 短剧64 … |
+| 筛选项 | `/App/IndexList/indexScreen?t_id={tid}` → 类型/地区/年份/排序 |
+| 列表 | `/App/IndexList/indexList`（`tid,page,pageSize,sub,sort,area,year`，`sort` 取 `d_id`/`d_addtime`/`d_score`） |
+| 首页 | `/App/IndexList/index?pid={6,1,2}` |
+| 搜索 | `/App/Index/findMoreVod`（`keywords,order_val,search_type=1`） |
+| 详情 | `/App/Resource/Vod/showOne?d_id={id}` → `vurl_clouds[]` |
+| 剧集 | `/App/Resource/Vurl/show?vurl_cloud_id={线路id}&vod_d_id={id}` → 每集 `default_param` |
+| 播放 | `/App/Resource/VurlDetail/showOne`（`vod_id,vurl_id,domain_type,resolution,type=play`）→ `.url` 即 m3u8 直链 |
 
 ## 八、免责声明
 
