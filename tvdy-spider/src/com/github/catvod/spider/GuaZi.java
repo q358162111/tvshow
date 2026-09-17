@@ -69,6 +69,12 @@ public class GuaZi extends Spider {
     private static final String CHANNEL = "GZ0001";
     private static final String APP_KEY = "&zvdvdvddbfikkkumtmdwqppp?|4Y!s!2br";
     private static final String UA = "Mozilla/5.0 (Linux; Android 13; SM-S9080) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Mobile Safari/537.36";
+    /**
+     * 播放地址必须用「非浏览器」UA 请求，且不能带 Referer。
+     * CDN 对浏览器 UA / 带 Referer 的请求返回 302 广告片（20 秒），
+     * 只有 ExoPlayer/VLC/okhttp 这类 UA 才能拿到完整 m3u8。
+     */
+    private static final String PLAY_UA = "okhttp/4.9.0";
     private static final String PACKAGE = "com.i1bc8b7138.b20cb93d40.y776772c8820260917";
     private static final String VERSION = "2608011";
     private static final String API_VER = "3.0.5.2";
@@ -365,19 +371,24 @@ public class GuaZi extends Spider {
         return new JSONObject().put("list", new JSONArray().put(vod)).toString();
     }
 
-    /** 优先 default_param，其次按 1080/720/480 找可用清晰度（show_type=2 表示不可用） */
+    /**
+     * 优先「正片」play 的最高可用清晰度，其次 board(花絮)，最后才用 default_param。
+     * 服务端给的 default_param 有时是 type=board，能拿到地址但语义不对。
+     * show_type=2 表示该清晰度不可用（param 为空）。
+     */
     private String bestParam(JSONObject ep) {
-        String def = ep.optString("default_param", "");
-        if (def.length() > 0) return def;
-        JSONObject play = ep.optJSONObject("play");
-        if (play == null) return "";
-        for (String res : new String[]{"1080", "720", "480"}) {
-            JSONObject one = play.optJSONObject(res);
-            if (one == null) continue;
-            String param = one.optString("param", "");
-            if (param.length() > 0 && !"2".equals(one.optString("show_type", ""))) return param;
+        for (String key : new String[]{"play", "board"}) {
+            JSONObject group = ep.optJSONObject(key);
+            if (group == null) continue;
+            for (String res : new String[]{"1080", "720", "480"}) {
+                JSONObject one = group.optJSONObject(res);
+                if (one == null) continue;
+                if ("2".equals(one.optString("show_type", ""))) continue;
+                String param = one.optString("param", "");
+                if (param.length() > 0) return param;
+            }
         }
-        return "";
+        return ep.optString("default_param", "");
     }
 
     // ==================== 播放 ====================
@@ -392,27 +403,36 @@ public class GuaZi extends Spider {
         }
         String domainType = value(m, "domain_type", "8");
         String resolution = value(m, "resolution", "1080");
+        String type = value(m, "type", "play");
 
+        // 逐个清晰度/类型组合试探，拿到第一个非空地址
         String playUrl = "";
-        for (String type : new String[]{"play", "board", "screen", "download"}) {
-            LinkedHashMap<String, String> p = new LinkedHashMap<>();
-            p.put("vod_id", vodId);
-            p.put("vurl_id", vurlId);
-            p.put("domain_type", domainType);
-            p.put("resolution", resolution);
-            p.put("type", type);
-            try {
-                JSONObject r = api("/App/Resource/VurlDetail/showOne", p);
-                JSONObject plain = r.optJSONObject("plain");
-                String url = plain == null ? "" : plain.optString("url", "");
-                if (url.length() > 0) {
-                    playUrl = url;
-                    break;
+        String[] types = {type, "play", "board", "screen", "download"};
+        String[] resolutions = {resolution, "1080", "720", "480"};
+        for (String res : resolutions) {
+            for (String tp : types) {
+                LinkedHashMap<String, String> p = new LinkedHashMap<>();
+                p.put("vod_id", vodId);
+                p.put("vurl_id", vurlId);
+                p.put("domain_type", domainType);
+                p.put("resolution", res);
+                p.put("type", tp);
+                try {
+                    JSONObject r = api("/App/Resource/VurlDetail/showOne", p);
+                    JSONObject plain = r.optJSONObject("plain");
+                    String url = plain == null ? "" : plain.optString("url", "");
+                    if (url.length() > 0) {
+                        playUrl = url;
+                        break;
+                    }
+                } catch (Throwable ignored) {
                 }
-            } catch (Throwable ignored) {
             }
+            if (playUrl.length() > 0) break;
         }
-        JSONObject header = new JSONObject().put("User-Agent", UA);
+        // 该 CDN 做了「广告注入式防盗链」：请求带 Referer 或 UA 含 Mozilla 时，
+        // m3u8 会被 302 到一个 20 秒宣传片；只有播放器 UA 且不带 Referer 才返回正片。
+        JSONObject header = new JSONObject().put("User-Agent", PLAY_UA);
         return new JSONObject().put("parse", 0).put("playUrl", playUrl)
                 .put("url", playUrl).put("header", header).toString();
     }

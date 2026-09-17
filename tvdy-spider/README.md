@@ -93,8 +93,8 @@ powershell -ExecutionPolicy Bypass -File tvdy-spider\build.ps1
 ```
 分类      11 个（电影/连续剧/综艺/动漫/短剧/AI漫剧…），每类带 类型+地区+年份+排序 四组筛选
 列表      电影 tid=1  total=42840；筛选 日本+2024+最热 正常返回 30 条/页
-详情      勿言推理 电影版 → 官方线路1，HD$vod_d_id=12&vurl_id=507104&domain_type=8&resolution=720&type=board
-播放      1280_720 直链 m3u8（vd.wmvbo.com，HTTP 200 可直接播放）
+详情      勿言推理 电影版 → 官方线路1，HD$vod_d_id=12&vurl_id=507104&domain_type=8&resolution=1080&type=play
+播放      1280/1920 直链 m3u8，片长 7740s / 775 段（正片；用浏览器 UA 请求只会拿到 20 秒宣传片）
 搜索      凡人修仙传 → 6 条（含剧版/重制版/燕家堡之战）
 ```
 
@@ -133,6 +133,21 @@ signature   = UPPER(MD5( "token_id=,token=,phone_type=1,request_key=..,app_id=1,
 - **token**：匿名设备注册 `/App/Authentication/Device/signUp`（`old_key`/`new_key`/`phone_type`/`code`），返回的 `token` 全站复用；爬虫在 token 失效时会自动重注册一次。
 - **详情只有线路**：`/App/Resource/Vod/showOne?d_id=` 只返回 `vurl_clouds`（线路）与会员标签，**不带片名/海报/演员**（App 自身也是从列表页带过去的）。因此爬虫内建 600 条列表缓存，`detailContent` 时回捞；收藏夹等冷启动场景会退化为仅显示线路。
 - **域名池**：官方下发 16+ 个同构域名（`api.08zbidl.com` / `api.46d5umpk.com` / `api.anctjd.com` / …）。爬虫默认写死 `api.bp7kprw.com`，可用 `"ext": {"host":"https://其它域名"}` 覆盖。
+
+> **⚠️ 播放地址的「广告注入式防盗链」（最容易踩的坑）**
+>
+> 接口返回的 m3u8 在 CDN `vd.wmvbo.com` 上，该 CDN 会按请求头区别对待：
+>
+> | 请求特征 | 结果 |
+> | --- | --- |
+> | 带 `Referer`（任意值） | `302 → https://app.wanglaoshi.中国/hls2/index.m3u8`，20 秒宣传片 |
+> | `User-Agent` 含 `Mozilla`（浏览器/爬虫默认 UA） | 同上，302 到宣传片 |
+> | 非浏览器 UA（`ExoPlayerLib/*`、`VLC/*`、`okhttp/*`）+ **不带 Referer** | `200`，完整正片 |
+>
+> 实测同一部影片：浏览器 UA 拿到 20s / 2 段，`okhttp/4.9.0` 拿到 **7740s / 775 段**。
+> 因此 `playerContent` 必须返回 `header={"User-Agent":"okhttp/4.9.0"}`，且**绝不能下发 Referer**；
+> TVBox 会把该 header 应用到 m3u8 与分片请求上。排查手段：拉 m3u8 累加 `#EXTINF`，
+> 片长 < 2 分钟基本就是被插了广告。
 
 | 功能 | 接口 |
 | --- | --- |

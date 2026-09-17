@@ -62,7 +62,34 @@ public class TestSpider {
                 String block = playUrl.split("\\$\\$\\$")[0];
                 String firstEp = block.split("#")[0];
                 String epId = firstEp.substring(firstEp.indexOf('$') + 1);
-                log("PLAYER " + epId, s.playerContent("瓜子", epId, new ArrayList<String>()));
+                String pj = s.playerContent("瓜子", epId, new ArrayList<String>());
+                log("PLAYER " + epId, pj);
+                // 关键回归点：CDN 防盗链，带 Referer 或浏览器 UA 会拿到 20 秒宣传片
+                JSONObject pr = new JSONObject(pj);
+                String pu = pr.optString("playUrl", "");
+                String ua = pr.optJSONObject("header").optString("User-Agent", "");
+                java.net.HttpURLConnection conn = (java.net.HttpURLConnection) new java.net.URL(pu).openConnection();
+                conn.setRequestProperty("User-Agent", ua);
+                conn.setInstanceFollowRedirects(true);
+                java.io.InputStream is = conn.getInputStream();
+                java.io.ByteArrayOutputStream bos = new java.io.ByteArrayOutputStream();
+                byte[] buf = new byte[8192];
+                int n;
+                while ((n = is.read(buf)) > 0) bos.write(buf, 0, n);
+                is.close();
+                String m3u8 = new String(bos.toByteArray(), "UTF-8");
+                double total = 0;
+                int segs = 0;
+                for (String line : m3u8.split("\n")) {
+                    if (line.startsWith("#EXTINF:")) {
+                        segs++;
+                        total += Double.parseDouble(line.substring(8).split(",")[0].trim());
+                    }
+                }
+                System.out.println(">>> 片长 " + (int) total + "s / " + segs + " 段"
+                        + (total < 120 ? "  ⚠️ 疑似宣传片/试看" : "  ✅ 正片")
+                        + "  final=" + conn.getURL());
+                conn.disconnect();
             }
 
             log("SEARCH 凡人修仙传", s.searchContent("凡人修仙传", false));
