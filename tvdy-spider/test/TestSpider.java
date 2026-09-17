@@ -73,19 +73,24 @@ public class TestSpider {
                 String epId = firstEp.substring(firstEp.indexOf('$') + 1);
                 String pj = s.playerContent("瓜子", epId, new ArrayList<String>());
                 log("PLAYER " + epId, pj);
-                // 关键回归点：CDN 防盗链，带 Referer 或浏览器 UA 会拿到 20 秒宣传片
+                // 关键回归点：CDN 只看请求头（UA 含 Mozilla 或带任意 Referer → 302 到广告占位片，
+                // 客户端「播」出来的就是那支占位片）。播放器内核常无视 header，所以现在下发的是
+                // 本机回环中继地址；这里故意用最糟糕的画像（浏览器 UA + Referer）打中继，
+                // 能拿到正片才算通过。
                 JSONObject pr = new JSONObject(pj);
                 String pu = pr.optString("playUrl", "");
-                // 回归点 1：header 必须是 JSON 字符串，传 JSONObject 客户端会忽略 → 被 CDN 劫持
                 Object hobj = pr.opt("header");
                 System.out.println(">>> header 类型 = " + (hobj instanceof String ? "String ✅"
-                        : hobj == null ? "缺失 ❌" : "JSONObject ❌（客户端会忽略，必被劫持）"));
-                String ua = new JSONObject(pr.optString("header", "{}")).optString("User-Agent", "");
-                System.out.println(">>> 下发 UA = [" + ua + "]"
-                        + (ua.contains("Mozilla") ? "  ⚠️ 浏览器 UA 会拿到广告" : "  ✅ 非浏览器 UA"));
+                        : hobj == null ? "缺失 ❌" : "JSONObject ❌（客户端会忽略）"));
+                System.out.println(">>> 下发地址 = " + pu
+                        + (pu.contains("127.0.0.1") ? "  ✅ 本机中继" : "  ⚠️ 直链（中继未启动）"));
+                final String browserUa = "Mozilla/5.0 (Linux; Android 13; SM-S9080) AppleWebKit/537.36 "
+                        + "(KHTML, like Gecko) Chrome/141.0.0.0 Mobile Safari/537.36";
                 java.net.HttpURLConnection conn = (java.net.HttpURLConnection) new java.net.URL(pu).openConnection();
-                conn.setRequestProperty("User-Agent", ua);
-                conn.setInstanceFollowRedirects(true);
+                conn.setRequestProperty("User-Agent", browserUa);          // 浏览器 UA
+                conn.setRequestProperty("Referer", "https://vd.wmvbo.com/"); // 且带 Referer
+                conn.setInstanceFollowRedirects(false);
+                int hcode = conn.getResponseCode();
                 java.io.InputStream is = conn.getInputStream();
                 java.io.ByteArrayOutputStream bos = new java.io.ByteArrayOutputStream();
                 byte[] buf = new byte[8192];
@@ -101,38 +106,72 @@ public class TestSpider {
                         total += Double.parseDouble(line.substring(8).split(",")[0].trim());
                     }
                 }
-                System.out.println(">>> 片长 " + (int) total + "s / " + segs + " 段"
-                        + (total < 120 ? "  ⚠️ 疑似宣传片/试看" : "  ✅ 正片")
-                        + "  final=" + conn.getURL());
+                System.out.println(">>> 中继播放列表 HTTP " + hcode + "，片长 " + (int) total + "s / " + segs + " 段"
+                        + (total < 120 ? "  ⚠️ 疑似占位片" : "  ✅ 正片")
+                        + (m3u8.contains("127.0.0.1") ? "，分片地址已改写为本机 ✅" : "，⚠️ 分片仍指向外网"));
                 conn.disconnect();
 
-                // 回归点 2：分片请求同样带防盗链，必须能用同一套 header 拉到真实 TS
+                // 分片同样要走中继（CDN 对 ts 一样拦），用同一套「浏览器 UA + Referer」验证
                 String seg = null;
                 for (String line : m3u8.split("\n")) {
                     String t = line.trim();
                     if (t.length() > 0 && !t.startsWith("#")) { seg = t; break; }
                 }
                 if (seg != null) {
-                    String base = conn.getURL().toString();
-                    base = base.substring(0, base.lastIndexOf('/') + 1);
-                    java.net.HttpURLConnection sc = (java.net.HttpURLConnection) new java.net.URL(base + seg).openConnection();
-                    sc.setRequestProperty("User-Agent", ua);
+                    if (!seg.startsWith("http")) {
+                        String base = pu.substring(0, pu.lastIndexOf('/') + 1);
+                        seg = base + seg;
+                    }
+                    java.net.HttpURLConnection sc = (java.net.HttpURLConnection) new java.net.URL(seg).openConnection();
+                    sc.setRequestProperty("User-Agent", browserUa);
+                    sc.setRequestProperty("Referer", "https://vd.wmvbo.com/");
+                    sc.setRequestProperty("Range", "bytes=0-1023");   // 播放器常用的 Range 请求
                     sc.setInstanceFollowRedirects(false);
                     int scode = sc.getResponseCode();
                     String sloc = sc.getHeaderField("Location");
-                    if (scode == 200) {
+                    if (scode == 200 || scode == 206) {
                         java.io.InputStream si = sc.getInputStream();
                         byte[] sb = new byte[188];
                         int sn = si.read(sb);
                         si.close();
-                        System.out.println(">>> 首个分片 " + seg + " → 200，首字节 0x"
-                                + Integer.toHexString(sb[0] & 0xff)
+                        System.out.println(">>> 中继分片 " + seg.substring(seg.lastIndexOf('/') + 1)
+                                + " → HTTP " + scode + "，首字节 0x" + Integer.toHexString(sb[0] & 0xff)
                                 + (sn > 0 && sb[0] == 0x47 ? " (MPEG-TS ✅)" : " ⚠️ 不是 TS"));
                     } else {
-                        System.out.println(">>> 首个分片 " + seg + " → " + scode
-                                + (sloc == null ? " ❌" : " → " + sloc + " ❌ 被劫持到广告站"));
+                        System.out.println(">>> 中继分片 → " + scode
+                                + (sloc == null ? " ❌" : " → " + sloc + " ❌ 仍被劫持"));
                     }
                     sc.disconnect();
+
+                    // 原始 socket 校验：中继的 Content-Length 必须与实际响应体一致（播放器最怕这个）
+                    java.net.Socket sock = new java.net.Socket("127.0.0.1",
+                            Integer.parseInt(pu.substring("http://127.0.0.1:".length(), pu.indexOf('/', 17))));
+                    sock.setSoTimeout(20000);
+                    java.io.OutputStream so = sock.getOutputStream();
+                    String segPath = seg.substring(seg.indexOf('/', 17));
+                    so.write(("GET " + segPath + " HTTP/1.1\r\nHost: 127.0.0.1\r\n"
+                            + "User-Agent: " + browserUa + "\r\nConnection: close\r\n\r\n").getBytes("UTF-8"));
+                    so.flush();
+                    java.io.InputStream sin = sock.getInputStream();
+                    StringBuilder hb = new StringBuilder();
+                    int ch, prev = 0, clen = -1;
+                    while ((ch = sin.read()) >= 0) {
+                        hb.append((char) ch);
+                        if (prev == '\r' && ch == '\n' && hb.indexOf("\r\n\r\n") >= 0) break;
+                        prev = ch;
+                    }
+                    for (String hl : hb.toString().split("\r\n")) {
+                        if (hl.toLowerCase().startsWith("content-length:")) {
+                            clen = Integer.parseInt(hl.substring(15).trim());
+                        }
+                    }
+                    int body = 0;
+                    byte[] rbuf = new byte[65536];
+                    int rn;
+                    while ((rn = sin.read(rbuf)) > 0) body += rn;
+                    sock.close();
+                    System.out.println(">>> 中继原始响应 framing: 声明 Content-Length=" + clen
+                            + "，实际响应体=" + body + (clen == body ? "  ✅ 一致" : "  ❌ 不一致"));
                 }
             }
 

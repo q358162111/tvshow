@@ -69,10 +69,16 @@ if ($aliasSrc.Count -gt 0) {
 }
 
 # ---------- 3) dex ----------
+# d8 没有把 java.* 作为 --lib 时会打印 "Type `java.lang.Runnable` was not found ..." 告警，
+# 生成的 dex 仍然正确（这些接口没有 default/static 方法，不需要脱糖），可以安全忽略；
+# JDK 8 自带的 rt.jar 能直接当这个库用（JDK 9+ 的 jmod 不行），有就让构建输出干净些。
+$extraLib = @()
+$rtJar = Join-Path $javaHome "jre\lib\rt.jar"
+if (Test-Path $rtJar) { $extraLib = @("--lib", $rtJar) }
 Write-Host "[3/4] Converting to classes.dex ..." -ForegroundColor Green
 $appJar = Join-Path $lib "app.jar"
 & $jarTool cf $appJar -C $appCls . -C $aliasCls .
-& $java -cp $r8Jar com.android.tools.r8.D8 --min-api 19 --lib $stubsJar --lib $jsonJar --output $dexOut $appJar
+& $java -cp $r8Jar com.android.tools.r8.D8 --min-api 19 --lib $stubsJar --lib $jsonJar @extraLib --output $dexOut $appJar
 if ($LASTEXITCODE -ne 0) { throw "d8 failed" }
 
 # ---------- 4) package jar ----------

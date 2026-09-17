@@ -138,23 +138,31 @@ signature   = UPPER(MD5( "token_id=,token=,phone_type=1,request_key=..,app_id=1,
 
 > **⚠️ 播放地址的「广告注入式防盗链」（最容易踩的坑）**
 >
-> 接口返回的 m3u8 在 CDN `vd.wmvbo.com` 上，该 CDN 会按请求头区别对待：
+> 接口返回的 m3u8 在 CDN `vd.wmvbo.com` 上，该 CDN **不看签名、只看请求头**：
 >
 > | 请求特征 | 结果 |
 > | --- | --- |
-> | 带 `Referer`（任意值） | `302 → https://app.wanglaoshi.中国/hls2/index.m3u8`，20 秒宣传片 |
-> | `User-Agent` 含 `Mozilla`（浏览器/爬虫默认 UA） | 同上，302 到宣传片 |
-> | 非浏览器 UA（`ExoPlayerLib/*`、`VLC/*`、`okhttp/*`）+ **不带 Referer** | `200`，完整正片 |
+> | 带 `Referer`（任意值，连 `Origin` 也不行） | `302 → https://app.wanglaoshi.中国/hls2/index.m3u8`，占位片 |
+> | `User-Agent` 含 `Mozilla`（WebView / X5 / 浏览器内核播放器） | 同上，302 到占位片 |
+> | 非浏览器 UA（`ExoPlayerLib/*`、`Lavf/*`、`stagefright/*`、`okhttp/*`、空 UA）+ 不带 Referer | `200`，完整正片 |
 >
-> 实测同一部影片：浏览器 UA 拿到 20s / 2 段，`okhttp/4.9.0` 拿到 **7740s / 775 段**。
-> 因此 `playerContent` 必须返回 `header={"User-Agent":"okhttp/4.9.0"}`，且**绝不能下发 Referer**；
-> TVBox 会把该 header 应用到 m3u8 与分片请求上。排查手段：拉 m3u8 累加 `#EXTINF`，
-> 片长 < 2 分钟基本就是被插了广告。
+> `m3u8` 与 `ts` 分片**同一套规则**（分片即便不带 Referer，用浏览器 UA 照样 302）。
+> 实测同一部影片：浏览器 UA 拿到 20s / 2 段，`okhttp/4.9.0` 拿到 **7740s / 775 段**；
+> 地址寿命 ≥30 分钟，播放过程中不会失效。
 >
-> **再强调一次 `header` 的下发格式**：必须是 JSON **字符串**（`header.toString()`）。
-> 直接 `.put("header", jsonObject)` 会被客户端静默忽略，播放器随即退回自带 UA（通常是 `Mozilla/...`），
-> 于是又回到「宣传片」或「302 到广告站后 504 → 客户端提示『源视频文件丢失』」。
-> jar 内其它 7 个 spider 一律是 `header.toString()` 写法，改播放相关代码时保持同一写法。
+> **为什么不能只依赖 `header`**：`playerContent` 下发的 `header`（必须是 JSON **字符串**，塞 `JSONObject`
+> 会被静默忽略）只对「愿意照做的内核」有效。实测不少客户端（尤其 WebView / X5 系）直接无视它，
+> UA 仍是浏览器串 → 拉到 302 后的占位片，客户端于是提示**「源视频文件丢失 / 视频丢失」**。
+>
+> **因此播放已改走本机回环中继**（`GuaZi.Relay`）：`playerContent` 返回
+> `http://127.0.0.1:{随机端口}/p/{会话}/index.m3u8`，由爬虫自己按 CDN 要求（非浏览器 UA、零 Referer）
+> 取流，并把播放列表里的**分片与密钥地址全部改写成 `127.0.0.1`** —— 播放器全程只跟本机通信，
+> 它用什么 UA、加不加 Referer、发不发 `Range` 都不再影响结果。中继支持 `Range/206` 直通、`HEAD`、
+> `URI="…"` 改写、长连接关闭；端口随机绑定、线程全部为守护线程、会话上限 256。
+>
+> **排障开关**：站点 `ext` 传 `{"direct":true}` 即退回「直链 + header」的旧行为
+> （若客户端禁止明文 HTTP 访问本机端口，中继会不可达，用它快速对照）。
+> 另外：改完播放相关代码务必实拉一次 m3u8 累加 `#EXTINF`，片长 < 2 分钟就是被插了占位片。
 
 | 功能 | 接口 |
 | --- | --- |

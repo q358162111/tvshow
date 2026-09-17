@@ -12,6 +12,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.security.KeyFactory;
@@ -33,6 +36,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -134,6 +138,8 @@ public class GuaZi extends Spider {
     private String host = DEFAULT_HOST;
     private String token = "";
     private String installCode = "";
+    /** ext 传 {"direct":true} 时不做本机代理，直接下发 CDN 原地址（排障用） */
+    private boolean directPlay = false;
 
     // ==================== 初始化 ====================
 
@@ -143,8 +149,11 @@ public class GuaZi extends Spider {
             String ext = extend.trim();
             try {
                 String h;
-                if (ext.startsWith("{")) h = new JSONObject(ext).optString("host", "");
-                else h = ext;
+                if (ext.startsWith("{")) {
+                    JSONObject cfg = new JSONObject(ext);
+                    h = cfg.optString("host", "");
+                    directPlay = cfg.optBoolean("direct", false);
+                } else h = ext;
                 if (h.startsWith("http")) {
                     h = h.trim();
                     host = h.endsWith("/") ? h.substring(0, h.length() - 1) : h;
@@ -490,17 +499,17 @@ public class GuaZi extends Spider {
             if (playUrl.length() > 0) break;
         }
         // 该 CDN 做了「广告注入式防盗链」：请求带 Referer 或 UA 含 Mozilla 时，
-        // m3u8 与 ts 都会被 302 到广告站 app.wanglaoshi.中国（20 秒宣传片，且该站不稳定，
-        // 经常直接 504）；只有非浏览器 UA 且不带 Referer 才返回正片。
-        // 注意：header 必须以「JSON 字符串」下发，直接塞 JSONObject 客户端会忽略，
-        // 播放器就会退回自带 UA（浏览器串）进而被劫持 —— 本项目其它 spider 同样是 header.toString()。
+        // m3u8 与 ts 都会被 302 到广告站 app.wanglaoshi.中国（占位片，用户看到的就是「视频丢失」）。
+        // header 仍然照常下发，但实测播放器内核（尤其 WebView/X5 系）常无视它，届时 UA 仍是浏览器串，
+        // 于是这里默认改走本机回环代理：由爬虫按 CDN 要求取流，播放器只跟 127.0.0.1 通信。
         JSONObject header = new JSONObject();
         header.put("User-Agent", PLAY_UA);
+        String play = directPlay ? playUrl : Relay.register(playUrl);
         return new JSONObject()
                 .put("parse", 0)
                 .put("jx", 0)
-                .put("playUrl", playUrl)
-                .put("url", playUrl)
+                .put("playUrl", play)
+                .put("url", play)
                 .put("header", header.toString())
                 .toString();
     }
@@ -826,6 +835,335 @@ public class GuaZi extends Spider {
             return Integer.parseInt(s.trim());
         } catch (Throwable ignored) {
             return def;
+        }
+    }
+
+    // ==================== 本机回环中继（绕开「按请求头」判定的防盗链） ====================
+
+    /**
+     * 这条 CDN 不看签名、只看请求头：<b>UA 含 Mozilla（WebView / X5 / 浏览器内核播放器）</b>
+     * 或 <b>带任意 Referer</b>（连 Origin 也不行）时，m3u8 与 ts 一律 302 到广告站，客户端
+     * 「播」出来的就是那支占位片（用户看到的就是「源视频文件丢失 / 视频丢失」）。
+     * 实测 ExoPlayerLib / Lavf(ijk) / stagefright / Dalvik / 空 UA 都能拿到正片（775 段），
+     * 说明拦截点是「浏览器特征」而不是播放器本身 —— 但播放器用哪个 UA、加不加 Referer，
+     * 爬虫完全左右不了（header 字段常被内核忽略）。
+     * <p>
+     * 于是这里由爬虫自己按 CDN 要求（非浏览器 UA + 不带 Referer）取流，再在 127.0.0.1 上
+     * 开一个临时端口把流喂给播放器：播放列表里的分片、密钥地址全部改写成代理地址，
+     * 播放器全程只跟本机通信，用什么 UA 都无所谓。
+     */
+    private static final class Relay {
+
+        /** 目录 -> sid */
+        private static final Map<String, String> DIR_SID = new ConcurrentHashMap<>();
+        /** sid -> 目录 */
+        private static final Map<String, String> SID_DIR = new ConcurrentHashMap<>();
+        private static final AtomicInteger SEQ = new AtomicInteger();
+        private static volatile String host;
+        private static ExecutorService workers;
+
+        /** 启动中继（幂等），返回 http://127.0.0.1:端口；失败返回 null */
+        static synchronized String host() {
+            if (host != null) return host;
+            try {
+                final ServerSocket server = new ServerSocket(0, 50, InetAddress.getByName("127.0.0.1"));
+                workers = Executors.newFixedThreadPool(8, new ThreadFactory() {
+                    @Override
+                    public Thread newThread(Runnable r) {
+                        Thread t = new Thread(r, "guazi-relay");
+                        t.setDaemon(true);
+                        return t;
+                    }
+                });
+                Thread accept = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (true) {
+                            try {
+                                final Socket socket = server.accept();
+                                workers.execute(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        serve(socket);
+                                    }
+                                });
+                            } catch (Throwable e) {
+                                try {
+                                    Thread.sleep(200);
+                                } catch (InterruptedException ignored) {
+                                }
+                            }
+                        }
+                    }
+                }, "guazi-relay-accept");
+                accept.setDaemon(true);
+                accept.start();
+                host = "http://127.0.0.1:" + server.getLocalPort();
+            } catch (Throwable e) {
+                host = null;   // 端口被占/无权限：退回直链，不影响其它逻辑
+            }
+            return host;
+        }
+
+        /** 登记会话，返回播放器可直接播放的本地地址；任何异常都退回原地址 */
+        static String register(String url) {
+            try {
+                String base = host();
+                if (base == null || url == null || url.length() == 0) return url;
+                String dir = dir(url);
+                String tail = url.substring(dir.length());
+                if (tail.length() == 0) return url;
+                return base + "/p/" + sid(dir) + "/" + tail;
+            } catch (Throwable e) {
+                return url;
+            }
+        }
+
+        private static String sid(String dir) {
+            String sid = DIR_SID.get(dir);
+            if (sid != null) return sid;
+            sid = Integer.toHexString(SEQ.incrementAndGet());
+            if (SID_DIR.size() > 256) {          // 会话不会无限增长，超出后整体重建
+                DIR_SID.clear();
+                SID_DIR.clear();
+            }
+            DIR_SID.put(dir, sid);
+            SID_DIR.put(sid, dir);
+            return sid;
+        }
+
+        /** 取目录（含结尾 /），自动丢掉 query */
+        private static String dir(String url) {
+            int q = url.indexOf('?');
+            String u = q >= 0 ? url.substring(0, q) : url;
+            int s = u.indexOf("://");
+            int hostEnd = s < 0 ? -1 : u.indexOf('/', s + 3);
+            if (hostEnd < 0) return u + "/";
+            int i = u.lastIndexOf('/');
+            return i < hostEnd ? u.substring(0, hostEnd + 1) : u.substring(0, i + 1);
+        }
+
+        /** 相对地址解析成绝对地址 */
+        private static String resolve(String dir, String ref) {
+            if (ref.startsWith("http://") || ref.startsWith("https://")) return ref;
+            if (ref.startsWith("//")) return "https:" + ref;
+            if (ref.startsWith("/")) {
+                int s = dir.indexOf("://");
+                int hostEnd = s < 0 ? -1 : dir.indexOf('/', s + 3);
+                return hostEnd < 0 ? dir + ref.substring(1) : dir.substring(0, hostEnd) + ref;
+            }
+            return dir + ref;
+        }
+
+        /** 内网地址改写：同目录用当前 sid（省掉一长串 URL），跨目录新开会话 */
+        private static String proxy(String url, String curDir, String curSid, String host) {
+            if (host == null || url == null || url.length() == 0) return url;
+            if (url.startsWith(curDir)) return host + "/p/" + curSid + "/" + url.substring(curDir.length());
+            String dir = dir(url);
+            return host + "/p/" + sid(dir) + "/" + url.substring(dir.length());
+        }
+
+        /** 改写播放列表：分片行 + EXT-X-KEY/MAP 的 URI 属性 */
+        private static String rewrite(String text, String url) {
+            String host = host();
+            String base = dir(url);
+            String sid = sid(base);
+            StringBuilder sb = new StringBuilder(text.length() + 8192);
+            String[] lines = text.split("\n", -1);
+            for (int i = 0; i < lines.length; i++) {
+                if (i > 0) sb.append('\n');
+                String raw = lines[i];
+                String t = raw.trim();
+                if (t.length() == 0) {
+                    sb.append(raw);
+                } else if (t.charAt(0) == '#') {
+                    sb.append(rewriteAttr(raw, base, sid, host));
+                } else {
+                    sb.append(proxy(resolve(base, t), base, sid, host));
+                }
+            }
+            return sb.toString();
+        }
+
+        private static String rewriteAttr(String raw, String curDir, String curSid, String host) {
+            int i = raw.indexOf("URI=\"");
+            if (i < 0) return raw;
+            int j = raw.indexOf('"', i + 5);
+            if (j < 0) return raw;
+            String v = raw.substring(i + 5, j);
+            return raw.substring(0, i + 5) + proxy(resolve(curDir, v), curDir, curSid, host) + raw.substring(j);
+        }
+
+        /** 一个连接 = 一次取流（播放器对每个分片/播放列表各开一条） */
+        private static void serve(Socket socket) {
+            HttpURLConnection conn = null;
+            try {
+                socket.setSoTimeout(20000);
+                InputStream in = socket.getInputStream();
+                String request = line(in);
+                if (request == null || request.length() == 0) return;
+                int sp = request.indexOf(' ');
+                String method = sp > 0 ? request.substring(0, sp) : "GET";
+                int sp2 = sp > 0 ? request.indexOf(' ', sp + 1) : -1;
+                String path = sp2 > sp ? request.substring(sp + 1, sp2) : "";
+                String range = null;
+                for (String h = line(in); h != null && h.length() > 0; h = line(in)) {
+                    int c = h.indexOf(':');
+                    if (c > 0 && "range".equalsIgnoreCase(h.substring(0, c).trim())) range = h.substring(c + 1).trim();
+                }
+                OutputStream out = socket.getOutputStream();
+                boolean head = "HEAD".equalsIgnoreCase(method);
+
+                String target = null;
+                if (path.startsWith("http://") || path.startsWith("https://")) {   // 绝对 URI 形式
+                    int s = path.indexOf("://");
+                    int slash = path.indexOf('/', s + 3);
+                    path = slash < 0 ? "/" : path.substring(slash);
+                }
+                if (path.startsWith("/p/")) {
+                    int k = path.indexOf('/', 3);
+                    if (k > 3) {
+                        String dir = SID_DIR.get(path.substring(3, k));
+                        String tail = path.substring(k + 1);
+                        if (dir != null && tail.length() > 0 && tail.indexOf("..") < 0) target = dir + tail;
+                    }
+                }
+                if (target == null) {
+                    byte[] b = "not found".getBytes("UTF-8");
+                    send(out, 404, "text/plain; charset=utf-8", b.length, null, false);
+                    if (!head) out.write(b);
+                    out.flush();
+                    return;
+                }
+
+                conn = (HttpURLConnection) new URL(target).openConnection();
+                conn.setConnectTimeout(15000);
+                conn.setReadTimeout(25000);
+                conn.setInstanceFollowRedirects(true);
+                conn.setRequestProperty("User-Agent", PLAY_UA);   // 关键：非浏览器 UA
+                conn.setRequestProperty("Accept", "*/*");
+                conn.setRequestProperty("Accept-Encoding", "identity");
+                // 关键：绝不带 Referer
+                String plain = target;
+                int qm = plain.indexOf('?');
+                if (qm >= 0) plain = plain.substring(0, qm);
+                boolean byName = plain.endsWith(".m3u8");
+                // 播放列表不能被 Range 截断，否则改写出来的是半截列表
+                if (range != null && !byName) conn.setRequestProperty("Range", range);
+
+                int code = conn.getResponseCode();
+                if (code >= 400) {
+                    byte[] b = ("upstream " + code).getBytes("UTF-8");
+                    send(out, code, "text/plain; charset=utf-8", b.length, null, false);
+                    if (!head) out.write(b);
+                    out.flush();
+                    return;
+                }
+                String ctype = conn.getContentType();
+                InputStream body = conn.getInputStream();
+                byte[] first = new byte[2048];
+                int n = fill(body, first);
+                String name = plain.substring(plain.lastIndexOf('/') + 1);
+                boolean playlist = byName
+                        || (ctype != null && ctype.toLowerCase().contains("mpegurl"))
+                        || isPlaylist(first, n);
+
+                if (playlist) {
+                    ByteArrayOutputStream bos = new ByteArrayOutputStream(n + 4096);
+                    bos.write(first, 0, n);
+                    byte[] buf = new byte[16384];
+                    int m;
+                    while ((m = body.read(buf)) > 0) bos.write(buf, 0, m);
+                    byte[] fixed = rewrite(new String(bos.toByteArray(), "UTF-8"), target).getBytes("UTF-8");
+                    send(out, 200, "application/vnd.apple.mpegurl", fixed.length, null, true);
+                    if (!head) out.write(fixed);
+                } else {
+                    String ct = name.endsWith(".ts") ? "video/mp2t"
+                            : (ctype == null || ctype.length() == 0 ? "application/octet-stream" : ctype);
+                    send(out, code == 206 ? 206 : 200, ct, size(conn.getHeaderField("Content-Length")),
+                            conn.getHeaderField("Content-Range"), true);
+                    if (!head) {
+                        out.write(first, 0, n);
+                        byte[] buf = new byte[32768];
+                        int m;
+                        while ((m = body.read(buf)) > 0) out.write(buf, 0, m);
+                    }
+                }
+                out.flush();
+            } catch (Throwable ignored) {
+            } finally {
+                if (conn != null) {
+                    try {
+                        conn.disconnect();
+                    } catch (Throwable ignored) {
+                    }
+                }
+                try {
+                    socket.close();
+                } catch (Throwable ignored) {
+                }
+            }
+        }
+
+        private static void send(OutputStream out, int status, String ctype, int len, String contentRange,
+                                 boolean noStore) {
+            StringBuilder sb = new StringBuilder(256);
+            sb.append("HTTP/1.1 ").append(status).append(' ')
+                    .append(status == 200 ? "OK" : (status == 206 ? "Partial Content" : "ERR")).append("\r\n");
+            sb.append("Content-Type: ").append(ctype).append("\r\n");
+            if (len >= 0) sb.append("Content-Length: ").append(len).append("\r\n");
+            if (contentRange != null) sb.append("Content-Range: ").append(contentRange).append("\r\n");
+            sb.append("Accept-Ranges: bytes\r\n");
+            if (noStore) sb.append("Cache-Control: no-cache\r\n");
+            sb.append("Connection: close\r\n\r\n");
+            try {
+                out.write(sb.toString().getBytes("UTF-8"));
+            } catch (Throwable ignored) {
+            }
+        }
+
+        /** 读一行（请求行/请求头，逐字节读到 \n） */
+        private static String line(InputStream in) {
+            try {
+                ByteArrayOutputStream bos = new ByteArrayOutputStream(128);
+                int b;
+                while ((b = in.read()) >= 0) {
+                    if (b == '\n') break;
+                    if (b != '\r') bos.write(b);
+                }
+                if (b < 0 && bos.size() == 0) return null;
+                return new String(bos.toByteArray(), "UTF-8");
+            } catch (Throwable e) {
+                return null;
+            }
+        }
+
+        /** 尽量填满缓冲区（不足则说明流结束了） */
+        private static int fill(InputStream in, byte[] buf) {
+            int off = 0;
+            try {
+                while (off < buf.length) {
+                    int n = in.read(buf, off, buf.length - off);
+                    if (n <= 0) break;
+                    off += n;
+                }
+            } catch (Throwable ignored) {
+            }
+            return off;
+        }
+
+        private static boolean isPlaylist(byte[] head, int n) {
+            int i = (n >= 3 && (head[0] & 0xFF) == 0xEF) ? 3 : 0;
+            return n - i >= 7 && new String(head, i, 7).equals("#EXTM3U");
+        }
+
+        private static int size(String s) {
+            if (s == null) return -1;
+            try {
+                return Integer.parseInt(s.trim());
+            } catch (Throwable e) {
+                return -1;
+            }
         }
     }
 }
