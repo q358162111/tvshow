@@ -96,9 +96,9 @@ powershell -ExecutionPolicy Bypass -File tvdy-spider\build.ps1
 | 奈飞工厂 `netflixgc.org` | `csp_NetflixGc` | dsn2 模板静态解析 | `POST /index.php/ds_api/vod`（JSON） | `/vodsearch/…?wd=` | `/vodplay/{id}-{sid}-{nid}.html` → `player_aaaa.url`（base64→urlencode） |
 | vv3nwjk `vv3nwjk.com` | `csp_Vv3` | Next.js flight 数据 | `/vod/show/id/{tid}[/page/{n}]` | `/vod/search/{kw}`（仅一页） | 接口 `/mw-movie/anonymous/v2/video/episode/url`，需 `t` + `sign=sha1(md5(params&key&t))` |
 | 可可影视 `www.kkys04.com` | `csp_Kky` | JS 反爬 cookie | `/show/{tid}-{class}-{area}-{lang}-{year}-{order}-{page}.html` | `/search?k={kw}&page={n}&t={token}`（token 取自 `/search`） | `/play/{id}-{sid}-{nid}.html` → `const playSource = {src:"…m3u8"}` |
-| 永乐视频 `www.cw2.net`（页面伪装"瓜子影视"，代码为 ylsp 永乐系） | `csp_YongLe` | mxtheme 模板静态解析 + **多 host failover** | `/vodshow/{id}-{area}-{by}-{class}-{lang}-{letter}-..-{page}-..-{year}/`（12 段） | `/vodsearch/{kw}----------{page}---/` | `/watch/{id}-{sid}-{nid}/` → `player_aaaa.url`（encrypt=0 直链） |
+| 永乐视频 `www.cw2.net`（页面伪装"瓜子影视"，代码为 ylsp 永乐系） | `csp_YongLe` | mxtheme 模板静态解析（Cloudflare CDN） | `/vodshow/{id}-{area}-{by}-{class}-{lang}-{letter}-..-{page}-..-{year}/`（12 段） | `/vodsearch/{kw}----------{page}---/` | `/watch/{id}-{sid}-{nid}/` → `player_aaaa.url`（encrypt=0 直链） |
 
-**镜像域 failover**：内置镜像列表 `[cw2.net, ylys.tv, ylys.cc, ylsp.pro, ylsp.one]`，依次探测，仅 `cw2.net` 完整可用（其余仅推广页，详情/播放 404）。`ext` 支持 `{"host":"..."}` 或 `{"hosts":["...","..."]}` 显式覆盖；单请求连续失败自动轮询下一个 host。
+**镜像选择**：经实测 `cw2.net` 是唯一拥有完整片库与播放的入口；同模板的 `ylys.tv / ylsp.pro / ylsp.one / ylys.cc` 均为推广首页（详情/播放 404）。`ext` 接受 `{"host":"https://www.cw2.net"}` 或裸 `https://...` 临时切换调试。
 
 `Vv3` 与 `Kky` 都支持 `"ext": {"host": "https://域名"}` 覆盖域名。
 

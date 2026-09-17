@@ -46,20 +46,20 @@ public class YongLe extends Spider {
     private static final String UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
 
     /**
-     * 多个镜像域，按顺序尝试；任一返回 403/404/空响应自动 failover 到下一个。
-     * 实测仅 {@code cw2.net} 提供完整片库 + 播放；其它域名同模板但仅首页推广页，
-     * 详情/播放 404，仅作为 host failover 时的占位/广告位识别依据。
-     * 真实可用：{@code https://www.cw2.net}
+     * 主域名。Cloudflare CDN，首次请求会下发 {@code server_session_xxx} cookie；
+     * 真实可用的镜像/片库仅此一处。其它 {@code ylys.tv / ylsp.pro} 等只是推广入口（详情/播放 404），
+     * 不加入 failover，避免被 CF/CDN 判定为异常源后跳到推广页导致无数据。
+     * <p>
+     * 如需临时切到备用推广域调试，可用 ext：{@code {"host":"https://www.ylys.tv"}}。
      */
-    private static final String[] DEFAULT_HOSTS = {
-            "https://www.cw2.net",
+    private static final String DEFAULT_HOST = "https://www.cw2.net";
+    private static final String[] FALLBACK_HOSTS = {
             "https://www.ylys.tv",
             "https://www.ylys.cc",
             "https://www.ylsp.pro",
             "https://www.ylsp.one"};
 
-    private final List<String> hosts = new ArrayList<String>();
-    private String host = DEFAULT_HOSTS[0];
+    private String host = DEFAULT_HOST;
 
     /** 默认分类（与站点导航 /vodtype/{id}/ 一致） */
     private static final String[][] DEFAULT_CLASSES = {
@@ -78,9 +78,7 @@ public class YongLe extends Spider {
 
     @Override
     public void init(Context context, String extend) throws Exception {
-        hosts.clear();
-        for (String h : DEFAULT_HOSTS) hosts.add(h);
-        host = hosts.get(0);
+        host = DEFAULT_HOST;
 
         if (extend != null && extend.trim().length() > 0) {
             String ext = extend.trim();
@@ -88,23 +86,9 @@ public class YongLe extends Spider {
                 if (ext.startsWith("{")) {
                     JSONObject cfg = new JSONObject(ext);
                     String h = cfg.optString("host", "");
-                    if (h.length() > 0) {
-                        host = normalize(h);
-                        if (!hosts.contains(host)) hosts.add(0, host);
-                    }
-                    // 支持 "hosts":["u1","u2"] 显式覆盖列表
-                    JSONArray arr = cfg.optJSONArray("hosts");
-                    if (arr != null && arr.length() > 0) {
-                        hosts.clear();
-                        for (int i = 0; i < arr.length(); i++) {
-                            String u = arr.optString(i, "");
-                            if (u.length() > 0) hosts.add(normalize(u));
-                        }
-                        host = hosts.get(0);
-                    }
+                    if (h.length() > 0) host = normalize(h);
                 } else if (ext.startsWith("http")) {
                     host = normalize(ext);
-                    if (!hosts.contains(host)) hosts.add(0, host);
                 }
             } catch (Throwable ignored) {
             }
@@ -454,30 +438,10 @@ public class YongLe extends Spider {
 
     private String get(String url) {
         if (url == null || url.length() == 0) return "";
+        if (!url.startsWith("http")) url = host + (url.startsWith("/") ? url : "/" + url);
         Map<String, String> h = header();
         probeHostOkHttp();
 
-        // 已拼绝对 URL → 直接对该 host 拉取（无 failover）
-        if (url.startsWith("http")) return fetchOnce(url, h);
-
-        // 相对路径：从当前 active host 拼接，失败则轮询其它镜像
-        int start = hosts.indexOf(host);
-        if (start < 0) start = 0;
-        for (int i = 0; i < hosts.size(); i++) {
-            int idx = (start + i) % hosts.size();
-            String base = hosts.get(idx);
-            String full = base + (url.startsWith("/") ? url : "/" + url);
-            String text = fetchOnce(full, h);
-            if (looksValid(text)) {
-                host = base;
-                return text;
-            }
-        }
-        return "";
-    }
-
-    /** 一次拉取（宿主 OkHttp → JDK → 兜底 OkHttp） */
-    private String fetchOnce(String url, Map<String, String> h) {
         if (sOkWithHeader != null) {
             try {
                 Object o = sOkWithHeader.invoke(null, url, h);
@@ -485,8 +449,10 @@ public class YongLe extends Spider {
             } catch (Throwable ignored) {
             }
         }
+
         String text = httpGet(url, h);
         if (text.length() > 0) return text;
+
         if (sOkPlain != null) {
             try {
                 Object o = sOkPlain.invoke(null, url);
@@ -495,22 +461,6 @@ public class YongLe extends Spider {
             }
         }
         return text;
-    }
-
-    /** 判定响应是否像真实页面（短/404/CF 拦截页/HTML 异常页都视为无效） */
-    private boolean looksValid(String html) {
-        if (html == null || html.length() < 1500) return false;
-        // Cloudflare 反爬 / nginx 404 / 通用错误页
-        String lower = html.length() > 4096 ? html.substring(0, 4096).toLowerCase() : html.toLowerCase();
-        if (lower.contains("attention required") || lower.contains("cloudflare")
-                || lower.contains("access denied") || lower.contains("forbidden")
-                || lower.contains("page not found") || lower.contains("not found")
-                || lower.contains("404 not found") || lower.contains("网站错误"))
-            return false;
-        if (lower.startsWith("<?xml") || lower.startsWith("<!doctype html public"))
-            return true;
-        return lower.contains("</html>") || lower.contains("module-poster")
-                || lower.contains("module-card") || lower.contains("module-play");
     }
 
     /** 纯 JDK 实现，不依赖宿主的 OkHttp（各家 fork 签名不一） */
