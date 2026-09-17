@@ -138,8 +138,8 @@ public class GuaZi extends Spider {
     private String host = DEFAULT_HOST;
     private String token = "";
     private String installCode = "";
-    /** ext 传 {"direct":true} 时不做本机代理，直接下发 CDN 原地址（排障用） */
-    private boolean directPlay = false;
+    /** ext 传 {"proxy":true} 时改走本机回环中继（默认直链，中继只是兜底） */
+    private boolean useProxy = false;
 
     // ==================== 初始化 ====================
 
@@ -152,7 +152,7 @@ public class GuaZi extends Spider {
                 if (ext.startsWith("{")) {
                     JSONObject cfg = new JSONObject(ext);
                     h = cfg.optString("host", "");
-                    directPlay = cfg.optBoolean("direct", false);
+                    useProxy = cfg.optBoolean("proxy", false);
                 } else h = ext;
                 if (h.startsWith("http")) {
                     h = h.trim();
@@ -498,17 +498,21 @@ public class GuaZi extends Spider {
             }
             if (playUrl.length() > 0) break;
         }
-        // 该 CDN 做了「广告注入式防盗链」：请求带 Referer 或 UA 含 Mozilla 时，
-        // m3u8 与 ts 都会被 302 到广告站 app.wanglaoshi.中国（占位片，用户看到的就是「视频丢失」）。
-        // header 仍然照常下发，但实测播放器内核（尤其 WebView/X5 系）常无视它，届时 UA 仍是浏览器串，
-        // 于是这里默认改走本机回环代理：由爬虫按 CDN 要求取流，播放器只跟 127.0.0.1 通信。
+        // ⚠️ 最容易踩的坑：playUrl 是「前缀」不是地址！TVBox 系客户端播的是 playUrl + url，
+        // 若两个字段都塞完整地址，会拼成 .../index.m3u8http://127.0.0.1:xxxx/...（上一版就栽在这里：
+        // 客户端先是提示「源视频文件丢失」、后又提示「未知错误」，其实只是地址被拼重了）。
+        // 前缀必须留空，地址只放 url。
+        // header 照常下发：Exo（反射替换 userAgent）/ IJK（user_agent）/ 系统内核（setDataSource 带 headers）
+        // 都会用它替换自身 UA；浏览器串会被这条 CDN 302 到占位片。
         JSONObject header = new JSONObject();
         header.put("User-Agent", PLAY_UA);
-        String play = directPlay ? playUrl : Relay.register(playUrl);
+        // 兜底：ext 传 {"proxy":true} 时改走本机回环中继，由爬虫按 CDN 要求取流，
+        // 播放器（含内核不认 header、或外部播放器）用什么 UA 都不再影响结果。
+        String play = useProxy ? Relay.register(playUrl) : playUrl;
         return new JSONObject()
                 .put("parse", 0)
                 .put("jx", 0)
-                .put("playUrl", play)
+                .put("playUrl", "")     // 见上：必须留空
                 .put("url", play)
                 .put("header", header.toString())
                 .toString();
