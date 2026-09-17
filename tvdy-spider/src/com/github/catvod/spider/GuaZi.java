@@ -27,6 +27,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -109,9 +115,21 @@ public class GuaZi extends Spider {
     /** 列表条目缓存：detailContent 只有 d_id，片名海报需从列表回捞 */
     private static final LinkedHashMap<String, JSONObject> VIDEO_CACHE = new LinkedHashMap<>();
     private static final int CACHE_MAX = 600;
-    /** 每个分类的筛选项只拉一次 */
-    private static final Map<String, JSONArray> FILTER_CACHE = new HashMap<>();
+    /** 每个分类的筛选项只拉一次（多线程并发写入） */
+    private static final Map<String, JSONArray> FILTER_CACHE = new ConcurrentHashMap<>();
     private static JSONArray CLASS_CACHE;
+    /**
+     * 首页要拉 1 次分类树 + 每个分类 1 次筛选项（共 12 次往返），串行约 5 秒。
+     * 用线程池并发后约 0.6 秒。
+     */
+    private static final ExecutorService POOL = Executors.newFixedThreadPool(12, new ThreadFactory() {
+        @Override
+        public Thread newThread(Runnable r) {
+            Thread t = new Thread(r, "guazi-http");
+            t.setDaemon(true);   // 守护线程，避免拖住宿主 JVM 退出
+            return t;
+        }
+    });
 
     private String host = DEFAULT_HOST;
     private String token = "";
@@ -167,37 +185,78 @@ public class GuaZi extends Spider {
             }
             CLASS_CACHE = classes;
         }
-        JSONObject filters = new JSONObject();
-        for (int i = 0; i < classes.length(); i++) {
-            String tid = classes.optJSONObject(i).optString("type_id");
-            filters.put(tid, buildFilters(tid));
+        // 各分类的筛选项并发拉取；buildFilters 内部有缓存，二次进入不再发请求
+        final JSONArray cls = classes;
+        final JSONObject filters = new JSONObject();
+        final CountDownLatch latch = new CountDownLatch(cls.length());
+        for (int i = 0; i < cls.length(); i++) {
+            final String tid = cls.optJSONObject(i).optString("type_id");
+            POOL.execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        JSONArray f = buildFilters(tid);
+                        synchronized (filters) {
+                            filters.put(tid, f);
+                        }
+                    } catch (Throwable ignored) {
+                    } finally {
+                        latch.countDown();
+                    }
+                }
+            });
         }
+        latch.await(8, TimeUnit.SECONDS);
         return new JSONObject().put("class", classes).put("filters", filters).toString();
     }
 
     @Override
     public String homeVideoContent() throws Exception {
-        JSONArray list = new JSONArray();
-        for (String pid : new String[]{"6", "1", "2"}) {
-            try {
-                JSONObject r = api("/App/IndexList/index", single("pid", pid));
-                JSONObject plain = r.optJSONObject("plain");
-                JSONArray groups = plain == null ? null : plain.optJSONArray("list");
-                if (groups == null) continue;
-                for (int i = 0; i < groups.length(); i++) {
-                    JSONObject g = groups.optJSONObject(i);
-                    JSONArray items = g == null ? null : g.optJSONArray("list");
-                    if (items == null) continue;
-                    for (int j = 0; j < items.length() && list.length() < 40; j++) {
-                        JSONObject v = video(items.optJSONObject(j));
-                        if (v != null) list.put(v);
+        // 三个首页聚合位并发拉取
+        final String[] pids = {"6", "1", "2"};
+        final JSONArray[] parts = new JSONArray[pids.length];
+        final CountDownLatch latch = new CountDownLatch(pids.length);
+        for (int i = 0; i < pids.length; i++) {
+            final int idx = i;
+            POOL.execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        parts[idx] = homeGroup(pids[idx]);
+                    } catch (Throwable ignored) {
+                    } finally {
+                        latch.countDown();
                     }
                 }
-            } catch (Throwable ignored) {
-            }
-            if (list.length() >= 30) break;
+            });
+        }
+        latch.await(8, TimeUnit.SECONDS);
+
+        JSONArray list = new JSONArray();
+        for (JSONArray part : parts) {
+            if (part == null) continue;
+            for (int i = 0; i < part.length() && list.length() < 40; i++) list.put(part.opt(i));
         }
         return new JSONObject().put("list", list).toString();
+    }
+
+    /** 取单个首页聚合位（pid）下的全部影片 */
+    private JSONArray homeGroup(String pid) throws Exception {
+        JSONArray out = new JSONArray();
+        JSONObject r = api("/App/IndexList/index", single("pid", pid));
+        JSONObject plain = r.optJSONObject("plain");
+        JSONArray groups = plain == null ? null : plain.optJSONArray("list");
+        if (groups == null) return out;
+        for (int i = 0; i < groups.length(); i++) {
+            JSONObject g = groups.optJSONObject(i);
+            JSONArray items = g == null ? null : g.optJSONArray("list");
+            if (items == null) continue;
+            for (int j = 0; j < items.length(); j++) {
+                JSONObject v = video(items.optJSONObject(j));
+                if (v != null) out.put(v);
+            }
+        }
+        return out;
     }
 
     /** 筛选项来自 indexScreen，失败则退回通用地区/年份/排序 */
@@ -431,10 +490,19 @@ public class GuaZi extends Spider {
             if (playUrl.length() > 0) break;
         }
         // 该 CDN 做了「广告注入式防盗链」：请求带 Referer 或 UA 含 Mozilla 时，
-        // m3u8 会被 302 到一个 20 秒宣传片；只有播放器 UA 且不带 Referer 才返回正片。
-        JSONObject header = new JSONObject().put("User-Agent", PLAY_UA);
-        return new JSONObject().put("parse", 0).put("playUrl", playUrl)
-                .put("url", playUrl).put("header", header).toString();
+        // m3u8 与 ts 都会被 302 到广告站 app.wanglaoshi.中国（20 秒宣传片，且该站不稳定，
+        // 经常直接 504）；只有非浏览器 UA 且不带 Referer 才返回正片。
+        // 注意：header 必须以「JSON 字符串」下发，直接塞 JSONObject 客户端会忽略，
+        // 播放器就会退回自带 UA（浏览器串）进而被劫持 —— 本项目其它 spider 同样是 header.toString()。
+        JSONObject header = new JSONObject();
+        header.put("User-Agent", PLAY_UA);
+        return new JSONObject()
+                .put("parse", 0)
+                .put("jx", 0)
+                .put("playUrl", playUrl)
+                .put("url", playUrl)
+                .put("header", header.toString())
+                .toString();
     }
 
     @Override
@@ -455,7 +523,8 @@ public class GuaZi extends Spider {
         return r;
     }
 
-    private void ensureToken(String path) throws Exception {
+    /** 并发拉首页时只允许注册一次设备，其余线程复用 token */
+    private synchronized void ensureToken(String path) throws Exception {
         if (token.length() > 0) return;
         if (path.contains("/Authentication/Device/signUp")) return;
         if (installCode.length() == 0) installCode = rand16();

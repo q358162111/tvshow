@@ -95,6 +95,7 @@ powershell -ExecutionPolicy Bypass -File tvdy-spider\build.ps1
 列表      电影 tid=1  total=42840；筛选 日本+2024+最热 正常返回 30 条/页
 详情      勿言推理 电影版 → 官方线路1，HD$vod_d_id=12&vurl_id=507104&domain_type=8&resolution=1080&type=play
 播放      1280/1920 直链 m3u8，片长 7740s / 775 段（正片；用浏览器 UA 请求只会拿到 20 秒宣传片）
+首页      冷启动 2811ms（12 次接口并发）/ 热缓存 2ms；homeVideoContent 648ms
 搜索      凡人修仙传 → 6 条（含剧版/重制版/燕家堡之战）
 ```
 
@@ -133,6 +134,7 @@ signature   = UPPER(MD5( "token_id=,token=,phone_type=1,request_key=..,app_id=1,
 - **token**：匿名设备注册 `/App/Authentication/Device/signUp`（`old_key`/`new_key`/`phone_type`/`code`），返回的 `token` 全站复用；爬虫在 token 失效时会自动重注册一次。
 - **详情只有线路**：`/App/Resource/Vod/showOne?d_id=` 只返回 `vurl_clouds`（线路）与会员标签，**不带片名/海报/演员**（App 自身也是从列表页带过去的）。因此爬虫内建 600 条列表缓存，`detailContent` 时回捞；收藏夹等冷启动场景会退化为仅显示线路。
 - **域名池**：官方下发 16+ 个同构域名（`api.08zbidl.com` / `api.46d5umpk.com` / `api.anctjd.com` / …）。爬虫默认写死 `api.bp7kprw.com`，可用 `"ext": {"host":"https://其它域名"}` 覆盖。
+- **首页加载**：`homeContent` 需要 1 次分类树 + 11 次筛选项（共 12 次往返），串行约 5~6 秒。爬虫用 12 线程守护线程池并发拉取，分类树与筛选项都做静态缓存：冷启动约 2.8 秒，二次进入 2ms；`homeVideoContent` 的 3 个聚合位同样并发（约 0.6 秒）。
 
 > **⚠️ 播放地址的「广告注入式防盗链」（最容易踩的坑）**
 >
@@ -148,6 +150,11 @@ signature   = UPPER(MD5( "token_id=,token=,phone_type=1,request_key=..,app_id=1,
 > 因此 `playerContent` 必须返回 `header={"User-Agent":"okhttp/4.9.0"}`，且**绝不能下发 Referer**；
 > TVBox 会把该 header 应用到 m3u8 与分片请求上。排查手段：拉 m3u8 累加 `#EXTINF`，
 > 片长 < 2 分钟基本就是被插了广告。
+>
+> **再强调一次 `header` 的下发格式**：必须是 JSON **字符串**（`header.toString()`）。
+> 直接 `.put("header", jsonObject)` 会被客户端静默忽略，播放器随即退回自带 UA（通常是 `Mozilla/...`），
+> 于是又回到「宣传片」或「302 到广告站后 504 → 客户端提示『源视频文件丢失』」。
+> jar 内其它 7 个 spider 一律是 `header.toString()` 写法，改播放相关代码时保持同一写法。
 
 | 功能 | 接口 |
 | --- | --- |

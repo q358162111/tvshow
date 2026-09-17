@@ -29,8 +29,17 @@ public class TestSpider {
         if (which.equals("guazi")) {
             GuaZi s = new GuaZi();
             s.init(null, "");
-            log("HOME", s.homeContent(true));
-            log("HOME-VIDEO", s.homeVideoContent());
+            long t0 = System.currentTimeMillis();
+            String home = s.homeContent(true);
+            long t1 = System.currentTimeMillis();
+            System.out.println(">>> homeContent 冷启动耗时 " + (t1 - t0) + "ms");
+            String hv = s.homeVideoContent();
+            System.out.println(">>> homeVideoContent 耗时 " + (System.currentTimeMillis() - t1) + "ms");
+            long t2 = System.currentTimeMillis();
+            s.homeContent(true);
+            System.out.println(">>> homeContent 热缓存耗时 " + (System.currentTimeMillis() - t2) + "ms");
+            log("HOME", home);
+            log("HOME-VIDEO", hv);
             String c1 = s.categoryContent("1", "1", false, new HashMap<String, String>());
             log("CAT-1-p1", c1);
             log("CAT-1-p2", s.categoryContent("1", "2", false, new HashMap<String, String>()));
@@ -67,7 +76,13 @@ public class TestSpider {
                 // 关键回归点：CDN 防盗链，带 Referer 或浏览器 UA 会拿到 20 秒宣传片
                 JSONObject pr = new JSONObject(pj);
                 String pu = pr.optString("playUrl", "");
-                String ua = pr.optJSONObject("header").optString("User-Agent", "");
+                // 回归点 1：header 必须是 JSON 字符串，传 JSONObject 客户端会忽略 → 被 CDN 劫持
+                Object hobj = pr.opt("header");
+                System.out.println(">>> header 类型 = " + (hobj instanceof String ? "String ✅"
+                        : hobj == null ? "缺失 ❌" : "JSONObject ❌（客户端会忽略，必被劫持）"));
+                String ua = new JSONObject(pr.optString("header", "{}")).optString("User-Agent", "");
+                System.out.println(">>> 下发 UA = [" + ua + "]"
+                        + (ua.contains("Mozilla") ? "  ⚠️ 浏览器 UA 会拿到广告" : "  ✅ 非浏览器 UA"));
                 java.net.HttpURLConnection conn = (java.net.HttpURLConnection) new java.net.URL(pu).openConnection();
                 conn.setRequestProperty("User-Agent", ua);
                 conn.setInstanceFollowRedirects(true);
@@ -90,6 +105,35 @@ public class TestSpider {
                         + (total < 120 ? "  ⚠️ 疑似宣传片/试看" : "  ✅ 正片")
                         + "  final=" + conn.getURL());
                 conn.disconnect();
+
+                // 回归点 2：分片请求同样带防盗链，必须能用同一套 header 拉到真实 TS
+                String seg = null;
+                for (String line : m3u8.split("\n")) {
+                    String t = line.trim();
+                    if (t.length() > 0 && !t.startsWith("#")) { seg = t; break; }
+                }
+                if (seg != null) {
+                    String base = conn.getURL().toString();
+                    base = base.substring(0, base.lastIndexOf('/') + 1);
+                    java.net.HttpURLConnection sc = (java.net.HttpURLConnection) new java.net.URL(base + seg).openConnection();
+                    sc.setRequestProperty("User-Agent", ua);
+                    sc.setInstanceFollowRedirects(false);
+                    int scode = sc.getResponseCode();
+                    String sloc = sc.getHeaderField("Location");
+                    if (scode == 200) {
+                        java.io.InputStream si = sc.getInputStream();
+                        byte[] sb = new byte[188];
+                        int sn = si.read(sb);
+                        si.close();
+                        System.out.println(">>> 首个分片 " + seg + " → 200，首字节 0x"
+                                + Integer.toHexString(sb[0] & 0xff)
+                                + (sn > 0 && sb[0] == 0x47 ? " (MPEG-TS ✅)" : " ⚠️ 不是 TS"));
+                    } else {
+                        System.out.println(">>> 首个分片 " + seg + " → " + scode
+                                + (sloc == null ? " ❌" : " → " + sloc + " ❌ 被劫持到广告站"));
+                    }
+                    sc.disconnect();
+                }
             }
 
             log("SEARCH 凡人修仙传", s.searchContent("凡人修仙传", false));
