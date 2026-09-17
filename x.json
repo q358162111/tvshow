@@ -19,12 +19,35 @@
       "searchable": 0
     },
     {
+      "key": "热播影视",
+      "name": "💡热播｜影视",
+      "type": 3,
+      "api": "csp_AppRJ",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "jar": "https://ncstatic-file.clewm.net/rsrc/2026/0406/21/5b2f258907bc956ee3538c9f5cdf4b83.jpg;md5;5af5edf697f25b99eb189fb800e1d098",
+      "ext": {
+        "url": "http://v.rbotv.cn"
+      }
+    },
+    {
       "key": "荐片",
       "name": "💡荐片｜影视",
       "ext": "https://api.ztcgi.com",
       "api": "csp_Jianpian",
       "type": 3,
       "jar": "./TvDy.jar;md5;4513fb9eec9c55aba31b1d82384f61ef"
+    },
+    {
+      "key": "瓜子影视",
+      "name": "🎬瓜子影视",
+      "type": 3,
+      "api": "csp_GuaZi",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;4513fb9eec9c55aba31b1d82384f61ef"
     },
     {
       "key": "原创",
@@ -60,19 +83,7 @@
       "changeable": 1,
       "jar": "https://zl.wpscdn.cn/2026/08/16/space_img/319d8350-dadc-4c0e-9555-15c65fd6dbdb.jpg;md5;ea8ab37f3d7bedd2bfa2b4b1e4d1eca4"
     },
-    {
-      "key": "热播影视",
-      "name": "💡热播｜影视",
-      "type": 3,
-      "api": "csp_AppRJ",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "jar": "https://ncstatic-file.clewm.net/rsrc/2026/0406/21/5b2f258907bc956ee3538c9f5cdf4b83.jpg;md5;5af5edf697f25b99eb189fb800e1d098",
-      "ext": {
-        "url": "http://v.rbotv.cn"
-      }
-    },
+    
     {
       "key": "热播",
       "name": "📺热播┃多线",
@@ -188,25 +199,8 @@
       "filterable": 1,
       "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;4513fb9eec9c55aba31b1d82384f61ef"
     },
-    {
-      "key": "瓜子影视",
-      "name": "🎬瓜子影视",
-      "type": 3,
-      "api": "csp_GuaZi",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;4513fb9eec9c55aba31b1d82384f61ef"
-    },
-    {
-      "key": "云云",
-      "name": "💡云云｜影视",
-      "type": 3,
-      "api": "csp_Qiji",
-      "playerType": 2,
-      "jar": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/Yoursmile.jar",
-      "ext": "7lj763gg402i79425h2384j4g949j899hll9990i9kjl6l740h1342hjlg1848401g8610h9995i998j351gl38kklkj1hkhll757010k7hji6h377ih37k060g35161jhl3i5h0l2702g7299452l4297k5697g5390lk6935k2i9g48l8j2kh27l1g014k7j9475g8"
-    },
+    
+    
     {
       "key": "骚火影视",
       "name": "💡骚火｜影视",
