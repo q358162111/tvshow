@@ -24,6 +24,7 @@ tvdy-spider/
 ├─ src/com/github/catvod/spider/Kky.java        可可影视 www.kkys04.com（含 JS 反爬破解）
 ├─ src/com/github/catvod/spider/YongLe.java      永乐视频 www.cw2.net（苹果CMS mxtheme 模板，页面伪装"瓜子影视"）
 ├─ src/com/github/catvod/spider/GuaZi.java       瓜子影视 api.bp7kprw.com（App 封闭签名接口：RSA+AES+MD5 签名 + Walle 渠道头）
+├─ src/com/github/catvod/spider/A123tv.java      A123TV a123tv.com（自制 w4 模板，slug 路由，分集地址可直接构造）
 ├─ src/com/github/catvod/spider/Init.java       空 init，仅为通过宿主 JarLoader 校验
 ├─ src-alias/.../Tvdy.java                      大小写别名类（独立目录，规避 Windows 文件系统大小写不敏感）
 ├─ stubs/                                       编译期桩类，不会打进 jar
@@ -110,6 +111,7 @@ powershell -ExecutionPolicy Bypass -File tvdy-spider\build.ps1
 | 可可影视 `www.kkys04.com` | `csp_Kky` | JS 反爬 cookie | `/show/{tid}-{class}-{area}-{lang}-{year}-{order}-{page}.html` | `/search?k={kw}&page={n}&t={token}`（token 取自 `/search`） | `/play/{id}-{sid}-{nid}.html` → `const playSource = {src:"…m3u8"}` |
 | 永乐视频 `www.cw2.net`（页面伪装"瓜子影视"，代码为 ylsp 永乐系） | `csp_YongLe` | mxtheme 模板静态解析（Cloudflare CDN） | `/vodshow/{id}-{area}-{by}-{class}-{lang}-{letter}-..-{page}-..-{year}/`（12 段） | `/vodsearch/{kw}----------{page}---/` | `/watch/{id}-{sid}-{nid}/` → `player_aaaa.url`（encrypt=0 直链） |
 | 瓜子影视 `api.bp7kprw.com` | `csp_GuaZi` | `/App/Resource/VodType/show` + `/App/IndexList/index` | `POST /App/IndexList/indexList`（`tid/page/pageSize/sub/sort/area/year`） | `POST /App/Index/findMoreVod` | `/App/Resource/VurlDetail/showOne` → 直链 m3u8 |
+| A123TV `a123tv.com` | `csp_A123tv` | 自制 w4 模板静态解析（`/t/{id}.html` 大类 10/11/12/13） | `/t/{typeId}.html`、第 P 页 `/t/{typeId}/p{P}.html`（类型筛选即换成子类 id） | `/s/{urlEncode(key)}.html`、第 P 页 `/s/{key}/p{P}.html` | 详情页/分集页 `div.w4-player[data-src]` 即 m3u8 直链 |
 
 **镜像选择**：经实测 `cw2.net` 是唯一拥有完整片库与播放的入口；同模板的 `ylys.tv / ylsp.pro / ylsp.one / ylys.cc` 均为推广首页（详情/播放 404）。`ext` 接受 `{"host":"https://www.cw2.net"}` 或裸 `https://...` 临时切换调试。
 
@@ -178,6 +180,40 @@ signature   = UPPER(MD5( "token_id=,token=,phone_type=1,request_key=..,app_id=1,
 | 详情 | `/App/Resource/Vod/showOne?d_id={id}` → `vurl_clouds[]` |
 | 剧集 | `/App/Resource/Vurl/show?vurl_cloud_id={线路id}&vod_d_id={id}` → 每集 `default_param` |
 | 播放 | `/App/Resource/VurlDetail/showOne`（`vod_id,vurl_id,domain_type,resolution,type=play`）→ `.url` 即 m3u8 直链 |
+
+### 7.2 A123TV（A123tv）—— 分集地址可「算」出来
+
+站点是自制 w4 模板（苹果CMS 数据源，但路由全用 slug），2026-09-18 实测：
+
+```
+分类      4 大类（电影10 / 连续剧11 / 综艺12 / 动漫13）+ 39 个子类，仅「类型」一组筛选
+列表      36 条/页；pagecount 起点 14（滑动窗口下界）
+搜索      火影 → 36 条，第 2 页 24 条
+详情      寒战 slug=hanzhan6 → type=剧情片 / year=1994 / remarks=HD / 12 条线路 / 615 字节
+          怪物 slug=guaiwu14 → type=日本剧 / year=2025 / remarks=全4集 / 12 条线路 / 4723 字节
+播放      寒战 线路160 → https://v.lfthirtytwo.com/.../index.m3u8 片长 7088s ✅
+          怪物 线路228 → https://v10.ppqrrs.com/.../index.m3u8     片长 3832s ✅
+```
+
+四个决定写法的实测结论：
+
+1. **分集地址可直接构造**：线路项自带 `data-ttl="4kz36ex"` 与 `共2集`，该线路第 n 集就是
+   `/v/{slug}/{ttl}z{n}.html`（0 基）。注意**越界下标不会 404，而是静默回落到第 01 集**，
+   所以必须严格按 `共N集` 生成，多生成只会得到重复的第 1 集。爬虫每次只请求详情页 1 次，
+   分集全部由线路元数据算出（实测末集 `第04集`、`粤语中字` 均与站点 `data-title` 一致）。
+2. **线路极多**：单片可达 80+ 条（同一部剧 20 集 / 10 集 / 4 集版本混排），全量灌给客户端会把
+   `vod_play_url` 撑到几百 KB。默认只取前 **12** 条并用 `·` 拼上清晰度（如 `线路160·720p`），
+   `ext` 传 `{"lines":50}` 可放开；地址去重按 `data-ttl` 做，避免重复线路占位。
+3. **分类页分页控件是滑动窗口**：固定 13 个页码，最大页 = `max(p+6, 13)`，且**没有「末页」**，
+   拿不到真实总页数。这里返回「窗口最大页（有下一页则 +1）」作为下界，客户端每翻一页自动多解锁
+   一页；整页无分页控件（内容仅一页）时返回当前页。另注意**页面顶部导航也有一堆 `/t/` 链接**，
+   详情页解析 `type_name` 必须限定在 `div.w4-bread` 内，否则会取到「连续剧」。
+4. **CDN 无防盗链**：实测 8 个不同域名（`gsuus` / `lfthirtytwo` / `360zyx` / `bfikuncdn` /
+   `ppqrrs` …）对 UA 与 Referer 均不设限，`header` 只作常规携带（浏览器 UA + `Referer: host/`），
+   无需像 GuaZi 那样上本机中继。
+
+站点广告/成人分区（`/t/15.html`、`/t/1307.html`）已从分类与筛选中剔除。
+`ext` 支持 `{"host":"https://a123tv.com","lines":12}`，也接受裸域名。
 
 ## 八、免责声明
 
