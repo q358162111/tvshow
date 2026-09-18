@@ -25,7 +25,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 看影视  https://www.kanys8.com
+ * 影视大全（原 看影视） https://www.kanys8.com
  * <p>
  * 模板：苹果CMS10 + stui（与 tvdy 同一套模板，但路由细节不同）：
  *   分类/筛选  /filmshow/{type}-{area}-{by}-{lang}-{year}-{other}-{page}---.html

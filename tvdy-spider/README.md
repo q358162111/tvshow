@@ -17,8 +17,8 @@ jar 内同时包含大小写兼容别名类 `com.github.catvod.spider.Tvdy`，�
 ```
 tvdy-spider/
 ├─ src/com/github/catvod/spider/TvDy.java       电影天堂 www.tvdy.xyz（stui 模板）
-├─ src/com/github/catvod/spider/Movietv88.java  88影视（stui 模板）
-├─ src/com/github/catvod/spider/Kanys8.java     看影视（苹果CMS，模拟 App 接口）
+├─ src/com/github/catvod/spider/Movietv88.java  88影视 www.88ystv.com（stui 模板）
+├─ src/com/github/catvod/spider/Kanys8.java     影视大全（原 看影视）www.kanys8.com（苹果CMS，模拟 App 接口）
 ├─ src/com/github/catvod/spider/NetflixGc.java  奈飞工厂 netflixgc.org（dsn2 模板）
 ├─ src/com/github/catvod/spider/Vv3.java        vv3nwjk.com（Next.js flight 数据 + 接口签名）
 ├─ src/com/github/catvod/spider/Kky.java        可可影视 www.kkys04.com（含 JS 反爬破解）

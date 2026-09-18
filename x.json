@@ -37,7 +37,7 @@
       "ext": "https://api.ztcgi.com",
       "api": "csp_Jianpian",
       "type": 3,
-      "jar": "./TvDy.jar;md5;0be8ed0288b201aa05b852a6423e7d1e"
+      "jar": "./TvDy.jar;md5;6d9d2e5660414c575f8caae63cbb2146"
     },
     {
       "key": "瓜子影视",
@@ -47,7 +47,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0be8ed0288b201aa05b852a6423e7d1e"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;6d9d2e5660414c575f8caae63cbb2146"
     },
     {
       "key": "原创",
@@ -137,7 +137,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0be8ed0288b201aa05b852a6423e7d1e"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;6d9d2e5660414c575f8caae63cbb2146"
     },
     {
       "key": "88影视",
@@ -147,17 +147,20 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0be8ed0288b201aa05b852a6423e7d1e"
+      "jar": "./TvDy.jar;md5;6d9d2e5660414c575f8caae63cbb2146",
+      "ext": {
+        "host": "https://www.88ystv.com"
+      }
     },
     {
-      "key": "看影视",
-      "name": "🧲看影视",
+      "key": "影视大全",
+      "name": "🧲影视大全",
       "type": 3,
       "api": "csp_Kanys8",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0be8ed0288b201aa05b852a6423e7d1e"
+      "jar": "./TvDy.jar;md5;6d9d2e5660414c575f8caae63cbb2146"
     },
     {
       "key": "奈飞工厂",
@@ -167,7 +170,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0be8ed0288b201aa05b852a6423e7d1e"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;6d9d2e5660414c575f8caae63cbb2146"
     },
     {
       "key": "vv3nwjk",
@@ -177,7 +180,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0be8ed0288b201aa05b852a6423e7d1e"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;6d9d2e5660414c575f8caae63cbb2146"
     },
     {
       "key": "可可影视",
@@ -187,7 +190,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0be8ed0288b201aa05b852a6423e7d1e"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;6d9d2e5660414c575f8caae63cbb2146"
     },
     {
       "key": "永乐视频",
@@ -197,7 +200,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0be8ed0288b201aa05b852a6423e7d1e"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;6d9d2e5660414c575f8caae63cbb2146"
     },
     {
       "key": "A123TV",
@@ -207,7 +210,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0be8ed0288b201aa05b852a6423e7d1e"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;6d9d2e5660414c575f8caae63cbb2146"
     },
     
     

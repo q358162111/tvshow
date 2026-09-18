@@ -25,7 +25,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 88影视  https://www.movietv88.cc
+ * 88影视  https://www.88ystv.com
  * <p>
  * 模板：苹果CMS10 + stui（与 tvdy 同一套模板，但路由细节不同）：
  *   分类     /vod/type/id/{1..4}/page/{P}/                          ← 1=电影 2=连续剧 3=综艺 4=动漫
@@ -41,7 +41,7 @@ import java.util.regex.Pattern;
 public class Movietv88 extends Spider {
 
     private static final String UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
-    private static final String DEFAULT_HOST = "https://www.movietv88.cc";
+    private static final String DEFAULT_HOST = "https://www.88ystv.com";
 
     private String host = DEFAULT_HOST;
 
