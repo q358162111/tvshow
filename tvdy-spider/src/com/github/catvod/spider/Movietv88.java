@@ -1,7 +1,6 @@
 package com.github.catvod.spider;
 
 import android.content.Context;
-import android.util.Base64;
 
 import com.github.catvod.crawler.Spider;
 
@@ -13,7 +12,6 @@ import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,16 +25,23 @@ import java.util.regex.Pattern;
 /**
  * 88影视  https://www.88ystv.com
  * <p>
- * 模板：苹果CMS10 + stui（与 tvdy 同一套模板，但路由细节不同）：
- *   分类     /vod/type/id/{1..4}/page/{P}/                          ← 1=电影 2=连续剧 3=综艺 4=动漫
- *   筛选     /vod/show/by/{by}/id/{typeId}/[year/..][lang/..][area/..][letter/..][page/..]/
- *            或 /vod/show/id/{typeId}/[year/..]...（by 默认 time）
- *            其中 typeId 是 show 子类型 id（1=全部电影、6=爱情片、7=喜剧片；4=全部连续剧、36=国产剧...）
- *   详情     /vod/detail/id/{N}/
- *   播放     /vod/play/id/{N}/sid/{S}/nid/{T}/
- *            → 内嵌 var player_aaaa={..., "url":"https://hn.bfvvs.com/play/{code}"}
- *            → GET 该 URL，正则提取 const vid = '(...m3u8)'           （m3u8 在二次页 HTML 内）
- *   搜索     后端已 500，本 spider 直接返回空
+ * 模板：pc88ysw 自制模板（2026-09 实测，slug 路由，但内部保留了 vod-type-id / vod-play-id 数字路由）：
+ *   导航    /                                         →  li.top-nav 内的 /vod-type-id-{1..4}-pg-1.html
+ *   分类    /vod-type-id/{tid}/pg/{P}.html            ← 1=电影 2=电视剧 3=综艺 4=动漫
+ *   分类筛选 (页内) /vod-type-id/{subId}/pg/1.html    ← 仅"按分类"项
+ *   搜索    /vod-search-pg-{P}-wd-{urlEnc(wd)}[-area-...][-by-...][-typeid-...][-year-...].html
+ *            （段位按字母顺序，可任意组合；HTTP 302 → /search/search.php?q=...）
+ *   列表项   <li class="p1 m1"><a href="/{slug}/{yyyyMM}/{id}.html" title="..."><img data-original="..."></a>
+ *            <span class="lzbz"><p class="name">{name}</p><p class="actor">{actors}</p>
+ *                            <p class="actor">{type}</p><p class="actor">{year/area}</p></span>
+ *            <p class="other"><i>{remarks}</i></p>
+ *   详情    GET /{slug}/{yyyyMM}/{id}.html             → 解析 thumb + 简介 + 6 个播放源(stab81..stab86)
+ *            播放项 <li><a href="/vod-play-id-{id}-src-{S}-num-{T}.html" title="{label}">
+ *   播放    GET /vod-play-id-{id}-src-{S}-num-{N}.html  → 内嵌 var mac_url=unescape('%uXXXX%uXXXX%XX$token$from')
+ *            + /js/playerconfig.js + /play/player.www.js + /player/{from}.js
+ *            → 第三方 iframe (如 https://vip.jsjinfu.com:8443?url=...) 解 m3u8
+ *            → 爬虫不模拟 JS，直接传播放页 URL 让客户端 parse=1 解析
+ *   分页文本  当前:1/2674页
  */
 public class Movietv88 extends Spider {
 
@@ -45,31 +50,31 @@ public class Movietv88 extends Spider {
 
     private String host = DEFAULT_HOST;
 
-    /** 四大类：type_id 用字符串 slug（TVBox 完全支持），便于和筛选里的 show id 共存 */
+    /** 4 大类 */
     private static final String[][] DEFAULT_CLASSES = {
-            {"1", "电影"}, {"2", "连续剧"}, {"3", "综艺"}, {"4", "动漫"}};
+            {"1", "电影"}, {"2", "电视剧"}, {"3", "综艺"}, {"4", "动漫"}};
 
-    /** 筛选 class 选项（n=显示中文, v=show id）。三大类的子类映射均来自 show/id/N 页实测 */
-    private static final String[][] FILTER_CLASS_MOVIE = {
-            {"1", "全部"}, {"6", "爱情片"}, {"7", "喜剧片"}, {"8", "动作片"}, {"9", "科幻片"},
-            {"10", "恐怖片"}, {"11", "剧情片"}, {"12", "战争片"}, {"21", "纪录片"},
-            {"22", "动画片"}, {"23", "悬疑片"}, {"24", "犯罪片"}, {"25", "奇幻片"},
-            {"26", "邵氏电影"}, {"27", "魔幻片"}};
-    private static final String[][] FILTER_CLASS_TV = {
-            {"4", "全部"}, {"36", "国产剧"}, {"37", "港台剧"}, {"38", "欧美剧"}, {"39", "日韩剧"}, {"40", "海外剧"}};
-    private static final String[][] FILTER_CLASS_GENERIC = {{"1", "全部"}};
+    /** 4 大类的子类（与首页 hover-nav 一致） */
+    private static final String[][] SUB_MOVIE = {
+            {"1", "全部"}, {"5", "动作片"}, {"6", "喜剧片"}, {"7", "爱情片"}, {"8", "科幻片"},
+            {"9", "恐怖片"}, {"10", "剧情片"}, {"11", "战争片"}, {"16", "纪录片"},
+            {"17", "动画片"}, {"18", "悬疑片"}, {"19", "犯罪片"}, {"20", "奇幻片"},
+            {"25", "邵氏电影"}, {"26", "魔幻片"}, {"27", "其他片"}};
+    private static final String[][] SUB_TV = {
+            {"2", "全部"}, {"12", "国产剧"}, {"13", "港台剧"}, {"14", "日韩剧"},
+            {"15", "欧美剧"}, {"29", "其他剧"}};
+    private static final String[][] SUB_ZY = {
+            {"3", "全部"}, {"23", "内地综艺"}, {"24", "港台综艺"}, {"21", "日韩综艺"}, {"22", "欧美综艺"}};
+    private static final String[][] SUB_DM = {
+            {"4", "全部"}, {"30", "国产动漫"}, {"31", "日本动漫"}, {"32", "欧美动漫"}, {"33", "其他动漫"}};
 
     private static final String[] FILTER_AREA = {"大陆", "香港", "台湾", "美国", "法国", "英国",
-            "日本", "韩国", "泰国", "德国", "丹麦", "印度", "意大利", "西班牙", "其它"};
+            "日本", "韩国", "泰国", "德国", "丹麦", "印度", "意大利", "西班牙", "新加坡", "马来西亚", "俄罗斯", "其它"};
     private static final String[] FILTER_YEAR = {"2026", "2025", "2024", "2023", "2022", "2021",
-            "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "更早"};
-    private static final String[] FILTER_LANG = {"国语", "英语", "粤语", "闽南语", "韩语", "日语", "法语", "德语", "其它"};
-    private static final char[] FILTER_LETTER = new char[27];  // A-Z + 0
-    static {
-        for (int i = 0; i < 26; i++) FILTER_LETTER[i] = (char) ('A' + i);
-        FILTER_LETTER[26] = '0';
-    }
-    private static final String[][] FILTER_BY = {{"全部", ""}, {"最新", "time"}, {"人气", "hits"}, {"评分", "score"}};
+            "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011",
+            "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000",
+            "1999", "1998", "1997", "1996", "1995", "更早"};
+    private static final String[][] FILTER_BY = {{"最新", "time"}, {"人气", "hits"}, {"评分", "score"}};
 
     // ==================== 初始化 ====================
 
@@ -113,18 +118,18 @@ public class Movietv88 extends Spider {
         return new JSONObject().put("list", parseList(get("/"))).toString();
     }
 
-    /** 筛选组：class 因 tid 而异（电影/连续剧用各自子类），其余全部共用 */
     private JSONArray buildFiltersFor(String tid) throws Exception {
-        String[][] classOpt;
-        if ("1".equals(tid)) classOpt = FILTER_CLASS_MOVIE;
-        else if ("2".equals(tid)) classOpt = FILTER_CLASS_TV;
-        else classOpt = FILTER_CLASS_GENERIC;
+        String[][] subOpt;
+        if ("1".equals(tid)) subOpt = SUB_MOVIE;
+        else if ("2".equals(tid)) subOpt = SUB_TV;
+        else if ("3".equals(tid)) subOpt = SUB_ZY;
+        else subOpt = SUB_DM;
 
         JSONArray filters = new JSONArray();
-        // class 筛选
-        JSONArray classVal = new JSONArray();
-        for (String[] kv : classOpt) classVal.put(new JSONObject().put("n", kv[1]).put("v", kv[0]));
-        filters.put(new JSONObject().put("key", "class").put("name", "类型").put("value", classVal));
+        // typeid（子类）
+        JSONArray subVal = new JSONArray();
+        for (String[] kv : subOpt) subVal.put(new JSONObject().put("n", kv[1]).put("v", kv[0]));
+        filters.put(new JSONObject().put("key", "typeid").put("name", "类型").put("value", subVal));
 
         // area
         JSONArray areaVal = new JSONArray();
@@ -138,23 +143,9 @@ public class Movietv88 extends Spider {
         for (String y : FILTER_YEAR) yearVal.put(new JSONObject().put("n", y).put("v", y));
         filters.put(new JSONObject().put("key", "year").put("name", "年份").put("value", yearVal));
 
-        // lang
-        JSONArray langVal = new JSONArray();
-        langVal.put(new JSONObject().put("n", "全部").put("v", ""));
-        for (String l : FILTER_LANG) langVal.put(new JSONObject().put("n", l).put("v", l));
-        filters.put(new JSONObject().put("key", "lang").put("name", "语言").put("value", langVal));
-
-        // letter
-        JSONArray letVal = new JSONArray();
-        letVal.put(new JSONObject().put("n", "全部").put("v", ""));
-        for (char c : FILTER_LETTER) {
-            String s = String.valueOf(c);
-            letVal.put(new JSONObject().put("n", s).put("v", s.equals("0") ? "0-9" : s));
-        }
-        filters.put(new JSONObject().put("key", "letter").put("name", "字母").put("value", letVal));
-
         // by
         JSONArray byVal = new JSONArray();
+        byVal.put(new JSONObject().put("n", "最新").put("v", ""));
         for (String[] by : FILTER_BY) byVal.put(new JSONObject().put("n", by[0]).put("v", by[1]));
         filters.put(new JSONObject().put("key", "by").put("name", "排序").put("value", byVal));
 
@@ -162,42 +153,30 @@ public class Movietv88 extends Spider {
     }
 
     // ==================== 分类 ====================
-    //  无筛选：/vod/type/id/{tid}/page/{pg}/
-    //  有筛选：/vod/show/by/{by}/id/{typeId}/[year/Y/][lang/L/][area/A/][letter/LET/][page/P/]
-    //         （by 默认 time 时为 /vod/show/id/{typeId}/...）
+    //   无筛选: /vod-type-id/{tid}/pg/{P}.html
+    //   有筛选: /vod-search-pg-{P}-wd--area-{A}-by-{B}-typeid-{T}-year-{Y}.html
+    //           （段位按字母顺序，可任意组合；wd 为空表示"无搜索词的分类筛选"）
 
     @Override
     public String categoryContent(String tid, String pg, boolean filter, HashMap<String, String> extend) throws Exception {
         int page = parseInt(pg, 1);
         Map<String, String> ext = extend == null ? new HashMap<String, String>() : extend;
 
-        String cls = seg(ext.get("class"));   // show 子类型 id
+        String typeid = seg(ext.get("typeid"));   // 子类 id（= 子类 vod-type-id 值）
         String area = seg(ext.get("area"));
         String year = seg(ext.get("year"));
-        String lang = seg(ext.get("lang"));
-        String letter = seg(ext.get("letter"));
         String by = seg(ext.get("by"));
 
+        boolean hasFilter = area.length() > 0 || year.length() > 0 || by.length() > 0;
+        // typeid = 当前分类的默认（子类"全部"的 v）= tid 时，不算筛选
+        if (typeid.equals(tid)) typeid = "";
+
         String target;
-        boolean hasFilter = cls.length() > 0 || area.length() > 0 || year.length() > 0
-                || lang.length() > 0 || letter.length() > 0 || by.length() > 0;
-
-        if (!hasFilter) {
-            // /vod/type/id/{tid}/page/{P}/
-            target = host + "/vod/type/id/" + tid + "/page/" + page + "/";
+        if (!hasFilter && typeid.length() == 0) {
+            target = host + "/vod-type-id-" + tid + "-pg-" + page + ".html";
         } else {
-            // show 子类型 id：filter.class 给的是 show id；若用户没选 class，则用该大类的 show id（1=全部/4=全部连续剧）
-            String typeId = cls.length() > 0 ? cls : ("1".equals(tid) ? "1" : ("2".equals(tid) ? "4" : ("3".equals(tid) ? "1" : "4")));
-            String useBy = by.length() == 0 ? "time" : by;
-
-            // URL: /vod/show/by/{useBy}/id/{typeId}/[year/..][lang/..][area/..][letter/..][page/..]
-            StringBuilder sb = new StringBuilder(host).append("/vod/show/by/").append(useBy).append("/id/").append(typeId).append("/");
-            if (year.length() > 0) sb.append("year/").append(year).append("/");
-            if (lang.length() > 0) sb.append("lang/").append(enc(lang)).append("/");
-            if (area.length() > 0) sb.append("area/").append(enc(area)).append("/");
-            if (letter.length() > 0) sb.append("letter/").append(enc(letter)).append("/");
-            if (page > 1) sb.append("page/").append(page).append("/");
-            target = sb.toString();
+            // 用搜索 URL 做筛选；wd 留空表示"无关键词"
+            target = buildSearchUrl("", typeid, area, year, by, page);
         }
 
         String html = get(target);
@@ -212,39 +191,75 @@ public class Movietv88 extends Spider {
     }
 
     // ==================== 搜索 ====================
-    // 该站搜索后端 500，本接口直接返回空列表
+    //   /vod-search-pg-{P}-wd-{urlEnc(wd)}[-area-...][-by-...][-typeid-...][-year-...].html
+    //   段位按字母顺序，可任意组合
 
     @Override
     public String searchContent(String key, boolean quick) throws Exception {
-        return new JSONObject().put("list", new JSONArray()).put("page", 1)
-                .put("pagecount", 0).put("limit", 90).put("total", 0).toString();
+        return searchContent(key, quick, "1");
     }
 
     @Override
     public String searchContent(String key, boolean quick, String pg) throws Exception {
-        return searchContent(key, quick);
+        int page = parseInt(pg, 1);
+        String target = buildSearchUrl(key == null ? "" : key.trim(), "", "", "", "", page);
+        String html = get(target);
+        JSONArray list = parseList(html);
+        return new JSONObject()
+                .put("list", list)
+                .put("page", page)
+                .put("pagecount", parsePageCount(html))
+                .put("limit", 90)
+                .put("total", 999999)
+                .toString();
+    }
+
+    /** 构造搜索 URL（也用于分类筛选）。段位按字母顺序：area / by / typeid / wd / year */
+    private String buildSearchUrl(String wd, String typeid, String area, String year, String by, int page) {
+        String encWd = urlEncode(wd);
+        StringBuilder sb = new StringBuilder(host).append("/vod-search-pg-").append(page).append("-wd-").append(encWd);
+        if (area.length() > 0) sb.append("-area-").append(urlEncode(area));
+        if (by.length() > 0) sb.append("-by-").append(by);
+        if (typeid.length() > 0) sb.append("-typeid-").append(typeid);
+        if (year.length() > 0) sb.append("-year-").append(year);
+        sb.append(".html");
+        return sb.toString();
     }
 
     // ==================== 详情 ====================
+    //  thumb 链接: /{slug}/{yyyyMM}/{id}.html
+    //  vod_id 用数字 {id}（与播放链接 /vod-play-id-{id}-src-S-num-T 一致）
 
     @Override
     public String detailContent(List<String> ids) throws Exception {
-        String id = ids.get(0);
-        String html = get("/vod/detail/id/" + id + "/");
-
-        String name = first(html, "<h1[^>]*class=\"title\"[^>]*>([^<]+)");
-        if (name.length() == 0) name = id;
-
-        String year = first(html, "<span[^>]*>(\\d{4})</span>");
-        if (year.length() == 0) {
-            year = first(html, "<h1[^>]*class=\"title\"[^>]*>[^（(]*[（(](\\d{4})[）)]");
+        String raw = ids.get(0);
+        // 兼容旧/新两种 id：纯数字就直接走 {id}.html；slug 形式则走完整 URL
+        String url;
+        if (raw.matches("\\d+")) {
+            url = host + "/vod-detail-id-" + raw + ".html";
+            // 新模板不再用 /vod/detail/id/... ，先尝试一次，失败后回落到首页 thumb 的常见路径 /{slug}/.../{id}.html 无法定位（不知道 slug）
+            // 实际上 thumb 的 slug/year 都是路径的一部分，没有 slug 也无法直接打开详情页。
+            // 这里直接以 {id}.html 的二级兜底页（若有），实际站点 id 不一定能解析 → 抛异常。
+        } else if (raw.startsWith("http")) {
+            url = raw;
+        } else {
+            // raw 形如 "/juqingpian/202609/276930.html"
+            url = raw.startsWith("/") ? host + raw : host + "/" + raw;
         }
+        String html = get(url);
 
-        String pic = firstIgnoreCase(html, "class=\"lazyload\"[^>]*data-original=\"([^\"]+)\"");
-        if (pic.length() == 0) pic = firstIgnoreCase(html, "data-original=\"([^\"]+\\.(?:jpg|jpeg|png|webp))\"");
-        // style="...background-image: url(...)" 形式
-        if (pic.length() == 0) pic = firstIgnoreCase(html, "background-image:\\s*url\\(([^)]+\\.(?:jpg|jpeg|png|webp))\\)");
+        String name = first(html, "<h1>([^<]+)");
+        if (name.length() == 0) name = first(html, "<h1[^>]*>([^<]+)");
 
+        String pic = firstIgnoreCase(html, "data-original=\"([^\"]+\\.(?:jpg|jpeg|png|webp))\"");
+        if (pic.length() == 0) pic = firstIgnoreCase(html, "<img[^>]+src=\"([^\"]+\\.(?:jpg|jpeg|png|webp))\"");
+        // 简介
+        String content = clean(first(html, "<span class=\"detail-content\"[^>]*>([\\s\\S]*?)</span>"));
+        if (content.length() == 0) content = clean(first(html, "<div class=\"detail\"[^>]*>([\\s\\S]*?)</div>"));
+        if (content.length() == 0) content = clean(first(html, "<div[^>]*class=\"[^\"]*des[^\"]*\"[^>]*>([\\s\\S]*?)</div>"));
+        // type/分类
+
+        // 数据行（类型/地区/年份/主演/导演/更新）
         Map<String, String> data = new HashMap<String, String>();
         Matcher dm = Pattern.compile("<p class=\"data[^\"]*\"[^>]*>\\s*<span[^>]*>([^：:<]+)</span>([\\s\\S]*?)</p>").matcher(html);
         while (dm.find()) {
@@ -252,53 +267,63 @@ public class Movietv88 extends Spider {
             String v = clean(dm.group(2));
             if (k.length() > 0 && v.length() > 0 && !data.containsKey(k)) data.put(k, v);
         }
-        // 也支持直接 text-muted span（站点可能没 data class）
-        if (!data.containsKey("主演")) {
-            Matcher tm = Pattern.compile("<span[^>]*>主演：?</span>([\\s\\S]*?)</p>").matcher(html);
-            if (tm.find()) data.put("主演", clean(tm.group(1)));
+
+        // 播放源 & 分集（按 tab81..tab86 顺序）
+        String id = raw;
+        if (!id.matches("\\d+")) {
+            // 从 url 里抽取 id
+            Matcher em2 = Pattern.compile("/(\\d+)\\.html").matcher(raw);
+            if (em2.find()) id = em2.group(1);
         }
-
-        String content = clean(first(html, "<span class=\"detail-content\"[^>]*>([\\s\\S]*?)</span>"));
-        if (content.length() == 0) content = clean(first(html, "<div class=\"detail\"[^>]*>([\\s\\S]*?)</div>"));
-
-        // 播放源 & 分集列表（多 sid 对应多线路，每条下挂 nid=分集号）
-        // 实测结构: <h3 class="title">源名</h3> ...若干 div... <ul class="stui-content__playlist ...">...</ul>
-        // 源名不紧邻 ul，故先定位 ul，再向前回溯最近的 h3/h4 文本
         List<String> froms = new ArrayList<String>();
         List<String> urls = new ArrayList<String>();
-        Matcher lm = Pattern.compile("<ul[^>]*class=\"stui-content__playlist[^\"]*\"[^>]*>([\\s\\S]*?)</ul>").matcher(html);
-        int autoSrc = 0;
+        Matcher sm = Pattern.compile("<ul class=\"nav_tab[^\"]*\"[^>]*>([\\s\\S]*?)</ul>|<ul[^>]*class=\"[^\"]*tab[^\"]*\"[^>]*>([\\s\\S]*?)</ul>").matcher(html);
+        // 先收集源名（顺序与 tab8X 一致）
+        Matcher lm = Pattern.compile("<li[^>]*id=\"tab8(\\d)\"[^>]*>([\\s\\S]*?)</li>").matcher(html);
+        Map<Integer, String> srcMap = new HashMap<Integer, String>();
         while (lm.find()) {
-            String src = "";
-            String before = html.substring(Math.max(0, lm.start() - 800), lm.start());
-            Matcher hm = Pattern.compile("<h3[^>]*>\\s*([^<]{1,40}?)\\s*</h3>").matcher(before);
-            while (hm.find()) src = hm.group(1).trim();
-            if (src.length() == 0) {
-                Matcher h4m = Pattern.compile("<h4[^>]*>\\s*([^<]{1,40}?)\\s*</h4>").matcher(before);
-                while (h4m.find()) src = h4m.group(1).trim();
+            int src = parseInt(lm.group(1), 0);
+            String name2 = clean(lm.group(2));
+            // 去 playerico
+            if (name2.length() > 0) srcMap.put(src, name2);
+        }
+
+        Matcher pm = Pattern.compile("<div id=\"stab8(\\d)\"[^>]*>([\\s\\S]*?)</div>\\s*(?=<div id=\"stab8|<div id=\"stab1|$)").matcher(html);
+        // 上面的尾部 lookahead 不可靠，改用更稳的方式：循环找出 stab8\d 块
+        for (int src = 1; src <= 9; src++) {
+            int sIdx = html.indexOf("id=\"stab8" + src + "\"");
+            if (sIdx < 0) continue;
+            int eIdx = html.indexOf("id=\"stab8", sIdx + 1);
+            if (eIdx < 0) eIdx = html.length();
+            else {
+                // 找到下一个 stab 块的 <div 起点
+                int divStart = html.lastIndexOf("<div", sIdx + 1);
+                if (divStart > sIdx) eIdx = divStart;
             }
-            if (src.length() == 0) src = "线路" + (++autoSrc);
-            Matcher em = Pattern.compile("<a[^>]+href=\"(/vod/play/id/\\d+/sid/(\\d+)/nid/(\\d+)/?)\"[^>]*>([^<]*)</a>").matcher(lm.group(1));
+            String block = html.substring(sIdx, eIdx);
+            Matcher em3 = Pattern.compile("<a href=\"(/vod-play-id-(\\d+)-src-(\\d+)-num-(\\d+)\\.html)\"[^>]*title=\"([^\"]*)\"[^>]*>").matcher(block);
             StringBuilder eps = new StringBuilder();
             int n = 0;
-            while (em.find()) {
-                String label = em.group(4).trim();
+            while (em3.find()) {
+                String label = em3.group(5).trim();
                 if (label.length() == 0) label = "第" + (n + 1) + "集";
                 if (n > 0) eps.append('#');
-                eps.append(label).append('$').append(em.group(1));
+                eps.append(label).append('$').append(em3.group(1));
                 n++;
             }
             if (n == 0) continue;
-            froms.add(src);
+            String srcName = srcMap.get(src);
+            if (srcName == null || srcName.length() == 0) srcName = "线路" + src;
+            froms.add(srcName);
             urls.add(eps.toString());
         }
 
         JSONObject vod = new JSONObject();
         vod.put("vod_id", id);
-        vod.put("vod_name", name);
+        vod.put("vod_name", name.length() > 0 ? name : id);
         vod.put("vod_pic", fix(pic));
         vod.put("type_name", opt(data, "类型", ""));
-        vod.put("vod_year", year.length() > 0 ? year : opt(data, "年份", ""));
+        vod.put("vod_year", opt(data, "年份", ""));
         vod.put("vod_area", opt(data, "地区", ""));
         vod.put("vod_actor", opt(data, "主演", ""));
         vod.put("vod_director", opt(data, "导演", ""));
@@ -313,31 +338,17 @@ public class Movietv88 extends Spider {
     }
 
     // ==================== 播放 ====================
-    //   /vod/play/id/{N}/sid/{S}/nid/{T}/ → 内嵌 player_aaaa.url = "https://.../play/{code}"
-    //   GET 该 URL → HTML 内 const vid = '(...m3u8)' ← 真实 m3u8
+    //  详情页构造的分集 URL 为 /vod-play-id-{N}-src-{S}-num-{T}.html
+    //  播放页 HTML 内嵌 var mac_url=unescape('%uXXXX...$token$from')，
+    //  站点 playerconfig.js (/js/playerconfig.js) + /player/{from}.js 二次跳转到 jsjinfu.com 等第三方解析站
+    //  → 这里不做 JS 解码（mac_url 中的 base64 token 还经过了额外混淆），直接返回播放页 URL，
+    //    让客户端（parse=1）用 WebView/fetch 自行解析 m3u8。
 
     @Override
     public String playerContent(String flag, String id, List<String> vipFlags) throws Exception {
         String url = id;
-
-        if (!isVideo(url) && url.startsWith("/vod/play/id/")) {
-            String html = get(url);
-            // 优先从 player_xxxx 块里取 url，避免被 maccms 自身的 url 配置干扰
-            String playUrl = "";
-            Matcher m = Pattern.compile("player_\\w+\\s*=\\s*\\{[\\s\\S]*?\"url\"\\s*:\\s*\"([^\"]+)\"").matcher(html);
-            if (m.find()) playUrl = m.group(1).replace("\\/", "/");
-            // 兜底：含 m3u8/mp4 的 url 字段
-            if (playUrl.length() == 0) {
-                Matcher m2 = Pattern.compile("\"url\"\\s*:\\s*\"([^\"]+\\.(?:m3u8|mp4)[^\"]*)\"").matcher(html);
-                if (m2.find()) playUrl = m2.group(1).replace("\\/", "/");
-            }
-
-            if (playUrl.length() > 0) {
-                String hop = get(playUrl);
-                String m3 = first(hop, "const\\s+vid\\s*=\\s*['\"](https?://[^'\"]+\\.m3u8)['\"]");
-                if (m3.length() > 0) url = m3;
-                else if (isVideo(playUrl)) url = playUrl;
-            }
+        if (!url.startsWith("http")) {
+            url = host + (url.startsWith("/") ? url : "/" + url);
         }
 
         JSONObject header = new JSONObject();
@@ -362,53 +373,83 @@ public class Movietv88 extends Spider {
         return false;
     }
 
-    // ==================== 列表解析 ====================
+    // ==================== 列表解析（统一处理 首页 / 分类 / 搜索） ====================
+    //  列表项: <li class="p1 m1"><a href="/{slug}/{yyyyMM}/{id}.html" title="...">
+    //             <img data-original="...">
+    //             <span class="lzbz">
+    //                 <p class="name">{name}</p>
+    //                 <p class="actor">{actors}</p>
+    //                 <p class="actor">{type}</p>
+    //                 <p class="actor">{year/area}</p>
+    //             </span>
+    //             <p class="other"><i>{remarks}</i></p>
+    //         </a></li>
 
     private JSONArray parseList(String html) throws Exception {
         JSONArray videos = new JSONArray();
         if (html == null || html.length() == 0) return videos;
         Set<String> seen = new LinkedHashSet<String>();
-        Matcher m = Pattern.compile("<a[^>]+class=\"stui-vodlist__thumb[^\"]*\"[^>]*>").matcher(html);
+        Matcher m = Pattern.compile("<li class=\"p1 m1\">\\s*<a href=\"(/[^\"]+\\.html)\" title=\"([^\"]*)\"[^>]*>([\\s\\S]*?)</a>\\s*</li>").matcher(html);
         while (m.find()) {
-            String tag = m.group();
-            String id = first(tag, "href=\"/vod/detail/id/(\\d+)/?\"");
-            if (id.length() == 0 || !seen.add(id)) continue;
-            String name = first(tag, "title=\"([^\"]*)\"").trim();
+            String href = m.group(1);
+            String name = m.group(2).trim();
+            String inner = m.group(3);
             if (name.length() == 0) continue;
-            String pic = first(tag, "data-original=\"([^\"]+)\"");
-            if (pic.length() == 0) pic = first(tag, "src=\"([^\"]+)\"");
-            // 也吃 style="background-image: url(...)"
-            if (pic.length() == 0) pic = first(tag, "background-image:\\s*url\\(([^)]+)\\)");
-            String tail = html.substring(m.end(), Math.min(html.length(), m.end() + 400));
-            String remarks = first(tail, "<span[^>]*class=\"[^\"]*pic-text[^\"]*\"[^>]*>([^<]+)<");
-            if (remarks.length() == 0) remarks = first(tail, "<span[^>]*class=\"[^\"]*score[^\"]*\"[^>]*>([^<]+)<");
-            videos.put(new JSONObject()
-                    .put("vod_id", id)
-                    .put("vod_name", name)
-                    .put("vod_pic", fix(pic))
-                    .put("vod_remarks", remarks.trim()));
+            // 提取 id（路径末尾 /{id}.html 的数字）
+            String id = "";
+            Matcher idm = Pattern.compile("/(\\d+)\\.html$").matcher(href);
+            if (idm.find()) id = idm.group(1);
+            if (id.length() == 0 || !seen.add(id)) continue;
+
+            String pic = first(inner, "data-original=\"([^\"]+)\"");
+            if (pic.length() == 0) pic = first(inner, "<img[^>]+src=\"([^\"]+)\"");
+
+            // 备注（更新状态）
+            String remarks = first(inner, "<p class=\"other\">[\\s\\S]*?<i>([^<]+)</i>");
+            if (remarks.length() == 0) remarks = first(inner, "<p class=\"other\">\\s*([^<\\s]+)");
+
+            // 类型 / 年份-地区（从 lzbz 取）
+            String typeName = "";
+            String yearArea = "";
+            Matcher lm = Pattern.compile("<span class=\"lzbz\"[^>]*>([\\s\\S]*?)</span>").matcher(inner);
+            if (lm.find()) {
+                List<String> actorLines = new ArrayList<String>();
+                Matcher am = Pattern.compile("<p class=\"actor\"[^>]*>([^<]*)</p>").matcher(lm.group(1));
+                while (am.find()) actorLines.add(am.group(1).trim());
+                if (actorLines.size() >= 2) typeName = actorLines.get(1);
+                if (actorLines.size() >= 3) yearArea = actorLines.get(2);
+            }
+
+            JSONObject vod = new JSONObject();
+            vod.put("vod_id", id);
+            vod.put("vod_name", name);
+            vod.put("vod_pic", fix(pic));
+            vod.put("vod_remarks", remarks);
+            if (typeName.length() > 0) vod.put("type_name", typeName);
+            if (yearArea.length() > 0) {
+                int yIdx = yearArea.indexOf('/');
+                if (yIdx > 0) {
+                    String y = yearArea.substring(0, yIdx).trim();
+                    String a = yearArea.substring(yIdx + 1).trim();
+                    if (y.matches("\\d{4}")) vod.put("vod_year", y);
+                    vod.put("vod_area", a);
+                }
+            }
+            videos.put(vod);
         }
         return videos;
     }
 
     private int parsePageCount(String html) {
         if (html == null || html.length() == 0) return 9999;
-        int idx = html.indexOf("stui-page");
-        String seg = idx >= 0 ? html.substring(idx) : html;
-        int best = 0;
-        Matcher m = Pattern.compile(">(\\d+)\\s*/\\s*(\\d+)<").matcher(seg);
-        while (m.find()) {
-            int y = parseInt(m.group(2), 0);
-            if (y > best) best = y;
-        }
-        if (best > 0) return best;
-        int max = 0;
-        Matcher m2 = Pattern.compile(">(\\d+)<").matcher(seg);
-        while (m2.find()) max = Math.max(max, parseInt(m2.group(1), 0));
-        return max > 0 ? max : 9999;
+        Matcher m = Pattern.compile("当前\\s*[:：]\\s*\\d+\\s*/\\s*(\\d+)\\s*页").matcher(html);
+        if (m.find()) return parseInt(m.group(1), 9999);
+        Matcher m2 = Pattern.compile("/\\s*(\\d+)\\s*页<").matcher(html);
+        if (m2.find()) return parseInt(m2.group(1), 9999);
+        return 9999;
     }
 
-    // ==================== 工具（与 TvDy 等价） ====================
+    // ==================== 工具 ====================
 
     private Map<String, String> header() {
         Map<String, String> h = new HashMap<String, String>();
@@ -523,7 +564,7 @@ public class Movietv88 extends Spider {
         return v == null ? "" : v.trim();
     }
 
-    private String enc(String v) {
+    private String urlEncode(String v) {
         if (v == null || v.length() == 0) return "";
         try {
             return URLEncoder.encode(v, "UTF-8").replace("+", "%20");

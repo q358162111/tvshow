@@ -27,13 +27,16 @@ import java.util.regex.Pattern;
 /**
  * 影视大全（原 看影视） https://www.kanys8.com
  * <p>
- * 模板：苹果CMS10 + stui（与 tvdy 同一套模板，但路由细节不同）：
- *   分类/筛选  /filmshow/{type}-{area}-{by}-{lang}-{year}-{other}-{page}---.html
- *              段间用 "-"，空段写 "-"，page 默认 1 出现在倒数第 4 位 + 末尾固定 "---"
- *   详情       /filmdetail/{id}.html
- *   播放       /filmplay/{id}-{sid}-{nid}.html
- *              → 内嵌 var player_aaaa={...,"url":"https://...m3u8"}            （已是直 m3u8，无二跳）
- *   搜索       后端 500，本接口直接返回空
+ * 模板：苹果CMS10 + stui（ysdqst 样式，2026-09 实测）：
+ *   分类     /filmlist/{slug}.html                          ← 第 1 页
+ *            /filmlist/{slug}-{page}.html                    ← 第 N 页
+ *   筛选     /filmshow/{type}[-{area}]----------.html        ← 12 parts: parts[0]=type,parts[1]=area,parts[11]=year
+ *   搜索     /filmsearch/{urlEnc(key)}-------------.html     ← 第 1 页
+ *            /filmsearch/{urlEnc(key)}----------{page}---.html← 第 N 页
+ *   详情     /filmdetail/{id}.html
+ *   播放     /filmplay/{id}-{sid}-{nid}.html                 → var player_aaaa={...,"url":"https://...m3u8"}
+ * <p>
+ * 筛选维度仅 type / area / year（实测 URL 中无 by / lang / other）。
  */
 public class Kanys8 extends Spider {
 
@@ -42,7 +45,7 @@ public class Kanys8 extends Spider {
 
     private String host = DEFAULT_HOST;
 
-    /** 大类：type_id 用数字（tvbox 支持），slug 是 URL 第 1 段 */
+    /** 大类：type_id 用数字（tvbox 支持），slug 是 URL 第 1 段（filmlist/filmshow 共用） */
     private static final String[][] DEFAULT_CLASSES = {
             {"1", "电影", "dy"}, {"2", "电视剧", "dsj"}, {"3", "动漫", "dm"}};
 
@@ -50,10 +53,8 @@ public class Kanys8 extends Spider {
             "日本", "韩国", "泰国", "德国", "丹麦", "印度", "意大利", "西班牙", "其它"};
     private static final String[] FILTER_YEAR = {"2026", "2025", "2024", "2023", "2022", "2021",
             "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "更早"};
-    private static final String[] FILTER_LANG = {"国语", "英语", "粤语", "闽南语", "韩语", "日语", "法语", "德语", "其它"};
-    private static final String[][] FILTER_BY = {{"全部", ""}, {"最新", "time"}, {"人气", "hits"}, {"评分", "score"}};
 
-    /** 按"类型"（剧情片/喜剧片…）：URL 第 1 段是 type，与首页导航 slug 共享位 */
+    /** 子类型（实测 slug） */
     private static final String[][] FILTER_TYPE_MOVIE = {
             {"全部", "dy"}, {"剧情片", "jqp"}, {"喜剧片", "xjp"}, {"动作片", "dzp"},
             {"爱情片", "aqp"}, {"科幻片", "khp"}, {"悬疑片", "xyp"}, {"恐怖片", "kbp"},
@@ -137,61 +138,42 @@ public class Kanys8 extends Spider {
         for (String y : FILTER_YEAR) yearVal.put(new JSONObject().put("n", y).put("v", y));
         filters.put(new JSONObject().put("key", "year").put("name", "年份").put("value", yearVal));
 
-        JSONArray langVal = new JSONArray();
-        langVal.put(new JSONObject().put("n", "全部").put("v", ""));
-        for (String l : FILTER_LANG) langVal.put(new JSONObject().put("n", l).put("v", l));
-        filters.put(new JSONObject().put("key", "lang").put("name", "语言").put("value", langVal));
-
-        JSONArray byVal = new JSONArray();
-        for (String[] by : FILTER_BY) byVal.put(new JSONObject().put("n", by[0]).put("v", by[1]));
-        filters.put(new JSONObject().put("key", "by").put("name", "排序").put("value", byVal));
-
         return filters;
     }
 
     // ==================== 分类 ====================
-    //   /filmshow/{type}-{area}-{by}-{lang}-{year}-{other}-{page}---.html
+    //   无筛选: /filmlist/{slug}.html                ← 第 1 页
+    //           /filmlist/{slug}-{page}.html          ← 第 N 页
+    //   有筛选: /filmshow/{type}[-{area}]----------.html
+    //           parts 固定 12 个: parts[0]=type, parts[1]=area, parts[2..10]='', parts[11]=year
 
     @Override
     public String categoryContent(String tid, String pg, boolean filter, HashMap<String, String> extend) throws Exception {
         int page = parseInt(pg, 1);
         Map<String, String> ext = extend == null ? new HashMap<String, String>() : extend;
 
-        String type = seg(ext.get("type"));   // type 字段其实就是第 1 段；缺省=该 tid 的默认 slug
+        String type = seg(ext.get("type"));
         if (type.length() == 0) type = slugForTid(tid);
 
         String area = seg(ext.get("area"));
-        String by = seg(ext.get("by"));
-        String lang = seg(ext.get("lang"));
         String year = seg(ext.get("year"));
 
-        // 实测精确模板：type 后固定 11 个 "-" 占位 (按字符计)
-        //   area: 1 个 "-" + 编码后 area
-        //   by:   2 个 "-" + 编码后 by
-        //   lang: 4 个 "-" + 编码后 lang
-        //   year: 11 个 "-" + 编码后 year (最末追加)
-        //   剩余位补 "-" 凑够 11；page>1 时追加 "-{N}---"
-        StringBuilder sb = new StringBuilder(host).append("/filmshow/").append(type);
-        int empty = 11;
-        int[] lead = {1, 2, 4};
-        String[] fields = {area, by, lang};
-        for (int i = 0; i < fields.length; i++) {
-            String v = fields[i];
-            if (v.length() > 0) {
-                for (int k = 0; k < lead[i]; k++) sb.append("-");
-                sb.append(orDash(v));
-                empty -= lead[i];
-            }
+        String target;
+        boolean hasFilter = area.length() > 0 || year.length() > 0;
+        if (!hasFilter) {
+            // 纯分类页：/filmlist/{slug}.html 或 /filmlist/{slug}-{page}.html
+            StringBuilder sb = new StringBuilder(host).append("/filmlist/").append(type);
+            if (page > 1) sb.append("-").append(page);
+            sb.append(".html");
+            target = sb.toString();
+        } else {
+            // 筛选页：/filmshow/{type}[-{area}]----------.html  (12 parts)
+            String[] parts = new String[12];
+            parts[0] = type;
+            parts[1] = area.length() > 0 ? orDash(area) : "";
+            parts[11] = year.length() > 0 ? year : "";
+            target = host + "/filmshow/" + joinArr(parts, "-") + ".html";
         }
-        if (year.length() > 0) {
-            for (int k = 0; k < 11; k++) sb.append("-");
-            sb.append(orDash(year));
-            empty = 0;
-        }
-        for (int i = 0; i < empty; i++) sb.append("-");
-        if (page > 1) sb.append("-").append(page).append("---");
-        sb.append(".html");
-        String target = sb.toString();
 
         String html = get(target);
         JSONArray list = parseList(html);
@@ -205,16 +187,36 @@ public class Kanys8 extends Spider {
     }
 
     // ==================== 搜索 ====================
+    //   /filmsearch/{urlEnc(key)}----------{N}---.html
+    //   （N=1 时也用此格式，分页链接实测就是这种）
 
     @Override
     public String searchContent(String key, boolean quick) throws Exception {
-        return new JSONObject().put("list", new JSONArray()).put("page", 1)
-                .put("pagecount", 0).put("limit", 90).put("total", 0).toString();
+        return searchContent(key, quick, "1");
     }
 
     @Override
     public String searchContent(String key, boolean quick, String pg) throws Exception {
-        return searchContent(key, quick);
+        if (key == null) key = "";
+        key = key.trim();
+        if (key.length() == 0) {
+            return new JSONObject().put("list", new JSONArray()).put("page", 1)
+                    .put("pagecount", 0).put("limit", 90).put("total", 0).toString();
+        }
+        int page = parseInt(pg, 1);
+        // 统一格式：{key} 后 10 个 "-" + 页码 + "---"
+        StringBuilder sb = new StringBuilder(host).append("/filmsearch/").append(orDash(key));
+        for (int i = 0; i < 10; i++) sb.append("-");
+        sb.append(page).append("---.html");
+        String html = get(sb.toString());
+        JSONArray list = parseList(html);
+        return new JSONObject()
+                .put("list", list)
+                .put("page", page)
+                .put("pagecount", parsePageCount(html))
+                .put("limit", 90)
+                .put("total", 999999)
+                .toString();
     }
 
     // ==================== 详情 ====================
@@ -348,7 +350,7 @@ public class Kanys8 extends Spider {
         JSONArray videos = new JSONArray();
         if (html == null || html.length() == 0) return videos;
         Set<String> seen = new LinkedHashSet<String>();
-        Matcher m = Pattern.compile("<a[^>]+class=\"stui-vodlist__thumb[^\"]*\"[^>]*>").matcher(html);
+        Matcher m = Pattern.compile("<a[^>]+class=\"[^\"]*stui-vodlist__thumb[^\"]*\"[^>]*>").matcher(html);
         while (m.find()) {
             String tag = m.group();
             String id = first(tag, "href=\"/filmdetail/(\\d+)\\.html\"");
@@ -524,6 +526,17 @@ public class Kanys8 extends Spider {
         for (int i = 0; i < list.size(); i++) {
             if (i > 0) sb.append(sep);
             sb.append(list.get(i));
+        }
+        return sb.toString();
+    }
+
+    /** 数组拼接（用于 /filmshow/ 的固定 parts 模板拼接） */
+    private String joinArr(String[] parts, String sep) {
+        if (parts == null || parts.length == 0) return "";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < parts.length; i++) {
+            if (i > 0) sb.append(sep);
+            sb.append(parts[i] == null ? "" : parts[i]);
         }
         return sb.toString();
     }
