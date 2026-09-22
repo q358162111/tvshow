@@ -34,10 +34,12 @@
     {
       "key": "荐片",
       "name": "💡荐片｜影视",
-      "ext": "https://api.ztcgi.com",
-      "api": "csp_Jianpian",
       "type": 3,
-      "jar": "./TvDy.jar;md5;0cfb222ad76a4f61656930cac0906951"
+      "api": "csp_Jianpian",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "jar": "./TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
     },
     {
       "key": "瓜子影视",
@@ -47,7 +49,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0cfb222ad76a4f61656930cac0906951"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
     },
     {
       "key": "原创",
@@ -137,7 +139,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0cfb222ad76a4f61656930cac0906951"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
     },
     {
       "key": "88影视",
@@ -147,7 +149,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "./TvDy.jar;md5;0cfb222ad76a4f61656930cac0906951",
+      "jar": "./TvDy.jar;md5;5a6ba1f177d767be9521326c81480737",
       "ext": {
         "host": "https://www.88ystv.com"
       }
@@ -160,7 +162,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "./TvDy.jar;md5;0cfb222ad76a4f61656930cac0906951"
+      "jar": "./TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
     },
     {
       "key": "奈飞工厂",
@@ -170,7 +172,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0cfb222ad76a4f61656930cac0906951"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
     },
     {
       "key": "vv3nwjk",
@@ -180,7 +182,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0cfb222ad76a4f61656930cac0906951"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
     },
     {
       "key": "可可影视",
@@ -190,7 +192,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0cfb222ad76a4f61656930cac0906951"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
     },
     {
       "key": "永乐视频",
@@ -200,7 +202,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0cfb222ad76a4f61656930cac0906951"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
     },
     {
       "key": "A123TV",
@@ -210,7 +212,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;0cfb222ad76a4f61656930cac0906951"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
     },
     
     
