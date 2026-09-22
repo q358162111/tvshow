@@ -112,6 +112,10 @@ powershell -ExecutionPolicy Bypass -File tvdy-spider\build.ps1
 | 永乐视频 `www.cw2.net`（页面伪装"瓜子影视"，代码为 ylsp 永乐系） | `csp_YongLe` | mxtheme 模板静态解析（Cloudflare CDN） | `/vodshow/{id}-{area}-{by}-{class}-{lang}-{letter}-..-{page}-..-{year}/`（12 段） | `/vodsearch/{kw}----------{page}---/` | `/watch/{id}-{sid}-{nid}/` → `player_aaaa.url`（encrypt=0 直链） |
 | 瓜子影视 `api.bp7kprw.com` | `csp_GuaZi` | `/App/Resource/VodType/show` + `/App/IndexList/index` | `POST /App/IndexList/indexList`（`tid/page/pageSize/sub/sort/area/year`） | `POST /App/Index/findMoreVod` | `/App/Resource/VurlDetail/showOne` → 直链 m3u8 |
 | A123TV `a123tv.com` | `csp_A123tv` | 自制 w4 模板静态解析（`/t/{id}.html` 大类 10/11/12/13） | `/t/{typeId}.html`、第 P 页 `/t/{typeId}/p{P}.html`（类型筛选即换成子类 id） | `/s/{urlEncode(key)}.html`、第 P 页 `/s/{key}/p{P}.html` | 详情页/分集页 `div.w4-player[data-src]` 即 m3u8 直链 |
+| 荐片 `api.bdgnbrws.com`（官方 App 加密接口） | `csp_Jianpian` | `GET /api/v1/home` | `GET /api/v1/catalog/works`（cursor 游标转页码缓存） | `GET /api/v1/search?q=` | `POST /api/v1/media/access` → 直链 m3u8 |
+
+**荐片（csp_Jianpian）**：反编译官方 APK 得到的加密协议。设备身份（UUID+随机 credential）本地生成；请求按 `HMAC-SHA256(kAuth, "METHOD\npath含query\nts\nnonce\nsha256(body)")` 签名，POST body 与业务响应均为 AES-256-GCM 信封（AAD 绑定 method/path/ts/nonce/device_id）。域名发现 `ssopj-1462720388.cos.accelerate.myqcloud.com/config.txt` → `cqjdn.com`，但该泛域名当前是**剥离 query 的降级镜像**（会导致搜索/筛选失效），已改用备用域 `api.bdgnbrws.com / api.fvevfbr.com / api.swgsdfew.com` 自动轮转。`ext` 可传 `{"host":"https://api.xxx.com"}` 覆盖。
+
 
 **镜像选择**：经实测 `cw2.net` 是唯一拥有完整片库与播放的入口；同模板的 `ylys.tv / ylsp.pro / ylsp.one / ylys.cc` 均为推广首页（详情/播放 404）。`ext` 接受 `{"host":"https://www.cw2.net"}` 或裸 `https://...` 临时切换调试。
 

@@ -9,77 +9,127 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
+import java.util.UUID;
+
+import javax.crypto.Cipher;
+import javax.crypto.Mac;
+import javax.crypto.spec.GCMParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
 /**
- * 荐片  https://api.ztcgi.com
+ * 荐片（官方 App 接口，加密协议版）
  * <p>
- * 接口契约（自第三方 jar 中实测得到，已用浏览器 UA 直接复现）：
+ * 来源：反编译官方 APK（腾讯 Shadow 插件壳 + WebView 业务包）分析所得。
  * <pre>
- *   homeContent    硬编码 5 个分类：电影1 / 电视剧2 / 动漫3 / 综艺4 / 短剧67
- *                  筛选 1~4（area / year / sort）和 67（category_id）
- *   homeVideoContent  GET /api/dyTag/list?category_id=88         首页推荐（含短剧/电影混合 banner）
- *   categoryContent   tid==67 : GET /api/crumb/shortList?fcate_pid=67&category_id=&sort=update&page=
- *                  其他 : GET /api/crumb/list?fcate_pid={tid}&category_id=&area=&year=&type=&sort=&page=
- *                  （{area}/{year}/{sort} 由筛选 extend 提供；{category_id}/{type} 仅部分分类使用）
- *   detailContent   vod_id 形如  id$$$title$$$pic$$$tid   —— 与列表一致
- *                  tid!=67 : GET /api/video/detailv2?id={id}   data.source_list_source[*].source_list[*]
- *                  tid==67 : GET /api/detail?vid={id}          data.playlist[*]
- *   searchContent     GET /api/v2/search/videoV2?key={k}&category_id=88&page=1&pageSize=20
- *                  列表 vod_id 内嵌 top_category.id 以便点入详情走正确分支
- *   playerContent    非 http 直链 → 透传（parse=0），http(s) → 走外置解析（parse=1）
- *   init            拉一次 /api/v2/settings/resourceDomainConfig 缓存首个 img 域名到图片回填
+ * 域名发现: https://ssopj-1462720388.cos.accelerate.myqcloud.com/config.txt → cqjdn.com
+ *           注意：cqjdn.com 泛域名当前为"剥离 query"的降级镜像(签名按纯路径校验)，
+ *           备用域 api.bdgnbrws.com / api.fvevfbr.com / api.swgsdfew.com 为真实 API(签名含 query)。
+ *
+ * 加密协议（与 com.jp.runtime.web.RuntimeEncryptedApiClient 一致）:
+ *   identity  : device_id = UUID, credential = base64url(32 随机字节)
+ *   seed      = HMAC-SHA256( SHA256("jp-api-v1\0" + device_id), credential )
+ *   kAuth     = HMAC(seed, "jp-api-request-auth-v1\x01")
+ *   kReqBody  = HMAC(seed, "jp-api-request-body-v1\x01")
+ *   kRespBody = HMAC(seed, "jp-api-response-body-v1\x01")
+ *   签名      = base64url( HMAC(kAuth, "METHOD\n{path含query}\n{ts}\n{nonce}\n{sha256hex(body)}") )
+ *   头        : X-JP-Crypto-Version:1, X-JP-Timestamp, X-JP-Nonce, X-JP-Signature,
+ *               X-JP-Runtime-Authorization: Bearer {credential}, X-Device-ID
+ *   POST body : A256GCM 信封 {"v":1,"alg":"A256GCM","ts":..,"data":..} AAD=jp-api-request-v1\n...
+ *   响应      : A256GCM 信封 AAD=jp-api-response-v1\n...
+ *
+ * 接口:
+ *   GET  /api/v1/catalog/categories                          分类+筛选 schema
+ *   GET  /api/v1/home                                        首页
+ *   GET  /api/v1/catalog/works?category_key=&area=&year=&class=&tag=&language=&cursor=
+ *   GET  /api/v1/search?q=&page=&page_size=
+ *   GET  /api/v1/works/{id}                                  详情
+ *   GET  /api/v1/works/{id}/media-lines?delivery_type=playback
+ *   GET  /api/v1/works/{id}/episodes?page_size=&line_key=&cursor=
+ *   POST /api/v1/media/access {work_id, delivery_type:"playback", episode_key, episode_index}
  * </pre>
  */
 public class Jianpian extends Spider {
 
-    private static final String DEFAULT_HOST = "https://api.ztcgi.com";
+    private static final String[] DEFAULT_HOSTS = {
+            "https://api.bdgnbrws.com", "https://api.fvevfbr.com", "https://api.swgsdfew.com"};
 
-    private static final String UA = "Mozilla/5.0 (Linux; Android 7.1.2; V2049A Build/UP1A.231005.007; wv) "
-            + "AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/81.0.4044.117 Mobile Safari/537.36;"
-            + "webank/h5face;webank/1.0;netType:NETWORK_WIFI;appVersion=422;packageName=com.jp3.xg3";
+    private static final String KIND_MOVIE = "movie", KIND_SERIES = "series", KIND_ANIME = "anime",
+            KIND_VARIETY = "variety", KIND_DOC = "documentary", KIND_SHORT = "short_drama", KIND_SPORTS = "sports";
 
-    private static final String[][] CLASSES = {
-            {"1", "电影"}, {"2", "电视剧"}, {"3", "动漫"}, {"4", "综艺"}, {"67", "短剧"}};
+    private final SecureRandom random = new SecureRandom();
 
-    // 短剧二级分类
-    private static final String[][] SHORT_SUBS = {
-            {"", ""}, {"言情", "70"}, {"爱情", "71"}, {"战神", "72"}, {"古代", "73"}, {"萌娃", "74"},
-            {"神医", "75"}, {"玄幻", "76"}, {"重生", "77"}, {"激情", "79"}, {"时尚", "82"},
-            {"剧情演绎", "83"}, {"影视", "84"}, {"人文社科", "85"}, {"二次元", "86"},
-            {"明星八卦", "87"}, {"随拍", "88"}, {"个人管理", "89"}, {"音乐", "90"},
-            {"汽车", "91"}, {"休闲", "92"}, {"校园教育", "93"}, {"游戏", "94"},
-            {"科普", "95"}, {"科技", "96"}, {"时政社会", "97"}, {"萌宠", "98"},
-            {"体育", "99"}, {"穿越", "80"}, {"闪婚", "112"}};
+    // ===== 加密身份与密钥 =====
+    private String deviceId;
+    private String credential;
+    private byte[] kAuth;
+    private byte[] kReqBody;
+    private byte[] kRespBody;
 
-    private static final String[] AREAS  = {"", "国产:1", "中国香港:3", "中国台湾:6", "美国:5", "韩国:18", "日本:2"};
-    private static final String[] YEARS  = {"", "2026:162", "2025:107", "2024:119", "2023:153", "2022:101", "2021:118",
-            "2020:16", "2019:7", "2018:2", "2017:3", "2016:22"};
-    private static final String[] SORTS  = {"热门:hot", "更新:update", "评分:rating"};
+    // ===== 域名轮转 =====
+    private String[] hosts = DEFAULT_HOSTS;
+    private int hostIdx = 0;
 
-    private String host = DEFAULT_HOST;
-    private String imgHost = "img.cdgbq.com";
+    // ===== 分类筛选缓存 =====
+    private JSONObject cachedCategories;
+
+    // ===== 列表 cursor 分页缓存: key -> [页码, 游标] =====
+    private final Map<String, String[]> cursorCache = new LinkedHashMap<String, String[]>() {
+        @Override
+        protected boolean removeEldestEntry(Map.Entry<String, String[]> eldest) {
+            return size() > 32;
+        }
+    };
 
     // ==================== 初始化 ====================
 
     @Override
     public void init(Context context, String extend) throws Exception {
         try {
-            String body = httpGet(host + "/api/v2/settings/resourceDomainConfig", null);
-            if (body != null) {
-                String dom = new JSONObject(body).getJSONObject("data").optString("imgDomain", "");
-                int c = dom.indexOf(',');
-                String first = c >= 0 ? dom.substring(0, c) : dom;
-                if (first.trim().length() > 0) imgHost = first.trim();
+            if (extend != null) {
+                String e = extend.trim();
+                if (e.startsWith("{")) {
+                    String host = new JSONObject(e).optString("host", "");
+                    if (host.length() > 0) applyHost(host);
+                } else if (e.length() > 0 && (e.startsWith("http") || e.matches("(?i)[a-z0-9.-]+\\.[a-z]{2,}"))) {
+                    applyHost(e);
+                }
             }
         } catch (Throwable ignored) {
+        }
+        rotateIdentity();
+    }
+
+    private void applyHost(String host) {
+        if (!host.startsWith("http")) host = "https://" + host;
+        if (host.endsWith("/")) host = host.substring(0, host.length() - 1);
+        hosts = new String[]{host};
+    }
+
+    private void rotateIdentity() {
+        deviceId = UUID.randomUUID().toString();
+        byte[] cred = new byte[32];
+        random.nextBytes(cred);
+        credential = b64u(cred);
+        try {
+            byte[] master = sha256(("jp-api-v1\u0000" + deviceId).getBytes("UTF-8"));
+            byte[] seed = hmac(master, credential.getBytes("UTF-8"));
+            kAuth = hmac(seed, "jp-api-request-auth-v1\u0001".getBytes("UTF-8"));
+            kReqBody = hmac(seed, "jp-api-request-body-v1\u0001".getBytes("UTF-8"));
+            kRespBody = hmac(seed, "jp-api-response-body-v1\u0001".getBytes("UTF-8"));
+        } catch (Throwable t) {
+            // 不可能：UTF-8 必可用
         }
     }
 
@@ -88,59 +138,84 @@ public class Jianpian extends Spider {
     @Override
     public String homeContent(boolean filter) throws Exception {
         JSONArray classes = new JSONArray();
-        for (String[] c : CLASSES) classes.put(new JSONObject().put("type_id", c[0]).put("type_name", c[1]));
-        JSONObject result = new JSONObject().put("class", classes);
-        if (filter) {
-            JSONObject filters = new JSONObject();
-            JSONArray area = kvArr(AREAS);
-            JSONArray year = kvArr(YEARS);
-            JSONArray sort = kvArr(SORTS);
-            for (int i = 1; i <= 4; i++) {
-                JSONArray f = new JSONArray();
-                f.put(new JSONObject().put("key", "area").put("name", "地区").put("value", area));
-                f.put(new JSONObject().put("key", "year").put("name", "年份").put("value", year));
-                f.put(new JSONObject().put("key", "sort").put("name", "排序").put("value", sort));
-                filters.put(String.valueOf(i), f);
+        JSONObject filters = new JSONObject();
+        try {
+            JSONObject cats = apiGet("/api/v1/catalog/categories");
+            cachedCategories = cats;
+            JSONArray items = cats.optJSONArray("items");
+            if (items != null) {
+                for (int i = 0; i < items.length(); i++) {
+                    JSONObject c = items.getJSONObject(i);
+                    classes.put(new JSONObject()
+                            .put("type_id", c.optString("category_key"))
+                            .put("type_name", c.optString("name")));
+                    if (filter) buildFilters(filters, c);
+                }
             }
-            JSONArray f67 = new JSONArray();
-            JSONArray cat = new JSONArray();
-            for (String[] kv : SHORT_SUBS) cat.put(new JSONObject().put("n", kv[0]).put("v", kv[1]));
-            f67.put(new JSONObject().put("key", "category_id").put("name", "类型").put("value", cat));
-            filters.put("67", f67);
-            result.put("filters", filters);
+        } catch (Throwable t) {
+            cachedCategories = null;
+            String[][] defs = {{"movie", "电影"}, {"series", "电视剧"}, {"anime", "动漫"},
+                    {"variety", "综艺"}, {"documentary", "纪录片"}, {"short_drama", "短剧"}};
+            for (String[] d : defs) classes.put(new JSONObject().put("type_id", d[0]).put("type_name", d[1]));
         }
+        JSONObject result = new JSONObject().put("class", classes);
+        if (filter && filters.length() > 0) result.put("filters", filters);
         return result.toString();
+    }
+
+    private void buildFilters(JSONObject filters, JSONObject category) throws Exception {
+        String catKey = category.optString("category_key");
+        JSONObject schema = category.optJSONObject("filter_schema");
+        if (schema == null) return;
+        JSONArray groups = schema.optJSONArray("groups");
+        if (groups == null) return;
+        JSONArray f = new JSONArray();
+        for (int i = 0; i < groups.length(); i++) {
+            JSONObject g = groups.getJSONObject(i);
+            String key = g.optString("key");
+            if (!"area".equals(key) && !"year".equals(key) && !"class".equals(key)) continue;
+            JSONArray opts = g.optJSONArray("options");
+            if (opts == null || opts.length() == 0) continue;
+            JSONArray vals = new JSONArray();
+            vals.put(new JSONObject().put("n", "全部").put("v", ""));
+            for (int j = 0; j < opts.length(); j++) {
+                JSONObject o = opts.getJSONObject(j);
+                vals.put(new JSONObject().put("n", o.optString("label")).put("v", o.optString("value")));
+            }
+            f.put(new JSONObject().put("key", key).put("name", g.optString("label")).put("value", vals));
+        }
+        if (f.length() > 0) filters.put(catKey, f);
     }
 
     @Override
     public String homeVideoContent() throws Exception {
+        JSONArray list = new JSONArray();
         try {
-            String body = httpGet(host + "/api/dyTag/list?category_id=88", null);
-            if (body == null) return new JSONObject().put("list", new JSONArray()).toString();
-            JSONArray data = new JSONObject(body).optJSONArray("data");
-            JSONArray out = new JSONArray();
-            if (data != null) {
-                for (int i = 0; i < data.length(); i++) {
-                    JSONArray inner = data.getJSONObject(i).optJSONArray("dataList");
-                    if (inner == null) continue;
-                    for (int j = 0; j < inner.length(); j++) {
-                        JSONObject v = inner.getJSONObject(j);
-                        String title = v.optString("title");
-                        String pic = fixPic(v.optString("path"));
-                        String remarks = v.optString("mask");
-                        int id = v.optInt("id");
-                        out.put(new JSONObject()
-                                .put("vod_id", id + "$$$" + title + "$$$" + pic + "$$$1")
-                                .put("vod_name", title)
-                                .put("vod_pic", pic)
-                                .put("vod_remarks", remarks));
-                    }
+            JSONObject home = apiGet("/api/v1/home");
+            JSONArray latest = home.optJSONArray("latest");
+            if (latest != null) {
+                for (int i = 0; i < latest.length() && list.length() < 30; i++) {
+                    JSONObject w = latest.getJSONObject(i);
+                    if (!w.has("id")) continue;
+                    list.put(workToVod(w));
                 }
             }
-            return new JSONObject().put("list", out).toString();
-        } catch (Throwable t) {
-            return new JSONObject().put("list", new JSONArray()).toString();
+        } catch (Throwable ignored) {
         }
+        return new JSONObject().put("list", list).toString();
+    }
+
+    private JSONObject workToVod(JSONObject w) throws Exception {
+        String remarks = w.optString("remarks");
+        if (remarks.length() == 0) {
+            double score = w.optDouble("score", 0);
+            remarks = score > 0 ? String.valueOf(score) : "";
+        }
+        return new JSONObject()
+                .put("vod_id", String.valueOf(w.optLong("id", w.optInt("id"))))
+                .put("vod_name", w.optString("title"))
+                .put("vod_pic", w.optString("poster_url"))
+                .put("vod_remarks", remarks);
     }
 
     // ==================== 分类 ====================
@@ -148,126 +223,183 @@ public class Jianpian extends Spider {
     @Override
     public String categoryContent(String tid, String pg, boolean filter, HashMap<String, String> extend) throws Exception {
         int page = parseInt(pg, 1);
-        String url;
-        if ("67".equals(tid)) {
-            String catId = extendGet(extend, "category_id", "");
-            url = host + "/api/crumb/shortList?fcate_pid=67&category_id=" + catId + "&sort=update&page=" + page;
-        } else {
-            String area = extendGet(extend, "area", "");
-            String year = extendGet(extend, "year", "");
-            String sort = extendGet(extend, "sort", "update");
-            String type = extendGet(extend, "type", "");
-            String catId = extendGet(extend, "category_id", "");
-            url = host + "/api/crumb/list?fcate_pid=" + tid + "&category_id=" + catId
-                    + "&area=" + area + "&year=" + year + "&type=" + type + "&sort=" + sort + "&page=" + page;
+        List<String> query = new ArrayList<>();
+        query.add("category_key=" + urlEncode(tid));
+        if (extend != null) {
+            addFilter(query, extend, "area");
+            addFilter(query, extend, "year");
+            addFilter(query, extend, "class");
+            addFilter(query, extend, "tag");
+            addFilter(query, extend, "language");
         }
+        String cacheKey = tid + "|" + (extend == null ? "" : extend.toString());
+
+        String cursor = resolveCursor(cacheKey, page, query);
+        List<String> q2 = new ArrayList<>(query);
+        if (cursor != null && cursor.length() > 0) q2.add("cursor=" + urlEncode(cursor));
+        q2.add("page_size=20");
+
+        JSONObject resp;
         try {
-            String body = httpGet(url, null);
-            if (body == null) return new JSONObject().put("list", new JSONArray()).toString();
-            JSONArray data = new JSONObject(body).optJSONArray("data");
-            JSONArray list = new JSONArray();
-            if (data != null) {
-                for (int i = 0; i < data.length(); i++) {
-                    JSONObject v = data.getJSONObject(i);
-                    String title = v.optString("title");
-                    String pic = "67".equals(tid) ? fixPic(v.optString("cover_image")) : fixPic(v.optString("path"));
-                    String remarks = v.optString("mask");
-                    if (remarks.length() == 0) remarks = v.optString("score");
-                    int id = v.optInt("id");
-                    list.put(new JSONObject()
-                            .put("vod_id", id + "$$$" + title + "$$$" + pic + "$$$" + tid)
-                            .put("vod_name", title)
-                            .put("vod_pic", pic)
-                            .put("vod_remarks", remarks));
-                }
-            }
-            return new JSONObject()
-                    .put("list", list)
-                    .put("page", page)
-                    .put("pagecount", Integer.MAX_VALUE)
-                    .put("limit", list.length())
-                    .put("total", Integer.MAX_VALUE)
-                    .toString();
+            resp = apiGet("/api/v1/catalog/works?" + join(q2, "&"));
         } catch (Throwable t) {
-            return new JSONObject().put("list", new JSONArray()).toString();
+            return new JSONObject().put("list", new JSONArray()).put("page", page).toString();
         }
+        JSONArray items = resp.optJSONArray("items");
+        String next = resp.optString("next_cursor", null);
+        JSONArray list = new JSONArray();
+        if (items != null) {
+            for (int i = 0; i < items.length(); i++) list.put(workToVod(items.getJSONObject(i)));
+        }
+        boolean hasMore = next != null && next.length() > 0 && items != null && items.length() > 0;
+        cursorCache.put(cacheKey, new String[]{String.valueOf(page), hasMore ? next : null});
+        return new JSONObject()
+                .put("list", list)
+                .put("page", page)
+                .put("pagecount", hasMore ? page + 1 : page)
+                .put("limit", "20")
+                .put("total", hasMore ? 99999 : 20 * page)
+                .toString();
+    }
+
+    private void addFilter(List<String> query, HashMap<String, String> extend, String key) {
+        String v = extend.get(key);
+        if (v != null && v.length() > 0) query.add(key + "=" + urlEncode(v));
+    }
+
+    /**
+     * 列表为 cursor 分页，Box 需要 page 分页：
+     * 维护每页末尾游标；请求页 == 缓存页+1 直接续读；越页时从缓存处顺序补齐。
+     */
+    private String resolveCursor(String cacheKey, int page, List<String> query) {
+        String[] state = cursorCache.get(cacheKey);
+        if (page <= 1) return null;
+        int fromPage = 1;
+        String cursor = null;
+        if (state != null) {
+            int cachedPage = parseInt(state[0], 1);
+            String cachedCursor = state[1];
+            if (page == cachedPage + 1 && cachedCursor != null) return cachedCursor;
+            if (cachedCursor != null && page > cachedPage) {
+                fromPage = cachedPage;
+                cursor = cachedCursor;
+            }
+        }
+        // 顺序补齐到 page-1
+        for (int p = fromPage; p < page; p++) {
+            List<String> q2 = new ArrayList<>(query);
+            if (cursor != null && cursor.length() > 0) q2.add("cursor=" + urlEncode(cursor));
+            q2.add("page_size=20");
+            try {
+                JSONObject resp = apiGet("/api/v1/catalog/works?" + join(q2, "&"));
+                String next = resp.optString("next_cursor", null);
+                if (next == null || next.length() == 0) return "";
+                cursor = next;
+            } catch (Throwable t) {
+                return cursor;
+            }
+        }
+        return cursor;
     }
 
     // ==================== 详情 ====================
 
     @Override
     public String detailContent(List<String> ids) throws Exception {
+        String id = ids.get(0);
         try {
-            String[] parts = ids.get(0).split("\\$\\$\\$");
-            String id = parts[0];
-            String title = parts[1];
-            String pic = parts[2];
-            String tid = parts[3];
-            String url = "67".equals(tid) ? (host + "/api/detail?vid=" + id) : (host + "/api/video/detailv2?id=" + id);
-            String body = httpGet(url, null);
-            if (body == null) return new JSONObject().put("list", new JSONArray()).toString();
-            JSONObject data = new JSONObject(body).getJSONObject("data");
+            JSONObject d = apiGet("/api/v1/works/" + id);
             JSONObject vod = new JSONObject();
-            vod.put("vod_id", ids.get(0));
-            vod.put("vod_name", title);
-            vod.put("vod_pic", pic);
-            vod.put("vod_content", data.optString("description"));
-            List<String> froms = new ArrayList<>();
-            List<String> urls  = new ArrayList<>();
-            if ("67".equals(tid)) {
-                if (data.has("playlist") && data.get("playlist") instanceof JSONArray) {
-                    JSONArray playlist = data.getJSONArray("playlist");
-                    List<String> eps = new ArrayList<>();
-                    for (int i = 0; i < playlist.length(); i++) {
-                        JSONObject ep = playlist.getJSONObject(i);
-                        String u = ep.optString("url");
-                        if (u.length() > 0) eps.add(ep.optString("title") + "$" + u);
-                    }
-                    if (eps.size() > 0) {
-                        froms.add("常规线路");
-                        urls.add(join(eps, "#"));
+            vod.put("vod_id", id);
+            vod.put("vod_name", d.optString("title"));
+            vod.put("vod_pic", d.optString("poster_url"));
+            vod.put("vod_year", d.opt("year") == null ? "" : String.valueOf(d.opt("year")));
+            vod.put("vod_area", d.optString("area"));
+            vod.put("vod_remarks", d.optString("remarks"));
+            vod.put("type_name", kindName(d.optString("kind")));
+            StringBuilder actor = new StringBuilder();
+            StringBuilder director = new StringBuilder();
+            JSONArray credits = d.optJSONArray("credits");
+            if (credits != null) {
+                for (int i = 0; i < credits.length(); i++) {
+                    JSONObject c = credits.getJSONObject(i);
+                    String name = c.optString("name");
+                    String role = c.optString("role", c.optString("kind"));
+                    if ("director".equals(role) && director.length() == 0) director.append(name);
+                    else if (actor.length() < 200) {
+                        if (actor.length() > 0) actor.append(" ");
+                        actor.append(name);
                     }
                 }
-            } else {
-                vod.put("vod_year", data.optString("year"));
-                vod.put("vod_area", data.optString("area"));
-                JSONArray actors = data.optJSONArray("actors");
-                List<String> actList = new ArrayList<>();
-                if (actors != null) for (int i = 0; i < actors.length(); i++) actList.add(actors.getJSONObject(i).optString("name"));
-                vod.put("vod_actor", actList.toString());
-                vod.put("vod_director", "");
-                vod.put("vod_remarks", "");
-                vod.put("type_name", "");
-                if (data.has("source_list_source") && data.get("source_list_source") instanceof JSONArray) {
-                    JSONArray sources = data.getJSONArray("source_list_source");
-                    for (int i = 0; i < sources.length(); i++) {
-                        JSONObject src = sources.getJSONObject(i);
-                        String fromName = src.optString("name");
-                        JSONArray sl = src.optJSONArray("source_list");
-                        if (sl == null) continue;
-                        List<String> eps = new ArrayList<>();
-                        for (int j = 0; j < sl.length(); j++) {
-                            JSONObject e = sl.getJSONObject(j);
-                            String u = e.optString("url");
-                            if (u.length() == 0) continue;
-                            if (u.startsWith("ftp")) u = "tvbox-xg:" + u;
-                            eps.add(e.optString("source_name") + "$" + u);
-                        }
-                        if (eps.size() > 0) {
-                            froms.add(fromName);
-                            urls.add(join(eps, "#"));
-                        }
+            }
+            vod.put("vod_actor", actor.toString());
+            vod.put("vod_director", director.toString());
+            String summary = d.optString("summary");
+            if (summary.length() == 0) summary = d.optString("synopsis");
+            vod.put("vod_content", summary);
+
+            // 播放线路 + 剧集
+            List<String> froms = new ArrayList<>();
+            List<String> urls = new ArrayList<>();
+            JSONArray lines = null;
+            try {
+                JSONObject ml = apiGet("/api/v1/works/" + id + "/media-lines?delivery_type=playback");
+                lines = ml.optJSONArray("items");
+            } catch (Throwable ignored) {
+            }
+            if (lines != null && lines.length() > 0) {
+                for (int i = 0; i < lines.length(); i++) {
+                    JSONObject line = lines.getJSONObject(i);
+                    String lineKey = line.optString("key");
+                    int epCount = line.optInt("episode_count", 0);
+                    if (epCount <= 0) continue;
+                    String eps = fetchEpisodes(id, lineKey);
+                    if (eps.length() > 0) {
+                        froms.add(line.optString("name", lineKey));
+                        urls.add(eps);
                     }
+                }
+            }
+            if (froms.isEmpty()) {
+                String eps = fetchEpisodes(id, null);
+                if (eps.length() > 0) {
+                    froms.add("荐片");
+                    urls.add(eps);
                 }
             }
             vod.put("vod_play_from", join(froms, "$$$"));
             vod.put("vod_play_url", join(urls, "$$$"));
+
             JSONArray list = new JSONArray();
             list.put(vod);
             return new JSONObject().put("list", list).toString();
         } catch (Throwable t) {
             return new JSONObject().put("list", new JSONArray()).toString();
         }
+    }
+
+    /** 拉取全部剧集(带游标翻页)，返回 "name$id#name$id..."，id = workId|epKey|epIdx */
+    private String fetchEpisodes(String workId, String lineKey) throws Exception {
+        List<String> eps = new ArrayList<>();
+        String cursor = null;
+        for (int guard = 0; guard < 60; guard++) {
+            StringBuilder path = new StringBuilder("/api/v1/works/").append(workId).append("/episodes?page_size=500");
+            if (lineKey != null && lineKey.length() > 0) path.append("&line_key=").append(urlEncode(lineKey));
+            if (cursor != null && cursor.length() > 0) path.append("&cursor=").append(urlEncode(cursor));
+            JSONObject resp = apiGet(path.toString());
+            JSONArray items = resp.optJSONArray("items");
+            if (items == null || items.length() == 0) break;
+            for (int i = 0; i < items.length(); i++) {
+                JSONObject ep = items.getJSONObject(i);
+                String name = ep.optString("name");
+                if (name.length() == 0) name = "第" + (ep.optInt("index") + 1) + "集";
+                eps.add(name + "$" + workId + "|" + ep.optString("key") + "|" + ep.optInt("index"));
+            }
+            String next = resp.optString("next_cursor", null);
+            if (next == null || next.length() == 0) break;
+            cursor = next;
+        }
+        return join(eps, "#");
     }
 
     // ==================== 搜索 ====================
@@ -279,25 +411,18 @@ public class Jianpian extends Spider {
 
     @Override
     public String searchContent(String key, boolean quick, String pg) throws Exception {
+        int page = parseInt(pg, 1);
         try {
-            String url = host + "/api/v2/search/videoV2?key=" + URLEncoder.encode(key, "UTF-8")
-                    + "&category_id=88&page=" + pg + "&pageSize=20";
-            String body = httpGet(url, null);
-            if (body == null) return new JSONObject().put("list", new JSONArray()).toString();
-            JSONArray data = new JSONObject(body).optJSONArray("data");
+            JSONObject resp = apiGet("/api/v1/search?q=" + urlEncode(key) + "&page=" + page + "&page_size=20");
+            JSONArray items = resp.optJSONArray("items");
             JSONArray list = new JSONArray();
-            if (data != null) {
-                for (int i = 0; i < data.length(); i++) {
-                    JSONObject v = data.getJSONObject(i);
-                    String title = v.optString("title");
-                    String pic = fixPic(v.optString("thumbnail"));
-                    int id = v.optInt("id");
-                    int topCat = v.getJSONObject("top_category").optInt("id");
-                    list.put(new JSONObject()
-                            .put("vod_id", id + "$$$" + title + "$$$" + pic + "$$$" + topCat)
-                            .put("vod_name", title)
-                            .put("vod_pic", pic)
-                            .put("vod_remarks", v.optString("mask")));
+            if (items != null) {
+                for (int i = 0; i < items.length(); i++) {
+                    JSONObject w = items.getJSONObject(i);
+                    if (!w.has("id")) continue;
+                    JSONObject vod = workToVod(w);
+                    vod.put("type_name", kindName(w.optString("kind")));
+                    list.put(vod);
                 }
             }
             return new JSONObject().put("list", list).toString();
@@ -310,42 +435,229 @@ public class Jianpian extends Spider {
 
     @Override
     public String playerContent(String flag, String id, List<String> vipFlags) throws Exception {
+        JSONObject o = new JSONObject();
         try {
-            JSONObject o = new JSONObject();
-            if (id != null && id.startsWith("http")) {
-                o.put("parse", 1).put("jx", "1").put("url", id);
-            } else {
-                o.put("parse", 0).put("url", id == null ? "" : id);
+            String[] parts = id.split("\\|");
+            long workId = Long.parseLong(parts[0]);
+            String epKey = parts.length > 1 ? parts[1] : "";
+            int epIdx = parts.length > 2 ? parseInt(parts[2], 0) : 0;
+
+            JSONObject body = new JSONObject()
+                    .put("work_id", workId)
+                    .put("delivery_type", "playback");
+            if (epKey.length() > 0) body.put("episode_key", epKey);
+            body.put("episode_index", epIdx);
+
+            JSONObject access = null;
+            try {
+                access = apiPost("/api/v1/media/access", body);
+            } catch (Throwable t) {
+                // 兜底：去掉 episode_key 重试
+                try {
+                    JSONObject b2 = new JSONObject()
+                            .put("work_id", workId)
+                            .put("delivery_type", "playback")
+                            .put("episode_index", epIdx);
+                    access = apiPost("/api/v1/media/access", b2);
+                } catch (Throwable ignored) {
+                }
             }
-            return o.toString();
+            String url = access == null ? "" : access.optString("url");
+            o.put("parse", 0);
+            o.put("playUrl", "");
+            o.put("url", url);
         } catch (Throwable t) {
-            return "{\"parse\":0,\"url\":\"\"}";
+            o.put("parse", 0).put("url", "");
         }
+        return o.toString();
     }
 
-    // ==================== 工具方法 ====================
+    // ==================== 加密 API 客户端 ====================
 
-    private static String httpGet(String url, Map<String, String> extraHeaders) {
+    private JSONObject apiGet(String path) throws Exception {
+        return exchange("GET", path, null);
+    }
+
+    private JSONObject apiPost(String path, JSONObject body) throws Exception {
+        return exchange("POST", path, body);
+    }
+
+    private JSONObject exchange(String method, String path, JSONObject body) throws Exception {
+        Throwable lastError = null;
+        for (int attempt = 0; attempt < hosts.length * 2; attempt++) {
+            String origin = hosts[(hostIdx + attempt) % hosts.length];
+            try {
+                return exchangeOnce(origin, method, path, body);
+            } catch (Throwable t) {
+                lastError = t;
+                if (t instanceof AuthError) rotateIdentity();
+            }
+        }
+        if (lastError instanceof Exception) throw (Exception) lastError;
+        throw new RuntimeException(lastError);
+    }
+
+    private static final class AuthError extends RuntimeException {
+        AuthError(String msg) { super(msg); }
+    }
+
+    private JSONObject exchangeOnce(String origin, String method, String path, JSONObject body) throws Exception {
+        long ts = System.currentTimeMillis() / 1000L;
+        byte[] nonce = new byte[12];
+        random.nextBytes(nonce);
+        String nonceB64 = b64u(nonce);
+
+        byte[] bodyBytes;
+        String contentType = "application/json";
+        if (body != null && method.equals("POST")) {
+            byte[] raw = body.toString().getBytes("UTF-8");
+            String aad = "jp-api-request-v1\n" + method + "\n" + path + "\n" + ts + "\n" + nonceB64 + "\n" + deviceId;
+            byte[] sealed = aesGcm(kReqBody, nonce, raw, aad.getBytes("UTF-8"), true);
+            JSONObject env = new JSONObject()
+                    .put("v", 1).put("alg", "A256GCM").put("ts", ts).put("data", b64u(sealed));
+            bodyBytes = env.toString().getBytes("UTF-8");
+            contentType = "application/vnd.jp.encrypted+json";
+        } else {
+            bodyBytes = new byte[0];
+        }
+
+        String shaHex = hex(sha256(bodyBytes));
+        String signMsg = method + "\n" + path + "\n" + ts + "\n" + nonceB64 + "\n" + shaHex;
+        String signature = b64u(hmac(kAuth, signMsg.getBytes("UTF-8")));
+
         HttpURLConnection conn = null;
         try {
-            conn = (HttpURLConnection) new URL(url).openConnection();
-            conn.setConnectTimeout(15000);
+            conn = (HttpURLConnection) new URL(origin + path).openConnection();
+            conn.setConnectTimeout(10000);
             conn.setReadTimeout(20000);
-            conn.setRequestProperty("User-Agent", UA);
-            if (extraHeaders != null) for (Map.Entry<String, String> e : extraHeaders.entrySet()) conn.setRequestProperty(e.getKey(), e.getValue());
-            int code = conn.getResponseCode();
-            if (code != 200) return null;
-            InputStream in = conn.getInputStream();
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            byte[] buf = new byte[8192];
-            int n;
-            while ((n = in.read(buf)) > 0) out.write(buf, 0, n);
-            return out.toString("UTF-8");
-        } catch (Throwable t) {
-            return null;
+            conn.setRequestMethod(method);
+            conn.setRequestProperty("Accept", "application/json, application/problem+json");
+            conn.setRequestProperty("Cache-Control", "no-cache");
+            conn.setRequestProperty("Content-Type", contentType);
+            conn.setRequestProperty("X-Client-App", "jp");
+            conn.setRequestProperty("X-Client-Platform", "android");
+            conn.setRequestProperty("X-Device-ID", deviceId);
+            conn.setRequestProperty("X-JP-Runtime-Authorization", "Bearer " + credential);
+            conn.setRequestProperty("X-JP-Crypto-Version", "1");
+            conn.setRequestProperty("X-JP-Timestamp", String.valueOf(ts));
+            conn.setRequestProperty("X-JP-Nonce", nonceB64);
+            conn.setRequestProperty("X-JP-Signature", signature);
+            if (bodyBytes.length > 0) {
+                conn.setDoOutput(true);
+                OutputStream out = conn.getOutputStream();
+                out.write(bodyBytes);
+                out.flush();
+                out.close();
+            }
+
+            int status = conn.getResponseCode();
+            InputStream in = status >= 200 && status < 300 ? conn.getInputStream() : conn.getErrorStream();
+            byte[] raw = in == null ? new byte[0] : readAll(in);
+            String respCrypto = conn.getHeaderField("X-JP-Crypto-Version");
+            String respCt = conn.getContentType();
+
+            if (status == 401) throw new AuthError(new String(raw, "UTF-8"));
+
+            byte[] plain = raw;
+            boolean encrypted = "1".equals(respCrypto)
+                    || (respCt != null && respCt.startsWith("application/vnd.jp.encrypted+json"));
+            if (status >= 200 && status < 300 && encrypted && status != 204 && status != 304 && raw.length > 0) {
+                JSONObject env = new JSONObject(new String(raw, "UTF-8"));
+                byte[] rn = b64d(env.optString("nonce"));
+                byte[] data = b64d(env.optString("data"));
+                String aad = "jp-api-response-v1\n" + method + "\n" + path + "\n" + status + "\n" + ts + "\n" + nonceB64 + "\n" + deviceId;
+                plain = aesGcm(kRespBody, rn, data, aad.getBytes("UTF-8"), false);
+            }
+            if (status < 200 || status >= 300) {
+                throw new RuntimeException("HTTP " + status + ": " + new String(plain, "UTF-8"));
+            }
+            if (plain.length == 0) return new JSONObject();
+            return new JSONObject(new String(plain, "UTF-8"));
         } finally {
             if (conn != null) conn.disconnect();
         }
+    }
+
+    private byte[] aesGcm(byte[] key, byte[] iv, byte[] data, byte[] aad, boolean encrypt) throws Exception {
+        Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+        cipher.init(encrypt ? Cipher.ENCRYPT_MODE : Cipher.DECRYPT_MODE,
+                new SecretKeySpec(key, "AES"), new GCMParameterSpec(128, iv));
+        if (aad != null) cipher.updateAAD(aad);
+        return cipher.doFinal(data);
+    }
+
+    private static byte[] readAll(InputStream in) throws Exception {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        byte[] buf = new byte[8192];
+        int n;
+        while ((n = in.read(buf)) > 0) out.write(buf, 0, n);
+        in.close();
+        return out.toByteArray();
+    }
+
+    // ==================== 基础工具 ====================
+
+    private static byte[] sha256(byte[] data) throws Exception {
+        return MessageDigest.getInstance("SHA-256").digest(data);
+    }
+
+    private static byte[] hmac(byte[] key, byte[] msg) throws Exception {
+        Mac mac = Mac.getInstance("HmacSHA256");
+        mac.init(new SecretKeySpec(key, "HmacSHA256"));
+        return mac.doFinal(msg);
+    }
+
+    private static final char[] B64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_".toCharArray();
+    private static final int[] B64REV = new int[128];
+
+    static {
+        Arrays.fill(B64REV, -1);
+        for (int i = 0; i < B64.length; i++) B64REV[B64[i]] = i;
+    }
+
+    private static String b64u(byte[] data) {
+        StringBuilder sb = new StringBuilder((data.length * 4 + 2) / 3);
+        for (int i = 0; i < data.length; i += 3) {
+            int b0 = data[i] & 0xff;
+            int b1 = i + 1 < data.length ? data[i + 1] & 0xff : 0;
+            int b2 = i + 2 < data.length ? data[i + 2] & 0xff : 0;
+            sb.append(B64[b0 >> 2]);
+            sb.append(B64[(b0 << 4 | b1 >> 4) & 63]);
+            if (i + 1 < data.length) sb.append(B64[(b1 << 2 | b2 >> 6) & 63]);
+            if (i + 2 < data.length) sb.append(B64[b2 & 63]);
+        }
+        return sb.toString();
+    }
+
+    private static byte[] b64d(String s) {
+        int len = s.length();
+        int pad = (4 - len % 4) % 4;
+        ByteArrayOutputStream out = new ByteArrayOutputStream(len * 3 / 4 + 3);
+        int acc = 0, bits = 0;
+        for (int i = 0; i < len; i++) {
+            int c = s.charAt(i);
+            int v = c < 128 ? B64REV[c] : -1;
+            if (v < 0) continue;
+            acc = (acc << 6) | v;
+            bits += 6;
+            if (bits >= 8) {
+                bits -= 8;
+                out.write((acc >> bits) & 0xff);
+            }
+        }
+        if (pad > 2) { /* unreachable */ }
+        return out.toByteArray();
+    }
+
+    private static final char[] HEX = "0123456789abcdef".toCharArray();
+
+    private static String hex(byte[] data) {
+        StringBuilder sb = new StringBuilder(data.length * 2);
+        for (byte b : data) {
+            sb.append(HEX[(b >> 4) & 15]);
+            sb.append(HEX[b & 15]);
+        }
+        return sb.toString();
     }
 
     private static String join(List<String> items, String sep) {
@@ -357,39 +669,26 @@ public class Jianpian extends Spider {
         return sb.toString();
     }
 
-    private static JSONArray kvArr(String[] kvs) {
-        JSONArray a = new JSONArray();
-        for (String s : kvs) {
-            int c = s.indexOf(':');
-            String n = c >= 0 ? s.substring(0, c) : s;
-            String v = c >= 0 ? s.substring(c + 1) : "";
-            a.put(new JSONObject().put("n", n).put("v", v));
+    private static String urlEncode(String s) {
+        try {
+            return URLEncoder.encode(s, "UTF-8").replace("+", "%20");
+        } catch (Throwable t) {
+            return s;
         }
-        return a;
-    }
-
-    private static String extendGet(HashMap<String, String> extend, String key, String def) {
-        if (extend == null) return def;
-        String v = extend.get(key);
-        return v == null || v.length() == 0 ? def : v;
     }
 
     private static int parseInt(String s, int def) {
         try { return Integer.parseInt(s); } catch (Throwable t) { return def; }
     }
 
-    private String fixPic(String path) {
-        if (path == null || path.length() == 0) return "";
-        if (path.startsWith("http://") || path.startsWith("https://")) return path;
-        if (path.startsWith("/")) return "https://" + imgHost + path;
-        return "https://" + rand(6) + "." + path;
-    }
-
-    private static final Random RAND = new Random();
-
-    private static String rand(int n) {
-        char[] c = new char[n];
-        for (int i = 0; i < n; i++) c[i] = "abcdefghijklmnopqrstuvwxyz0123456789".charAt(RAND.nextInt(36));
-        return new String(c);
+    private static String kindName(String kind) {
+        if (KIND_MOVIE.equals(kind)) return "电影";
+        if (KIND_SERIES.equals(kind)) return "电视剧";
+        if (KIND_ANIME.equals(kind)) return "动漫";
+        if (KIND_VARIETY.equals(kind)) return "综艺";
+        if (KIND_DOC.equals(kind)) return "纪录片";
+        if (KIND_SHORT.equals(kind)) return "短剧";
+        if (KIND_SPORTS.equals(kind)) return "体育";
+        return kind;
     }
 }

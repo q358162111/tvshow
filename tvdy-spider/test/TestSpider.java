@@ -339,6 +339,67 @@ public class TestSpider {
             }
 
             log("SEARCH 爱情", s.searchContent("爱情", false));
+        } else if (which.equals("jianpian")) {
+            com.github.catvod.spider.Jianpian s = new com.github.catvod.spider.Jianpian();
+            s.init(null, args.length > 2 ? args[2] : "");
+            long t0 = System.currentTimeMillis();
+            String home = s.homeContent(true);
+            System.out.println(">>> homeContent 耗时 " + (System.currentTimeMillis() - t0) + "ms");
+            log("HOME", home);
+            log("HOME-VIDEO", s.homeVideoContent());
+
+            String c1 = s.categoryContent("movie", "1", false, new HashMap<String, String>());
+            JSONObject c1o = new JSONObject(c1);
+            System.out.println(">>> 电影 p1 条数=" + c1o.optJSONArray("list").length()
+                    + " pagecount=" + c1o.optInt("pagecount"));
+            String c2 = s.categoryContent("movie", "2", false, new HashMap<String, String>());
+            System.out.println(">>> 电影 p2 条数=" + new JSONObject(c2).optJSONArray("list").length()
+                    + " 首id=" + new JSONObject(c2).optJSONArray("list").getJSONObject(0).optString("vod_id")
+                    + " (p1 首id=" + c1o.optJSONArray("list").getJSONObject(0).optString("vod_id") + ")");
+            HashMap<String, String> ext = new HashMap<String, String>();
+            ext.put("area", "美国");
+            ext.put("year", "2025");
+            String cf = s.categoryContent("movie", "1", true, ext);
+            System.out.println(">>> 筛选(美国/2025) 条数=" + new JSONObject(cf).optJSONArray("list").length());
+            log("CAT-movie-filter", cf);
+            log("CAT-series-p1", s.categoryContent("series", "1", false, new HashMap<String, String>()));
+
+            String s1 = s.searchContent("凡人修仙传", false);
+            System.out.println(">>> 搜索条数=" + new JSONObject(s1).optJSONArray("list").length());
+            log("SEARCH 凡人修仙传", s1);
+            String s2 = s.searchContent("凡人修仙传", false, "2");
+            System.out.println(">>> 搜索 p2 条数=" + new JSONObject(s2).optJSONArray("list").length());
+
+            String id = args.length > 1 ? args[1]
+                    : new JSONObject(s1).optJSONArray("list").getJSONObject(0).optString("vod_id");
+            String d = s.detailContent(java.util.Collections.singletonList(id));
+            log("DETAIL " + id, d);
+            JSONObject vod = new JSONObject(d).optJSONArray("list").getJSONObject(0);
+            System.out.println("vod_name=" + vod.optString("vod_name")
+                    + " | type=" + vod.optString("type_name")
+                    + " | area=" + vod.optString("vod_area")
+                    + " | year=" + vod.optString("vod_year")
+                    + " | remarks=" + vod.optString("vod_remarks")
+                    + " | content=" + cut(vod.optString("vod_content")));
+            System.out.println("from=" + vod.optString("vod_play_from"));
+            String playUrl = vod.optString("vod_play_url");
+            System.out.println("play_url[0]=" + cut(playUrl));
+            if (playUrl.length() > 0) {
+                String block = playUrl.split("\\$\\$\\$")[0];
+                String firstEp = block.split("#")[0];
+                String lastEp = block.split("#")[block.split("#").length - 1];
+                String epId = firstEp.substring(firstEp.indexOf('$') + 1);
+                String epIdLast = lastEp.substring(lastEp.indexOf('$') + 1);
+                log("PLAYER " + epId, s.playerContent("荐片", epId, new ArrayList<String>()));
+                log("PLAYER-last " + epIdLast, s.playerContent("荐片", epIdLast, new ArrayList<String>()));
+                // 取流验证
+                JSONObject pc = new JSONObject(s.playerContent("荐片", epId, new ArrayList<String>()));
+                String u = pc.optString("url");
+                if (u.length() > 0) {
+                    String m3u8 = fetch(u, null, null);
+                    System.out.println(">>> m3u8 时长=" + duration(m3u8) + "s 分片=" + segCount(m3u8));
+                }
+            }
         } else {
             Kky s = new Kky();
             s.init(null, "");
