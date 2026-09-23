@@ -2,7 +2,7 @@
 
 TVBox / 影视TV 等支持 [catvod](https://github.com/FongMi/TV) 规范的电视盒子可用的**直播 · 点播聚合资源库**。
 
-内置自研 Java 版 jar 爬虫（源码见 `tvdy-spider/`）、外部通用爬虫源、直播源列表与 EPG 节目单数据，
+内置自研 Java 版 jar 爬虫、外部通用爬虫源、直播源列表与 EPG 节目单数据，
 一份配置即可观剧看卫视。**资源不定期更新**，移动直播源为主，包含央视、卫视等。
 
 ## 快速开始
@@ -29,31 +29,16 @@ TVBox / 影视TV 等支持 [catvod](https://github.com/FongMi/TV) 规范的电�
 tvshow/
 ├─ x.json                       主订阅配置（21 站点：自研 jar 爬虫 + 第三方秒播/多线源）
 ├─ A.json                       备用订阅配置（50 站点：配置中心/网盘/教育/直播聚合等）
-├─ TvDy.jar                     主爬虫 jar（自研全部爬虫 + 外部通用爬虫库，源码见 tvdy-spider）
+├─ TvDy.jar                     主爬虫 jar（自研全部爬虫 + 外部通用爬虫库）
 ├─ PandaQ241023.jar             备用爬虫 jar（熊猫系）
 ├─ b97a0-b33fe897-*.jar         备用爬虫 jar（配置中心系，被 A.json 引用）
 ├─ spider.txt                   以 txt 形式提供爬虫 dex
 ├─ tvlist.txt                   直播源（央视 + 卫视，移动源为主）
 ├─ hbmobile.txt                 直播源备份（移动端多线路）
 ├─ epg_data.json                EPG 节目单数据（频道 ID 映射 + 别名 + 台标）
-├─ tvdy-spider/                 自研 jar 爬虫源码工程（Java，catvod 规范）
 ├─ lib/                         第三方扩展库（drpy/drpy2、js/py/json 形态点播源、网盘搜索、儿童教育等）
 └─ build/                       构建缓存（已 gitignore）
 ```
-
-## 二次开发 / 构建爬虫
-
-`tvdy-spider/` 为独立 Java 工程（编译期桩类，JDK 8+）：
-
-```bash
-# Windows
-powershell -ExecutionPolicy Bypass -File tvdy-spider/build.ps1
-# Linux/macOS
-bash tvdy-spider/build.sh
-```
-
-流程：编译桩类 → 编译爬虫 → d8 转 `classes.dex` → 打包 `dist/TvDy.jar`，
-产物可直接替换仓库根目录的 `TvDy.jar`。详细设计、接口与踩坑记录见 [tvdy-spider/README.md](tvdy-spider/README.md)。
 
 ## EPG 节目单
 
