@@ -1,3 +1,85 @@
 # tvshow
 
-资源不定期更新，移动资源为主，包含央视、卫视等
+TVBox / 影视TV 等支持 [catvod](https://github.com/FongMi/TV) 规范的电视盒子可用的**直播 · 点播聚合资源库**。
+
+内置自研 Java 版 jar 爬虫（源码见 `tvdy-spider/`）、外部通用爬虫源、直播源列表与 EPG 节目单数据，
+一份配置即可观剧看卫视。**资源不定期更新**，移动直播源为主，包含央视、卫视等。
+
+## 快速开始
+
+1. TVBox 类客户端：`设置 → 配置地址`（或"订阅管理"）。
+2. 在仓库页面打开对应文件，复制其 raw 地址填入：
+
+| 用途 | 文件 | 说明 |
+| --- | --- | --- |
+| 主配置 | `x.json` | 自研 jar 爬虫（点播）为主 + 直播源接入 |
+| 备用配置 | `A.json` | 综合全家桶：配置中心、网盘搜索、儿童教育、直播聚合等 |
+| 直播源 | `tvlist.txt` | 央视 / 卫视直播源（移动源为主） |
+| 直播源（备用） | `hbmobile.txt` | 同上，移动端多线路版本 |
+| 直播源（爬虫版） | `spider.txt` | 以 dex 打包的爬虫格式直播源，兼容部分客户端 |
+
+> 提示：若 raw 地址被跳转到防爬页，可改用 `gh-proxy` 等镜像加速（`x.json` 内爬虫即用 gh-proxy 引用），
+> 或将地址填入 TVBox 后由客户端直接拉取。
+
+配置加载完成后即可在首页看到点播分类与直播列表，无需额外操作。
+
+## 目录结构
+
+```
+tvshow/
+├─ x.json                       主订阅配置（21 站点：自研 jar 爬虫 + 第三方秒播/多线源）
+├─ A.json                       备用订阅配置（50 站点：配置中心/网盘/教育/直播聚合等）
+├─ TvDy.jar                     主爬虫 jar（自研全部爬虫 + 外部通用爬虫库，源码见 tvdy-spider）
+├─ PandaQ241023.jar             备用爬虫 jar（熊猫系）
+├─ b97a0-b33fe897-*.jar         备用爬虫 jar（配置中心系，被 A.json 引用）
+├─ spider.txt                   以 txt 形式提供爬虫 dex
+├─ tvlist.txt                   直播源（央视 + 卫视，移动源为主）
+├─ hbmobile.txt                 直播源备份（移动端多线路）
+├─ epg_data.json                EPG 节目单数据（频道 ID 映射 + 别名 + 台标）
+├─ tvdy-spider/                 自研 jar 爬虫源码工程（Java，catvod 规范）
+├─ lib/                         第三方扩展库（drpy/drpy2、js/py/json 形态点播源、网盘搜索、儿童教育等）
+└─ build/                       构建缓存（已 gitignore）
+```
+
+## 点播爬虫一览
+
+`TvDy.jar` 中内置了多个站点爬虫，配置里通过 `"api": "csp_<类名>"` 区分（`jar` 均指向同一文件）：
+
+| 站点 | api | 特征 |
+| --- | --- | --- |
+| 电影天堂 `tvdy.xyz` | `csp_TvDy` | 苹果CMS10 + stui 模板，完整接口实测 |
+| 88影视 `www.88ystv.com` | `csp_Movietv88` | stui 模板 |
+| 影视大全 `www.kanys8.com` | `csp_Kanys8` | 苹果CMS，模拟 App 接口 |
+| 奈飞工厂 `netflixgc.org` | `csp_NetflixGc` | dsn2 模板 |
+| vv3 `vv3nwjk.com` | `csp_Vv3` | Next.js flight 数据 + 接口签名 |
+| 可可影视 `www.kkys04.com` | `csp_Kky` | 含 JS 反爬破解 |
+| 永乐视频 `www.cw2.net` | `csp_YongLe` | 苹果CMS mxtheme 模板 |
+| 瓜子影视 `api.bp7kprw.com` | `csp_GuaZi` | App 封闭签名接口（RSA+AES+MD5 签名 + Walle 渠道头） |
+| A123TV `a123tv.com` | `csp_A123tv` | 自制 w4 模板，分集地址可直接构造 |
+| 荐片（官方加密 API） | `csp_Jianpian` | 官方 App 协议逆向，AES-256-GCM 信封 |
+| 热播影视 `v.rbotv.cn` | `csp_AppRJ` | 外部通用库，App 加密接口 |
+| 骚火影视 | `csp_SaoHuo` | 本地实现 |
+
+## 二次开发 / 构建爬虫
+
+`tvdy-spider/` 为独立 Java 工程（编译期桩类，JDK 8+）：
+
+```bash
+# Windows
+powershell -ExecutionPolicy Bypass -File tvdy-spider/build.ps1
+# Linux/macOS
+bash tvdy-spider/build.sh
+```
+
+流程：编译桩类 → 编译爬虫 → d8 转 `classes.dex` → 打包 `dist/TvDy.jar`，
+产物可直接替换仓库根目录的 `TvDy.jar`。详细设计、接口与踩坑记录见 [tvdy-spider/README.md](tvdy-spider/README.md)。
+
+## EPG 节目单
+
+- `epg_data.json`：本地频道元数据（`tvid / epgid / 别名 / 台标`）。
+- 配置中已内置远程 EPG 接口（`x.json` 走 `epg.51zmt.top`，`A.json` 走 `112114`），直播列表自动关联节目单。
+
+## 免责声明
+
+本项目仅供个人学习与技术交流使用，请勿用于商业用途。所有资源均来自互联网公开途径，
+版权归原作者所有；请遵守所在地法律法规，因使用本项目产生的一切后果由使用者自行承担。
