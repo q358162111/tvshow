@@ -41,25 +41,6 @@ tvshow/
 └─ build/                       构建缓存（已 gitignore）
 ```
 
-## 点播爬虫一览
-
-`TvDy.jar` 中内置了多个站点爬虫，配置里通过 `"api": "csp_<类名>"` 区分（`jar` 均指向同一文件）：
-
-| 站点 | api | 特征 |
-| --- | --- | --- |
-| 电影天堂 `tvdy.xyz` | `csp_TvDy` | 苹果CMS10 + stui 模板，完整接口实测 |
-| 88影视 `www.88ystv.com` | `csp_Movietv88` | stui 模板 |
-| 影视大全 `www.kanys8.com` | `csp_Kanys8` | 苹果CMS，模拟 App 接口 |
-| 奈飞工厂 `netflixgc.org` | `csp_NetflixGc` | dsn2 模板 |
-| vv3 `vv3nwjk.com` | `csp_Vv3` | Next.js flight 数据 + 接口签名 |
-| 可可影视 `www.kkys04.com` | `csp_Kky` | 含 JS 反爬破解 |
-| 永乐视频 `www.cw2.net` | `csp_YongLe` | 苹果CMS mxtheme 模板 |
-| 瓜子影视 `api.bp7kprw.com` | `csp_GuaZi` | App 封闭签名接口（RSA+AES+MD5 签名 + Walle 渠道头） |
-| A123TV `a123tv.com` | `csp_A123tv` | 自制 w4 模板，分集地址可直接构造 |
-| 荐片（官方加密 API） | `csp_Jianpian` | 官方 App 协议逆向，AES-256-GCM 信封 |
-| 热播影视 `v.rbotv.cn` | `csp_AppRJ` | 外部通用库，App 加密接口 |
-| 骚火影视 | `csp_SaoHuo` | 本地实现 |
-
 ## 二次开发 / 构建爬虫
 
 `tvdy-spider/` 为独立 Java 工程（编译期桩类，JDK 8+）：
