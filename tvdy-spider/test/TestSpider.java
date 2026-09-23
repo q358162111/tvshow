@@ -400,6 +400,42 @@ public class TestSpider {
                     System.out.println(">>> m3u8 时长=" + duration(m3u8) + "s 分片=" + segCount(m3u8));
                 }
             }
+        } else if (which.equals("saohuo")) {
+            com.github.catvod.spider.SaoHuo s = new com.github.catvod.spider.SaoHuo();
+            s.init(null, args.length > 2 ? args[2] : "");
+            String home = s.homeContent(true);
+            System.out.println(">>> HOME 返回长度=" + home.length());
+            log("HOME", home);
+            String c1 = s.categoryContent("1", "1", false, new HashMap<String, String>());
+            System.out.println(">>> 电影 p1 条数=" + new JSONObject(c1).optJSONArray("list").length());
+            String c2 = s.categoryContent("1", "2", false, new HashMap<String, String>());
+            System.out.println(">>> 电影 p2 条数=" + new JSONObject(c2).optJSONArray("list").length());
+            HashMap<String, String> ext = new HashMap<String, String>();
+            ext.put("tid", "9"); // 动作片
+            String cf = s.categoryContent("1", "1", true, ext);
+            System.out.println(">>> 电影-动作片 条数=" + new JSONObject(cf).optJSONArray("list").length());
+            String sr = s.searchContent("凡人修仙传", false);
+            System.out.println(">>> 搜索条数=" + new JSONObject(sr).optJSONArray("list").length());
+            log("SEARCH 凡人修仙传", sr);
+            JSONArray arr = new JSONObject(sr).optJSONArray("list");
+            if (arr.length() == 0) arr = new JSONObject(c1).optJSONArray("list");
+            if (arr.length() > 0) {
+                String id = arr.getJSONObject(0).optString("vod_id");
+                String d = s.detailContent(java.util.Collections.singletonList(id));
+                log("DETAIL " + id, d);
+                JSONObject vod = new JSONObject(d).optJSONArray("list").getJSONObject(0);
+                System.out.println("name=" + vod.optString("vod_name")
+                        + " | remarks=" + vod.optString("vod_remarks")
+                        + " | from=" + vod.optString("vod_play_from"));
+                String pu = vod.optString("vod_play_url");
+                System.out.println("play_url 片段=" + cut(pu));
+                if (pu.length() > 0) {
+                    String firstBlock = pu.split("\\$\\$\\$")[0];
+                    String epId = firstBlock.split("#")[0];
+                    epId = epId.substring(epId.indexOf('$') + 1);
+                    log("PLAYER " + epId, s.playerContent("骚火", epId, new ArrayList<String>()));
+                }
+            }
         } else {
             Kky s = new Kky();
             s.init(null, "");

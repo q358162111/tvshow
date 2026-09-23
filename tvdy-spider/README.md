@@ -8,9 +8,11 @@ jar 内同时包含大小写兼容别名类 `com.github.catvod.spider.Tvdy`，�
 
 ## 一、产物
 
-- `dist/TvDy.jar` —— 可直接使用的爬虫 jar（内含 `classes.dex`，约 8 KB）
+- `dist/TvDy.jar` —— 可直接使用的爬虫 jar（内含单个 `classes.dex`，约 1.5 MB / 3200+ 个类）
 
-> 说明：`classes.dex` 里的 `com.github.catvod.crawler.Spider`、`OkHttp`、`org.json` **不打包**，运行时由 TVBox 宿主提供，与官方 `custom_spider.jar` 的机制一致。
+> 说明：本 jar 在本地爬虫之外，还**合并了一份外部通用 spider 库**（`AppRJ`、`Proxy`、`XBPQ`、`SaoHuo` 等 148+ 个爬虫，及其 `jsoup`/`okhttp`/`slf4j` 等依赖）。
+> 与本地**重名**的类（`Init`、`SaoHuo`）保留本地版本，外部版本在打包前由 `tools/DexFilter` 从外部 dex 中剔除，详见 `build.sh` 第 0 步。
+> 宿主仍会提供 `com.github.catvod.crawler.Spider` / `OkHttp` / `org.json` 等运行期类（父类加载器优先），与官方 `custom_spider.jar` 的机制一致。
 
 ## 二、目录结构
 
@@ -113,8 +115,11 @@ powershell -ExecutionPolicy Bypass -File tvdy-spider\build.ps1
 | 瓜子影视 `api.bp7kprw.com` | `csp_GuaZi` | `/App/Resource/VodType/show` + `/App/IndexList/index` | `POST /App/IndexList/indexList`（`tid/page/pageSize/sub/sort/area/year`） | `POST /App/Index/findMoreVod` | `/App/Resource/VurlDetail/showOne` → 直链 m3u8 |
 | A123TV `a123tv.com` | `csp_A123tv` | 自制 w4 模板静态解析（`/t/{id}.html` 大类 10/11/12/13） | `/t/{typeId}.html`、第 P 页 `/t/{typeId}/p{P}.html`（类型筛选即换成子类 id） | `/s/{urlEncode(key)}.html`、第 P 页 `/s/{key}/p{P}.html` | 详情页/分集页 `div.w4-player[data-src]` 即 m3u8 直链 |
 | 荐片 `api.bdgnbrws.com`（官方 App 加密接口） | `csp_Jianpian` | `GET /api/v1/home` | `GET /api/v1/catalog/works`（cursor 游标转页码缓存） | `GET /api/v1/search?q=` | `POST /api/v1/media/access` → 直链 m3u8 |
+| 热播影视 `v.rbotv.cn`（App 加密接口，来自外部通用库） | `csp_AppRJ` | `POST /v3/type/top_type` | `POST /v3/home/type_search`（`type_id/page/limit`，另带 area/class/lang/year） | `POST /v3/home/search`（`keyword/limit/page`） | `POST /v3/home/vod_details` 取 `vod_play_list` → danmu 中转接口 → `url` |
 
 **荐片（csp_Jianpian）**：反编译官方 APK 得到的加密协议。设备身份（UUID+随机 credential）本地生成；请求按 `HMAC-SHA256(kAuth, "METHOD\npath含query\nts\nnonce\nsha256(body)")` 签名，POST body 与业务响应均为 AES-256-GCM 信封（AAD 绑定 method/path/ts/nonce/device_id）。域名发现 `ssopj-1462720388.cos.accelerate.myqcloud.com/config.txt` → `cqjdn.com`，但该泛域名当前是**剥离 query 的降级镜像**（会导致搜索/筛选失效），已改用备用域 `api.bdgnbrws.com / api.fvevfbr.com / api.swgsdfew.com` 自动轮转。`ext` 可传 `{"host":"https://api.xxx.com"}` 覆盖。
+
+**热播影视（csp_AppRJ）**：由外部通用库提供，`ext` 必须传 `{"url":"http://v.rbotv.cn"}` 指定站点（`init` 内为 `new JSONObject(extend).getString("url")`）。请求为 multipart POST，公共参数 `timestamp`（秒级）+ `sign = md5("7gp0bnd2sr85ydii2j32pcypscoc4w6c7g5spl" + timestamp)`，UA 伪装 `okhttp-okgo/jeasonlzy`。2026-09-23 实测 `top_type`（分类树+筛选）、`type_search`、`search`（凡人修仙传）均正常返回，配置见 `x.json`。
 
 
 **镜像选择**：经实测 `cw2.net` 是唯一拥有完整片库与播放的入口；同模板的 `ylys.tv / ylsp.pro / ylsp.one / ylys.cc` 均为推广首页（详情/播放 404）。`ext` 接受 `{"host":"https://www.cw2.net"}` 或裸 `https://...` 临时切换调试。

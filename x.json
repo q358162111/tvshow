@@ -1,6 +1,6 @@
 {
   "wallpaper": "https://imgapi.cn/bing.php?rand=true",
-  "spider": "https://file.icve.com.cn/file_doc/874/405/DAB654F794A271C3D7A33D18ACFBFA95.jpg;md5;dab654f794a271c3d7a33d18acfbfa95",
+  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;d1f266cc9a09570fda13ec71fcea7ac7",
   "lives": [
     {
       "name": "live",
@@ -16,6 +16,8 @@
       "name": "豆瓣",
       "type": 3,
       "api": "csp_DouDouGuard",
+                  "jar":"https://file.icve.com.cn/file_doc/874/405/DAB654F794A271C3D7A33D18ACFBFA95.jpg;md5;dab654f794a271c3d7a33d18acfbfa95",
+
       "searchable": 0
     },
     {
@@ -26,7 +28,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0,
-      "jar": "https://ncstatic-file.clewm.net/rsrc/2026/0406/21/5b2f258907bc956ee3538c9f5cdf4b83.jpg;md5;5af5edf697f25b99eb189fb800e1d098",
+      "jar": "./TvDy.jar;md5;d1f266cc9a09570fda13ec71fcea7ac7",
       "ext": {
         "url": "http://v.rbotv.cn"
       }
@@ -39,7 +41,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "./TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
+      "jar": "./TvDy.jar;md5;d1f266cc9a09570fda13ec71fcea7ac7"
     },
     {
       "key": "瓜子影视",
@@ -49,7 +51,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;d1f266cc9a09570fda13ec71fcea7ac7"
     },
     {
       "key": "原创",
@@ -60,6 +62,8 @@
       "playerType": 2,
       "searchable": 1,
       "quickSearch": 1,
+            "jar":"https://file.icve.com.cn/file_doc/874/405/DAB654F794A271C3D7A33D18ACFBFA95.jpg;md5;dab654f794a271c3d7a33d18acfbfa95",
+
       "changeable": 1
     },
     {
@@ -71,6 +75,8 @@
       "playerType": 2,
       "searchable": 1,
       "quickSearch": 1,
+            "jar":"https://file.icve.com.cn/file_doc/874/405/DAB654F794A271C3D7A33D18ACFBFA95.jpg;md5;dab654f794a271c3d7a33d18acfbfa95",
+
       "changeable": 1
     },
     {
@@ -96,6 +102,8 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
+            "jar":"https://file.icve.com.cn/file_doc/874/405/DAB654F794A271C3D7A33D18ACFBFA95.jpg;md5;dab654f794a271c3d7a33d18acfbfa95",
+
       "ext": "uqGL1bNENExT7/hGxpSE5qU="
     },
     
@@ -107,6 +115,8 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
+            "jar":"https://file.icve.com.cn/file_doc/874/405/DAB654F794A271C3D7A33D18ACFBFA95.jpg;md5;dab654f794a271c3d7a33d18acfbfa95",
+
       "ext": "rfOIzPkSUkANv6AT2prC8en3+TzKx9TnlT8vaY37HhtYfAQe6C5xqrVuJPhQwYV6r3eRdMBGm3Qm6Th+BushR86B6KqJGXDsHazHw7alBG/7zUxkN1tK/NypRxnpBNoeUtpw4jcCGhytI75yO4g4zG6SOPA0RSwhksM0IF2friAkrHCWoW3v+0mdw6sjz4t4XB1Df7yL/R5cfaA/5LQYq3I8OkvMrJMU9Q1P7JXwx7NSF2zTyH/ANVmZ4u5m567DW1KVG7OuQjXPjZiOXTYk0+wjpfBRTf19yIq6q/C76k2Fs80joAMPw0ueDR+QHxtuDcTom2rmHkI1Fonkzi6BotbpUcbSi4PiIgmfdbvVwhG6Z+i4nvt+IYa48l5aLA7PLgDiERpuOs31aHaXlgFswT87XyTb8QaF4CuzKWJuXptwNTjvXAS9KHdxH49Ay+hfBAB2bCvUf4CMoldF2wZUv0mI2qY966erFpOFg+FOc7t88EUH8j8ACXQtHJiKC9RQ+SaLIF0="
     },
     {
@@ -118,6 +128,8 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
+            "jar":"https://file.icve.com.cn/file_doc/874/405/DAB654F794A271C3D7A33D18ACFBFA95.jpg;md5;dab654f794a271c3d7a33d18acfbfa95",
+
       "ext": "rfOX1voDIQhH8epBwtCFsuby/mmdmIu8kGlnJc+7VkMRLQ1K+jMy+KN1MKQe0MZ6tmGSO5oFzD8/vWwiSqEpFczDqLrdGT3iH6fZmryrFzKijwYkJUMctdztE0O4CsgYZdBu8XhZSwuhSqqllQz4AZMa1l0sT+1NrbhNIxHkrY0upiYSTLNqEaledgZikMCviOXWr3cPBP4COOeoGUyJSJrrybmUppnWGeDAOHhHOVUSXjwSb+QQvcJIT2lmrf1Bk68myGs7qOqc19tD/rnzf2WOb2MzJZqtURBmUFgaW6ea2dL8OPSpSeVAvaGCAnqwuUNGE9hHpK8jfOs0bLJRdkFLnijAn5Q+ofVM5hgGb8c="
     },
     {
@@ -139,7 +151,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;d1f266cc9a09570fda13ec71fcea7ac7"
     },
     {
       "key": "88影视",
@@ -149,7 +161,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "./TvDy.jar;md5;5a6ba1f177d767be9521326c81480737",
+      "jar": "./TvDy.jar;md5;d1f266cc9a09570fda13ec71fcea7ac7",
       "ext": {
         "host": "https://www.88ystv.com"
       }
@@ -162,7 +174,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "./TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
+      "jar": "./TvDy.jar;md5;d1f266cc9a09570fda13ec71fcea7ac7"
     },
     {
       "key": "奈飞工厂",
@@ -172,7 +184,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;d1f266cc9a09570fda13ec71fcea7ac7"
     },
     {
       "key": "vv3nwjk",
@@ -182,7 +194,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;d1f266cc9a09570fda13ec71fcea7ac7"
     },
     {
       "key": "可可影视",
@@ -192,7 +204,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;d1f266cc9a09570fda13ec71fcea7ac7"
     },
     {
       "key": "永乐视频",
@@ -202,7 +214,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;d1f266cc9a09570fda13ec71fcea7ac7"
     },
     {
       "key": "A123TV",
@@ -212,7 +224,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;5a6ba1f177d767be9521326c81480737"
+      "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;d1f266cc9a09570fda13ec71fcea7ac7"
     },
     
     
@@ -231,22 +243,12 @@
       "type": 3,
       "api": "csp_AppgzGuard",
       "timeout": 15,
-      
+      "jar":"https://file.icve.com.cn/file_doc/874/405/DAB654F794A271C3D7A33D18ACFBFA95.jpg;md5;dab654f794a271c3d7a33d18acfbfa95",
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1
-    },
-    {
-      "key": "新6V",
-      "name": "🧲新6V┃磁力",
-      "type": 3,
-      "api": "csp_SixVGuard",
-      "timeout": 10,
-      "searchable": 1,
-      "quickSearch": 1,
-      "changeable": 0,
-      "ext": "https://www.xb6v.com/"
     }
+    
   ],
   "parses": [
     {
