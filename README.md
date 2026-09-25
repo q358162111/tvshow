@@ -2,7 +2,7 @@
 
 TVBox / 影视TV 等支持 [catvod](https://github.com/FongMi/TV) 规范的电视盒子可用的**直播 · 点播聚合资源库**。
 
-内置自研 Java 版 jar 爬虫、外部通用爬虫源、直播源列表与 EPG 节目单数据，
+内置自研 Java 版 jar 爬虫、外部通用爬虫源、直播源列表与远程 EPG 节目单，
 一份配置即可观剧看卫视。**资源不定期更新**，移动直播源为主，包含央视、卫视等。
 
 ## 快速开始
@@ -12,11 +12,10 @@ TVBox / 影视TV 等支持 [catvod](https://github.com/FongMi/TV) 规范的电�
 
 | 用途 | 文件 | 说明 |
 | --- | --- | --- |
-| 主配置 | `x.json` | 自研 jar 爬虫（点播）为主 + 直播源接入 |
-| 备用配置 | `A.json` | 综合全家桶：配置中心、网盘搜索、儿童教育、直播聚合等 |
+| 主配置 | `x.json` | 自研 jar 爬虫（点播）为主 + 直播源接入（13 站点） |
+| 备用配置 | `A.json` | 综合全家桶：配置中心、网盘搜索、儿童教育、直播聚合等（50 站点） |
 | 直播源 | `tvlist.txt` | 央视 / 卫视直播源（移动源为主） |
 | 直播源（备用） | `hbmobile.txt` | 同上，移动端多线路版本 |
-| 直播源（爬虫版） | `spider.txt` | 以 dex 打包的爬虫格式直播源，兼容部分客户端 |
 
 > 提示：若 raw 地址被跳转到防爬页，可改用 `gh-proxy` 等镜像加速（`x.json` 内爬虫即用 gh-proxy 引用），
 > 或将地址填入 TVBox 后由客户端直接拉取。
@@ -27,23 +26,22 @@ TVBox / 影视TV 等支持 [catvod](https://github.com/FongMi/TV) 规范的电�
 
 ```
 tvshow/
-├─ x.json                       主订阅配置（21 站点：自研 jar 爬虫 + 第三方秒播/多线源）
+├─ x.json                       主订阅配置（13 站点：自研 jar 爬虫 + 第三方秒播/多线源）
 ├─ A.json                       备用订阅配置（50 站点：配置中心/网盘/教育/直播聚合等）
-├─ TvDy.jar                     主爬虫 jar（自研全部爬虫 + 外部通用爬虫库）
-├─ PandaQ241023.jar             备用爬虫 jar（熊猫系）
-├─ b97a0-b33fe897-*.jar         备用爬虫 jar（配置中心系，被 A.json 引用）
-├─ spider.txt                   以 txt 形式提供爬虫 dex
+├─ TvDy.jar                     主爬虫 jar（自研全部爬虫 + 外部通用爬虫库，经 gh-proxy 远程引用）
 ├─ tvlist.txt                   直播源（央视 + 卫视，移动源为主）
 ├─ hbmobile.txt                 直播源备份（移动端多线路）
-├─ epg_data.json                EPG 节目单数据（频道 ID 映射 + 别名 + 台标）
-├─ lib/                         第三方扩展库（drpy/drpy2、js/py/json 形态点播源、网盘搜索、儿童教育等）
-└─ build/                       构建缓存（已 gitignore）
+├─ lib/                         第三方扩展库与站点订阅
+│  ├─ *.jar                     外部爬虫 jar（custom_spider / danmu / xry 等）
+│  ├─ drpy.min.js / drpy2.min.js   通用爬虫脚本（drpy / drpy2）
+│  ├─ *.json                    站点订阅（儿童教育、网盘搜索、体育、影视合集等）
+│  └─ *.js / *.py               脚本形态点播源
+└─ build/                       构建产物与缓存
 ```
 
 ## EPG 节目单
 
-- `epg_data.json`：本地频道元数据（`tvid / epgid / 别名 / 台标`）。
-- 配置中已内置远程 EPG 接口（`x.json` 走 `epg.51zmt.top`，`A.json` 走 `112114`），直播列表自动关联节目单。
+- 配置中已内置远程 EPG 接口（`x.json` 走 `epg.51zmt.top`，`A.json` 走 `epg.112114.xyz`），直播列表自动关联节目单。
 
 ## 免责声明
 
