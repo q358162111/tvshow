@@ -1,6 +1,6 @@
 {
   "wallpaper": "https://imgapi.cn/bing.php?rand=true",
-  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;55786380f3105e1dae9b62b22937e923",
+  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;290917c0cca2af32c1b50efb4ee17d53",
   "lives": [
     {
       "name": "live",
@@ -121,6 +121,15 @@
       "name": "🎬A123TV",
       "type": 3,
       "api": "csp_A123tv",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+    {
+      "key": "片吧影院",
+      "name": "🎬片吧影院",
+      "type": 3,
+      "api": "csp_PianBa",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1
