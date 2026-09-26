@@ -1,6 +1,6 @@
 {
   "wallpaper": "https://imgapi.cn/bing.php?rand=true",
-  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;7afefbba865e402a31d0d300cac1d838",
+  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;29db3e0121b636372cbca58824dac8a4",
   "lives": [
     {
       "name": "live",
@@ -20,18 +20,6 @@
       "filterable": 1
     },
     {
-      "key": "热播影视",
-      "name": "💡热播｜影视",
-      "type": 3,
-      "api": "csp_AppRJ",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "ext": {
-        "url": "http://v.rbotv.cn"
-      }
-    },
-    {
       "key": "荐片",
       "name": "💡荐片｜影视",
       "type": 3,
@@ -49,7 +37,6 @@
       "quickSearch": 1,
       "filterable": 1
     },
-    
     {
       "key": "电影天堂",
       "name": "🧲电影天堂",
@@ -134,10 +121,6 @@
       "quickSearch": 1,
       "filterable": 1
     }
-  
-
-   
-    
   ],
   "parses": [
     {
