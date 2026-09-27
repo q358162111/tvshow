@@ -1,6 +1,6 @@
 {
   "wallpaper": "https://imgapi.cn/bing.php?rand=true",
-  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;fab2e8494c6de922c5034cca3a8d2cc5",
+  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;ee66c94539b65aac105a675ee777e482",
   "lives": [
     {
       "name": "live",
@@ -129,6 +129,15 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0
+    },
+    {
+      "key": "热播影视",
+      "name": "🔥热播影视",
+      "type": 3,
+      "api": "csp_AppRJ",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
     }
   ],
   "parses": [
