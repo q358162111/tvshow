@@ -1,6 +1,6 @@
 {
   "wallpaper": "https://imgapi.cn/bing.php?rand=true",
-  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;ee66c94539b65aac105a675ee777e482",
+  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;870078785dd3137b0bd19251032419f0",
   "lives": [
     {
       "name": "live",
@@ -138,6 +138,24 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1
+    },
+    {
+      "key": "播剧网",
+      "name": "📺播剧网",
+      "type": 3,
+      "api": "csp_Ysxq",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0
+    },
+    {
+      "key": "饭搭子影视",
+      "name": "🍚饭搭子影视",
+      "type": 3,
+      "api": "csp_Fdzys",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0
     }
   ],
   "parses": [
