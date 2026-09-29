@@ -26,9 +26,9 @@ TVBox / 影视TV 等支持 [catvod](https://github.com/FongMi/TV) 规范的电�
 
 ```
 tvshow/
-├─ x.json                       主订阅配置（16 站点：自研 jar 爬虫 + 第三方秒播/多线源）
+├─ x.json                       主订阅配置（15 站点：自研 jar 爬虫 + 第三方秒播/多线源）
 ├─ A.json                       备用订阅配置（43 站点：配置中心/网盘/教育/直播聚合等）
-├─ TvDy.jar                     主爬虫 jar（自研全部爬虫 + 外部通用爬虫库，经 gh-proxy 远程引用）
+├─ spider.jar                   主爬虫 jar（自研全部爬虫，经 gh-proxy 远程引用）
 ├─ tvlist.txt                   直播源（央视 + 卫视，移动源为主）
 ├─ hbmobile.txt                 直播源备份（移动端多线路）
 ├─ lib/                         第三方扩展库与站点订阅

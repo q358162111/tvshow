@@ -1,6 +1,6 @@
 {
   "wallpaper": "https://imgapi.cn/bing.php?rand=true",
-  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/TvDy.jar;md5;49c51700fc730867fef60a5d8fc39c9a",
+  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/spider.jar;md5;4f0405bca8423630fb8936cb5a7956b1",
   "lives": [
     {
       "name": "live",
@@ -33,15 +33,6 @@
       "name": "🎬瓜子影视",
       "type": 3,
       "api": "csp_GuaZi",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
-      "key": "电影天堂",
-      "name": "🧲电影天堂",
-      "type": 3,
-      "api": "csp_TvDy",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1
