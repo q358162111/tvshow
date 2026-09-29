@@ -7,8 +7,7 @@
       "type": 0,
       "url": "./tvlist.txt",
       "epg": "http://epg.51zmt.top:8000/api/diyp/",
-      "logo": "https://raw.gitcode.com/cai_hj/logo/raw/master/{name}.png"
-      
+      "logo": "https://gitcode.com/cai_hj/logo/raw/master/{name}.png"
     }
   ],
   "sites": [
