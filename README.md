@@ -36,7 +36,6 @@ tvshow/
 │  ├─ drpy.min.js / drpy2.min.js   通用爬虫脚本（drpy / drpy2）
 │  ├─ *.json                    站点订阅（儿童教育、网盘搜索、体育、影视合集等）
 │  └─ *.js / *.py               脚本形态点播源
-└─ build/                       构建产物与缓存
 ```
 
 ## EPG 节目单
