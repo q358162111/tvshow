@@ -4,45 +4,41 @@
       "key": "drpy_js_88影视",
       "name": "🎬┃88影视",
       "type": 3,
-      "api": "./lib/drpy2.min.js",
-      "jar": "./lib/custom_spider.jar",
+      "api": "https://ghproxy.net/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/lib/drpy2.min.js",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "ext": "./lib/88影视.js"
+      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/lib/88%E5%BD%B1%E8%A7%86.js"
     },
     {
       "key": "drpy_js_影视大全",
       "name": "🎬┃影视大全",
       "type": 3,
-      "api": "./lib/drpy2.min.js",
-      "jar": "./lib/custom_spider.jar",
+      "api": "https://ghproxy.net/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/lib/drpy2.min.js",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "ext": "./lib/影视大全.js"
+      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/lib/%E5%BD%B1%E8%A7%86%E5%A4%A7%E5%85%A8.js"
     },
     {
       "key": "drpy_js_奈飞工厂",
       "name": "🎬┃奈飞工厂",
       "type": 3,
-      "api": "./lib/drpy2.min.js",
-      "jar": "./lib/custom_spider.jar",
+      "api": "https://ghproxy.net/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/lib/drpy2.min.js",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "ext": "./lib/奈飞工厂.js"
+      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/lib/%E5%A5%88%E9%A3%9E%E5%B7%A5%E5%8E%82.js"
     },
     {
       "key": "drpy_js_A123TV",
       "name": "🎬┃A123TV",
       "type": 3,
-      "api": "./lib/drpy2.min.js",
-      "jar": "./lib/custom_spider.jar",
+      "api": "https://ghproxy.net/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/lib/drpy2.min.js",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "ext": "./lib/A123TV.js"
+      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/q358162111/tvshow/refs/heads/main/lib/A123TV.js"
     }
   ]
 }
