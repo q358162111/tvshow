@@ -370,20 +370,14 @@ CHC影迷电影,rtsp://111.48.34.138:1554/170000004112/9918000100000005000000000
 
 香港卫视,http://anren.live/HK/BSJDUFpB.m3u8#
 香港RTHK31,http://iptv.4666888.xyz/iptv2A.php?id=23
-香港RTHK32,https://live.catvod.com/iptv.php?id=rthk32
-香港RTHK32,https://live.catvod.com/live.php?id=rhk32_twn
 澳视澳门,http://iptv.4666888.xyz/iptv2A.php?id=41
-
-莲花卫视,https://live.catvod.com/iptv.php?id=amlh01
 
 星空卫视,https://tv.bfsu.edu.cn/hls/startv.m3u8
 CHANNEL [V],https://tv.bfsu.edu.cn/hls/channelv.m3u8
 
 环球电视,http://utv1.hqtvzb.com:9999/hls/world.m3u8
-无线新闻,https://live.catvod.com/iptv.php?id=tvbxw01
 
 无线娱乐新闻,http://iptv.4666888.xyz/iptv2A.php?id=36
-无线星河,https://live.catvod.com/live.php?id=Xinhe
 无线星河,https://www.mytvsuper.xyz/tvb/xinghe/stream.m3u8
 明珠台,http://iptv.4666888.xyz/iptv2A.php?id=29
 
@@ -392,100 +386,40 @@ CHANNEL [V],https://tv.bfsu.edu.cn/hls/channelv.m3u8
 MyTVSUPER,http://iptv.4666888.xyz/iptv2A.php?id=24
 
 翡翠综合台,http://iptv.4666888.xyz/iptv2A.php?id=26
-TVB Plus,https://live.catvod.com/live.php?id=j2_twn
-TVB Plus,https://live.catvod.com/iptv.php?id=tvbplus2
 
 TVB-DRAMA,http://iptv.4666888.xyz/iptv2A.php?id=33
 黄金华剧台,http://iptv.4666888.xyz/iptv2A.php?id=34
 千禧经典,http://iptv.4666888.xyz/iptv2A.php?id=22
 
-亚洲武侠,https://live.catvod.com/iptv.php?id=yzwx01
-
 HOY77,http://iptv.4666888.xyz/iptv2A.php?id=35
-HOY78,https://live.catvod.com/iptv.php?id=hoytv02
-东森财经新闻,https://live.catvod.com/live.php?id=ettvcaijing_twn
-
-东森洋片,https://live.catvod.com/live.php?id=ettvwestern
-
-东森戏剧,https://live.catvod.com/live.php?id=ettvdrama
-
-东森新闻,https://live.catvod.com/live.php?id=ettvnews
-
-东森综合,https://live.catvod.com/live.php?id=ettvzhonghe
-
-东森幼幼,https://live.catvod.com/live.php?id=yoyo_twn
-
-亚洲旅游台,https://live.catvod.com/live.php?id=asiatravel_twn
-
-公视,https://live.catvod.com/live.php?id=ctv_taiwan
-
-台视,https://live.catvod.com/live.php?id=ttv_taiwan
 
 台视新闻,https://live.wcetv.com/hls/master-ttvnews.m3u8
 台视新闻,http://stream-ali1.csslcloud.net/live/ofFqVir8hEYxZDb6y677FJxn0xrbfd2yPfOT6XuHngNXajvBUY.flv
 台视新闻,http://38.64.72.148:80/hls/modn/list/4013/chunklist1.m3u8
-台视综合,https://live.catvod.com/live.php?id=ttvzhonghe
 
 民视,http://iptv.4666888.xyz/iptv2A.php?id=55
 
-民视台湾台,https://live.catvod.com/live.php?id=ftvtaiwan_twn
-
 民视综艺,http://iptv.4666888.xyz/iptv2A.php?id=46
 
-民视新闻,https://live.catvod.com/live.php?id=ftvnew_taiwan
 民视影剧台,http://iptv.4666888.xyz/iptv2A.php?id=53
 
 CTI+,http://stream-ali1.csslcloud.net/live/bfd2yczrTFqK7nEAJybacKGcrnLdslNp5YcphockmQnscq2S1p.flv
 
-中天新闻,https://live.catvod.com/live.php?id=ctinews
-
-中天亚洲台,https://live.catvod.com/live.php?id=ctiasia_twn
-
-中天综合台,https://live.catvod.com/live.php?id=ctizhonghe
-
-中天娱乐台,https://live.catvod.com/live.php?id=ctient
-
-年代新闻,https://live.catvod.com/live.php?id=niandainews_twn
-
-中视,https://live.catvod.com/live.php?id=zhongshihd_twn
+中天新闻,http://50.7.238.114:8278/ctinews/playlist.m3u8?tid=MB0B9546410395464103&ct=19249&tsum=30c62d7eec5ce9a49a64c3fa3ff8a8b7
+中天新闻,http://198.16.100.90:8278/ctinews/playlist.m3u8?tid=MB0B9546410395464103&ct=19249&tsum=30c62d7eec5ce9a49a64c3fa3ff8a8b7
+中天新闻,http://59.120.242.104:9000/live/live4.m3u8
+中天新闻,http://tv.redrainl.site:9500/live.m3u8?c=03
+中天新闻,http://104.250.154.42:8080/ZZ_zhongtiannews/ZZ_zhongtiannews.m3u8
 
 中视新闻,http://stream-ali1.csslcloud.net/live/hNsy4N2Ykbfd2ywCSlOqFQ1aSenAhZLYUenP1IoaAltR3IXYOp.flv
 
-非凡新闻台,https://live.catvod.com/live.php?id=feifannews_twn
-
-华视新闻,https://live.catvod.com/live.php?id=ctshd_twn
 华视新闻,http://stream-ali1.csslcloud.net/live/AzACuucKCaz8bfd2yxWeXFD8Mjjpf4AcLtEPKWdD9rvwlDDE5s.flv
 
-华艺,https://live.catvod.com/live.php?id=weishichinese_twn
-寰宇新闻,https://live.catvod.com/live.php?id=huanyuxinwen_twn
-
 纬来精采,http://61.221.215.25:8800/hls/48/index.m3u8
-纬来综合,https://live.catvod.com/live.php?id=videolandzonghe
-
-纬来日本,https://live.catvod.com/live.php?id=videolandjapan
-
-纬来戏剧,https://live.catvod.com/live.php?id=videolandtv
-TVBS,https://live.catvod.com/live.php?id=tvbs
 
 TVBS新闻台,http://iptv.4666888.xyz/iptv2A.php?id=43
 
-TVBS欢乐台,https://live.catvod.com/live.php?id=tvbshuanle_twn
-
-TVBS亚洲台,https://live.catvod.com/live.php?id=Tvbasia
 TVBS精采台,http://iptv.4666888.xyz/iptv2A.php?id=47
-三立综合台,https://live.catvod.com/live.php?id=sanlizhonghe
-
-三立戏剧台,https://live.catvod.com/live.php?id=sanlixiju_twn
-
-三立台湾台,https://live.catvod.com/live.php?id=sanlitaiwan
-
-三立都会台,https://live.catvod.com/live.php?id=sanlidouhui_twn
-
-八大综合,https://live.catvod.com/live.php?id=badazhonghe
-
-八大第一台,https://live.catvod.com/live.php?id=badafirst
-
-八大戏剧,https://live.catvod.com/live.php?id=badadrama
 
 龙华日韩台,https://cdn8.163189.xyz/live/lhrh/stream.m3u8
 
@@ -496,24 +430,10 @@ TVBS精采台,http://iptv.4666888.xyz/iptv2A.php?id=47
 龙华经典,https://cdn8.163189.xyz/live/lhjd/stream.m3u8
 
 龙华卡通台,https://cdn8.163189.xyz/live/lhkt/stream.m3u8
-龙华戏剧台,https://live.catvod.com/iptv.php?id=lhxj01
-龙华戏剧台,https://live.catvod.com/live.php?id=lunghuaxiju_twn
-
-龙华偶像台,https://live.catvod.com/iptv.php?id=lhox01
-龙华偶像台,https://live.catvod.com/live.php?id=lunghuaidol_twn
-
-EYETV戏剧,https://live.catvod.com/live.php?id=eyetvxiju_twn
 
 靖洋戏剧台,http://iptv.4666888.xyz/iptv2A.php?id=42
 
-靖天卡通,https://live.catvod.com/live.php?id=jingtiancartoon_twn
-
-Discovery Asia,https://live.catvod.com/live.php?id=discoverytwn_twn
-
-TLC,https://live.catvod.com/live.php?id=tlc_twn
-
 面包台,https://video.bread-tv.com:8091/hls-live24/online/index.m3u8
-tvN,https://live.catvod.com/live.php?id=TVN
 
 🎬电影频道,#genre#
 CHC动作电影,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000523#
@@ -526,31 +446,11 @@ CHC家庭影院,rtsp://111.48.34.138:1554/170000004112/9918000100000005000000000
 CHC家庭影院,http://ztecdn.hb.chinamobile.com:6060/170000001115/UmaiCHAN63807601b19dd/1.m3u8?m3u8_level=2#
 凤凰电影,https://tv.bfsu.edu.cn/hls/fhdy.m3u8
 
-HBO,https://live.catvod.com/live.php?id=hbohd_twn
-
-HBO HD,https://live.catvod.com/live.php?id=hbohd_twn
-
-好莱坞电影台,https://live.catvod.com/live.php?id=hollywoodmovies_twn
-
-天映经典,https://live.catvod.com/live.php?id=Celestial2
-
-东森电影,https://live.catvod.com/live.php?id=ettvmovie
-
 靖天电影台,http://iptv.4666888.xyz/iptv2A.php?id=56
-
-AMC电影台,https://live.catvod.com/live.php?id=starmoviesgold_twn
-
-龙华电影台,https://live.catvod.com/iptv.php?id=lhdy01
 
 龙华洋片,http://iptv.4666888.xyz/iptv2A.php?id=60
 
 美亚电影台(香港),http://iptv.4666888.xyz/iptv2A.php?id=30
-
-AXN,https://live.catvod.com/live.php?id=axn_twn
-
-纬来电影,https://live.catvod.com/live.php?id=videolandmovie
-
-CINEMAX,https://live.catvod.com/live.php?id=cinemax_twn
 
 🍓动画频道,#genre#
 新动漫,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000500
@@ -564,51 +464,22 @@ CINEMAX,https://live.catvod.com/live.php?id=cinemax_twn
 🌎️国际频道,#genre#
 BBC World News,https://cdn4.skygo.mn/live/disk1/BBC_News/HLSv3-FTA/BBC_News.m3u8
 
-CNN,https://live.catvod.com/live.php?id=cnn_twn
 CNN,https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8
 
-CBS News,https://live.catvod.com/live.php?id=cbshd_glo
-CBS News,https://live.catvod.com/live.php?id=cbsn_glo
-
-CNBC,https://live.catvod.com/live.php?id=cnbc_twn
 日本NHK World,http://61.221.215.25:8800/hls/51/index.m3u8#
 
 韩国Arirang,https://amdlive-ch01-ctnd-com.akamaized.net/arirang_1ch/smil:arirang_1ch.smil/chunklist_b3256000_sleng.m3u8
-韩国Arirang,https://live.catvod.com/live.php?id=arirang_twn
 RT News,https://rt-glb.rttv.com/dvr/rtnews/playlist_4500Kb.m3u8#
 RT News,https://rt-glb.rttv.com/dvr/rtnews/playlist.m3u8
-KBS world,https://live.catvod.com/live.php?id=KBS
-亚洲新闻,https://live.catvod.com/live.php?id=cna
 亚洲新闻,https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_5.m3u8
 
 🏀体育频道,#genre#
 广东体育,http://iptv.4666888.xyz/iptv2A.php?id=20
-上海五星体育,https://live.catvod.com/iptv.php?id=wxty01
 
 CCTV风云足球,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000310#
 红牛REDBULL TV (720p),https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_3360.m3u8
 
-纬来体育,https://live.catvod.com/live.php?id=videolandsport
-
-爱尔达体育1台,https://live.catvod.com/live.php?id=eltasport_twn
-
-爱尔达体育2台,https://live.catvod.com/live.php?id=eltasport2_twn
-爱尔达体育3台,https://live.catvod.com/live.php?id=eltasport3_twn
-爱尔达体育4台,https://live.catvod.com/live.php?id=eltasports4_twn
-
-博斯运动二台,https://live.catvod.com/live.php?id=bosisport2_twn
-
-博斯无限台,https://live.catvod.com/live.php?id=bosiunlimited_twn
-
-博斯高球二台,https://live.catvod.com/live.php?id=bosigolf2_twn
-
-博斯网球,https://live.catvod.com/live.php?id=bositennis_twn
-
-NBA,https://live.catvod.com/live.php?id=Nba
 四海钓鱼,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000531
-
-🏠️··上海··,#genre#
-第一财经,https://live.catvod.com/iptv.php?id=dycj01
 
 🏠️··山东··,#genre#
 山东齐鲁,http://222.134.245.16:9901/tsfile/live/1001_1.m3u8#
