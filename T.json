@@ -1,0 +1,48 @@
+{
+  "sites": [
+    {
+      "key": "drpy_js_88影视",
+      "name": "🎬┃88影视",
+      "type": 3,
+      "api": "./lib/drpy2.min.js",
+      "jar": "./lib/custom_spider.jar",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "./lib/88影视.js"
+    },
+    {
+      "key": "drpy_js_影视大全",
+      "name": "🎬┃影视大全",
+      "type": 3,
+      "api": "./lib/drpy2.min.js",
+      "jar": "./lib/custom_spider.jar",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "./lib/影视大全.js"
+    },
+    {
+      "key": "drpy_js_奈飞工厂",
+      "name": "🎬┃奈飞工厂",
+      "type": 3,
+      "api": "./lib/drpy2.min.js",
+      "jar": "./lib/custom_spider.jar",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "./lib/奈飞工厂.js"
+    },
+    {
+      "key": "drpy_js_A123TV",
+      "name": "🎬┃A123TV",
+      "type": 3,
+      "api": "./lib/drpy2.min.js",
+      "jar": "./lib/custom_spider.jar",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "./lib/A123TV.js"
+    }
+  ]
+}
