@@ -366,30 +366,29 @@ CHC影迷电影,rtsp://111.48.34.138:1554/170000004112/9918000100000005000000000
 湖南卫视4K,http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/Y2RuZXhfaWQ9YWxfaGxzX2xkdnQmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8
 湖南卫视4K,http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/dWlwPTEyNy4wLjAuMSZ1aWQ9cWluZy1jbXMmbm5fdGltZXpvbmU9OCZjZG5leF9pZD1hbF9obHNfbGR2dCZ1dWlkPTliODY4NmU5ZTM2YzYwMmMmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8
 🌊港·澳·台,#genre#
-凤凰中文,http://iptv.4666888.xyz/iptv2A.php?id=27
+FIGHTTV,http://iptv.4666888.xyz/iptv2A.php?id=27
 
-香港卫视,http://anren.live/HK/BSJDUFpB.m3u8#
+
 香港RTHK31,http://iptv.4666888.xyz/iptv2A.php?id=23
 澳视澳门,http://iptv.4666888.xyz/iptv2A.php?id=41
 
-星空卫视,https://tv.bfsu.edu.cn/hls/startv.m3u8
-CHANNEL [V],https://tv.bfsu.edu.cn/hls/channelv.m3u8
 
-环球电视,http://utv1.hqtvzb.com:9999/hls/world.m3u8
 
-无线娱乐新闻,http://iptv.4666888.xyz/iptv2A.php?id=36
-无线星河,https://www.mytvsuper.xyz/tvb/xinghe/stream.m3u8
+环球电视台,http://utv1.hqtvzb.com:9999/hls/world.m3u8
+
+FIGHTTV,http://iptv.4666888.xyz/iptv2A.php?id=36
+
 明珠台,http://iptv.4666888.xyz/iptv2A.php?id=29
 
 翡翠台,http://iptv.4666888.xyz/iptv2A.php?id=28
 
-MyTVSUPER,http://iptv.4666888.xyz/iptv2A.php?id=24
+黄金华剧台,http://iptv.4666888.xyz/iptv2A.php?id=24
 
 翡翠综合台,http://iptv.4666888.xyz/iptv2A.php?id=26
 
 TVB-DRAMA,http://iptv.4666888.xyz/iptv2A.php?id=33
-黄金华剧台,http://iptv.4666888.xyz/iptv2A.php?id=34
-千禧经典,http://iptv.4666888.xyz/iptv2A.php?id=22
+MyTVSUPER,http://iptv.4666888.xyz/iptv2A.php?id=34
+mytvsuper,http://iptv.4666888.xyz/iptv2A.php?id=22
 
 HOY77,http://iptv.4666888.xyz/iptv2A.php?id=35
 
@@ -397,62 +396,57 @@ HOY77,http://iptv.4666888.xyz/iptv2A.php?id=35
 台视新闻,http://stream-ali1.csslcloud.net/live/ofFqVir8hEYxZDb6y677FJxn0xrbfd2yPfOT6XuHngNXajvBUY.flv
 台视新闻,http://38.64.72.148:80/hls/modn/list/4013/chunklist1.m3u8
 
-民视,http://iptv.4666888.xyz/iptv2A.php?id=55
+靖天电影台,http://iptv.4666888.xyz/iptv2A.php?id=55
 
-民视综艺,http://iptv.4666888.xyz/iptv2A.php?id=46
+FOX News,http://iptv.4666888.xyz/iptv2A.php?id=46
 
-民视影剧台,http://iptv.4666888.xyz/iptv2A.php?id=53
+靖天电影台,http://iptv.4666888.xyz/iptv2A.php?id=53
 
-CTI+,http://stream-ali1.csslcloud.net/live/bfd2yczrTFqK7nEAJybacKGcrnLdslNp5YcphockmQnscq2S1p.flv
 
-中天新闻,http://50.7.238.114:8278/ctinews/playlist.m3u8?tid=MB0B9546410395464103&ct=19249&tsum=30c62d7eec5ce9a49a64c3fa3ff8a8b7
-中天新闻,http://198.16.100.90:8278/ctinews/playlist.m3u8?tid=MB0B9546410395464103&ct=19249&tsum=30c62d7eec5ce9a49a64c3fa3ff8a8b7
-中天新闻,http://59.120.242.104:9000/live/live4.m3u8
-中天新闻,http://tv.redrainl.site:9500/live.m3u8?c=03
-中天新闻,http://104.250.154.42:8080/ZZ_zhongtiannews/ZZ_zhongtiannews.m3u8
 
-中视新闻,http://stream-ali1.csslcloud.net/live/hNsy4N2Ykbfd2ywCSlOqFQ1aSenAhZLYUenP1IoaAltR3IXYOp.flv
 
-华视新闻,http://stream-ali1.csslcloud.net/live/AzACuucKCaz8bfd2yxWeXFD8Mjjpf4AcLtEPKWdD9rvwlDDE5s.flv
+
+
+
 
 纬来精采,http://61.221.215.25:8800/hls/48/index.m3u8
 
 TVBS新闻台,http://iptv.4666888.xyz/iptv2A.php?id=43
 
-TVBS精采台,http://iptv.4666888.xyz/iptv2A.php?id=47
+幸福空间居家,http://iptv.4666888.xyz/iptv2A.php?id=47
 
-龙华日韩台,https://cdn8.163189.xyz/live/lhrh/stream.m3u8
 
-龙华电影台,http://iptv.4666888.xyz/iptv2A.php?id=45
 
-龙华洋片,http://iptv.4666888.xyz/iptv2A.php?id=60
+八度空间华语新闻,http://iptv.4666888.xyz/iptv2A.php?id=45
 
-龙华经典,https://cdn8.163189.xyz/live/lhjd/stream.m3u8
+FIGHTTV,http://iptv.4666888.xyz/iptv2A.php?id=60
 
-龙华卡通台,https://cdn8.163189.xyz/live/lhkt/stream.m3u8
 
-靖洋戏剧台,http://iptv.4666888.xyz/iptv2A.php?id=42
+
+
+
+靖天卡通台,http://iptv.4666888.xyz/iptv2A.php?id=42
 
 面包台,https://video.bread-tv.com:8091/hls-live24/online/index.m3u8
 
-港澳台30,http://iptv.4666888.xyz/iptv2A.php?id=30
-港澳台31,http://iptv.4666888.xyz/iptv2A.php?id=31
-港澳台32,http://iptv.4666888.xyz/iptv2A.php?id=32
-港澳台37,http://iptv.4666888.xyz/iptv2A.php?id=37
-港澳台38,http://iptv.4666888.xyz/iptv2A.php?id=38
-港澳台39,http://iptv.4666888.xyz/iptv2A.php?id=39
-港澳台40,http://iptv.4666888.xyz/iptv2A.php?id=40
-港澳台44,http://iptv.4666888.xyz/iptv2A.php?id=44
-港澳台48,http://iptv.4666888.xyz/iptv2A.php?id=48
-港澳台49,http://iptv.4666888.xyz/iptv2A.php?id=49
-港澳台50,http://iptv.4666888.xyz/iptv2A.php?id=50
-港澳台51,http://iptv.4666888.xyz/iptv2A.php?id=51
-港澳台52,http://iptv.4666888.xyz/iptv2A.php?id=52
-港澳台54,http://iptv.4666888.xyz/iptv2A.php?id=54
-港澳台56,http://iptv.4666888.xyz/iptv2A.php?id=56
-港澳台57,http://iptv.4666888.xyz/iptv2A.php?id=57
-港澳台58,http://iptv.4666888.xyz/iptv2A.php?id=58
-港澳台59,http://iptv.4666888.xyz/iptv2A.php?id=59
+FIGHTTV,http://iptv.4666888.xyz/iptv2A.php?id=30
+
+MyTVSUPER,http://iptv.4666888.xyz/iptv2A.php?id=32
+靖天欢乐台,http://iptv.4666888.xyz/iptv2A.php?id=37
+靖天戏剧台,http://iptv.4666888.xyz/iptv2A.php?id=38
+momo亲子台,http://iptv.4666888.xyz/iptv2A.php?id=39
+MCE,http://iptv.4666888.xyz/iptv2A.php?id=40
+亚洲新闻台,http://iptv.4666888.xyz/iptv2A.php?id=44
+民视旅游台,http://iptv.4666888.xyz/iptv2A.php?id=48
+时尚运动,http://iptv.4666888.xyz/iptv2A.php?id=49
+GiNX.TV,http://iptv.4666888.xyz/iptv2A.php?id=50
+Bloomberg,http://iptv.4666888.xyz/iptv2A.php?id=51
+IQIYI,http://iptv.4666888.xyz/iptv2A.php?id=52
+民视,http://iptv.4666888.xyz/iptv2A.php?id=54
+rollor,http://iptv.4666888.xyz/iptv2A.php?id=56
+龙华洋片台,http://iptv.4666888.xyz/iptv2A.php?id=57
+生活英语台,http://iptv.4666888.xyz/iptv2A.php?id=58
+FIGHTTV,http://iptv.4666888.xyz/iptv2A.php?id=59
 
 🎬电影频道,#genre#
 CHC动作电影,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000523#
