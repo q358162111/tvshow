@@ -1,6 +1,6 @@
 {
   "wallpaper": "https://imgapi.cn/bing.php?rand=true",
-  "spider": "./spider.jar;md5;a66dd4ea2793fa4268cfc6c1b176c4b1",
+  "spider": "./spider.jar;md5;1c8b6195c74a361efa08f0f55efd4b24",
   "lives": [
     {
       "name": "live",
