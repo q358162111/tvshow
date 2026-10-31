@@ -1,6 +1,6 @@
 {
   "wallpaper": "https://imgapi.cn/bing.php?rand=true",
-  "spider": "./spider.jar;md5;96fe0bd4c9fa55f84f56fa6b382da68e",
+  "spider": "./spider.jar;md5;e49fee7ef319108e676ef9ee319a88f6",
   "lives": [
     {
       "name": "live",
@@ -144,6 +144,15 @@
       "name": "🍚饭搭子影视",
       "type": 3,
       "api": "csp_Fdzys",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0
+    },
+    {
+      "key": "人人视频",
+      "name": "📺人人视频",
+      "type": 3,
+      "api": "csp_Rrmj",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0
