@@ -156,6 +156,15 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0
+    },
+    {
+      "key": "零度动漫",
+      "name": "🅰️零度动漫",
+      "type": 3,
+      "api": "csp_ZeroDm",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 0
     }
   ],
   "parses": [
