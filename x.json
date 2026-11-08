@@ -1,6 +1,6 @@
 {
   "wallpaper": "https://imgapi.cn/bing.php?rand=true",
-  "spider": "./spider.jar;md5;9d75b634ed4c30e0f3318cf9141d142b",
+  "spider": "./spider.jar;md5;b9dd513b12a717606a98d714935cd697",
   "lives": [
     {
       "name": "live",
@@ -162,8 +162,8 @@
       "name": "🅰️零度动漫",
       "type": 3,
       "api": "csp_ZeroDm",
-      "searchable": 0,
-      "quickSearch": 0,
+      "searchable": 1,
+      "quickSearch": 1,
       "filterable": 0
     }
   ],
